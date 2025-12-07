@@ -29,8 +29,9 @@ for k in range(NumPulse):
 
     # Set final state of sesolve() to be intial state for next loop
 
-    #concatenation data from each pulse into big lists
+    # Concatenation of data from each pulse into big lists
 ```
+You then can use the same plotting features from the original code with minimal, or no alterations.
 
 Because of the data structures that QuTiP uses, here is a helpful function to perform the concatenation:
 
