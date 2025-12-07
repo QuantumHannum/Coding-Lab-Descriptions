@@ -97,4 +97,24 @@ b.add_states(result.states[1:400])
 b.show()
 ```
 
-## 
+## Activity 1: Change initial State
+Change the code so that the inital state of the system is in the following:
+- $|\psi_0\rangle = |+z\rangle$
+- $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle-|-z\rangle \right]$
+- $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle+i|-z\rangle \right]$ Note: In python imaginary number "i" is must be written as $1j$
+
+## Activity 2: Change rotation axis
+Change the code so that the rotation axis isn't just about the $z$-axis.
+
+## Activity 3: Change the pulse duration and strength
+Put the code back to rotations about the $z$-axis with initial state $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle+|-z\rangle \right]$
+
+Then change the duration of the Gaussian pulse by changing the width of the pulse:
+- 5 $\mu s$
+- 20 $\mu s$
+- What pulse width is necessary to perform a full $2\pi$ revolution of the state? Confirm your answer with your code.
+
+Return the pulse width back to 10 $\mu s$.  Then change the maximum strength of the pulse by altering the value of $Omega0$
+- What value of $Omega0$ is necessary to induce a full $\pi$ rotation?
+- What value of $Omega0$ is necessary to induce a full $4\pi$ rotation?
+
