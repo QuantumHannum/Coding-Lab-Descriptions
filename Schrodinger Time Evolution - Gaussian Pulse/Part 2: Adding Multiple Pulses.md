@@ -3,20 +3,21 @@
 In quantum computing, gates are implemented by applying controlled rotations to a qubit, and these rotations are often constructed by combining several pulses in sequence. By stringing multiple pulses together, we can build more complex operations than a single pulse can provide—for example, performing a rotation about an arbitrary axis, decomposing a gate into simpler components, or creating sequences that move the qubit around the Bloch sphere in precise and intentional ways. Exploring how pulses add together to produce cumulative rotations helps reveal how quantum gates are engineered in practice and how control sequences shape the evolution of a quantum state.
 
 ## Activity 4: String pulses together
-Lets alter your basic code from Part 1 to accomodate multiple pulses to the initial state.
+Now let’s extend your basic code from Part 1 so that it can apply multiple pulses to the initial state. This will allow you to see how sequential control operations accumulate and how the qubit state moves around the Bloch sphere over several rotations.
 
-Add in some empty lists
+Begin by creating a few empty lists and variables that will store information from each pulse:
+
 ```python
 #Number of pulses
 NumPulse = 3
 
 #initialize arrays  *** BE CAREFULE WITH DATATYPES IN QuTip
-pulseNum = []             # list to store the index of pulses
-times_all = None    # 1D numpy array; don't really need two here
-states_all = []     # list of Qobj (specal QuTip datatype)
-expect_all = None   # list of many numpy arrays
+pulseNum = []           # list to store the index of pulses
+times_all = None        # 1D numpy array; don't really need two here
+states_all = []         # list of Qobj (specal QuTip datatype)
+expect_all = None       # list of many numpy arrays
 ```
-Then make a for loop to loop NumPulse times using a general structure:
+Next, write a 'for' loop that runs 'NumPulse' times. The general structure will look something like this:
 
 ```python
 for k in range(NumPulse):
@@ -31,7 +32,7 @@ for k in range(NumPulse):
     #concatenation data from each pulse into big lists
 ```
 
-Because of the datastructures that QuTip uses, here is a nice helper function to perform the concatenation:
+Because of the data structures that QuTiP uses, here is a helpful function to perform the concatenation:
 
 ```python
 # Concatinates time, state, and expectation value lists after each pulse
