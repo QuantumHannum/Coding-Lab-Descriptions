@@ -48,7 +48,7 @@ Where $U(t)$ is given by:
 \hat{U}(t)=exp\left[ -\frac{i}{2}\sigma_k\int_0^T\omega(t) dt\right]
 ```
 
-The quantity inside the integral (via unit analysis) determines the total rotation angle in time $T$
+The quantity inside the integral (via unit analysis) determines the total rotation angle in time $T$.  $\sigma_k$ is the Pauli matrix for the axis of the applied magnetic field.
 
 ```math
 \theta = \int_0^T\omega(t)dt
