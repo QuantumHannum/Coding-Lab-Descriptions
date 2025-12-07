@@ -107,6 +107,11 @@ H = [[Sz, Omega]]
 ```
 One **VERY** important feature of QuTip is that the Hamiltonian isn't actually calculated (using the definition above) until it is used inside the **sesolve()** line based on the values contained in **args**.  So you can change the values in **args** and it doesn't require recalculating the Hamiltonian.
 
+It is also worth noting that the output of the *sesolve()*, **result** has two parts:
+- **result.state** which is a list of Qobj containing the quantum state vectors after each time step given in *tlist*
+- **result.expect** which is a list of numpy arrays, with each array containing the expectation value ($S_x$,$S_y$,$S_z$) at each time step in *tlist* 
+
+
 ## Activity 1: Change initial State
 Change the code so that the inital state of the system is in the following:
 - $|\psi_0\rangle = |+z\rangle$
