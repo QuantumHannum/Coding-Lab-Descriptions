@@ -25,4 +25,31 @@ When this pulse drives a two-level system(spin state, quibt), it acts like a tim
 ```math
 \hat{H}(t) = \frac{\hbar}{2}\omega(t)\sigma_z
 ```
-We can see the action of this Hamiltonian on a spin state initially in the $|\psi_0\rangle= \frac{1}{\sqrt{2}}\left[|+z\rangle+|-z\rangle \right]$ in the .gif below.  Note the inset where you can see the gaussian pulse evolution, and its effect on the rotation rate of the spin state shown in the Bloch sphere.
+We can see the action of this Hamiltonian on a spin state initially in the $|\psi_0\rangle= \frac{1}{\sqrt{2}}\left[|+z\rangle+|-z\rangle \right]$ in the video below.  Note, the inset where you can see the gaussian pulse evolution and the corrisponding (red) magnetic field vector in the $z$ direction. It is important to see the changing rate of rotation of the state (given by the blue dots) shown in the Bloch sphere.
+
+https://github.com/user-attachments/assets/d570b238-749e-4aa0-a7e3-dd5bbeb99a05
+
+If we change the direction of the applied field to be in the $x$, or $y$, the corrisponding Hamiltonians only change sliglty be swapping out the Pauli-$z$ with the Pauli-$x$ or Pauli-$y$ operators.
+
+The time evolution of this state is governed by the Schrodinger equation:
+
+```math
+i\hbar\frac{d}{dt}|\psi(t)\rangle = \hat{H}(t)|\psi(t)\rangle
+```
+We can also view this evolution as the application of a unitary operator on the initial state $|\psi_0\rangle$
+
+```math
+|\psi(t)\rangle = \hat{U}(t)|\psi_0\rangle
+```
+Where $U(t)$ is given by:
+
+```math
+\hat{U}(t)=exp\left[ -\frac{i}{2}\sigma_k\int_0^T\omega(t) dt\right]
+```
+
+The quantity inside the integral (via unit analysis) determines the total rotation angle in time $T$
+
+```math
+\theta = \int_0^T\omega(t)dt
+```
+This makes the percise control of the pulse shape extremley important: even small changes in the maximum height, width, or timing of the Guassina pulse can chagne the value of $\theta$ and lead to accumulating errors in state (or qubit) rotations.
