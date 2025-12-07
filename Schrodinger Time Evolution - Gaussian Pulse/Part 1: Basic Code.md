@@ -112,7 +112,7 @@ It is also worth noting that the output of the *sesolve()*, **result** has two p
 - **result.expect** which is a list of numpy arrays, with each array containing the expectation value ($S_x$, $S_y$, $S_z$) at each time step in *tlist* 
 
 ***
-As you complete the following activities, take time to look at Bloch sphere output and the plots of the expextation values.  It is worth your time to make sure you understand how the changes you make to the code are reflected in the two outputs of the code.
+As you complete the following activities, take time to look at the Bloch sphere output and the plots of the expextation values.  It is worth your time to make sure you understand how the changes you make to the code are reflected in the two outputs of the code.
 ***
 
 ## Activity 1: Change initial State
