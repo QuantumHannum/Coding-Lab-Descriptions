@@ -30,7 +30,7 @@ $z$-direction. As the pulse amplitude rises and falls, the rotation rate of the 
 
 https://github.com/user-attachments/assets/d570b238-749e-4aa0-a7e3-dd5bbeb99a05
 
-If we change the direction of the applied field to be in the $x$, or $y$, the corrisponding Hamiltonians only change sliglty be swapping out the Pauli-$z$ with the Pauli-$x$ or Pauli-$y$ operators.
+If we change the direction of the applied field to be in the $x$, or $y$, the corrisponding Hamiltonians only change sliglty be swapping out the Pauli- $z$ with the Pauli- $x$ or Pauli- $y$ operators.
 
 The time evolution of this state is governed by the Schrodinger equation:
 
