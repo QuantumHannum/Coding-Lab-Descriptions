@@ -37,20 +37,22 @@ The time evolution of this state is governed by the Schrodinger equation:
 ```math
 i\hbar\frac{d}{dt}|\psi(t)\rangle = \hat{H}(t)|\psi(t)\rangle
 ```
-We can also view this evolution as the application of a unitary operator on the initial state $|\psi_0\rangle$
+We can also describe this evolution as the action of a unitary operator on the initial state $|\psi_0\rangle$
 
 ```math
 |\psi(t)\rangle = \hat{U}(t)|\psi_0\rangle
 ```
-Where $U(t)$ is given by:
+where the time-evolution operator is:
 
 ```math
 \hat{U}(t)=exp\left[ -\frac{i}{2}\sigma_k\int_0^T\omega(t) dt\right]
 ```
 
-The quantity inside the integral (via unit analysis) determines the total rotation angle in time $T$.  $\sigma_k$ is the Pauli matrix for the axis of the applied magnetic field.
+The quantity inside the integral determines the total rotation angle accumulated over the time interval 
+T:
 
 ```math
 \theta = \int_0^T\omega(t)dt
 ```
-This makes the percise control of the pulse shape extremley important: even small changes in the maximum height, width, or timing of the Guassina pulse can chagne the value of $\theta$ and lead to accumulating errors in state (or qubit) rotations.
+Here, $\sigma_k$ is the Pauli matrix associated with the axis of the applied control field. Because the rotation angle depends directly on the integrated pulse strength, precise control of the pulse shape is essential: even small changes in the height, width, or timing of a Gaussian pulse can alter the value of 
+θ and lead to significant errors in qubit rotations.
