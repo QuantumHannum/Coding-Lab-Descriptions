@@ -38,6 +38,8 @@ t_end   = 10 * sigma    # window [0, 10σ] in seconds
 tlist    = np.linspace(t_start, t_end, 20)   # seconds
 tlist_us = tlist * 1e6                        # microseconds for plotting
 
+args = {"Omega0": Omega0, "sigma": sigma, "t0": t0}
+
 # ============================================================
 # 3. Time-dependent Hamiltonian H(t) = Omega_z(t) * Sz
 # ============================================================
@@ -48,8 +50,6 @@ def Omega(t, args):
     sigma  = args["sigma"]
     t0     = args["t0"]
     return Omega0 * np.exp(-(t - t0)**2 / (2 * sigma**2))
-
-args = {"Omega0": Omega0, "sigma": sigma, "t0": t0}
 
 # Spin operators
 Sx = 0.5 * sigmax()
