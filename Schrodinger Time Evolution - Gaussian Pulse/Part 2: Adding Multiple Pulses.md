@@ -65,3 +65,10 @@ def concat_data(result, times_all, states_all, expect_all):
             )
     return times_all, states_all, expect_all
 ```
+
+***
+After you made the above changes, and your code is working, here are some questions to consider:
+- Look at the plots of $\langle \sigma_x \rangle$, $\langle \sigma_y \rangle$, $\langle \sigma_z \rangle$ versus time.  For an initial $|+x\rangle$ state and a $Z$ - axis Hamiltonian, which components change and which stay (approximately) constant?
+- How do these expectation values behave across pulse boundaries? Can you see where one pulse ends and the next begins?
+- Change the initial state to $|+z\rangle$ and rerun the pulse sequence.  Does the resulting plots of the expextation values look like you would expect them to look?
+***
