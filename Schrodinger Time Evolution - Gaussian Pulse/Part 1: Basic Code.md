@@ -96,6 +96,16 @@ b = Bloch()
 b.add_states(result.states[1:400])
 b.show()
 ```
+The key line in the above code is:
+```python
+result = sesolve(H, psi0, tlist, e_ops=e_ops, args=args, options=opts)
+```
+This is the line where QuTip solves the time-dependent Schrodinger equation using the Hamiltonian defined in the line:
+
+```python
+H = [[Sz, Omega]]
+```
+One **VERY** important feature of QuTip is that the Hamiltonian isn't actually calculated (using the definition above) until it is used inside the **sesolve()** line based on the values contained in **args**.  So you can change the values in **args** and it doesn't require recalculating the Hamiltonian.
 
 ## Activity 1: Change initial State
 Change the code so that the inital state of the system is in the following:
