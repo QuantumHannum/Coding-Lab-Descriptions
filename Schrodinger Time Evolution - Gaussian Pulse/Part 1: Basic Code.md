@@ -109,7 +109,7 @@ One **VERY** important feature of QuTip is that the Hamiltonian isn't actually c
 
 It is also worth noting that the output of the *sesolve()*, **result** has two parts:
 - **result.state** which is a list of Qobj containing the quantum state vectors after each time step given in *tlist*
-- **result.expect** which is a list of numpy arrays, with each array containing the expectation value ($S_x$,$S_y$,$S_z$) at each time step in *tlist* 
+- **result.expect** which is a list of numpy arrays, with each array containing the expectation value ($S_x$, $S_y$, $S_z$) at each time step in *tlist* 
 
 
 ## Activity 1: Change initial State
