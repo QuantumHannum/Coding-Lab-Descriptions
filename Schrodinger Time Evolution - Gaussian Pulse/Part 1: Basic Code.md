@@ -10,11 +10,11 @@ Once you have done that, copy the rest of this code to simulate the first time e
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 
 from qutip import (
-    basis, sigmax, sigmay, sigmaz,
-    sesolve, Bloch, Options
-)
+    expect, basis, sigmax, sigmay, sigmaz,
+    sesolve, Bloch, Options)
 
 # ============================================================
 # 1. Parameters
