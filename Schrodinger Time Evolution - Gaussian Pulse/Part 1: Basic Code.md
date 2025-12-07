@@ -1,6 +1,6 @@
 # Part 1: Basic Code
 
-We will be making use of a phython package that has been specifically designed to simulate quantum mechancis.  [QuTip](https://qutip.org)is a very powerful package that manages the complex(number) and matrix mathematics in a simple way.  The first thing you need to do is to install it into your environment:
+We will be making use of a phython package that has been specifically designed to simulate quantum mechancis.  [QuTip](https://qutip.org) is a very powerful package that manages the complex(number) and matrix mathematics in a simple way.  The first thing you need to do is to install it into your environment:
 
 ```python
 pip install qutip
