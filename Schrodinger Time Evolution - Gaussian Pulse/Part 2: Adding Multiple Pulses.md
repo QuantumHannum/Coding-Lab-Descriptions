@@ -72,3 +72,5 @@ After you made the above changes, and your code is working, here are some questi
 - How do these expectation values behave across pulse boundaries? Can you see where one pulse ends and the next begins? You may want to increase `NumPulse` to see the full evolution of the expectation values.
 - Change the initial state to $|+z\rangle$ and rerun the pulse sequence.  Does the resulting plots of the expextation values look like you would expect them to look?
 ***
+
+## Activity 5: Picking random directions for applied field
