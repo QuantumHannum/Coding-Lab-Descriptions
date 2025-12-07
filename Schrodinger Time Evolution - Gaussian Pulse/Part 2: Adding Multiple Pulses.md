@@ -17,7 +17,7 @@ times_all = None        # 1D numpy array; don't really need two here
 states_all = []         # list of Qobj (specal QuTip datatype)
 expect_all = None       # list of many numpy arrays
 ```
-Next, write a 'for' loop that runs 'NumPulse' times. The general structure will look something like this:
+Next, write a `for` loop that runs `NumPulse` times. The general structure will look something like this:
 
 ```python
 for k in range(NumPulse):
