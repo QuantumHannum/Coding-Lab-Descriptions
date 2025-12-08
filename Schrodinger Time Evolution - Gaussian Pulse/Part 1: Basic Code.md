@@ -123,6 +123,8 @@ Change the code so that the inital state of the system is in the following:
 
 ## Activity 2: Change rotation axis
 Change the code so that the rotation axis isn't just about the $z$-axis.
+- if you change the axis to the x-axis, the output of the code should look like nothing happend? Why?
+- if you change the axis to the y-axis, think carefully about what direction the state should evolve on the Bloch Sphere, then test it out to see if your intution was correct.
 
 ## Activity 3: Change the pulse duration and strength
 Put the code back to rotations about the $z$-axis with initial state $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle+|-z\rangle \right]$
