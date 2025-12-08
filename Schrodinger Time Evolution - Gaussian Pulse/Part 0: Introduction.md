@@ -20,7 +20,7 @@ $t_0$ is the time at which the pulse is centered, and $\sigma$ controls how wide
 ```math
 \omega_0=g\frac{q}{2m}B_{max}
 ```
-When this pulse drives a two-level system(spin state, quibt), it acts like a time-dependent rotation about one of hte Bloch-sphere axes.  For example, if the pulse is appled along the $z$-axis, the Hamiltonian has the form:
+When this pulse drives a two-level system(spin state, qubit), it acts like a time-dependent rotation about one of hte Bloch-sphere axes.  For example, if the pulse is appled along the $z$-axis, the Hamiltonian has the form:
 
 ```math
 \hat{H}(t) = \frac{\hbar}{2}\omega(t)\sigma_z
