@@ -84,6 +84,7 @@ basislist=["x","y","z"]
 ```
 You code should make random choices for axis - **BUT** it would be nice for everyone to be able to compare the output.  To do this lets fix the seed values you use.  Add this code snippit into you code.  You may want to play around with the code a bit to see all the different behavoirs, so feel free to comment it out while you explore.  Just make sure to put it back before moving on to Part 3.
 ```python
+import random
 seed = 31                                 #for reproducability
 random.seed(seed)
 np.random.seed(seed)
