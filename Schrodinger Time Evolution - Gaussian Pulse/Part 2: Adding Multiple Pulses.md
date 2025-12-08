@@ -33,7 +33,7 @@ for k in range(NumPulse):
 ```
 You then can use the same plotting features from the original code with minimal, or no alterations.
 
-Because of the data structures that QuTiP uses, here is a helpful function to perform the concatenation:
+Because of the data structures that QuTiP uses are a bit tricky, here is a helpful function to perform the concatenation:
 
 ```python
 # Concatinates time, state, and expectation value lists after each pulse
