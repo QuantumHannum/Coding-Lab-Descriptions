@@ -98,5 +98,5 @@ H = [[H_axis,Omega]]                      #build Hamiltonian
 ***
 After you made the above changes, and your code is working, here are some questions to consider:
 - Can you look at your expectation-value plot and deduce which axis was used for each pulse? Does your Bloch-sphere trajectory confirm your deduction?
-- 
+- Increase `NumPulse` a bit, but keep it less than 10.  If you look at the plot of expectation values, can you infer the axis of each pulse from the plot?
 ***
