@@ -74,7 +74,7 @@ After you made the above changes, and your code is working, here are some questi
 - Change the initial state to $|+z\rangle$ and rerun the pulse sequence.  Do the resulting plots of the expextation values look like you would expect them to look?
 ***
 
-## Activity 5: Picking random directions for applied field
+## Activity 5: Pick random directions for applied field
 Real quantum algorithms rely on rely on sequences of rotations about different axes to build up useful quantum gates. Some gates require rotations around the x-axis, others around the y-axis, and many require combinations of both.  We will now add to your code so that it will randomly select an axis from $\{X, Y, Z\}$ and then apply a pulse about that axis.  By letting the computer choose the axis for each pulse, we can explore how the qubit state moves around the Bloch sphere under a variety of control sequences, and gain insight into how complex quantum operations are constructed from simple, axis-dependent rotations.
 
 Add to your code a simple list:
