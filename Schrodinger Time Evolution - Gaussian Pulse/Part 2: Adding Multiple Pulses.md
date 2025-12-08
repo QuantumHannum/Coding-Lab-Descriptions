@@ -82,7 +82,7 @@ Add to your code a simple list:
 # list possible directions applied field
 basislist=["x","y","z"]
 ```
-The alter your `For` loop so that it include the use of a helper function (which you need to define) `getbasis()`
+The alter your `For` loop so that it includes the use of a helper function (which you need to define) `getbasis()`
 ```python
 H_axis = getbasis(basislist)              #get random Hamiltonian
 H = [[H_axis,Omega]]                      #build Hamiltonian
