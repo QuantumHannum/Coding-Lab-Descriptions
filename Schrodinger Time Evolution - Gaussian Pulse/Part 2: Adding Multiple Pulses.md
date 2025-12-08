@@ -13,7 +13,7 @@ NumPulse = 3
 
 #initialize arrays  *** BE CAREFULE WITH DATATYPES IN QuTip
 pulseNum = []           # list to store the index of pulses
-times_all = None        # 1D numpy array; don't really need two here
+times_all = None        # 1D numpy array
 states_all = []         # list of Qobj (specal QuTip datatype)
 expect_all = None       # list of many numpy arrays
 ```
