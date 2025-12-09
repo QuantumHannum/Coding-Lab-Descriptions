@@ -67,7 +67,7 @@ psi_ideal = psi0      #split into two vectors to track
 psi_noisy = psi0
 ```
 
-You will also need to make two new helper functions.  The first is `getBlochVector()` that takes in the last state of `result.states[-1]` and outputs a numpy array. The second is `bloch_distance()` that takes in two vectors give by `getBlochVector()` and outputs the Bloch distance.
+You will also need to make two new helper functions.  The first is `getBlochVector()` that takes in the last state of `result.states[-1]` and outputs a numpy array. The second is `trace_distance()` that takes in two vectors give by `getBlochVector()` and outputs the Bloch distance.
 
 Update your main `for` loop to keep track of both an ideal and nosiy evolution.  Only calculate the Bloch vector and trace distance for the last state after each pulse, not all states over the duration of the pulse.
 
