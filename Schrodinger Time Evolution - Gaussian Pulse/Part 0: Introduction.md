@@ -1,4 +1,4 @@
-# Schrodinger Time Evolution with Gaussian Pulse
+# Schr&oumldinger Time Evolution with Gaussian Pulse
 
 ## Introduction
 In this lab, you will extend the work we have done in class on time-independent and time-dependent Hamiltonians by numerically exploring how quantum states evolve under realistic control pulses. We have already seen that a driven two-level system exhibits Rabi oscillations, and that by choosing the appropriate pulse duration and amplitude, one can implement fundamental quantum-computing gates such as X, Y, and arbitrary-axis rotations. However, real laboratory pulses are never perfectly shaped—small fluctuations in amplitude, width, or timing can distort the intended rotation and push the final state away from its ideal Bloch-sphere trajectory. In this investigation, you will use QuTiP to simulate both ideal and jittered control sequences, quantify the resulting errors, and understand why precise pulse engineering is essential for accurate quantum information processing.
