@@ -25,5 +25,7 @@ You are also going to hvae to make a helper function `draw_jittered_args()` that
 Update your `for` loop to include a call to your new `draw_jittered_args()` function.  Then run your full code and produce both the plots of expectation values and Bloch Sphere.
 
 ***
-
+After you made the above changes, and your code is working, here are some questions to consider:
+- Increase `NumPulse = 50`, then look at the plots of expectation values.  What do you notice about these plots compared to the non-jittered plots?
+- Try isolating each type of jitter individually (Omega0, sigma). Which one produces more drift in the expectation values?
 ***
