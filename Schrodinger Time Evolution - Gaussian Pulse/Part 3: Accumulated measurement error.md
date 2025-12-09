@@ -40,6 +40,7 @@ D = \frac{1}{2}||\vec{B}_{ideal}-\vec{B}_{noisy}||
 This quantity has a direct operational meaning: the trace distance is equal to the maximum possible difference in measurement outcomes between the ideal and noisy states. In other words, $D$ tells us the largest probability error that noise could introduce in any single-qubit measurement, making it a powerful tool for evaluating how control imperfections accumulate over multiple pulses.
 
 Because we have the expectation values as part of our model, we can calculate the Bloch vector directly:
+
 ```math
 \vec{B} = \left( <\sigma_x>, <\sigma_y>, <\sigma_z>
 ```
