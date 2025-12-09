@@ -14,7 +14,7 @@ sigma_jitter    = sigma_jitter_us * 1e-6  # convert to seconds
 
 Omega0_jitter = Omega0 * .001             # 0.1% error units rad/s
 ```
-We only need to update the `args` dictionary with argmented values. But, we need to keep track of the original values in `args`, so lets make two new variables:
+We only need to update the `args` dictionary with augmented values. But, we need to keep track of the original values in `args`, so lets make two new variables:
 
 ```python
 #build args list for each case
@@ -26,7 +26,7 @@ You are also going to have to make a helper function `draw_jittered_args()` that
 Update your `for` loop to include a call to your new `draw_jittered_args()` function.  Then run your full code and produce both the plots of expectation values and Bloch Sphere.
 
 ***
-After you made the above changes, and your code is working, here are some questions to consider:
+After you have made the above changes, and your code is working, here are some questions to consider:
 - Increase `NumPulse = 50`, then look at the plots of expectation values.  What do you notice about these plots compared to the non-jittered plots?
 - Try isolating each type of jitter individually (Omega0, sigma). Which one produces more drift in the expectation values?
 - Look at your Bloch Sphere plot - in particular, look at the vectors near each axis (x, y, z).  It should look like the vectors are clustering around the axis, why?
@@ -84,6 +84,12 @@ THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
 - Plot of $<\sigma_z>$ vs. Time showing both the ideal and noisy evolution
 - Plot of the Trace Distance vs. Pulse Number
 - Answers to the following questions:
-  -- example
+1. Compare the ideal and noisy plots of $<\sigma_z>$ over time.
+   - Can you tell from the shape of the noisy curve whether the net roation is slightly over- or under-rotated?
+   - Do the ideal and nisy paths diverge slowly, or do they separate abruptly as specific pulses?
+2. Examine the Trace Distance vs. Pulse Number plot
+   - Does the trace distance increase linearly, quadratically, or in a more irregular fashion?
+   - Does the trace distance ever decrease? If yes, explain why this is possible for unitary evolution, even with jitter.  If no, explain why repreated noisy rotations tend to accumulate error monotonically.
+3.  
 
 ***
