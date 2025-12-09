@@ -91,5 +91,5 @@ THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
    - Does the trace distance increase linearly, quadratically, or in a more irregular fashion?
    - Does the trace distance ever decrease? If yes, explain why this is possible for unitary evolution, even with jitter.  If no, explain why repreated noisy rotations tend to accumulate error monotonically.
 3. Looking at either plot, is the system more sensitive to jitter earler or later in the pulse sequence?
-
+a
 ***
