@@ -77,13 +77,8 @@ Change your output plots:
 - plot the Trace Distance(Maximum Measrement Error) vs. Pulse Number
 
 ***
-THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
+After you have made the above changes, and your code is working, here are some questions to consider:
 
-**Upload to Schoology the follwing things**
-- An executable version of your final code from Actiity 7
-- Plot of $<\sigma_z>$ vs. Time showing both the ideal and noisy evolution
-- Plot of the Trace Distance vs. Pulse Number
-- Answers to the following questions:
 1. Compare the ideal and noisy plots of $<\sigma_z>$ over time.
    - Can you tell from the shape of the noisy curve whether the net roation is slightly over- or under-rotated?
    - Do the ideal and nisy paths diverge slowly, or do they separate abruptly as specific pulses?
@@ -91,4 +86,7 @@ THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
    - Does the trace distance increase linearly, quadratically, or in a more irregular fashion?
    - Does the trace distance ever decrease? If yes, explain why this is possible for unitary evolution, even with jitter.  If no, explain why repreated noisy rotations tend to accumulate error monotonically.
 3. Looking at either plot, is the system more sensitive to jitter earler or later in the pulse sequence?
+4. In a real quantum computer, every quantum gate in a circuit is implemented by one or more control pulses on the hardware. Using your simulations:
+   - Explain how a sequence of imperfect pulses (each with small jitter) corresponds to a sequence of imperfect gates (commands) in a quantum circuit.
+   - How does the trace-distance growth you observe relate to the intrinsic error that accumulates across multiple gates in an actual quantum algorithm, and why does this place limits on the depth (number of commands) of reliable quantum circuits?
 ***
