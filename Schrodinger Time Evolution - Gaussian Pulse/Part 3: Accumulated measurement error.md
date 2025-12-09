@@ -74,7 +74,7 @@ Update your main `for` loop to keep track of both an ideal and nosiy evolution. 
 Change your output plots:
 - plot only $<\sigma_z>$ vs. time for both the ideal and noisy states as functions of time.
 - don't plot the Bloch sphere at all
-- plot the Trace Distance vs. Pulse Number
+- plot the Trace Distance(Maximum Measrement Error) vs. Pulse Number
 
 ***
 THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
@@ -90,6 +90,6 @@ THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
 2. Examine the Trace Distance vs. Pulse Number plot
    - Does the trace distance increase linearly, quadratically, or in a more irregular fashion?
    - Does the trace distance ever decrease? If yes, explain why this is possible for unitary evolution, even with jitter.  If no, explain why repreated noisy rotations tend to accumulate error monotonically.
-3.  
+3. Looking at either plot, is the system more sensitive to jitter earler or later in the pulse sequence?
 
 ***
