@@ -31,9 +31,9 @@ for k in range(NumPulse):
 
     # Concatenation of data from each pulse into big lists
 ```
-You then can use the same plotting features from the original code with minimal, or no alterations.
+You can then use the same plotting features from the original code with minimal or no alterations.
 
-Because of the data structures that QuTiP uses are a bit tricky, here is a helpful function to perform the concatenation:
+Because the data structures that QuTiP uses are a bit tricky, here is a helpful function to perform the concatenation:
 
 ```python
 # Concatinates time, state, and expectation value lists after each pulse
@@ -68,14 +68,14 @@ def concat_data(result, times_all, states_all, expect_all):
 ```
 
 ***
-After you made the above changes, and your code is working, here are some questions to consider:
-- Look at the plots of $\langle \sigma_x \rangle$, $\langle \sigma_y \rangle$, $\langle \sigma_z \rangle$ versus time.  For an initial $|+x\rangle$ state and a $Z$ - axis Hamiltonian, which components change and which stay (approximately) constant?
+After you have made the above changes, and your code is working, here are some questions to consider:
+- Look at the plots of $\langle \sigma_x \rangle$, $\langle \sigma_y \rangle$, $\langle \sigma_z \rangle$ versus time. For an initial $|+x\rangle$ state and a $Z$-axis Hamiltonian, which components change and which stay (approximately) constant?
 - How do these expectation values behave across pulse boundaries? Can you see where one pulse ends and the next begins? You may want to increase `NumPulse` to see the full evolution of the expectation values.
-- Change the initial state to $|+z\rangle$ and rerun the pulse sequence.  Do the resulting plots of the expextation values look like you would expect them to look?
+- Change the initial state to $|+z\rangle$ and rerun the pulse sequence. Do the resulting plots of the expectation values look like you would expect them to look?
 ***
 
 ## Activity 5: Pick random directions for applied field
-Real quantum algorithms rely on rely on sequences of rotations about different axes to build up useful quantum gates. Some gates require rotations around the x-axis, others around the y-axis, and many require combinations of both.  We will now add to your code so that it will randomly select an axis from $\{X, Y, Z\}$ and then apply a pulse about that axis.  By letting the computer choose the axis for each pulse, we can explore how the qubit state moves around the Bloch sphere under a variety of control sequences, and gain insight into how complex quantum operations are constructed from simple, axis-dependent rotations.
+Real quantum algorithms rely on sequences of rotations about different axes to build up useful quantum gates. Some gates require rotations around the x-axis, others around the y-axis, and many require combinations of both. We will now add to your code so that it will randomly select an axis from ${X, Y, Z}$ and then apply a pulse about that axis. By letting the computer choose the axis for each pulse, we can explore how the qubit state moves around the Bloch sphere under a variety of control sequences, and gain insight into how complex quantum operations are constructed from simple, axis-dependent rotations.
 
 Add to your code a simple list:
 ```python
