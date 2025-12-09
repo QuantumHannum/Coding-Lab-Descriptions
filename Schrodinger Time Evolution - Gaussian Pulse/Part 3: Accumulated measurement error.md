@@ -32,4 +32,6 @@ After you made the above changes, and your code is working, here are some questi
 - Look at your Bloch Sphere plot - in particular, look at the vectors near each axis (x, y, z).  It should look like the vectors are clustering around the axis, why?
 ***
 
+## Activity 7: Divergence of measurement error due to jitter
+
 
