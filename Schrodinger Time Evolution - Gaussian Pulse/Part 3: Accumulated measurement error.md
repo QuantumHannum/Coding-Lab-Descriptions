@@ -1,9 +1,8 @@
 # Accumulating error due to jitter
-
 In real quantum hardware, control pulses are never perfectly shaped: each pulse may be slightly too strong, too weak, too wide, or too narrow due to unavoidable noise in the electronics. These small variations—often called jitter—may seem insignificant for a single pulse, but their effects accumulate when many pulses are applied in sequence. Because each pulse contributes a small rotation to the qubit's state, even tiny fluctuations in pulse height (amplitude) or pulse width can cause the total rotation angle to drift away from its intended value. Over many pulses, these small errors compound, gradually pushing the qubit off its ideal trajectory on the Bloch sphere and degrading the fidelity of the implemented quantum operation.
 
-To model realistic imperfections in a laboratory setting, we introduce small random fluctuations—or jitter—into both the pulse width and the pulse amplitude. In this simulation, the pulse width 
-$\sigma$ varies by about 0.5% reflecting typical timing uncertainties in experimental control hardware, while the pulse amplitude $\Omega0$ fluctuates by about 0.1%, representing small drifts in the strength of the applied field. These values capture realistic levels of noise seen in many quantum control systems and allow us to explore how even modest imperfections can accumulate over repeated pulses.
+To model realistic imperfections in a laboratory setting, we introduce small random fluctuations—or jitter—into both the pulse width and the pulse amplitude. In this simulation, the pulse width
+$\sigma$ varies by about 0.5%, reflecting typical timing uncertainties in experimental control hardware, while the pulse amplitude $\Omega0$ fluctuates by about 0.1%, representing small drifts in the strength of the applied field. These values capture realistic levels of noise seen in many quantum control systems and allow us to explore how even modest imperfections can accumulate over repeated pulses.
 
 ## Activity 6: Add statistical jitter
 We can model these random variations with some simple code:
@@ -23,20 +22,22 @@ args_jitter = draw_jittered_args()
 ```
 You are also going to have to make a helper function `draw_jittered_args()` that pulls new values of `Omega0` and `sigma` from normal distributions centered at 0, and with standard deviation given by `sigma_jitter` and `Omega0_jitter`.
 
-Update your `for` loop to include a call to your new `draw_jittered_args()` function.  Then run your full code and produce both the plots of expectation values and Bloch Sphere.
+Update your `for` loop to include a call to your new draw_jittered_args() function. Then run your full code and produce both the plots of expectation values and the Bloch sphere.
 
 ***
 After you have made the above changes, and your code is working, here are some questions to consider:
-- Increase `NumPulse = 50`, then look at the plots of expectation values.  What do you notice about these plots compared to the non-jittered plots?
-- Try isolating each type of jitter individually (Omega0, sigma). Which one produces more drift in the expectation values?
-- Look at your Bloch Sphere plot - in particular, look at the vectors near each axis (x, y, z).  It should look like the vectors are clustering around the axis, why?
+- Increase `NumPulse = 50`, then look at the plots of expectation values. What do you notice about these plots compared to the non-jittered plots?
+- Try isolating each type of jitter individually (`Omega0`, `sigma`). Which one produces more drift in the expectation values?
+- Look at your Bloch Sphere plot - in particular, look at the vectors near each axis (x, y, z).  It should look like the vectors are clustering around the axis Why?
 ***
 
 ## Activity 7: Divergence of measurement error due to jitter
 To quantify how far a jittered state drifts from the ideal trajectory, we use a standard measure from quantum information theory called the trace distance. For two pure states $|\psi_{ideal}\rangle$ and $|\psi_{noisy}\rangle$, the trace distance simplifies to half the length of the difference between their Bloch vectors:
+
 ```math
 D = \frac{1}{2}||\vec{B}_{ideal}-\vec{B}_{noisy}||
 ```
+
 This quantity has a direct operational meaning: the trace distance is equal to the maximum possible difference in measurement outcomes between the ideal and noisy states. In other words, $D$ tells us the largest probability error that noise could introduce in any single-qubit measurement, making it a powerful tool for evaluating how control imperfections accumulate over multiple pulses.
 
 Because we have the expectation values as part of our model, we can calculate the Bloch vector directly:
@@ -69,7 +70,7 @@ psi_noisy = psi0
 
 You will also need to make two new helper functions.  The first is `getBlochVector()` that takes in the last state of `result.states[-1]` and outputs a numpy array. The second is `trace_distance()` that takes in two vectors give by `getBlochVector()` and outputs the Bloch distance.
 
-Update your main `for` loop to keep track of both an ideal and nosiy evolution.  Only calculate the Bloch vector and trace distance for the last state after each pulse, not all states over the duration of the pulse.
+Update your main `for` loop to keep track of both an ideal and noisy evolution. Only calculate the Bloch vector and trace distance for the last state after each pulse, not all states over the duration of the pulse.
 
 Change your output plots:
 - plot only $<\sigma_z>$ vs. time for both the ideal and noisy states as functions of time.
@@ -80,13 +81,13 @@ Change your output plots:
 After you have made the above changes, and your code is working, here are some questions to consider:
 
 1. Compare the ideal and noisy plots of $<\sigma_z>$ over time.
-   - Can you tell from the shape of the noisy curve whether the net roation is slightly over- or under-rotated?
-   - Do the ideal and nisy paths diverge slowly, or do they separate abruptly as specific pulses?
+   - Can you tell from the shape of the noisy curve whether the net rotation is slightly over- or under-rotated?
+   - Do the ideal and noisy paths diverge slowly, or do they separate abruptly at specific pulses?
 2. Examine the Trace Distance vs. Pulse Number plot
    - Does the trace distance increase linearly, quadratically, or in a more irregular fashion?
-   - Does the trace distance ever decrease? If yes, explain why this is possible for unitary evolution, even with jitter.  If no, explain why repreated noisy rotations tend to accumulate error monotonically.
-3. Looking at either plot, is the system more sensitive to jitter earler or later in the pulse sequence?
-4. In a real quantum computer, every quantum gate in a circuit is implemented by one or more control pulses on the hardware. Using your simulations:
-   - Explain how a sequence of imperfect pulses (each with small jitter) corresponds to a sequence of imperfect gates (commands) in a quantum circuit.
-   - How does the trace-distance growth you observe relate to the intrinsic error that accumulates across multiple gates in an actual quantum algorithm, and why does this place limits on the depth (number of commands) of reliable quantum circuits?
+   - Does the trace distance ever decrease?  If yes, explain why this is possible for unitary evolution even with jitter.  If no, explain why repeated noisy rotations tend to accumulate error monotonically.
+3. Looking at either plot, is the system more sensitive to jitter earlier or later in the pulse sequence?
+4. Connection to quantum circuits
+   - In a real quantum computer, every quantum gate (or command) in a circuit(code) is implemented by one or more control pulses. Using your simulations, explain how a sequence of imperfect pulses (each with small jitter) corresponds to a sequence of imperfect gates in a quantum circuit.
+   - How does the trace-distance growth you observe relate to the intrinsic error that accumulates across multiple gates in an actual quantum algorithm, and why does this place limits on the depth (number of operations) of reliable quantum circuits?
 ***
