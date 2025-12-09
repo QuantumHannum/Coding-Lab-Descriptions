@@ -44,3 +44,27 @@ Because we have the expectation values as part of our model, we can calculate th
 ```math
 \vec{B} = \left( <\sigma_x>, <\sigma_y>, <\sigma_z> \right)
 ```
+
+The final step in our code will be to track the evolution of an ideal pulse and a noisy pulse over all `NumPulse`.  Lets add to our empty arrays that we initialize before our main loop.
+
+```python
+#initialize arrays  *** BE CAREFULE WITH DATATYPES IN QuTip
+pulseNum = []             # list to store the index of pulses
+times_all_ideal = None    # 1D numpy array; don't really need two here
+times_all_noisy = None
+states_all_ideal = []     # list of Qobj (specal QuTip datatype)
+states_all_noisy = []
+expect_all_ideal = None   # list of many numpy arrays
+expect_all_noisy = None
+blochvec_all_ideal = []   # list of many numpy arrays
+blochvec_all_noisy = [] 
+```
+As well as split our initial state into an ideal and noisy Qobj to track.
+
+```python
+psi0 = (basis(2, 0) + basis(2, 1)).unit()
+psi_ideal = psi0      #split into two vectors to track
+psi_noisy = psi0
+```
+
+You will also need to make two new helper functions.  The first is `getBlochVector()` that takes in the last state of `result.states[-1]` and outputs a numpy array. The second is `bloch_distance()` that takes in two vectors give by `getBlochVector()` and outputs the Bloch distance.
