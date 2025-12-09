@@ -33,5 +33,8 @@ After you made the above changes, and your code is working, here are some questi
 ***
 
 ## Activity 7: Divergence of measurement error due to jitter
-
+To quantify how far a jittered state drifts from the ideal trajectory, we use a standard measure from quantum information theory called the trace distance. For two pure states $|\psi_{ideal}\rangle$ and $|\psi_{noisy}\rangle$, the trace distance simplifies to half the length of the difference between their Bloch vectors:
+$$
+D = \frac{1}{2}||\vec{B}_{ideal}-\vec{B}_{noisy}||
+$$
 
