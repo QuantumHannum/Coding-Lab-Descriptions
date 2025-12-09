@@ -80,7 +80,7 @@ Change your output plots:
 THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
 
 **Upload to Schoology the follwing things**
-- An exicutable version of your final code from Actiity 7
+- An executable version of your final code from Actiity 7
 - Plot of $<\sigma_z>$ vs. Time showing both the ideal and noisy evolution
 - Plot of the Trace Distance vs. Pulse Number
 - Answers to the following questions:
