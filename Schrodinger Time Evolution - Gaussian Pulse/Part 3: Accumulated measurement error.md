@@ -21,3 +21,7 @@ args_nominal = {"Omega0": Omega0, "sigma": sigma, "t0": t0}
 args_jitter = draw_jittered_args()            
 ```
 You are also going to hvae to make a helper function `draw_jittered_args()` that pulls new values of `Omega0` and `sigma` from normal distributions centered at 0, and with standard deviation given by `sigma_jitter` and `Omega0_jitter`.
+
+Update your `for` loop to include a call to your new `draw_jittered_args()` function.  Then run your full code and produce both the plots of expectation values and Bloch Sphere.
+
+***
