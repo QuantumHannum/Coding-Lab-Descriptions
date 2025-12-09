@@ -1,1 +1,3 @@
+# Accumulating error due to jitter
 
+In real quantum hardware, control pulses are never perfectly shaped: each pulse may be slightly too strong, too weak, too wide, or too narrow due to unavoidable noise in the electronics. These small variations—often called jitter—may seem insignificant for a single pulse, but their effects accumulate when many pulses are applied in sequence. Because each pulse contributes a small rotation to the qubit's state, even tiny fluctuations in pulse height (amplitude) or pulse width can cause the total rotation angle to drift away from its intended value. Over many pulses, these small errors compound, gradually pushing the qubit off its ideal trajectory on the Bloch sphere and degrading the fidelity of the implemented quantum operation.
