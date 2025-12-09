@@ -42,5 +42,5 @@ This quantity has a direct operational meaning: the trace distance is equal to t
 Because we have the expectation values as part of our model, we can calculate the Bloch vector directly:
 
 ```math
-\vec{B} = \left( <\sigma_x>, <\sigma_y>, <\sigma_z>
+\vec{B} = \left( <\sigma_x>, <\sigma_y>, <\sigma_z> \right)
 ```
