@@ -72,10 +72,18 @@ You will also need to make two new helper functions.  The first is `getBlochVect
 Update your main `for` loop to keep track of both an ideal and nosiy evolution.  Only calculate the Bloch vector and trace distance for the last state after each pulse, not all states over the duration of the pulse.
 
 Change your output plots:
-- plot only $<\sigma_x>$ for both the idea and noisy states as functions of time.
+- plot only $<\sigma_z>$ vs. time for both the ideal and noisy states as functions of time.
 - don't plot the Bloch sphere at all
 - plot the Trace Distance vs. Pulse Number
 
 ***
+THE ONLY THINGS YOU SHOULD TURN IN FOR THIS ASSIGNMENT:
+
+**Upload to Schoology the follwing things**
+- An exicutable version of your final code from Actiity 7
+- Plot of $<\sigma_z>$ vs. Time showing both the ideal and noisy evolution
+- Plot of the Trace Distance vs. Pulse Number
+- Answers to the following questions:
+  -- example
 
 ***
