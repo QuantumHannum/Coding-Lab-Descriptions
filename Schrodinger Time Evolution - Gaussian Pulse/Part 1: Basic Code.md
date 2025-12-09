@@ -1,6 +1,6 @@
 # Part 1: Basic Code
 
-We will be making use of a phython package that has been specifically designed to simulate quantum mechancis.  [QuTip](https://qutip.org) is a very powerful package that manages the complex(number) and matrix mathematics in a simple way.  The first thing you need to do is to install it into your environment:
+We will be making use of a Python package that has been specifically designed to simulate quantum mechanics. [QuTiP](https://qutip.org) is a very powerful package that manages the complex (number) and matrix mathematics in a simple way. The first thing you need to do is to install it into your environment:
 
 ```python
 pip install qutip
@@ -93,14 +93,14 @@ plt.show()
 # ============================================================
 
 b = Bloch()
-b.add_states(result.states[1:400])
+b.add_states(result.states)
 b.show()
 ```
 The key line in the above code is:
 ```python
 result = sesolve(H, psi0, tlist, e_ops=e_ops, args=args, options=opts)
 ```
-This is the line where QuTip solves the time-dependent Schrodinger equation using the Hamiltonian defined in the line:
+This is the line where QuTiP solves the time-dependent Schrödinger equation using the Hamiltonian defined in the line:
 
 ```python
 H = [[Sz, Omega]]
@@ -112,7 +112,7 @@ It is also worth noting that the output of the *sesolve()*, **result** has two p
 - ``result.expect`` which is a list of numpy arrays, with each array containing the expectation value ($S_x$, $S_y$, $S_z$) at each time step in *tlist* 
 
 ***
-As you complete the following activities, take time to look at the Bloch sphere output and the plots of the expextation values.  It is worth your time to make sure you understand how the changes you make to the code are reflected in the two outputs of the code.
+As you complete the following activities, take time to look at the Bloch sphere output and the plots of the expectation values. It is worth your time to make sure you understand how the changes you make to the code are reflected in the two outputs of the code.
 ***
 
 ## Activity 1: Change initial State
@@ -123,8 +123,8 @@ Change the code so that the inital state of the system is in the following:
 
 ## Activity 2: Change rotation axis
 Change the code so that the rotation axis isn't just about the $z$-axis.
-- if you change the axis to the x-axis, the output of the code should look like nothing happend? Why?
-- if you change the axis to the y-axis, think carefully about what direction the state should evolve on the Bloch Sphere, then test it out to see if your intution was correct.
+- If you change the axis to the x-axis, the output of the code should look like nothing happened. Why?
+- If you change the axis to the y-axis, think carefully about what direction the state should evolve on the Bloch sphere, then test to see if your intuition was correct.
 
 ## Activity 3: Change the pulse duration and strength
 Put the code back to rotations about the $z$-axis with initial state $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle+|-z\rangle \right]$
@@ -134,7 +134,7 @@ Then change the duration of the Gaussian pulse by changing the width of the puls
 - 20 $\mu s$
 - What pulse width is necessary to perform a full $2\pi$ revolution of the state? Confirm your answer with your code.
 
-Return the pulse width back to 10 $\mu s$.  Then change the maximum strength of the pulse by altering the value of $Omega0$
+Return the pulse width back to 10 $\mu s$.  Then change the maximum strength of the pulse by altering the value of `Omega0`.
 - What value of $Omega0$ is necessary to induce a full $\pi$ rotation?
 - What value of $Omega0$ is necessary to induce a full $4\pi$ rotation?
 
