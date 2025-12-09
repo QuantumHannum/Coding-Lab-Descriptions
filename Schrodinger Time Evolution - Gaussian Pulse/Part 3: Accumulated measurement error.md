@@ -5,7 +5,7 @@ In real quantum hardware, control pulses are never perfectly shaped: each pulse 
 To model realistic imperfections in a laboratory setting, we introduce small random fluctuations—or jitter—into both the pulse width and the pulse amplitude. In this simulation, the pulse width 
 $\sigma$ varies by about 0.5% reflecting typical timing uncertainties in experimental control hardware, while the pulse amplitude $\Omega0$ fluctuates by about 0.1%, representing small drifts in the strength of the applied field. These values capture realistic levels of noise seen in many quantum control systems and allow us to explore how even modest imperfections can accumulate over repeated pulses.
 
-## 
+## Activity 6: Add statistical jitter
 We can model these random variations with some simple code:
 ```python
 # Statistical Jitter
