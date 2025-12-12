@@ -86,7 +86,6 @@ plt.ylabel('expectation value')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
 
 # ============================================================
 # 5. Bloch sphere trajectory
@@ -95,6 +94,8 @@ plt.show()
 b = Bloch()
 b.add_states(result.states)
 b.show()
+
+plt.show()
 ```
 The key line in the above code is:
 ```python
