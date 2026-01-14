@@ -53,9 +53,9 @@ Understand the difference between:
 4.  Explore purity and entropy for different values of N
 
 Density matrices for pure states are defined mathematically as:
-\begin{equation}
+$$
 \rho = |\psi\rangle\langle\psi|
-end{equation}$
+$$
 
 If $|\psi\rangle$ is a product state, then the dimension of $\rho$ can be large, and the calculation to determine it is tedious.  QuTip on the other hand, makes calculating density matrices very simple with the use of `ket2dm` function.  
 
