@@ -1,4 +1,4 @@
-#Part 0: Introduction to Entanglement in Many-Particle Quantum Systems
+# Part 0: Introduction to Entanglement in Many-Particle Quantum Systems
 
 ## Big Idea
 
