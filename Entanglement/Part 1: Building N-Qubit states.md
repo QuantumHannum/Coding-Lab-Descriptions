@@ -21,17 +21,20 @@ We can do this easily in QuTip
 zero = basis(2,0)
 one = basis(2,1)
 ```
+
 It is then very easy to construct the tensor product states with a simple function
 
 ```python
 def zero_state(N):
   return tensor([zero]*N)
 ```
+
 This will produce the product state $|00...0\rangle$ where there are N zeros.
 
 ---
 Making use of the above code, here are some questions to consider:
 1. How does the dimension of the product state vector scale with N?  Use your code to confirm that they scale as $2^N$.  As a suggestion, use a print statement like
+
    ``` python
    print(zero_state(N).shape)
    ```
@@ -53,6 +56,7 @@ Understand the difference between:
 4.  Explore purity and entropy for different values of N
 
 Density matrices for pure states are defined mathematically as:
+
 ```math
 \rho = |\psi\rangle\langle\psi|
 ```
@@ -63,11 +67,13 @@ If $|\psi\rangle$ is a product state, then the dimension of $\rho$ can be large,
 psi = zero_state(4)
 rho = ket2dm(psi)
 ```
+
 You can confirm the dimensions of $\rho$ with another simple print statement
 
 ```python
 print(rho.shape)
 ```
+
 Density matrices encode information about the probabilities of measurement outcomes.  However, we need to determine whether we are encoding **Global** or **subsystem** probabilities.
 
 To extract subsystem probabilities, we need to generate the reduced density matrix using the partial trace `ptrace`.  The partial trace ``traces out'' the effect of multiple qubits to isolate the measurement probabilities of a subsystem.  
