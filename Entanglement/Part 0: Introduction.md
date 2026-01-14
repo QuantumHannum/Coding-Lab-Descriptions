@@ -29,7 +29,11 @@ Each tier has a **goal**, a **task**, and **things you must record**.
 ---
 
 ## Setup
-
+First install qutip
+```python
+pip install qutip
+```
+Then set up a specific environment
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
