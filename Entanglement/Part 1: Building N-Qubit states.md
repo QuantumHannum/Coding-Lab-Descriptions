@@ -1,6 +1,5 @@
 # Part 1: Building N-qubit states
 
-## Goal
 Learn how to:
 - Construct multi-qubit Hilbert spaces
 - Build simple product states
@@ -8,3 +7,6 @@ Learn how to:
 
 ---
 
+## Activity 1
+- Define the single-qubit basis states
+- Write a function that builds the N-qubit state 
