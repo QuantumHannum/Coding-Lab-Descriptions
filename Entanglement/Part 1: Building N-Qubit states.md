@@ -1,16 +1,17 @@
 # Part 1: Building N-qubit states
 
+
+## Activity 1
+### Goals
 Learn how to:
 - Construct multi-qubit Hilbert spaces
 - Build simple product states
 - See how the dimension of the state space scales as $2^N$
 
----
-
-## Activity 1
-- Define the single-qubit basis states
-- Write a function that builds the N-qubit state $|00...0\rangle$
-- Test your function for various values of N
+### Specific Tasks
+1. Define the single-qubit basis states
+2. Write a function that builds the N-qubit state $|00...0\rangle$
+3. Test your function for various values of N
 
 We first need to define our basic kets $|0\rangle$ (i.e. spin up) and $|1\rangle$ (i.e. spin down).  To me this always seems backwards, but this was decided long before me.
 
@@ -34,4 +35,20 @@ Making use of the above code, here are some questions to consider:
    ``` python
    print(zero_state(N).shape)
    ```
-for differnt values of N.
+for different values of N.
+
+---
+## Activity 2: Density matrices, partial trace, purity, and entropy
+
+### Goals
+Understand the difference between:
+- A pure global state
+- A reduced (subsystem) state
+- How mixedness is detected using purity and entropy
+
+### Specific Tasks
+1.  Convert a pure N-qubit state into a density matrix.
+2.  Use `ptrace' to extract the partial trace of one qubit from a N-qubit product state.
+3.  Compute the `purity' and von Neumann `entropy' of a reduced state.
+4.  Explore purity and entropy for different values of N
+
