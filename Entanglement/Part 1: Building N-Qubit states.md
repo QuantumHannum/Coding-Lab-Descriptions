@@ -52,3 +52,22 @@ Understand the difference between:
 3.  Compute the `purity' and von Neumann `entropy' of a reduced state.
 4.  Explore purity and entropy for different values of N
 
+Density matrices for pure states are defined mathematically as:
+$$
+\rho = |\psi\rangle\langle\psi|
+$$
+
+If $|\psi\rangle$ is a product state, then the dimension of $\rho$ can be large, and the calculation to determine it is tedious.  QuTip on the other hand, makes calculating density matrices very simple with the use of `ket2dm' function.  
+
+```python
+psi = zero_state(4)
+rho = ket2dm(psi)
+```
+You can confirm the dimensions of $\rho$ with another simple print statement
+
+```python
+print(rho.shape)
+```
+Density matrices encode information about the probabilities of measurement outcomes.  However, we need to determine whether we are encoding **Global** or **subsystem** probabilities.
+
+To extract subsystem probabilities, we need to generate the reduced density matrix using the partial trace `ptrace'.  The partial trace ``traces out'' the effect of multiple qubits to isolate the measurement probabilities of a subsystem.  
