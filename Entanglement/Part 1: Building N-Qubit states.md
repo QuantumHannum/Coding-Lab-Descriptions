@@ -29,5 +29,9 @@ def zero_state(N):
 This will produce the product state $|00...0\rangle$ where there are N zeros.
 
 ---
-Making use of the above code, here are some questions to consider
-1. 
+Making use of the above code, here are some questions to consider:
+1. How does the dimension of the product state vector scale with N?  Use your code to confirm that they scale as $2^N$.  As a suggestion, use a print statement like
+   ``` python
+   print(zero_state(N).shape)
+   ```
+for differnt values of N.
