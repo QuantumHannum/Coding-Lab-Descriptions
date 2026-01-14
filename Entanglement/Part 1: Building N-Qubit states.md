@@ -9,4 +9,21 @@ Learn how to:
 
 ## Activity 1
 - Define the single-qubit basis states
-- Write a function that builds the N-qubit state 
+- Write a function that builds the N-qubit state $|00...0\rangle$
+- Test your function for various values of N
+
+We first need to define our basic kets $|0\rangle$ (i.e. spin up) and $|1\rangle$ (i.e. spin down).  To me this always seems backwards, but this was decided long before me.
+
+We can do this easily in QuTip
+
+```python
+zero = basis(2,0)
+one = basis(2,1)
+```
+It is then very easy to construct the tensor product states with a simple function
+
+```python
+def zero_state(N):
+  return tensor([zero]*N)
+```
+This will produce the product state $|00...0\rangle$ where there are N zeros.
