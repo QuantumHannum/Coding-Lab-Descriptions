@@ -1,4 +1,4 @@
-# Coding Lab: Entanglement in Many-Particle Quantum Systems (Up to 8 Qubits)
+# Coding Lab: Entanglement in Many-Particle Quantum Systems
 
 ## Big Idea
 
