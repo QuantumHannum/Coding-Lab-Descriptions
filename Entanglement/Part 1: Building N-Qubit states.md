@@ -27,3 +27,7 @@ def zero_state(N):
   return tensor([zero]*N)
 ```
 This will produce the product state $|00...0\rangle$ where there are N zeros.
+
+---
+Making use of the above code, here are some questions to consider
+1. 
