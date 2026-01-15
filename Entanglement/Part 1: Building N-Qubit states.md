@@ -114,10 +114,10 @@ Additionally, if the subsystems of a globally pure state are also pure, then the
 A more specific metric of entanglement can be calculated with the von Neumann entropy.  
 
 ```math
-S(\rho_i)=-Tr\left(\rho_i \Log_2 \rho_i\right)
+S(\rho_i)=-Tr\left(\rho_i \log_{2} \rho_i\right)
 ```
 However, the trace of a matrix is equal to the sum of the eigenvalues, which give us a more functional definition of entropy.
 
 ```math
-S(\rho_i) = - \sum_i \lambda_i \Log_2 \lambda_i
+S(\rho_i) = - \sum_i \lambda_i \og_{2} \lambda_i
 ```
