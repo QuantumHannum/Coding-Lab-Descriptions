@@ -59,16 +59,23 @@ def remove_one_qubit(rho,N):
 ```
 This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
 
+In a previous section, we generated the density matrix heatmap for the full $GHZ_N$ and $W_N$ states. Use the `remove_one_qubit` function, then plot heatmaps of the reduced density matrix for both $GHZ_N$ and $W_N$ states.  
 
+**Entropy and purity** tell you *how mixed* the state is using a single number. The **density matrix heatmap** shows you *where* the coherence and structure are located inside the state.
+
+Together, these give a much more complete picture of:
+
+> How fragile or robust the quantum state really is under particle loss.
 
 ---
 Making use of the above code, here are some questions to consider:
 1. For $N = \{5, 6, 7, 8\}$, remove one qubit, then using other functions described in this lab, explore the purity and entanglement of the reduced systems for both $GHZ_N$ and $W_N$ states.
-2. Which family of states is more robust under particle loss?
+2. How would you describe the changes in the internal structures of $GHZ_N$ and $W_N$ states after removing a qubit from each, based on your heatmaps?
+3. Which family of states is more robust under particle loss?
 
 ---
 
 ## What to Submit for this lab
 
 ### Required Plots
-1.  
+1.  Heat Maps
