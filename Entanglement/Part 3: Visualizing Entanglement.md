@@ -34,7 +34,7 @@ More explicitly:
 3. You obtain a two-qubit reduced density matrix:
    
    ```math
-   \rho_{ij} = Tr_{\text{all except} i,j}(\rho)
+   \rho_{ij} 
    ```
    
 5. Then you compute:
