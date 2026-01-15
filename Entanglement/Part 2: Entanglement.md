@@ -80,9 +80,68 @@ To construct a GHZ state we make use of the QuTip `tensor` function
 psi_ghz3 = (tensor(zero,zero,zero) + tensor(one,one,one)).unit()
 rho_ghz3 = ket2dm(psi_ghz3)
 
+def vn_entropy_subset(rho, keep):
+    return entropy_vn(ptrace(rho, keep), base=2)
+
 for i in range(3):
     print(f"S(qubit {i}) =", vn_entropy_subset(rho_ghz3, [i]))
 ```
 The `for` loop in the above code iterates over the reduced density matrix for all qubits in the GHZ state.
 
 ---
+Making use of the above code, here are some questions to consider:
+1.  Is the global Bell/GHZ state pure or mixed? How can you tell numerically?
+2.  Are the single-qubit (reduced systems) pure or mixed?
+3.  Where does this mixedness come from?
+
+---
+## Activity 4: Families of many-body entangled states
+### Goals
+- Construct two qualitatively different families of N-qubit entangled states
+
+### Specific Tasks
+1.  Write functions that generate:
+   - $GHZ_N$ states
+   - $W_N$ states
+
+In the previous activity, we introduced GHZ states, which are the cleanest example of *global*, all-or-nothing multipartite entanglement.  These states taught us something important
+
+> The entire system can be perfectly pure, while every small part of it looks mixed — and this mixedness comes entirely from entanglement.
+
+However, GHZ states represent only one very special way that many particles can be entangled.  In this activity, you will study a completely different family of multipartite entangled states, called **W states**.
+
+For N qubits, the $W$ state is defined as:
+
+```math
+|W_N\rangle = \frac{1}{\sqrt{N}} \left(|100\cdots0\rangle + |010\cdots0\rangle + \cdots +|000\cdots1\rangle\right)
+```
+This is an equal superposition of all states with **exactly one excitation** (one “1”) shared among N qubits.
+
+You can think of it as:
+
+> One quantum of excitation is delocalized over the entire system.
+
+W states are important because:
+
+- They represent a **more robust** form of multipartite entanglement
+- They appear naturally in:
+  - quantum networks
+  - quantum communication protocols
+  - many-body quantum systems with conserved excitation number
+- They behave more like what physicists sometimes call a:
+  
+  > “Many-body entangled state where entanglement is shared throughout the system, not stored in a single global superposition.”
+
+- GHZ states:
+  - Have **global, all-or-nothing** entanglement
+  - If you lose one particle, the entanglement is essentially destroyed
+  - Correlations live in the **entire system at once**
+
+- W states:
+  - Have **distributed, overlapping** entanglement
+  - If you lose one particle, the remaining system is **still entangled**
+  - Correlations are **spread throughout** the system
+
+At this point, you should keep in mind the central question:
+
+> Are these two states “equally entangled,” or are they entangled in fundamentally different ways?
