@@ -145,3 +145,16 @@ W states are important because:
 At this point, you should keep in mind the central question:
 
 > Are these two states “equally entangled,” or are they entangled in fundamentally different ways?
+
+You need to write two flexible functions, one that generates a GHZ state with N qubits, and the other that generates a W state of N qubits.
+
+```python
+def ghz_state(N):
+
+def w_state(N)
+```
+Each of the above functions should return the (product) state vector for the state.
+
+---
+Making use of the above code, here are some questions to consider:
+1.  What is the conceptual difference between $GHZ_N$ states and $W_N$ states when ic comes to entanglement?
