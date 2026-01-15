@@ -72,4 +72,23 @@ def plot_entropy_heatmap(M, title):
 
 ```
 ---
+Making use of the above code, here are some questions to consider:
+1.  For the number of qubits N, with $3 \le N \le 8$, generate:
+   - A simple product state $|\psi\rangle = |000..0\rangle
+   - A $GHZ_N$ state
+   - A $W_N$ state
 
+   for each value of N, Plot heatmaps for the generated states.
+
+2. Which state shows no entanglement structure? Which state shows global structure? Which state shows a distributed entanglement structure?
+3. What do these heatmaps say about where the entanglement lives in these systems?
+
+---
+## Activity 6
+### Goals
+- Study how entanglement is distributed across different-sized subsystems.
+
+### Specific Tasks
+1.  For $N=8$ and for $k=1,2,3,..7$, compute
+   - the entrooy of all k-qubit subsets.
+   - the average of these entropies.
