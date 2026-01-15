@@ -86,7 +86,7 @@ Making use of the above code, here are some questions to consider:
 3. What do these heatmaps say about where the entanglement lives in these systems?
 
 ---
-## Activity 6: Bipartions and many-body entanglement structure
+## Activity 6: Bipartitions and many-body entanglement structure
 ### Goals
 - Study how entanglement is distributed across different-sized subsystems.
 
@@ -143,3 +143,21 @@ This lets us answer questions like:
 In many-body physics, this kind of analysis is how people distinguish between:
 - simple few-body entanglement
 - and **true many-body entanglement**
+
+We only need a small addition to our code to calculate the bipartite entropies.
+
+```python
+def avg_entropy_for_k(rho, N, k):
+    entropies = []
+    for keep in combinations(range(N), k):
+        entropies.append(vn_entropy_subset(rho, list(keep)))
+    return np.mean(entropies)
+```
+
+Use this code to produce a plot of Average Entropy vs. k for both $GHZ_8$ and $W_8$ states.
+
+---
+Making use of the above code, here are some questions to consider:
+1.  Describe the overall shape of each curve. At what value(s) of $k$ is the entropy largest? Where is it the smallest?
+2.  Do the patterns you saw in the heatmaps help explain the shape of the average entropy vs. k curves?
+3.  For each state, is entanglement stored in a single global correlation, or is it spread throughout the system in overlapping pieces?
