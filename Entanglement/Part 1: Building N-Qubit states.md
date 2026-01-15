@@ -116,8 +116,29 @@ A more specific metric of entanglement can be calculated with the von Neumann en
 ```math
 S(\rho_i)=-Tr\left(\rho_i \log_{2} \rho_i\right)
 ```
-However, the trace of a matrix is equal to the sum of the eigenvalues, which give us a more functional definition of entropy.
+However, the trace of a matrix is equal to the sum of the eigenvalues, which gives us a more functional definition of entropy.
 
 ```math
-S(\rho_i) = - \sum_i \lambda_i \og_{2} \lambda_i
+S(\rho_i) = - \sum_i \lambda_i \log_{2} \lambda_i
 ```
+---
+Making use of the above code, here are some questions to consider:
+1.  For at least two values of N $(4 \le N \le 8)$  generate a product state and then compute
+  - Global density matrix $\rho$ for the product state
+  - The purity of the global state
+  - The entropy of the global state
+    Is the global state pure or mixed?
+
+2.  For the same values of N, compute
+  - The reduced density matrix $\rho_0$
+  - The purity of $\rho_0$
+  - The entropy of $\rho_0$
+    Is the subsystem pure or mixed?
+
+3. In your own words, explain what it means physically for a state to be:
+  - Pure
+  - Mixed
+
+4.  In Activity 2, is any mixedness coming from
+  - Classical ignorance about the preparation of the global state?
+  - Entanglement with other particles?
