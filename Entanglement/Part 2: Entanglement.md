@@ -151,7 +151,11 @@ You need to write two flexible functions, one that generates a GHZ state with N 
 ```python
 def ghz_state(N):
 
+   return
+
 def w_state(N)
+
+   return
 ```
 Each of the above functions should return the (product) state vector for the state.
 
