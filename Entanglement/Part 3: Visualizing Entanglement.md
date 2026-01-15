@@ -34,11 +34,11 @@ More explicitly:
 3. You trace out (discard) all the other qubits.
 4. You obtain a two-qubit reduced density matrix:
    ```math
-   \rho_{ij} = \mathrm{Tr}_{\text{all except} i,j}(\rho)
+   \rho_{ij} = Tr_{\text{all except} i,j}(\rho)
    ```
 5. Then you compute:
    ```math
-   S(\rho_{ij}) = -\mathrm{Tr}(\rho_{ij} \log_2 \rho_{ij})
+   S(\rho_{ij}) = -Tr(\rho_{ij} \log_2 \rho_{ij})
    ```
 
 What does this mean physically?  $S(\rho_{ij})$ measures how entangled the pair ${i, j}$ is with the rest of the system***.
