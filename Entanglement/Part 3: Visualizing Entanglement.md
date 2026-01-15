@@ -23,3 +23,34 @@ def entropy_map_2body(rho,N):
 
   return M
 ```
+What does \( S(\rho_{ij}) \) mean?
+
+> The **von Neumann entropy of the two-qubit subsystem consisting of qubits i and j**.
+
+More explicitly:
+
+1. You start with the full N-qubit density matrix $\rho$.
+2. You keep only qubits i and j.
+3. You trace out (discard) all the other qubits.
+4. You obtain a two-qubit reduced density matrix:
+   ```math
+   \rho_{ij} = \mathrm{Tr}_{\text{all except } i,j}(\rho)
+   ```
+5. Then you compute:
+   ```math
+   S(\rho_{ij}) = -\mathrm{Tr}(\rho_{ij} \log_2 \rho_{ij})
+   ```
+
+What does this mean physically?  $S(\rho_{ij})$ measures how entangled the pair ${i, j}$ is with the rest of the system***.
+- It does **NOT** directly measure how entangled qubit $i$ is with qubit $j$.
+- Instead, it tells you:
+
+> “If I treat qubits i and j together as a *single subsystem*, how much information is shared between that pair and everything else?”
+
+So in the heatmap:
+
+- The **diagonal entries** tell you:
+  > How entangled each *single qubit* is with the rest of the system.
+
+- The **off-diagonal entries** tell you:
+  > How entangled each *pair of qubits, treated together*, is with the rest of the system.
