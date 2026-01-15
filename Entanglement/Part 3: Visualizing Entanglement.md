@@ -70,8 +70,8 @@ def plot_entropy_heatmap(M, title):
     plt.yticks(range(M.shape[0]))
     plt.title(title)
     plt.tight_layout()
+    plt.colorbar()
     plt.show()
-
 ```
 ---
 Making use of the above code, here are some questions to consider:
