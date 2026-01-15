@@ -30,13 +30,12 @@ What does \( S(\rho_{ij}) \) mean?
 More explicitly:
 
 1. You start with the full N-qubit density matrix $\rho$.
-2. You keep only qubits i and j.
-3. You trace out (discard) all the other qubits.
-4. You obtain a two-qubit reduced density matrix:
+2. You keep only qubits i and j and trace out (discard) all the other qubits.
+3. You obtain a two-qubit reduced density matrix:
    ```math
    \rho_{ij} = Tr_{\text{all except} i,j}(\rho)
    ```
-5. Then you compute:
+4. Then you compute:
    ```math
    S(\rho_{ij}) = -Tr(\rho_{ij} \log_2 \rho_{ij})
    ```
