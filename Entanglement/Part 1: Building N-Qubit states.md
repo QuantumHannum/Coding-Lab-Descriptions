@@ -97,8 +97,27 @@ Once we have the reduced density matrix for the subsystem, we can calculate the 
 ```math
 P = Tr(\rho_0^2)
 ```
-For two particle systems, the Purity must be bounded
+For two particle systems, the Purity of subsystem $i$ must be bounded
 
 ```math
-\frac{1}{2} \le Tr(\rho_n^2) \le 1
+\frac{1}{2} \le Tr(\rho_i^2) \le 1
+```
+Which can be extended for N particles to:
+
+```math
+\frac{1}{N} \le Tr(\rho_i^2) \le 1
+```
+If the Purity = 1, then the subsystem is a **Pure State**.  If the Purity is less than 1, then the subsystem is a **Mixed State**.  If the Purity is a minimum $\frac{1}{N}, then the state can be considered **Maximilly Mixed**
+
+Additionally, if the subsystems of a globally pure state are also pure, then the full state does not contain any entanglement.  Conversely, if the subsystems of a globally pure state are mixed states, then the full state is entangled.
+
+A more specific metric of entanglement can be calculated with the von Neumann entropy.  
+
+```math
+S(\rho_i)=-Tr\left(\rho_i \Log_2 \rho_i\right)
+```
+However, the trace of a matrix is equal to the sum of the eigenvalues, which give us a more functional definition of entropy.
+
+```math
+S(\rho_i) = - \sum_i \lambda_i \Log_2 \lambda_i
 ```
