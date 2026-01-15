@@ -8,7 +8,7 @@
 1.  For an N = 5, 6, 7, 8
    - Build $GHZ_N$ and $W_N$
    - Trace out one qubit
-   - Compute the purity of the remaining state
+   - Perform calculations to determine the entanglement properties of the $(N-1)$-qubit subsytem.
 
 So far, all of our analysis has assumed something ideal:
 
@@ -19,24 +19,18 @@ In real physical systems, this is rarely true.
 - A photon might be lost in an optical fiber.
 - An atom might leave a trap.
 - A qubit might decohere into its environment.
-- A detector might simply fail to register one particle.
+- A detector might fail to register one particle.
 
 From the point of view of the remaining system, **losing a particle is the same as tracing it out**.
 
-Mathematically, this means:
-
-> Particle loss = partial trace over that particle.
-
 Why is this a deep physical question?
 
-When you lose one particle from an entangled system, two very different things *might* happen:
+When you lose one particle from an entangled system, two very different things might happen:
 
 1. The remaining system might still be **strongly entangled**.
-2. The remaining system might become **almost completely classical** (separable or nearly so).
+2. The remaining system might become **almost completely unentangled** (separable or nearly so).
 
-Which of these happens depends on **how the entanglement was stored in the original system**.
-
-So this tier asks a very concrete, physically motivated question:
+Which of these happens depends on how the entanglement was stored in the original system.  So this tier asks a very concrete, physically motivated question:
 
 > Is this entanglement **robust** or **fragile** under particle loss?
 
@@ -55,3 +49,17 @@ The robustness is exactly the question that determines whether a form of entangl
 - quantum networks
 - quantum sensing
 - or large-scale quantum devices
+
+To generate the reduced density matrix after removing one qubit, write a very short function:
+
+```python
+def remove_one_qubit(rho,N):
+
+
+```
+This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and 
+then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
+
+---
+
+For $N = {5, 6, 7, 8}$ remove one qubit, then using other 
