@@ -164,4 +164,4 @@ Each of the above functions should return the (product) state vector for the sta
 
 ---
 Making use of the above code, here are some questions to consider:
-1.  What is the conceptual difference between $GHZ_N$ states and $W_N$ states when ic comes to entanglement?
+1.  What is the conceptual difference between $GHZ_N$ states and $W_N$ states when it comes to entanglement
