@@ -78,11 +78,27 @@ Density matrices encode information about the probabilities of measurement outco
 
 To extract subsystem probabilities, we need to generate the reduced density matrix using the partial trace `ptrace`.  The partial trace ``traces out'' the effect of multiple qubits to isolate the measurement probabilities of a subsystem.  
 
-Density matrices encode **Global** probability information.  That is, they require measurement of all qubits in the system.  To extract probabilistic information about just **ONE** qubit (or subsystem), we can use the partial trace `ptrace` which generates the reduced density matrix for the subsystem.  Before we can use `ptrace` we must understand how QuTip indexes product states.  For a product state that has N qubits:
+Density matrices encode **Global** probability information.  That is, they require measurement of all qubits in the system.  To extract probabilistic information about just **ONE** qubit (or subsystem), we can use the partial trace `ptrace` which generates the reduced density matrix for the subsystem.  Before we can use `ptrace`, we must understand how QuTip indexes product states.  For a product state that has N qubits:
 
 ```math
-\begin{align}
-\psi $= |q_0\rangle \otimes |q_1\rangle \otimes |q_2\rangle \otimes ... |q_N\rangle\\
-     $= |q_0q_1q_2...q_N\rangle
-\end{align}
+\psi = |q_0\rangle \otimes |q_1\rangle \otimes |q_2\rangle \otimes ... |q_N\rangle\\
+\psi = |q_0q_1q_2...q_N\rangle
+```
+As we can see, QuTip indexes qubits left-to-right, starting with 0.
+
+We can now calculate the `ptrace`, or generate the reduced density matrix for a system.
+
+```python
+rho_0 = ptrace(rho, [0])
+```
+
+Once we have the reduced density matrix for the subsystem, we can calculate the purity of the state:
+
+```math
+P = Tr(\rho_0^2)
+```
+For two particle systems, the Purity must be bounded
+
+```math
+\frac{1}{2} \le Tr(\rho_n^2) \le 1
 ```
