@@ -18,6 +18,7 @@ def entropy_map_2body(rho,N):
   M = np.zeros((N,N))
   for i in range (N):
       # Calculate the diagonal elements of M
+
   for i in range (N):
       # Calculate the off-diagonal elements of M
 
@@ -85,7 +86,7 @@ Making use of the above code, here are some questions to consider:
 3. What do these heatmaps say about where the entanglement lives in these systems?
 
 ---
-## Activity 6
+## Activity 6: Bipartions and many-body entanglement structure
 ### Goals
 - Study how entanglement is distributed across different-sized subsystems.
 
@@ -93,3 +94,52 @@ Making use of the above code, here are some questions to consider:
 1.  For $N=8$ and for $k=1,2,3,..7$, compute
    - the entrooy of all k-qubit subsets.
    - the average of these entropies.
+
+So far, you have looked at:
+
+- Single qubits entangled with the rest of the system
+- Pairs of qubits entangled with the rest of the system (via heatmaps)
+
+Now we take the next and most important conceptual step:
+
+> Instead of asking about **one qubit** or **two qubits**, we will ask about **arbitrary-sized chunks of the system**.
+
+This is how physicists think about **many-body entanglement**.
+
+A **bipartition** means splitting the full system into two parts:
+
+```math
+\text{(k qubits)} \; | \; \text{(N - k qubits)}
+```
+
+For example, in an 8-qubit system:
+
+- k = 1 means: 1 qubit vs 7 qubits  
+- k = 2 means: 2 qubits vs 6 qubits  
+- k = 4 means: 4 qubits vs 4 qubits  
+
+For each such split, we can:
+
+1. Keep the k-qubit subsystem
+2. Trace out the other N−k qubits
+3. Compute the entropy $S(\rho_k)$
+
+This entropy tells us:
+
+> **How entangled that k-qubit block is with the rest of the system.**
+
+Why is this a powerful idea?
+
+This lets us answer questions like:
+
+- Is the entanglement mostly:
+  - concentrated in small subsystems?
+  - or spread across large chunks of the system?
+
+- Does the system behave like:
+  - a few particles strongly entangled with the rest?
+  - or a genuinely collective, many-body entangled object?
+
+In many-body physics, this kind of analysis is how people distinguish between:
+- simple few-body entanglement
+- and **true many-body entanglement**
