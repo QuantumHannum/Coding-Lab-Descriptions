@@ -77,3 +77,12 @@ print(rho.shape)
 Density matrices encode information about the probabilities of measurement outcomes.  However, we need to determine whether we are encoding **Global** or **subsystem** probabilities.
 
 To extract subsystem probabilities, we need to generate the reduced density matrix using the partial trace `ptrace`.  The partial trace ``traces out'' the effect of multiple qubits to isolate the measurement probabilities of a subsystem.  
+
+Density matrices encode **Global** probability information.  That is, they require measurement of all qubits in the system.  To extract probabilistic information about just **ONE** qubit (or subsystem), we can use the partial trace `ptrace` which generates the reduced density matrix for the subsystem.  Before we can use `ptrace` we must understand how QuTip indexes product states.  For a product state that has N qubits:
+
+```math
+\begin{align}
+\psi $= |q_0\rangle \otimes |q_1\rangle \otimes |q_2\rangle \otimes ... |q_N\rangle\\
+     $= |q_0q_1q_2...q_N\rangle
+\end{align}
+```
