@@ -15,12 +15,11 @@ So far, you have only worked with **product states**, where each qubit has its o
 
 Now we will study the opposite situation: **entangled states**.
 
+The Bell state: The simplest entangled system are the **Bell States**
 
-### The Bell state: The simplest entangled system are the **Bell States**
-
-\[
+```math
 |\Phi^+\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)
-\]
+```
 
 is a pure state of the two-qubit system**, but each qubit by itself is in a mixed state.
 
@@ -36,15 +35,15 @@ We now generalize this idea to three or more particles.
 
 The three-qubit GHZ (Greenberger–Horne–Zeilinger) state is:
 
-\[
+```math
 |\mathrm{GHZ}_3\rangle = \frac{1}{\sqrt{2}}(|000\rangle + |111\rangle)
-\]
+```
 
 More generally, for N qubits:
 
-\[
+```math
 |\mathrm{GHZ}_N\rangle = \frac{1}{\sqrt{2}}(|00\cdots0\rangle + |11\cdots1\rangle)
-\]
+```
 
 This is a state where:
 
