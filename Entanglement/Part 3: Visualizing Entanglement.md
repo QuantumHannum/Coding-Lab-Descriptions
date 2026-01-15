@@ -21,6 +21,7 @@ def entropy_map_2body(rho,N):
   for i in range (N):
       # Calculate the off-diagonal elements of M
 
+         M[i, j] = vn_entropy_subset(rho, [i, j])
   return M
 ```
 What does \( S(\rho_{ij}) \) mean?
