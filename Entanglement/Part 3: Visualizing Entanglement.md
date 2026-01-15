@@ -34,7 +34,7 @@ More explicitly:
 3. You obtain a two-qubit reduced density matrix:
 
 ```math
-   \rho_{ij} = Tr_{\text{all except} i,j}(\rho)
+   \rho_{ij} = Tr_{\text{all except}-i,j}(\rho)
 ```
    
 5. Then you compute:
@@ -56,3 +56,20 @@ So in the heatmap:
 
 - The **off-diagonal entries** tell you:
   > How entangled each *pair of qubits, treated together*, is with the rest of the system.
+
+Here is some code to produce the heatmap once you have the matrix $M$
+
+```python
+def plot_entropy_heatmap(M, title):
+    plt.figure(figsize=(5,5))
+    im = plt.imshow(M, interpolation="nearest")
+    plt.colorbar(im, label="Entropy (bits)")
+    plt.xticks(range(M.shape[0]))
+    plt.yticks(range(M.shape[0]))
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+
+```
+---
+
