@@ -34,7 +34,7 @@ More explicitly:
 3. You trace out (discard) all the other qubits.
 4. You obtain a two-qubit reduced density matrix:
    ```math
-   \rho_{ij} = \mathrm{Tr}_{\text{all except } i,j}(\rho)
+   \rho_{ij} = \mathrm{Tr}_{\text{all except} i,j}(\rho)
    ```
 5. Then you compute:
    ```math
