@@ -59,7 +59,7 @@ def remove_one_qubit(rho,N):
 ```
 This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
 
-In a previous section, we generated the density matrix heatmap for the full $GHZ_N$ and $W_N$ states. Use the `remove_one_qubit` function, then plot heatmaps of the reduced density matrix for both $GHZ_N$ and $W_N$ states.  
+In a previous section, we generated the **entropy** heatmap for the full $GHZ_N$ and $W_N$ states. Use the `remove_one_qubit` function, then plot heatmaps of just the **values** in the reduced density matrix for both $GHZ_N$ and $W_N$ states.  These are two different heatmaps!
 
 **Entropy and purity** tell you *how mixed* the state is using a single number. The **density matrix heatmap** shows you *where* the coherence and structure are located inside the state.
 
@@ -78,4 +78,17 @@ Making use of the above code, here are some questions to consider:
 ## What to Submit for this lab
 
 ### Required Plots
-1.  Heat Maps
+1.  Entropy Heatmaps from Activity 5
+2.  Plots of Average Entropy vs. k for GHZ and W states from Activity 6
+3.  Reduced density matrix heatmaps for GHZ and W states from Activity 7
+
+### Answer these Required Questions
+1.  Throughout this lab, you measured entanglement using numbers (entropy, purity), and made visualizations (entropy heatmaps and density-matrix heatmaps).  Explain the difference between:
+   - The amount of entanglement in a system
+   - The structure of entanglement in a system
+2.  Give a concrete example from your results where two states look "similar" according to one measure (purity vs. entropy), but look very different in a heatmap or bipartition plot?
+3. Both $GHZ_N$ and $W_N$ states are highly symmetric under permutations of the qubits.  How does this symmetry show up in the Entropy heatmaps and the Average Entropy vs. k curves?  Why is symmetry useful to consider in interpreting the Average Entropy vs. k curves?
+4. Using the density-matrix heatmaps:
+   - Explain the difference between **Global coherence** (coherence stored in the full N-quibt system) and **Local or Internal coherence** (coherence that survives inside subsystems).
+   - Which type of coherence do $GHZ_N$ and $W_N$ states primarily rely on?
+   - How does this explain the difference in robustness under particle loss?
