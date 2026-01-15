@@ -32,15 +32,16 @@ More explicitly:
 1. You start with the full N-qubit density matrix $\rho$.
 2. You keep only qubits i and j and trace out (discard) all the other qubits.
 3. You obtain a two-qubit reduced density matrix:
-   
-   ```math
-   \rho_{ij} 
-   ```
+
+```math
+   \rho_{ij} = Tr_{\text{all except} i,j}(\rho)
+```
    
 5. Then you compute:
-   ```math
+
+```math
    S(\rho_{ij}) = -Tr(\rho_{ij} \log_2 \rho_{ij})
-   ```
+```
 
 What does this mean physically?  $S(\rho_{ij})$ measures how entangled the pair ${i, j}$ is with the rest of the system***.
 - It does **NOT** directly measure how entangled qubit $i$ is with qubit $j$.
