@@ -50,12 +50,12 @@ The robustness is exactly the question that determines whether a form of entangl
 - quantum sensing
 - or large-scale quantum devices
 
-To generate the reduced density matrix after removing one qubit, write a very short function:
+To generate the reduced density matrix after removing one qubit, write **a very short** function:
 
 ```python
 def remove_one_qubit(rho,N):
 
-
+   return 
 ```
 This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and 
 then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
