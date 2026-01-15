@@ -64,3 +64,25 @@ Most importantly for this lab, GHZ states are the cleanest example of a situatio
 
 > The whole system is perfectly pure, but every small piece of it looks mixed.
 
+Earlier, we defined how to make the `zero` state.  You can now construct in a similar way the `one` state, and then use it define a Bell state:
+
+```python
+psi_bell = (tensor(zero, zero) + tensor(one, one)).unit()
+rho_bell = ket2dm(psi_bell)
+
+rho_A = ptrace(rho_bell, [0])
+print("Bell: purity(A) =", purity(rho_A))
+print("Bell: entropy(A) =", entropy_vn(rho_A, base=2))
+```
+To construct a GHZ state we make use of the QuTip `tensor` function
+
+```python
+psi_ghz3 = (tensor(zero,zero,zero) + tensor(one,one,one)).unit()
+rho_ghz3 = ket2dm(psi_ghz3)
+
+for i in range(3):
+    print(f"S(qubit {i}) =", vn_entropy_subset(rho_ghz3, [i]))
+```
+The `for` loop in the above code iterates over the reduced density matrix for all qubits in the GHZ state.
+
+---
