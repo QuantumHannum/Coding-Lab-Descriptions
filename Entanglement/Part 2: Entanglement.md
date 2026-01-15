@@ -110,8 +110,11 @@ In the previous activity, we introduced GHZ states, which are the cleanest examp
 
 However, GHZ states represent only one very special way that many particles can be entangled.  In this activity, you will study a completely different family of multipartite entangled states, called **W states**.
 
-For N qubits, the $W$ state is defined as:
+Shown below is $W_3$ state, which is then generalized to the $W_N$ using N-qubits.  
 
+```math
+|W_3\rangle =  \frac{1}{\sqrt{3}} \left(|100\rangle + |010\rangle + |001\rangle   \right) 
+```
 ```math
 |W_N\rangle = \frac{1}{\sqrt{N}} \left(|100\cdots0\rangle + |010\cdots0\rangle + \cdots +|000\cdots1\rangle\right)
 ```
