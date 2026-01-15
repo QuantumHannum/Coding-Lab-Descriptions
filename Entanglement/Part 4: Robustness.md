@@ -8,7 +8,7 @@
 1.  For an N = 5, 6, 7, 8
    - Build $GHZ_N$ and $W_N$
    - Trace out one qubit
-   - Perform calculations to determine the entanglement properties of the $(N-1)$-qubit subsytem.
+   - Perform calculations to determine the entanglement properties of the $(N-1)$ qubit subsytem.
 
 So far, all of our analysis has assumed something ideal:
 
