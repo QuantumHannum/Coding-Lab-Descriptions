@@ -41,8 +41,10 @@ from itertools import combinations
 
 from qutip import (
     basis, tensor, qeye, ket2dm, ptrace,
-    entropy_vn, purity
+    entropy_vn
 )
+from qutip.metrics import purity
 
 np.set_printoptions(precision=4, suppress=True)
+```
 
