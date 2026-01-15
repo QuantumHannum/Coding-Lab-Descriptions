@@ -153,7 +153,7 @@ def ghz_state(N):
 
    return
 
-def w_state(N)
+def w_state(N):
 
    return
 ```
