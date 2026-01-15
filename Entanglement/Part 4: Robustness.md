@@ -59,6 +59,8 @@ def remove_one_qubit(rho,N):
 ```
 This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
 
+
+
 ---
 Making use of the above code, here are some questions to consider:
 1. For $N = \{5, 6, 7, 8\}$, remove one qubit, then using other functions described in this lab, explore the purity and entanglement of the reduced systems for both $GHZ_N$ and $W_N$ states.
