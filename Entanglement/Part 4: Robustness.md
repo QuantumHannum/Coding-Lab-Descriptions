@@ -61,5 +61,6 @@ This function should take in the full system density matrix $\rho$ and the numbe
 then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
 
 ---
-
-For $N = {5, 6, 7, 8}$ remove one qubit, then using other 
+Making use of the above code, here are some questions to consider:
+1. For $N = {5, 6, 7, 8}$, remove one qubit, then using other functions described in this lab, explore the purity and entanglement of the reduced systems for both $GHZ_N$ and $W_N$ states.
+2. Which family of states is more robust under particle loss?
