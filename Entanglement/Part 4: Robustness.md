@@ -5,7 +5,7 @@
 - What happens to entanglement if one particle is lost or ignored in the system?
 
 ### Specific Tasks
-1.  For an N = 5, 6, 7, 8
+1.  For $N = \{5, 6, 7, 8\}$
    - Build $GHZ_N$ and $W_N$
    - Trace out one qubit
    - Perform calculations to determine the entanglement properties of the $(N-1)$ qubit subsytem.
@@ -57,10 +57,16 @@ def remove_one_qubit(rho,N):
 
    return 
 ```
-This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and 
-then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
+This function should take in the full system density matrix $\rho$ and the number of qubits $N$, and then return the reduced density matrix with the $|q_0\rangle$ qubit removed.
 
 ---
 Making use of the above code, here are some questions to consider:
-1. For $N = {5, 6, 7, 8}$, remove one qubit, then using other functions described in this lab, explore the purity and entanglement of the reduced systems for both $GHZ_N$ and $W_N$ states.
+1. For $N = \{5, 6, 7, 8\}$, remove one qubit, then using other functions described in this lab, explore the purity and entanglement of the reduced systems for both $GHZ_N$ and $W_N$ states.
 2. Which family of states is more robust under particle loss?
+
+---
+
+## What to Submit for this lab
+
+### Required Plots
+1.  
