@@ -50,4 +50,28 @@ We can draw this circuit using matplotlib
 ```python
 qc.draw("mpl")
 ```
-Make sure
+Make sure to take a brief moment to match the circiut diagram with the code.
+
+We can also perform multi-qubit gates like `CNOT`
+
+```python
+qc = Quantum Circuit(2)   #make a new circuit and overwrite the last example
+
+qc.h(0)        # put qubit 0 in superposition
+qc.cx(0, 1)    # CNOT Gate with control = 0, target = 1
+
+fig = qc.draw("mpl")
+plt.show()
+```
+Or with a `CZ`
+
+```python
+qc = Quantum Circuit(2)   #make a new circuit and overwrite the last example
+
+qc.h(0)        
+qc.h(1)
+qc.cz(0,1)  #Control Z with control = 0, target = 1
+
+fig = qc.draw("mpl")
+plt.show()
+```
