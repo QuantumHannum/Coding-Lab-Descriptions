@@ -143,6 +143,8 @@ Notice the indexing, and that the output statevector using complex numbers with 
 We can change the circut and make a shot-based measurement.  This will run the circuit 2000 times, make measurements of each qubit and record their frequency of measureing to $|0\rangle$ and $|1\rangle$ independently.  It will print those frequency counts, as well as produce a histogram.
 
 ```python
+from qiskit_aer import Aer
+
 qc=QuantumCircuit(2)
 
 qc.h(0)        #make a Bell State
