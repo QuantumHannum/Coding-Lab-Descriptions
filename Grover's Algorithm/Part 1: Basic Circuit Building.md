@@ -114,3 +114,24 @@ qc.x(0)
 fig = qc.draw("mpl")
 plt.show()
 ```
+
+The last thing we need to understand about building quantum circuits in Qiskit is how to perform measurements.  We can do that two ways - 1) Direct `Statevector` Calculations, and 2)`Shot-Based` simulation.
+
+**Statevector** calculations determien the exact quantum state of the system before measurement.  This is a purely mathematical object, it represents the full quantum state of the system.  Real quantum computers **CANNOT** directly output statevectors, it only works in a simulation and assumes a perfectly noiseless system.  This allows us to see not only the exact probabiliteis of each state, but also the probability amplitudes, and phase information.
+
+**Shot-Based** simulation is more what real devices do.  It runs the circuit many times (shots), where the outcome of each shot is probablistically determined.  Then after many shots, we can observe the full statistical distribution of all possible outcomes. Shot-based simulation only provides approximate statistics, and does not provide any information about probability amplitudes or relative phases of states.
+
+Here are basic ways to perform each type of evaluation.
+```python
+qc=QuantumCircuit(2)
+
+qc.h(0)        #make a Bell State
+qc.cx(0,1)
+
+from qiskit_aer import Aer                    #import necessary Statevector methods
+from qiskit.quantum_info import Statevector
+
+sv = Statevector.from_instruction(qc)
+print(sv)
+```
+
