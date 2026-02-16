@@ -55,7 +55,7 @@ The state of the system after appling all the Hadamards is:
 ```math
 |\psi\rangle = \frac{1}{\sqrt{8}}\left[|000\rangle+|001\rangle+|010\rangle+|011\rangle+|100\rangle+|101\rangle+|110\rangle+|111\rangle \right]
 ```
-If we are trying to `search` for the state $|111\rangle$ we need the Oracle to tag just this state with a negative i.e. in the above equation make $-|101\rangle$ (hence the oracle is called the phase oracle).  The easiest way to do this is with a multi-controled Z gate.  Remembering the index order, if the zeroth, and first qubits are $|1\rangle$, then apply a `Z` gate to qubit two.
+If we are trying to `search` for the state $|111\rangle$ we need the Oracle to tag just this state with a negative i.e. in the above equation make $-|111\rangle$ (hence the oracle is called the phase oracle).  The easiest way to do this is with a multi-controled Z gate.  Remembering the index order, if the zeroth, and first qubits are $|1\rangle$, then apply a `Z` gate to qubit two.
 
 Update your code now to include this phase Oracle.  
 
