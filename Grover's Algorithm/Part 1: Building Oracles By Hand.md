@@ -32,6 +32,8 @@ Before we move on to Grover's Algorithm we need need fluency in circuit construc
 To initial a quantum circuit in Qiskit we first import the circuit construct from qiskit, then initial the number of qubits and classical outputs we need.
 ```python
 from qiskit import QuantumCircuit
+import matplotlib.pyplot as plt
+
 qc = QuantumCircuit(2, 2)
 ```
 In this example we have initialize our circuit with name `qc` with 2 qubits (first argument inside `QuantumCircuit()`, and 2 classical outputs (second argument).
