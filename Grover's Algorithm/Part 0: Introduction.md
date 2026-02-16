@@ -38,13 +38,31 @@ This lab can be performed in **Google Colab**, however the concluding activity h
 1. Create a project folder named `grover-lab`
    * Open VS Code $\rightarrow$ File $\rightarrow$ Open Folder... $\rightarrow$ `gover-lab`
 
-2. Create a virtual environment (venv)
+2. Create a virtual environment (venv), then activate it
    * Open VS Code terminal: Terminal $\rightarrow$ New terminal
+     
      **Mac/Linux**
      ```bash
      python3 -m venv .venv
+     source .venv/bin/activate
      ```
      **Windows**
      ```bash
      py -m venv .venv
+     .\.venv\Scripts\Activate.ps1
+     ```
+3. Tell VS Code to use the venv interpreter
+   * Press **Cmd+Shift+P** (Mac) or **Ctrl+Shift+P** (Windows)
+   * Type: `Python: Select Interpreter`
+   * Choose the interpreter that includes `.venv` in the path and ends with `python` or `python.exe`
+
+4. Upgrade pip (recommended)
+   * In the command line type:
+     ```bash
+     python -m pip install --upgrade pip
+     ```
+5. Install lab dependencies
+   * In the command line type:
+     ```bash
+      python -m pip install qiskit qiskit-aer matplotlib numpy
      ```
