@@ -1,6 +1,7 @@
 # Part 1: Building Oracles By Hand
 ---
 ## Activity 1: Basic Circuits in Qiskit
+
 Before we move on to Grover's Algorithm we need need fluency in circuit construction, simulation, and visualization. This lab builds that technical foundation.
 ---
 ### Conceptual Goals
