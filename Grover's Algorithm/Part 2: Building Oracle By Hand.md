@@ -14,9 +14,18 @@ In the previous section, you learned how to construct and simulate basic quantum
 
 ### Technical/Coding Goals
 1.  Build a phase oracle that marks a specific 3-qubit state (e.g. $|101\rangle$
-2.  Build and simulate a complete Grover Algorithm including phase oracle and diffuser
-3.  Run full Grover Algorithm on:
-   * Statevector mode
-   * Shot-based measurment on both noise-less and noisy backends
+2.  Build and simulate a complete Grover algorithm including phase oracle and diffuser
+3.  Run full Grover algorithm on:
+     * Statevector mode
+     * Shot-based measurment on both noise-less and noisy backends
 ---
+
+Grover's algorithm has is composed of three steps. 
+1. Initialize all qubits into a superposition
+2. Apply Phase Oracle to tag state that is being searched for
+3. Apply Diffuser to amplify the measurement amplitude of the state being searched for
+
+This can be seen in the basic circut diagram below:
+<img width="850" height="364" alt="GroverCircuit" src="https://github.com/user-attachments/assets/7d0c587f-924f-47be-9e5d-c843acd5c9f6" />
+
 
