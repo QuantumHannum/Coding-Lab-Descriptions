@@ -103,5 +103,5 @@ The Phase Oracle construction is dependent on which state we are searching for -
 
 In this 3-qubit case, the average probability amplitude is:
 ```math
-Ave = \frac{1}{8}*\left[7*\left(\frac{1}{\sqrt{8}}\right)-\frac{1}{\sqrt{8}}\right]
+Ave = \frac{1}{8} \times \left[\left(\frac{7}{\sqrt{8}}\right)-\frac{1}{\sqrt{8}}\right]
 ```
