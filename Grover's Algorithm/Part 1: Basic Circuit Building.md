@@ -138,4 +138,23 @@ The output of this should be a Bell State in the form:
 ```math
 |\psi\rangle = \frac{1}{\sqrt{2}}|0_10_0\rangle + \frac{1}{\sqrt{2}}|1_11_0\rangle
 ```
-Notice the indexing, and that the output statevector using complex numbers with ``j'' as the imaginary number.
+Notice the indexing, and that the output statevector using complex numbers with **j** as the imaginary number.
+
+We can change the circut and make a shot-based measurement.  This will run the circuit 2000 times, make measurements of each qubit and record their frequency of measureing to $|0\rangle$ and $|1\rangle$ independently.  It will print those frequency counts, as well as produce a histogram.
+
+```python
+qc=QuantumCircuit(2)
+
+qc.h(0)        #make a Bell State
+qc.cx(0,1)
+qc.measure_all()
+
+backend = Aer.get_backend("aer_simulator")
+result = backend.run(qc, shots=2000).result()
+counts = result.get_counts()
+print(counts)
+
+from qiskit.visualization import plot_histogram
+plot_histogram(counts)
+```
+
