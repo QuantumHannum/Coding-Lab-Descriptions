@@ -80,8 +80,6 @@ We can also do multi-controled CNOT gates, called `Toffoli` gate or `CCX` gates.
 ```python
 qc = QuantumCircuit(3)
 
-qc.x(0)
-qc.x(1)
 qc.ccx(0, 1, 2)   # controls = 0,1  target = 2
 
 fig = qc.draw("mpl")
@@ -97,9 +95,22 @@ target = 3                        # Set target qubit
 qc.mcx(controls, target)          # Perform a multi-controled X
 
 from qiskit.circuit.library import ZGate     #import ZGate details
+
 ccz =ZGate().control(2)           #make a custom Z Gate with two controls
 qc.append(ccz,[0,1,2])            #add our new ccz gate to circut
                                   #gate has controls = [0,1], target = 2
+fig = qc.draw("mpl")
+plt.show()
+```
+Finally, we may need to perform an **anti-cotrolled** gate, which is a gate that triggers when the control bit is $|0\rangle$ rather than the normal $|1\rangle$.  Qiskit doesn't have a native way of performing this, but we can just wrap a regular control with `X` gates to achive the goal.  The code below performs a multi-controled `X` gate with an anti-control on the zeroth qubit and a regular control on the first qubit.
+
+```python
+qc = QuantumCircuit(3)
+
+qc.x(0)
+qc.ccx(0, 1, 2)   # controls = 0,1  target = 2
+qc.x(0)
+
 fig = qc.draw("mpl")
 plt.show()
 ```
