@@ -92,10 +92,14 @@ Performing more than two controls is not any more complicated, we just have to p
 ```python
 qc = QuantumCircuit(4)
 
-controls = [0, 1, 2]
-target = 3
-qc.mcx(controls, target)
+controls = [0, 1, 2]              # Set control qubits
+target = 3                        # Set target qubit
+qc.mcx(controls, target)          # Perform a multi-controled X
 
+from qiskit.circuit.library import ZGate     #import ZGate details
+ccz =ZGate().control(2)           #make a custom Z Gate with two controls
+qc.append(ccz,[0,1,2])            #add our new ccz gate to circut
+                                  #gate has controls = [0,1], target = 2
 fig = qc.draw("mpl")
 plt.show()
 ```
