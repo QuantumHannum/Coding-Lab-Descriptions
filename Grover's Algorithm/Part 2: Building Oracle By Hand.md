@@ -105,7 +105,19 @@ In this 3-qubit case, the average probability amplitude is:
 ```math
 Ave = \frac{1}{8} \times \left[\frac{7}{\sqrt{8}}-\frac{1}{\sqrt{8}}\right] \approx 0.2652
 ```
-So all the states with probablity amplitude $+\frac{1}{\sqrt{8}} will rotate about that value. If we call the original probability amplitudes $P_{0}$, and the new probablity amplitudes $P_{new}$, $P_{new}$ can be calculated by:
+The state right before the Diffuser should be:
 ```math
-P_{new}=P_{0}-2\times\left($P_{0}$-Ave\right)
+|\psi\rangle = \frac{1}{\sqrt{8}}\left[|000\rangle+|001\rangle+|010\rangle+|011\rangle+|100\rangle+|101\rangle+|110\rangle-|111\rangle \right]
 ```
+If we call the original probability amplitudes $P_{0}$, and the new probablity amplitudes $P_{new}$, $P_{new}$ can be calculated by:
+```math
+P_{new}=P_{0}-2\times\left(P_{0}-Ave\right)
+```
+This has the effect of **lowering** the probabilty of all the states with positive probablity amplitude, and **raising** the probabilty of the one target state with negative probablity amplitude.
+
+We can construct this Diffuser with the following recipe:
+1. Apply `H` gates to all qubits
+2. Apply `X` gates to all qubits
+3. Apply a multi-control Z gate with controls on the first $N-1$ qubits, with the target on the last qubit
+4. Apply `X` gates to all qubits
+5. Apply `H` gates to all qubits
