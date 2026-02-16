@@ -154,9 +154,10 @@ qc.measure_all()
 backend = Aer.get_backend("aer_simulator")
 result = backend.run(qc, shots=2000).result()
 counts = result.get_counts()
-print(counts)
+print(counts)      #These counts should change slighly each time you exicute the code
 
 from qiskit.visualization import plot_histogram
 plot_histogram(counts)
+plt.show()
 ```
 
