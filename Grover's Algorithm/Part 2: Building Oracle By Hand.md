@@ -28,8 +28,9 @@ Grover's algorithm is composed of three steps.
 This can be seen in the basic circut diagram below:
 <img width="850" height="364" alt="GroverCircuit" src="https://github.com/user-attachments/assets/7d0c587f-924f-47be-9e5d-c843acd5c9f6" />
 
-**Lets explore how to code Grover's algorithm using 3 qubits and extract the $|111\rangle$ state.**
-
+---
+Lets explore how to code Grover's algorithm using 3 qubits and extract the $|111\rangle$ state.
+---
 First, set up the circuit and perform Hadamards on all qubits
 ```python
 import numpy as np
