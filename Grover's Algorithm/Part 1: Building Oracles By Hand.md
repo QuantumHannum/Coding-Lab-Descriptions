@@ -3,7 +3,7 @@
 ## Activity 1: Basic Circuits in Qiskit
 
 Before we move on to Grover's Algorithm we need need fluency in circuit construction, simulation, and visualization. This lab builds that technical foundation.
----
+
 ### Conceptual Goals
 1. Understand how quantum circuits are represented programmatically in Qiskit.
 2. Interpret single-qubit gates geometrically (Bloch sphere intuition).
@@ -29,3 +29,23 @@ Before we move on to Grover's Algorithm we need need fluency in circuit construc
 8. Produce histograms of results.
 
 ---
+To initial a quantum circuit in Qiskit we first import the circuit construct from qiskit, then initial the number of qubits and classical outputs we need.
+```python
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(2, 2)
+```
+In this example we have initialize our circuit with name `qc` with 2 qubits (first argument inside `QuantumCircuit()`, and 2 classical outputs (second argument).
+
+We can now add some basic single-qubit gates to our circuit.
+```python
+qc.h(0)
+qc.x(1)
+qc.z(0)
+```
+This adds a `Hadamard` on the $0^{th}$ qubit (notice Qiskit indexes off **0**), an `X` gate on the first, and a `Z` on the zeroth qubit.
+
+We can draw this circuit using matplotlib
+```python
+qc.draw("mpl"
+```
+Make sure
