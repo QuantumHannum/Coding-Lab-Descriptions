@@ -18,13 +18,8 @@ $𝑁$ possible items requires $O(N)$ queries in the worst case because there is
 3. Simulate Grover’s algorithm using:
   * An ideal statevector simulator
   * A noisy or fake backend
-
 4. Use Qiskit’s logical oracle tools (e.g., CNF-based encoding).
-
 5. Implement a Grover-based solver for:
-
   * A constrained logic puzzle (e.g., dinner party problem)
-
   * A small 3-SAT instance
-
 6. Compare classical brute-force search scaling vs. Grover scaling.
