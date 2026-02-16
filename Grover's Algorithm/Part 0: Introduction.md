@@ -36,4 +36,15 @@ $𝑁$ possible items requires $O(N)$ queries in the worst case because there is
 This lab can be performed in **Google Colab**, however the concluding activity has a very long run time in Colab.  It is therefore suggested that you complete this activity in **VS Code** or similar.  I will assume you have an instalation of Python3.
 
 1. Create a project folder named `grover-lab`
-   * Open VS Code $\rightarrow$ File $\rightarrow$ Open Folder... $\rightarrow$ `gover-lab` 
+   * Open VS Code $\rightarrow$ File $\rightarrow$ Open Folder... $\rightarrow$ `gover-lab`
+
+2. Create a virtual environment (venv)
+   * Open VS Code terminal: Terminal $\rightarrow$ New terminal
+     **Mac/Linux**
+     ```bash
+     python3 -m venv .venv
+     ```
+     **Windows**
+     ```bash
+     py -m venv .venv
+     ```
