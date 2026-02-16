@@ -105,3 +105,7 @@ In this 3-qubit case, the average probability amplitude is:
 ```math
 Ave = \frac{1}{8} \times \left[\frac{7}{\sqrt{8}}-\frac{1}{\sqrt{8}}\right] \approx 0.2652
 ```
+So all the states with probablity amplitude $+\frac{1}{\sqrt{8}} will rotate about that value. If we call the original probability amplitudes $P_{0}$, and the new probablity amplitudes $P_{new}$, $P_{new}$ can be calculated by:
+```math
+P_{new}=P_{0}-2\times\left($P_{0}$-Ave\right)
+```
