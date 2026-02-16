@@ -136,5 +136,6 @@ print(sv)
 ```
 The output of this should be a Bell State in the form:
 ```math
-|\psi\rangle =
+|\psi\rangle = \frac{1}{\sqrt{2}}|0_10_0\rangle + \frac{1}{\sqrt{2}}|1_11_0\rangle
 ```
+Notice the indexing, and that the output statevector using complex numbers with ``j'' as the imaginary number.
