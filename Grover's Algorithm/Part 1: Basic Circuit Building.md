@@ -1,4 +1,4 @@
-# Part 1: Building Oracles By Hand
+# Part 1: Basic Curcuit Building
 ---
 ## Activity 1: Basic Circuits in Qiskit
 
