@@ -98,3 +98,10 @@ for bitstring, amplitude in sv.to_dict().items():
 fig = qc.draw("mpl")
 plt.show()
 ```
+
+The Phase Oracle construction is dependent on which state we are searching for - the Diffuser on the other hand is always the same.  The Diffuser has the effect of flipping (or rotating) each part of the superposition state around the average of all the probability amplitudes.
+
+In this 3-qubit case, the average probability amplitude is:
+```math
+Ave = \frac{1}{8}*\left[7*\left(\frac{1}{\sqrt{8}}\right)-\frac{1}{\sqrt{8}}\right]
+```
