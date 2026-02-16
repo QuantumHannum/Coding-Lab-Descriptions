@@ -134,4 +134,7 @@ from qiskit.quantum_info import Statevector
 sv = Statevector.from_instruction(qc)
 print(sv)
 ```
-
+The output of this should be a Bell State in the form:
+```math
+|\psi\rangle =
+```
