@@ -13,7 +13,7 @@ In the previous section, you learned how to construct and simulate basic quantum
 5. Recognize that phase changes do not alter measurement probabilities directly but affect interference.
 
 ### Technical/Coding Goals
-1.  Build a phase oracle that marks a specific 3-qubit state (e.g. $|101\rangle$
+1.  Build a phase oracle that marks a specific 3-qubit state (e.g. $|111\rangle$
 2.  Build and simulate a complete Grover algorithm including phase oracle and diffuser
 3.  Run full Grover algorithm on:
      * Statevector mode
@@ -28,7 +28,7 @@ Grover's algorithm is composed of three steps.
 This can be seen in the basic circut diagram below:
 <img width="850" height="364" alt="GroverCircuit" src="https://github.com/user-attachments/assets/7d0c587f-924f-47be-9e5d-c843acd5c9f6" />
 
-**Lets explore how to code Grover's algorithm using 3 qubits and extract the $|101\rangle$ state.**
+**Lets explore how to code Grover's algorithm using 3 qubits and extract the $|111\rangle$ state.**
 
 First, set up the circuit and perform Hadamards on all qubits
 ```python
@@ -55,4 +55,32 @@ The state of the system after appling all the Hadamards is:
 ```math
 |\psi\rangle = \frac{1}{\sqrt{8}}\left[|000\rangle+|001\rangle+|010\rangle+|011\rangle+|100\rangle+|101\rangle+|110\rangle+|111\rangle \right]
 ```
-If we are trying to `search` for the state $|101\rangle$ we need the Oracle to tag just this state with a negative i.e. in the above equation make $-|101\rangle$ (hence the oracle is called the phase oracle).  
+If we are trying to `search` for the state $|111\rangle$ we need the Oracle to tag just this state with a negative i.e. in the above equation make $-|101\rangle$ (hence the oracle is called the phase oracle).  The easiest way to do this is with a multi-controled Z gate.  Remembering the index order, if the zeroth, and first qubits are $|1\rangle$, then apply a `Z` gate to qubit two.
+
+Update your code now to include this phase Oracle.  
+
+```python
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit_aer import Aer
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_histogram
+import matplotlib.pyplot as plt
+
+N=3   #number of qubits
+qc=QuantumCircuit(N)
+
+#*********************
+# You add in N Hardamards, try using a for loop
+#*********************
+
+qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+
+#*********************
+# You add in the ccz gate based phase oracle
+#*********************
+
+
+fig = qc.draw("mpl")
+plt.show()
+```
