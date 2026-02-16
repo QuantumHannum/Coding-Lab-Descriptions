@@ -80,6 +80,17 @@ qc.barrier()      #this just puts a verticle line in the circut to seperate the 
 # You add in the ccz gate based phase oracle
 #*********************
 
+qc.barrier()
+
+#*********************
+#This section just prints the statevector so you can confirm phase
+#*********************
+sv = Statevector.from_instruction(qc)
+
+print("\nStatevector amplitudes (basis order q2 q1 q0):")
+for bitstring, amplitude in sv.to_dict().items():
+    print(f"{bitstring} : {amplitude}")
+# ----------------------------------------
 
 fig = qc.draw("mpl")
 plt.show()
