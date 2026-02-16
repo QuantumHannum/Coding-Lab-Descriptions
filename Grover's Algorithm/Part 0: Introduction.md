@@ -32,3 +32,8 @@ $𝑁$ possible items requires $O(N)$ queries in the worst case because there is
 
 ---
 
+## Coding Environmental Setup
+This lab can be performed in **Google Colab**, however the concluding activity has a very long run time in Colab.  It is therefore suggested that you complete this activity in **VS Code** or similar.  I will assume you have an instalation of Python3.
+
+1. Create a project folder named `grover-lab`
+   * Open VS Code $\rightarrow$ File $\rightarrow$ Open Folder... $\rightarrow$ `gover-lab` 
