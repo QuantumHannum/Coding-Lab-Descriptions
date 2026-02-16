@@ -55,7 +55,7 @@ Make sure to take a brief moment to match the circiut diagram with the code.
 We can also perform multi-qubit gates like `CNOT`
 
 ```python
-qc = Quantum Circuit(2)   #make a new circuit and overwrite the last example
+qc = QuantumCircuit(2)   #make a new circuit and overwrite the last example
 
 qc.h(0)        # put qubit 0 in superposition
 qc.cx(0, 1)    # CNOT Gate with control = 0, target = 1
@@ -66,7 +66,7 @@ plt.show()
 Or with a `CZ`
 
 ```python
-qc = Quantum Circuit(2)   #make a new circuit and overwrite the last example
+qc = QuantumCircuit(2)   #make a new circuit and overwrite the last example
 
 qc.h(0)        
 qc.h(1)
