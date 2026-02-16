@@ -46,6 +46,6 @@ This adds a `Hadamard` on the $0^{th}$ qubit (notice Qiskit indexes off **0**), 
 
 We can draw this circuit using matplotlib
 ```python
-qc.draw("mpl"
+qc.draw("mpl")
 ```
 Make sure
