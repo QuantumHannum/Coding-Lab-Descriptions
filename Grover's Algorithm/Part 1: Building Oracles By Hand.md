@@ -63,7 +63,7 @@ qc.cx(0, 1)    # CNOT Gate with control = 0, target = 1
 fig = qc.draw("mpl")
 plt.show()
 ```
-Or with a `CZ`
+Or with a `CZ`.  It is important to note that when Qiskit draws a `CZ` it doesn't draw the control and target in a way that is obvious.
 
 ```python
 qc = QuantumCircuit(2)   #make a new circuit and overwrite the last example
@@ -71,6 +71,30 @@ qc = QuantumCircuit(2)   #make a new circuit and overwrite the last example
 qc.h(0)        
 qc.h(1)
 qc.cz(0,1)  #Control Z with control = 0, target = 1
+
+fig = qc.draw("mpl")
+plt.show()
+```
+We can also do multi-controled CNOT gates, called `Toffoli` gate or `CCX` gates.
+
+```python
+qc = QuantumCircuit(3)
+
+qc.x(0)
+qc.x(1)
+qc.ccx(0, 1, 2)   # controls = 0,1  target = 2
+
+fig = qc.draw("mpl")
+plt.show()
+```
+Performing more than two controls is not any more complicated, we just have to pass the `control` qubits as a list and use the `mcx([control],target)` structure.
+
+```python
+qc = QuantumCircuit(4)
+
+controls = [0, 1, 2]
+target = 3
+qc.mcx(controls, target)
 
 fig = qc.draw("mpl")
 plt.show()
