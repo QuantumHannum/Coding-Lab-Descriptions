@@ -42,9 +42,17 @@ import matplotlib.pyplot as plt
 N=3   #number of qubits
 qc=QuantumCircuit(N)
 
-for i in range(N):
-    qc.h(i)
+#*********************
+# You add in N Hardamards, try using a for loop
+#*********************
+
+
 
 fig = qc.draw("mpl")
 plt.show()
 ```
+The state of the system after appling all the Hadamards is:
+```math
+|\psi\rangle = \frac{1}{\sqrt{8}}\left[|000\rangle+|001\rangle+|010\rangle+|011\rangle+|100\rangle+|101\rangle+|110\rangle+|111\rangle \right]
+```
+If we are trying to `search` for the state $|101\rangle$ we need the Oracle to tag just this state with a negative i.e. in the above equation make $-|101\rangle$ (hence the oracle is called the phase oracle).  
