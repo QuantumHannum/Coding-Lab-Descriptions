@@ -20,7 +20,7 @@ In the previous section, you learned how to construct and simulate basic quantum
      * Shot-based measurment on both noise-less and noisy backends
 ---
 
-Grover's algorithm has is composed of three steps. 
+Grover's algorithm is composed of three steps. 
 1. Initialize all qubits into a superposition
 2. Apply Phase Oracle to tag state that is being searched for
 3. Apply Diffuser to amplify the measurement amplitude of the state being searched for
@@ -28,4 +28,23 @@ Grover's algorithm has is composed of three steps.
 This can be seen in the basic circut diagram below:
 <img width="850" height="364" alt="GroverCircuit" src="https://github.com/user-attachments/assets/7d0c587f-924f-47be-9e5d-c843acd5c9f6" />
 
+**Lets explore how to code Grover's algorithm using 3 qubits and extract the $|101\rangle$ state.**
 
+First, set up the circuit and perform Hadamards on all qubits
+```python
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit_aer import Aer
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_histogram
+import matplotlib.pyplot as plt
+
+N=3   #number of qubits
+qc=QuantumCircuit(N)
+
+for i in range(N):
+    qc.h(i)
+
+fig = qc.draw("mpl")
+plt.show()
+```
