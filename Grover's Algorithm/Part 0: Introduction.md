@@ -64,5 +64,6 @@ This lab can be performed in **Google Colab**, however the concluding activity h
 5. Install lab dependencies
    * In the command line type:
      ```bash
-      python -m pip install qiskit qiskit-aer matplotlib numpy pylatexenc
+      python -m pip install qiskit qiskit-aer
+      python -m pip install matplotlib numpy pylatexenc
      ```
