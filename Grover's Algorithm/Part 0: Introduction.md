@@ -16,10 +16,19 @@ $𝑁$ possible items requires $O(N)$ queries in the worst case because there is
 1. Build and visualize simple quantum circuits in Qiskit.
 2. Construct a 3-qubit phase oracle that marks specific computational basis states.
 3. Simulate Grover’s algorithm using:
-  * An ideal statevector simulator
-  * A noisy or fake backend
+   * An ideal statevector simulator
+   * A noisy or fake backend
 4. Use Qiskit’s logical oracle tools (e.g., CNF-based encoding).
 5. Implement a Grover-based solver for:
-  * A constrained logic puzzle (e.g., dinner party problem)
-  * A small 3-SAT instance
+   * A constrained logic puzzle (e.g., dinner party problem)
+   * A small 3-SAT instance
 6. Compare classical brute-force search scaling vs. Grover scaling.
+
+### Mathematical Goals
+1. Derive the number of Grover iterations $k \approx \frac{\pi}{4}\sqrt{N}$
+2. Write the post-oracle and post-diffusion states explicitly in Dirac notation.
+3. Analyze probability amplification quantitatively.
+4. Connect logical clause structure to phase-flip operators in Hilbert space.
+
+---
+
