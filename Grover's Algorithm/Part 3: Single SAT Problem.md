@@ -21,10 +21,10 @@ where $f(x)=1$ if the assignment satisfies the SAT formula and $f(x)=0$ otherwis
 1. Define a Boolean Satisfiability (SAT) problem and explain what it means for an assignment to satisfy a formula.
 2. nterpret Conjunctive Normal Form (CNF) as a list of `AND` clauses composed of `OR` literals.
 3. Expain how a Boolean function $f(x)$ can be encoded as a phase orcle:
-   $$
+```math
     |x\rangle \rightarrow (-1)^{f(x)}|x\rangle
-   $$
-4. Predict how the number of satisfying solutions M of a SAT problem effects the number of necessary Grover iterations and the final measurement distribution.
+```
+5. Predict how the number of satisfying solutions M of a SAT problem effects the number of necessary Grover iterations and the final measurement distribution.
 
 ### Technical/Coding Goals
 1. Represent Boolean variable using qubits.
