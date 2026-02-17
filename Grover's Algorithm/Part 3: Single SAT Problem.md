@@ -8,7 +8,7 @@ A Boolean Satisfiability Problem (SAT) asks whether there exists an assignment o
 ```math
 (x_1 \lor \lnot x_2) \land (x_2 \lor x_3)
 ```
-Where $\lor$ is the symbol for `OR` and $\land$ is the symbol for `AND`.  The task is to determine whether there exists a bitstring $x=(x_1,x_2,...)$ that satisfies all clauses simultaneously.
+Where $\lor$ is the symbol for `OR` and $\land$ is the symbol for `AND`.  The symbol for negation or `NOT` is $\lnot$.  The task is to determine whether there exists a bitstring $x=(x_1,x_2,...)$ that satisfies all clauses simultaneously.
 
 Grover’s algorithm can be used to search for satisfying assignments by constructing a phase oracle that encodes the Boolean function:
 ```math
