@@ -277,8 +277,8 @@ qc.measure_all()
 fake_backend = FakeManilaV2()       
 sim_backend = AerSimulator.from_backend(fake_backend)
 
-#**** When using real hardware, the circuit must be converted into the universal
-#**** gate set of the specific computer.  We are going to talk more about this later
+# When using real hardware, the circuit must be converted into the universal
+# gate set of the specific computer.  We are going to talk more about this later
 tqc = transpile(qc, sim_backend, optimization_level=1)
  
 result = sim_backend.run(tqc, shots=4000).result()
