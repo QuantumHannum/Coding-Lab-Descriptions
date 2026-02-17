@@ -12,7 +12,7 @@ Where $\lor$ is the symbol for `OR` and $\land$ is the symbol for `AND`.  The sy
 
 Grover’s algorithm can be used to search for satisfying assignments by constructing a phase oracle that encodes the Boolean function:
 ```math
-|x\rangle \rightarrow (-1)^{f(x)}|x\rangle
+   |x\rangle \rightarrow (-1)^{f(x)}|x\rangle
 ```
 where $f(x)=1$ if the assignment satisfies the SAT formula and $f(x)=0$ otherwise. By placing all possible assignments into superposition and applying Grover’s amplitude amplification, the algorithm increases the probability of measuring a satisfying assignment.
 
