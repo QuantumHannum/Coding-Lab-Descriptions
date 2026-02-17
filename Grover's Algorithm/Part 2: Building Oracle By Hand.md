@@ -13,7 +13,7 @@ In the previous section, you learned how to construct and simulate basic quantum
 5. Recognize that phase changes do not alter measurement probabilities directly but affect interference.
 
 ### Technical/Coding Goals
-1.  Build a phase oracle that marks a specific 3-qubit state (e.g. $|111\rangle$
+1.  Build a phase oracle that marks a specific 3-qubit state (e.g. $|111\rangle$) and other more complicated states.
 2.  Build and simulate a complete Grover algorithm including phase oracle and diffuser
 3.  Run full Grover algorithm on:
      * Statevector mode
