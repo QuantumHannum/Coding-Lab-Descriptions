@@ -280,6 +280,12 @@ sim_backend = AerSimulator.from_backend(fake_backend)
 # When using real hardware, the circuit must be converted into the universal
 # gate set of the specific computer.  We are going to talk more about this later
 tqc = transpile(qc, sim_backend, optimization_level=1)
+
+# To see the difference between the transpiled circut and your circuit un-comment the following.  The transpiled circuit will be MUCH LONGER!!
+#fig = tqc.draw("mpl")
+#fig.suptitle("Transpiled Circuit", fontsize=14)
+#plt.show()
+
  
 result = sim_backend.run(tqc, shots=4000).result()
 counts = result.get_counts()
