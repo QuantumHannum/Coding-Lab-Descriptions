@@ -206,11 +206,7 @@ qc.barrier()
 #********************
 # Perform Shot-based Measurements
 #*******************
-qc.measure_all()          #add in measurements for all qubits
-
-from qiskit import transpile
-from qiskit_aer import AerSimulator
-from qiskit_ibm_runtime.fake_provider import FakeManilaV2
+qc.measure_all()                                  #add in measurements for all qubits
 
 backend = Aer.get_backend("aer_simulator")
 result = backend.run(qc, shots=4000).result()
@@ -308,3 +304,4 @@ There are many different Fack Backends IBM offers. after you get your code worki
 | FakeTorontoV2       | 27     | ~0.03% – 0.1%      | ~1.5% – 3%      | ~3% – 6%      |
 | FakeMontrealV2      | 27     | ~0.03% – 0.1%      | ~1% – 3%        | ~3% – 6%      |
 | FakeWashingtonV2    | 127    | ~0.05% – 0.15%     | ~1% – 3%        | ~3% – 7%      |
+
