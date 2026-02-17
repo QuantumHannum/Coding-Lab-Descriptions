@@ -42,7 +42,7 @@ $$
 
 ---
 Problem Statement:
-A door has a lock with five switches (labeled A - E) that are either on or off.  To open the door, all the switches need to be placed into the correct position.  The correct switch position is given by the rules:
+A door has a lock with five switches (labeled A - E) that are either switched up or down.  To open the door, all the switches need to be placed into the correct position. The correct switch position is given by the rules:
 1. At least one of the switches A or B must be up
 2. Either A is up or B is down
 3. If B is up, then C must be up
