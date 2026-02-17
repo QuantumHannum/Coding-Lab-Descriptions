@@ -293,7 +293,7 @@ plt.show()
 fig = qc.draw("mpl")
 plt.show()
 ```
-There are many different Fack Backends IBM offers. after you get your code working, try other backends to see the difference in the error rates as shown in the final measurement histogram.
+IBM offers many different Fake Backends. After you get your code working, try other backends to see the difference in the error rates as shown in the final measurement histogram.
 
 | Backend Name        | Qubits | Single Qubit Error | Two-Qubit Error | Readout Error |
 |---------------------|--------|--------------------|-----------------|---------------|
