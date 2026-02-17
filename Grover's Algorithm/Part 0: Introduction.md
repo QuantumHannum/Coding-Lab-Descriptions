@@ -66,4 +66,5 @@ This lab can be performed in **Google Colab**, however the concluding activity h
      ```bash
       python -m pip install qiskit qiskit-aer
       python -m pip install matplotlib numpy pylatexenc
+      python -m pip install qiskit-ibm-runtime
      ```
