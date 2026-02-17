@@ -6,5 +6,5 @@ When studying the basic quantum algorithms (Deutsch-Jozsa, Simon, Grover, etc) t
 
 A Boolean Satisfiability Problem (SAT) asks whether there exists an assignment of truth values (True/False or 1/0) to a set of Boolean variables that makes a logical formula evaluate to True. Typically, the formula is written in Conjunctive Normal Form (CNF) — an AND of clauses, where each clause is an OR of literals (variables or their negations). For example:
 ```math
-(x_1 \lor \lnot x_2) \and
+(x_1 \lor \lnot x_2) \land
 ```
