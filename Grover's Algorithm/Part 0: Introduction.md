@@ -66,3 +66,7 @@ This lab can be performed in **Google Colab**, however the concluding activity h
      ```bash
       python -m pip install qiskit qiskit-aer qiskit-ibm-runtime matplotlib pylatexenc
      ```
+     Alternatively, you can download the `requirements.txt` file from this github, then run in the command line
+     ```bash
+     python -m pip install -r requirements.txt
+     ```
