@@ -291,6 +291,7 @@ plt.show()
 # Draw Circuit
 #*******************
 fig = qc.draw("mpl")
+fig.suptitle(r"Grover Circuit for $|111\rangle$", fontsize=14)
 plt.show()
 ```
 IBM offers many different Fake Backends. After you get your code working, try other backends to see the difference in the error rates as shown in the final measurement histogram.
