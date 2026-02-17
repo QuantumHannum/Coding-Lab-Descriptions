@@ -281,7 +281,9 @@ sim_backend = AerSimulator.from_backend(fake_backend)
 # gate set of the specific computer.  We are going to talk more about this later
 tqc = transpile(qc, sim_backend, optimization_level=1)
 
-# To see the difference between the transpiled circut and your circuit un-comment the following.  The transpiled circuit will be MUCH LONGER!!
+# To see the difference between the transpiled circut
+# and your circuit un-comment the following.
+# The transpiled circuit will be MUCH LONGER!!
 #fig = tqc.draw("mpl")
 #fig.suptitle("Transpiled Circuit", fontsize=14)
 #plt.show()
