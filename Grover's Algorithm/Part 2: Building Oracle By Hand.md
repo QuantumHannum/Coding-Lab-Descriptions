@@ -75,14 +75,14 @@ qc=QuantumCircuit(N)
 # You add in N Hardamards, try using a for loop
 #*********************
 
-qc.barrier()      #this just puts a verticle line in the circut to seperate the code
 
+qc.barrier()      #this just puts a verticle line in the circut to seperate the code
 #*********************
 # You add in the ccz gate based phase oracle
 #*********************
 
-qc.barrier()
 
+qc.barrier()
 #*********************
 # This section just prints the statevector so you can confirm phase
 #*********************
@@ -139,7 +139,8 @@ qc=QuantumCircuit(N)
 #*********************
 
 
-qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+
+qc.barrier()     
 #*********************
 # You add in the ccz gate based phase oracle
 #*********************
@@ -151,6 +152,8 @@ qc.barrier()
 #*********************
 # You add in the Diffuser here
 #*********************
+
+
 
 
 
@@ -188,7 +191,9 @@ qc=QuantumCircuit(N)
 #*********************
 
 
-qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+
+
+qc.barrier()      
 #*********************
 # You add in the ccz gate based phase oracle
 #*********************
@@ -203,6 +208,7 @@ qc.barrier()
 
 
 
+qc.barrier()
 #********************
 # Perform Shot-based Measurements
 #*******************
@@ -249,12 +255,10 @@ qc=QuantumCircuit(N)
 #*********************
 
 
-qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+qc.barrier()      
 #*********************
 # You add in the ccz gate based phase oracle
 #*********************
-
-
 
 
 qc.barrier()
@@ -263,8 +267,8 @@ qc.barrier()
 #*********************
 
 
-qc.measure_all()          
 
+qc.measure_all()          
 #********************
 # Perform Shot-based Measurements with Fake Backend
 #*******************
