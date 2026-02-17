@@ -267,15 +267,20 @@ qc.barrier()
 #*********************
 
 
-qc.measure_all()          #add in measurements for all qubits
+qc.measure_all()          
 
 #********************
 # Perform Shot-based Measurements with Fake Backend
 #*******************
 
-fake_backend = FakeManilaV2()
+#*** #FakeManila is one of IBM's real Quantum Computers
+fake_backend = FakeManilaV2()       
 sim_backend = AerSimulator.from_backend(fake_backend)
+
+#**** When using real hardware, the circuit must be converted into the universal
+#**** gate set of the specific computer.  We are going to talk more about this later
 tqc = transpile(qc, sim_backend, optimization_level=1)
+ 
 result = sim_backend.run(tqc, shots=4000).result()
 counts = result.get_counts()
 
@@ -288,4 +293,18 @@ plt.show()
 fig = qc.draw("mpl")
 plt.show()
 ```
+There are many different Fack Backends IBM offers. after you get your code working, try other backends to see the difference in the error rates.
 
+| Backend Name        | Qubits | Single Qubit Error | Two-Qubit Error | Readout Error |
+|---------------------|--------|--------------------|-----------------|---------------|
+| FakeManilaV2        | 5      | ~0.02% – 0.05%     | ~0.5% – 1.5%    | ~1% – 3%      |
+| FakeLimaV2          | 5      | ~0.02% – 0.06%     | ~0.7% – 1.8%    | ~1% – 4%      |
+| FakeBelemV2         | 5      | ~0.03% – 0.07%     | ~1% – 2%        | ~2% – 5%      |
+| FakeAthensV2        | 5      | ~0.02% – 0.05%     | ~0.5% – 1.5%    | ~1% – 3%      |
+| FakeJakartaV2       | 7      | ~0.02% – 0.06%     | ~1% – 2%        | ~2% – 5%      |
+| FakeCasablancaV2    | 7      | ~0.03% – 0.08%     | ~1% – 3%        | ~3% – 6%      |
+| FakeHanoiV2         | 27     | ~0.03% – 0.1%      | ~1% – 3%        | ~3% – 6%      |
+| FakeKolkataV2       | 27     | ~0.03% – 0.1%      | ~1% – 3%        | ~3% – 6%      |
+| FakeTorontoV2       | 27     | ~0.03% – 0.1%      | ~1.5% – 3%      | ~3% – 6%      |
+| FakeMontrealV2      | 27     | ~0.03% – 0.1%      | ~1% – 3%        | ~3% – 6%      |
+| FakeWashingtonV2    | 127    | ~0.05% – 0.15%     | ~1% – 3%        | ~3% – 7%      |
