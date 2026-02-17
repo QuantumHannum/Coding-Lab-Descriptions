@@ -228,7 +228,7 @@ plt.show()
 
 You should see a very nice histogram showing the shot distribution and the overwhelming selection of the target state.
 
-This `aer_simulator` is **perfect**, when in reality quantum computers are noisy. To see the effect of real hardware we can import and use a `fake backend`.  IBM very carefully measures all the error rates of their computers, and users can import their properties to run noisy simulations that mirror results of running on real hardware.  To do this we need to import a few new things.
+This `aer_simulator` is **perfect**, it does not include any random errors in the qubits when in reality quantum computers are noisy. To see the effect of real hardware we can import and use a `fake backend`.  IBM very carefully measures all the error rates of their computers, and users can import their properties to run noisy simulations that mirror results of running on real hardware.  To do this we need to import a few new things.
 
 ```python
 import numpy as np
