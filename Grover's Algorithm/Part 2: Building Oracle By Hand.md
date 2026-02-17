@@ -121,3 +121,171 @@ We can construct this Diffuser with the following recipe:
 3. Apply a multi-control Z gate with controls on the first $N-1$ qubits, with the target on the last qubit
 4. Apply `X` gates to all qubits
 5. Apply `H` gates to all qubits
+
+Now update your code with a Diffuser
+```python
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit_aer import Aer
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_histogram
+import matplotlib.pyplot as plt
+
+N=3   #number of qubits
+qc=QuantumCircuit(N)
+
+#*********************
+# You add in N Hardamards, try using a for loop
+#*********************
+
+
+qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+#*********************
+# You add in the ccz gate based phase oracle
+#*********************
+
+
+
+
+qc.barrier()
+#*********************
+# You add in the Diffuser here
+#*********************
+
+
+
+#*********************
+# This section just prints the statevector so you can confirm phase
+#*********************
+sv = Statevector.from_instruction(qc)
+print("\nStatevector amplitudes (basis order q2 q1 q0):")
+for bitstring, amplitude in sv.to_dict().items():
+    print(f"{bitstring} : {amplitude}")
+
+#********************
+# Draw Circuit
+#*******************
+fig = qc.draw("mpl")
+plt.show()
+```
+Run your code and confirm that the Diffuser is working by comparing the statevector amplitudes to the values you would expect if calculating them by hand with the above equation.
+
+As is, the code produces the Statevector, which is enought to see that the probablity of randomly selecting the target state of $|111\rangle$ is now much higher than the non-target states.  But we should complete our code and run shot-based trails and produce a histogram of outcomes. We can't however track the statevector and do the shot-based measurement, so you will need to remove the statevector part of the code.
+
+```python
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit_aer import Aer
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_histogram
+import matplotlib.pyplot as plt
+
+N=3   #number of qubits
+qc=QuantumCircuit(N)
+
+#*********************
+# You add in N Hardamards, try using a for loop
+#*********************
+
+
+qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+#*********************
+# You add in the ccz gate based phase oracle
+#*********************
+
+
+
+
+qc.barrier()
+#*********************
+# You add in the Diffuser here
+#*********************
+
+
+
+#********************
+# Perform Shot-based Measurements
+#*******************
+qc.measure_all()          #add in measurements for all qubits
+
+from qiskit import transpile
+from qiskit_aer import AerSimulator
+from qiskit_ibm_runtime.fake_provider import FakeManilaV2
+
+backend = Aer.get_backend("aer_simulator")
+result = backend.run(qc, shots=4000).result()
+counts = result.get_counts()
+
+plot_histogram(counts)
+plt.show()
+
+#********************
+# Draw Circuit
+#*******************
+fig = qc.draw("mpl")
+plt.show()
+```
+
+You should see a very nice histogram showing the shot distribution and the overwhelming selection of the target state.
+
+This `aer_simulator` is **perfect**, when in reality quantum computers are noisy. To see the effect of real hardware we can import and use a `fake backend`.  IBM very carefully measures all the error rates of their computers, and users can import their properties to run noisy simulations that mirror results of running on real hardware.  To do this we need to import a few new things.
+
+```python
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit_aer import Aer
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_histogram
+import matplotlib.pyplot as plt
+
+#*********************
+# New Imports
+#*********************
+from qiskit import transpile
+from qiskit_aer import AerSimulator
+from qiskit_ibm_runtime.fake_provider import FakeManilaV2   #get the IBM Manila info
+
+N=3   #number of qubits
+qc=QuantumCircuit(N)
+
+#*********************
+# You add in N Hardamards, try using a for loop
+#*********************
+
+
+qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+#*********************
+# You add in the ccz gate based phase oracle
+#*********************
+
+
+
+
+qc.barrier()
+#*********************
+# You add in the Diffuser here
+#*********************
+
+
+qc.measure_all()          #add in measurements for all qubits
+
+#********************
+# Perform Shot-based Measurements with Fake Backend
+#*******************
+
+fake_backend = FakeManilaV2()
+sim_backend = AerSimulator.from_backend(fake_backend)
+tqc = transpile(qc, sim_backend, optimization_level=1)
+result = sim_backend.run(tqc, shots=4000).result()
+counts = result.get_counts()
+
+plot_histogram(counts)
+plt.show()
+
+#********************
+# Draw Circuit
+#*******************
+fig = qc.draw("mpl")
+plt.show()
+```
+
