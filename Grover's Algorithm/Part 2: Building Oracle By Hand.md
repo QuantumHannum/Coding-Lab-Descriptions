@@ -305,3 +305,14 @@ There are many different Fack Backends IBM offers. after you get your code worki
 | FakeMontrealV2      | 27     | ~0.03% – 0.1%      | ~1% – 3%        | ~3% – 6%      |
 | FakeWashingtonV2    | 127    | ~0.05% – 0.15%     | ~1% – 3%        | ~3% – 7%      |
 
+---
+Making use of what you have learned, here are some more specific challenges to do on your own.  You will turn these in as part of your final submission:
+
+For each of the following, produce **Full Circuit Diagram** and **Histogram**
+
+1. Change your Grover Oracle so that it selects out the state $|100\ranglel$.
+2. Change your Grover Oracle so that it selects out two states $|101\rangle$ and $|110\rangle$
+3. Change your Grover Oracle so that it selects out any states where exactly two qubits are $|1\rangle$, this would include:
+       * $|110\rangle$, $|101\rangle$, $|011\rangle$
+
+
