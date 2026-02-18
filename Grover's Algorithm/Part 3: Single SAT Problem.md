@@ -43,15 +43,15 @@ $$
 ---
 Problem Statement:
 A door has a lock with five switches (labeled A - E) that are either switched up or down.  To open the door, all the switches need to be placed into the correct position. The correct switch position is given by the rules:
-| Plain English Statement | Clause (Logical Form) |
-|--------------------------|------------------------|
-| At least one of switches **A** or **B** must be up. | $\(A \lor B\)$ |
-| Either **A** is up or **B** is down. | $\(A \lor \lnot B\)$ |
-| If **B** is up, then **C** must be up. | $\(\lnot B \lor C\)$ |
-| If **B** is up, then **C** must be down. | $\(\lnot B \lor \lnot C\)$ |
-| At least one of switches **C** or **D** must be up. | $\(C \lor D\)$ |
-| Either **C** is up or **D** is down. | $\(C \lor \lnot D\)$ |
-| If **D** is up, then **E** must be up. | $\(\lnot D \lor E\)$ |
-| If **D** is up, then **E** must be down. | $\(\lnot D \lor \lnot E\)$ |
+Clause Num.| Statement | Clause (Logical Form) |
+|:--------------------------:|:--------------------------|:------------------------:|
+|1| At least one of switches **A** or **B** must be up. | $\(A \lor B\)$ |
+|2| Either **A** is up or **B** is down. | $\(A \lor \lnot B\)$ |
+|3| If **B** is up, then **C** must be up. | $\(\lnot B \lor C\)$ |
+|4| If **B** is up, then **C** must be down. | $\(\lnot B \lor \lnot C\)$ |
+|5| At least one of switches **C** or **D** must be up. | $\(C \lor D\)$ |
+|6| Either **C** is up or **D** is down. | $\(C \lor \lnot D\)$ |
+|7| If **D** is up, then **E** must be up. | $\(\lnot D \lor E\)$ |
+|8| If **D** is up, then **E** must be down. | $\(\lnot D \lor \lnot E\)$ |
 
 
