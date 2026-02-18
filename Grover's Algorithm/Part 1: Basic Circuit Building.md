@@ -1,4 +1,4 @@
-# Part 1: Basic Curcuit Building
+# Part 1: Basic Circuit Building
 ---
 ## Activity 1: Basic Circuits in Qiskit
 
@@ -51,7 +51,7 @@ qc.draw("mpl")
 ```
 Make sure to take a brief moment to match the circuit diagram with the code.
 
-We can also perform multi-qubit gates like `CNOT`
+We can also perform multi-qubit gates like `CNOT`.
 
 ```python
 qc = QuantumCircuit(2)   #make a new circuit and overwrite the last example
@@ -62,7 +62,7 @@ qc.cx(0, 1)    # CNOT Gate with control = 0, target = 1
 fig = qc.draw("mpl")
 plt.show()
 ```
-Or with a `CZ`.  It is important to note that when Qiskit draws a `CZ` it doesn’t draw the control and target in a way that is obvious.
+Or with a `CZ`.  It is important to note that when Qiskit draws a `CZ`, it doesn’t draw the control and target in a way that is obvious.
 
 ```python
 qc = QuantumCircuit(2)   #make a new circuit and overwrite the last example
@@ -153,10 +153,9 @@ qc.measure_all()
 backend = Aer.get_backend("aer_simulator")
 result = backend.run(qc, shots=2000).result()
 counts = result.get_counts()
-print(counts)      #These counts should change slighly each time you exicute the code
+print(counts)      #These counts should change slightly each time you execute the code
 
 from qiskit.visualization import plot_histogram
 plot_histogram(counts)
 plt.show()
 ```
-
