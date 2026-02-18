@@ -14,22 +14,22 @@ In the previous section, you learned how to construct and simulate basic quantum
 
 ### Technical/Coding Goals
 1.  Build a phase oracle that marks a specific 3-qubit state (e.g. $|111\rangle$) and other more complicated states.
-2.  Build and simulate a complete Grover algorithm including phase oracle and diffuser
-3.  Run full Grover algorithm on:
+2.  Build and simulate a complete Grover algorithm, including phase oracle and diffuser
+3.  Run the full Grover algorithm on:
      * Statevector mode
      * Shot-based measurment on both noise-less and noisy backends
 ---
 
 Grover's algorithm is composed of three steps. 
 1. Initialize all qubits into a superposition
-2. Apply Phase Oracle to tag state that is being searched for
-3. Apply Diffuser to amplify the measurement amplitude of the state being searched for
+2. Apply Phase Oracle to tag the state that is being searched for
+3. Apply the diffuser to amplify the measurement amplitude of the state being searched for
 
-This can be seen in the basic circut diagram below:
+This can be seen in the basic circuit diagram below:
 <img width="850" height="364" alt="GroverCircuit" src="https://github.com/user-attachments/assets/7d0c587f-924f-47be-9e5d-c843acd5c9f6" />
 
 ---
-Lets explore how to code Grover's algorithm using 3 qubits and extract the $|111\rangle$ state.
+Let's explore how to code Grover's algorithm using 3 qubits and extract the $|111\rangle$ state.
 ---
 First, set up the circuit and perform Hadamards on all qubits
 ```python
@@ -52,13 +52,13 @@ qc=QuantumCircuit(N)
 fig = qc.draw("mpl")
 plt.show()
 ```
-The state of the system after appling all the Hadamards is:
+The state of the system after applying all the Hadamards is:
 ```math
 |\psi\rangle = \frac{1}{\sqrt{8}}\left[|000\rangle+|001\rangle+|010\rangle+|011\rangle+|100\rangle+|101\rangle+|110\rangle+|111\rangle \right]
 ```
-If we are trying to `search` for the state $|111\rangle$ we need the Oracle to tag just this state with a negative i.e. in the above equation make $-|111\rangle$ (hence the oracle is called the phase oracle).  The easiest way to do this is with a multi-controled Z gate.  Remembering the index order, if the zeroth, and first qubits are $|1\rangle$, then apply a `Z` gate to qubit two.
+If we are trying to `search` for the state $|111\rangle$ we need the Oracle to tag just this state with a negative, i.e., in the above equation, make $-|111\rangle$ (hence the oracle is called the phase oracle).  The easiest way to do this is with a multi-controlled Z gate.  Remembering the index order, if the zeroth and first qubits are $|1\rangle$, then apply a `Z` gate to qubit two.
 
-Update your code now to include this phase Oracle.  
+Update your code now to include this phase, Oracle.  
 
 ```python
 import numpy as np
@@ -76,7 +76,7 @@ qc=QuantumCircuit(N)
 #*********************
 
 
-qc.barrier()      #this just puts a verticle line in the circut to seperate the code
+qc.barrier()      #this just puts a vertical line in the circuit to separate the code
 #*********************
 # You add in the ccz gate based phase oracle
 #*********************
@@ -84,7 +84,7 @@ qc.barrier()      #this just puts a verticle line in the circut to seperate the 
 
 qc.barrier()
 #*********************
-# This section just prints the statevector so you can confirm phase
+# This section just prints the statevector so you can confirm the phase
 #*********************
 sv = Statevector.from_instruction(qc)
 print("\nStatevector amplitudes (basis order q2 q1 q0):")
@@ -99,7 +99,7 @@ fig = qc.draw("mpl")
 plt.show()
 ```
 
-The Phase Oracle construction is dependent on which state we are searching for - the Diffuser on the other hand is always the same.  The Diffuser has the effect of flipping (or rotating) each part of the superposition state around the average of all the probability amplitudes.
+The Phase Oracle construction is dependent on which state we are searching for - the Diffuser, on the other hand, is always the same.  The Diffuser has the effect of flipping (or rotating) each part of the superposition state around the average of all the probability amplitudes.
 
 In this 3-qubit case, the average probability amplitude is:
 ```math
@@ -158,7 +158,7 @@ qc.barrier()
 
 
 #*********************
-# This section just prints the statevector so you can confirm phase
+# This section just prints the statevector so you can confirm the phase
 #*********************
 sv = Statevector.from_instruction(qc)
 print("\nStatevector amplitudes (basis order q2 q1 q0):")
@@ -173,7 +173,7 @@ plt.show()
 ```
 Run your code and confirm that the Diffuser is working by comparing the statevector amplitudes to the values you would expect if calculating them by hand with the above equation.
 
-As is, the code produces the Statevector, which is enought to see that the probablity of randomly selecting the target state of $|111\rangle$ is now much higher than the non-target states.  But we should complete our code and run shot-based trails and produce a histogram of outcomes. We can't however track the statevector and do the shot-based measurement, so you will need to remove the statevector part of the code.
+As is, the code produces the Statevector, which is enought to see that the probablity of randomly selecting the target state of $|111\rangle$ is now much higher than the non-target states.  But we should complete our code, run shot-based trails and produce a histogram of outcomes. We can't, however, track the statevector and do the shot-based measurement, so you will need to remove the statevector part of the code.
 
 ```python
 import numpy as np
@@ -230,7 +230,7 @@ plt.show()
 
 You should see a very nice histogram showing the shot distribution and the overwhelming selection of the target state.
 
-This `aer_simulator` is **perfect**, it does not include any random errors in the qubits when in reality quantum computers are noisy. To see the effect of real hardware we can import and use a `fake backend`.  IBM very carefully measures all the error rates of their computers, and users can import their properties to run noisy simulations that mirror results of running on real hardware.  To do this we need to import a few new things.
+This `aer_simulator` is **perfect**, it does not include any random errors in the qubits when in reality quantum computers are noisy. To see the effect of real hardware, we can import and use a `fake backend`.  IBM very carefully measures all the error rates of their computers, and users can import their properties to run noisy simulations that mirror the results of running on real hardware.  To do this, we need to import a few new things.
 
 ```python
 import numpy as np
@@ -277,11 +277,11 @@ qc.measure_all()
 fake_backend = FakeManilaV2()       
 sim_backend = AerSimulator.from_backend(fake_backend)
 
-# When using real hardware, the circuit must be converted into the universal
+# When using real hardware, the circuit must be converted into a universal circuit
 # gate set of the specific computer.  We are going to talk more about this later
 tqc = transpile(qc, sim_backend, optimization_level=1)
 
-# To see the difference between the transpiled circut
+# To see the difference between the transpiled circuit
 # and your circuit un-comment the following.
 # The transpiled circuit will be MUCH LONGER!!
 #fig = tqc.draw("mpl")
@@ -325,6 +325,4 @@ For each of the following, produce **Full Circuit Diagram** and **Histogram**.  
 
 1. Change your Grover Oracle so that it selects out the state $|100\rangle$.
 2. Change your Grover Oracle so that it selects out two states $|101\rangle$ and $|110\rangle$
-3. Change your Grover Oracle so that it selects out any states where exactly two qubits are $|1\rangle$, specifically this would be the states: $|110\rangle$, $|101\rangle$, $|011\rangle$
-
-
+3. Change your Grover Oracle so that it selects out any states where exactly two qubits are $|1\rangle$, specifically, this would be the states: $|110\rangle$, $|101\rangle$, $|011\rangle$
