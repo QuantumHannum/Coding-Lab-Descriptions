@@ -1,6 +1,6 @@
 # Part 1: Basic Curcuit Building
 ---
-##Activity 1: Basic Circuits in Qiskit
+## Activity 1: Basic Circuits in Qiskit
 
 Before we move on to Grover’s Algorithm, we need to be fluent in circuit construction, simulation, and visualization. This lab builds that technical foundation.
 
@@ -10,8 +10,8 @@ Before we move on to Grover’s Algorithm, we need to be fluent in circuit const
 3. Understand entanglement through controlled operations.
 4. Connect statevectors to measurement probabilities.
 5. Distinguish between:
-  * Statevector simulation (ideal amplitudes)
-  * Shot-based simulation (measurement statistics)
+   * Statevector simulation (ideal amplitudes)
+   * Shot-based simulation (measurement statistics)
 
 ### Technical Goals
 1. Initialize a `QuantumCircuit` with specified numbers of qubits and classical bits
@@ -20,12 +20,12 @@ Before we move on to Grover’s Algorithm, we need to be fluent in circuit const
 4. Add measurements
 5. Draw circuits using matplotlib
 6. Run circuits using
-  * Statevector simulator
-  * Shot-based Aer simulator
+   * Statevector simulator
+   * Shot-based Aer simulator
 7. Extract
-  * Statevectors
-  * Measurement counts
-  * Probability distributions
+   * Statevectors
+   * Measurement counts
+   * Probability distributions
 8. Produce histograms of results.
 ---
 To initialize a quantum circuit in Qiskit, we first import the circuit construct from Qiskit, then initialize the number of qubits and classical outputs we need.
