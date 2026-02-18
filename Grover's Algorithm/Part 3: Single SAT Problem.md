@@ -54,4 +54,5 @@ Clause Num.| Statement | Logical Form |
 |7| If **D** is up, then **E** must be up. | $\(\lnot D \lor E\)$ |
 |8| If **D** is up, then **E** must be down. | $\(\lnot D \lor \lnot E\)$ |
 
+You should talk a few minutes and look at the table, and make sure you are clear about why the statement can be represented by the logical form.  This is going to be a key step later.
 
