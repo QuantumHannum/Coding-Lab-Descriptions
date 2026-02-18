@@ -4,7 +4,7 @@
 
 Before we move on to Grover’s Algorithm, we need to be fluent in circuit construction, simulation, and visualization. This lab builds that technical foundation.
 
-###Conceptual Goals
+### Conceptual Goals
 1. Understand how quantum circuits are represented programmatically in Qiskit.
 2. Interpret single-qubit gates geometrically (Bloch sphere intuition).
 3. Understand entanglement through controlled operations.
