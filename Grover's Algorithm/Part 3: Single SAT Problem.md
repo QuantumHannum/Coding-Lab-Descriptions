@@ -1,5 +1,5 @@
 # Part 3: Single SAT Problem
-When studying the basic quantum algorithms (Deutsch-Jozsa, Simon, Grover, etc) they all start to look a bit contrived.  They all make use of oracles, but to generate the oracle you need to "know the answer" already.  In the case of Deutsch-Jozsa - is the function constant or balanced, with Simon's - you need to know the secret key, and as we have seen with Grover's you need to know the state you are looking for, and then find it.  Its time to look at an example of Grover's algorithm where we use an oracle to confirm (or discover) a solution we don't know before we start the problem.
+When studying the basic quantum algorithms (Deutsch-Jozsa, Simon, Grover, etc), they all start to look a bit contrived.  They all make use of oracles, but to generate the oracle, you need to "know the answer" already.  In the case of Deutsch-Jozsa, is the function constant or balanced? With Simon's, you need to know the secret key, and as we have seen with Grover's, you need to know the state you are looking for, and then find it.  It's time to look at an example of Grover's algorithm, where we use an oracle to confirm (or discover) a solution we don't know before we start the problem.
 
 ---
 ## Activity 3: Boolean Satisfiability Problems with Grover's
@@ -29,7 +29,7 @@ $$
 5. Predict how the number of satisfying solutions M of a SAT problem affects the number of necessary Grover iterations and the final measurement distribution.
 
 ### Technical/Coding Goals
-1. Represent Boolean variable using qubits.
+1. Represent a Boolean variable using qubits.
 2. Encode logical operations using quantum gates:
      * NOT via `X`
      * AND via `CCX`
@@ -38,7 +38,7 @@ $$
      * Computes the SAT condition
      * Applies a phase flit to satisfying assignments
      * Uncomputes ancilla qubits
-4. Run shot-based simulations with noise-less, and noisy backends to observe amplification.
+4. Run shot-based simulations with noiseless and noisy backends to observe amplification.
 
 ---
 Problem Statement:
@@ -54,5 +54,20 @@ Clause Num.| Statement | Logical Form |
 |7| If **D** is up, then **E** must be up. | $\(\lnot D \lor E\)$ |
 |8| If **D** is up, then **E** must be down. | $\(\lnot D \lor \lnot E\)$ |
 
-You should talk a few minutes and look at the table, and make sure you are clear about why the statement can be represented by the logical form.  This is going to be a key step later.
+Take a few minutes and look at the table, and make sure you are clear about why the statement can be represented by the logical form.  This is going to be a key step later.
 
+---
+The claim is that Grover's algorithm can be used to devise all the possible positions of the switches.  If Gorver's is just a three-step process:
+  1. Perform a Hadamard Transform on all qubits to generate a uniform superposition of all possible states.
+  2. Apply the Grover Oracle to tag valid solutions with a phase
+  3. Apply the diffuser to amplify the measurement probabilities of the valid states
+
+Then the only part of the algorithm that every needs to change is step 2: Grover Phase Oracle.  All we have to do is translate the logical conditions of the problem into an oracle of the form:
+```math
+|x\rangle \rightarrow (-1)^{f(x)}|x\rangle
+```
+with $f(x)$ encodes all the logical conditions.
+
+We need to first determine how many qubits we need for the problem.  We clearly need one computational qubit for each variable (**A**-**E**).  We also need one ancilla qubit for each logical statement to record if that statement has been satisfied.  We then need one more ancilla bit to record if **ALL** logical statements have been sastified.  For this lock problem that means we need **14!** qubits.  
+
+Lets look at the first logical statement $(**A** \lor **B**).  
