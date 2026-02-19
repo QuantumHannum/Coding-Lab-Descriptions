@@ -90,5 +90,19 @@ We could stop now - but we won't.  We have discussed that Quantum gates must be 
 
 <img width="2369" height="3815.72" alt="Screenshot 2026-02-18 at 9 23 08 PM" src="https://github.com/user-attachments/assets/67124bba-7230-4dc2-8689-cc215fd980c5" />
 
+---
+Ok, your turn.  Take the Oracle described above and code it in Qiskit.  You should define a function for the Oracle and Diffuser:
 
+```python
+def Oracle():
+     #define all the gates for the oracle
+
+def Diffuser():
+    #define all the gates for the diffuser
+
+
+```
+
+Use 
+```
 
