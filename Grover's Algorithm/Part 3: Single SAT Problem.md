@@ -80,5 +80,8 @@ Moving on to the second logical clause the only difference is that **B** is $\ln
 
 <img width="122.54" height="300" alt="Screenshot 2026-02-18 at 8 45 49 PM" src="https://github.com/user-attachments/assets/7bc88417-ab50-4a5e-9146-7514e198f25e" />
 
+We can finish out the rest of the logical clauses to produce the circuit below:
+
+<img width="2369" height="2628" alt="grover_circuit" src="https://github.com/user-attachments/assets/d93360ab-42a4-42f3-9583-b00cf2d23e85" />
 
 
