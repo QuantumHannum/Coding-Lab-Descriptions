@@ -74,6 +74,6 @@ We also need an encoding for each qubit.  If computational qubit $|q_i\rangle = 
 
 Now lets look at the first logical statement $(**A** \lor **B**)$.  We need to check if **A** = {down, up}, i.e. $|q_A\rangle = |0\rangle$ or $|q_A\rangle = |1\rangle$, and specifically statement 1 is looking for when **A** is up. If $|q_A\rangle = |1\rangle$, then we need to record the first statement as satisfied.  That is exactly what a `CX` does.  We can make a similar argument for switch **B**.  Because we need to consider both of these conditions **at the same time**, we need to use a `CCX`.  We then need to record the outcome of this logical check in the first ancilla bit.  That starts our Grover Oracle as:
 
-<img width="105" height="460" alt="Screenshot 2026-02-18 at 8 36 08 PM" src="https://github.com/user-attachments/assets/7ead6081-0050-439d-a433-4aaf4faec04c" />
+<img width="22" height="100" alt="Screenshot 2026-02-18 at 8 36 08 PM" src="https://github.com/user-attachments/assets/7ead6081-0050-439d-a433-4aaf4faec04c" />
 
 
