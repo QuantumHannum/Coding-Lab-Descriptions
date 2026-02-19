@@ -86,22 +86,56 @@ We can finish out the rest of the logical clauses to produce the circuit below. 
 
 The Oracle needs to flip the phase of all states that fit the conditions.  We now have to check that **ALL** conditions have been met with another mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase.  You can see these last two steps in the above circuit.
 
-We could stop now - but we won't.  As it stands, we just stored a values $\{0,1\}$ in all the ancilla.  We should clean these values up and make sure they all get reset back to their initial values.  This process is called **UNCOMPUTING** the ancilla.  To reset all these values we just have to reverse the process we used to set the ancilla, i.e. we do all the same gates we did, but in reverse order.  This makes the full Oracle very long but it is essential.  The final Grover Oracle, including all the uncompute steps is shown below.
+We could stop now - but we won't.  As it stands, we just stored a values $\{0,1\}$ in all the ancilla.  We should clean these values up and make sure they all get reset back to their initial values.  This process is called **UNCOMPUTING** the ancilla.  To reset all these values, we just have to reverse the process we used to set the ancilla, i.e., we do all the same gates we did, but in reverse order.  This makes the full Oracle very long, but it is essential.  The final Grover Oracle, including all the uncompute steps, is shown below.
 
 <img width="2369" height="3815.72" alt="Screenshot 2026-02-18 at 9 23 08 PM" src="https://github.com/user-attachments/assets/67124bba-7230-4dc2-8689-cc215fd980c5" />
 
 ---
-Ok, your turn.  Take the Oracle described above and code it in Qiskit.  You should define a function for the Oracle and Diffuser:
+Ok, your turn.  Using the Oracle described above, code it in Qiskit.  You should define a function for the Oracle and Diffuser rather than hard-code them to make it easier to reuse them (*hint, hint*).  You can effectively define one custom gate `oracle_gate()` and `diffuser_gate()`, which contain all the smaller gates internally.
 
 ```python
-def Oracle():
-     #define all the gates for the oracle
+def oracle_gate(n_comp: int, n_anc: int):
+    n_total = n_comp + n_anc
+    qc_oracle = QuantumCircuit(n_total)
+    # ... build oracle using qubits:
+    # comp = range(n_comp)
+    # anc  = range(n_comp, n_total)
 
-def Diffuser():
-    #define all the gates for the diffuser
 
+
+    return qc_oracle.to_gate(label="Oracle")
+
+def diffuser_gate(n_comp: int):
+    qc_diff = QuantumCircuit(n_comp)
+    # ... build diffuser using only computational qubits
+
+
+
+    return qc_diff.to_gate(label="Diffuser")
+
+```
+Here is how you use these custom gates:
+```python
+n_comp = 5
+n_anc  = 9
+n_total = n_comp + n_anc
+
+qc = QuantumCircuit(n_total)
+
+comp = list(range(n_comp))
+anc  = list(range(n_comp, n_total))
+
+O = oracle_gate(n_comp, n_anc)
+D = diffuser_gate(n_comp)
+
+# Perform Hadamard Transform
+qc.h(comp)
+
+# Add oracle and diffuser to circuit
+qc.append(O, comp + anc)   # oracle needs all qubits it was built for
+qc.append(D, comp)         # diffuser only on computational register
 
 ```
 
-Use `backend = Aer.get_backend("aer_simulator")` to produce a histogram of the results.
+To make the outcomes more realistic, you should use a FakeBackend to produce a histogram of the results.  Make sure to choose a FakeBackend that has enough qubits (i.e., Manilla is too small). 
 
