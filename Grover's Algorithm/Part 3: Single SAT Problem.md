@@ -57,7 +57,7 @@ Clause Num.| Statement | Logical Form |
 Take a few minutes and look at the table, and make sure you are clear about why the statement can be represented by the logical form.  This is going to be a key step later.
 
 ---
-The claim is that Grover's algorithm can be used to devise all the possible positions of the switches.  If Gorver's is just a three-step process:
+The claim is that Grover's algorithm can be used to devise all the possible correct positions of the switches.  If Gorver's is just a three-step process:
   1. Perform a Hadamard Transform on all qubits to generate a uniform superposition of all possible states.
   2. Apply the Grover Oracle to tag valid solutions with a phase
   3. Apply the diffuser to amplify the measurement probabilities of the valid states
@@ -68,6 +68,9 @@ Then the only part of the algorithm that every needs to change is step 2: Grover
 ```
 with $f(x)$ encodes all the logical conditions.
 
-We need to first determine how many qubits we need for the problem.  We clearly need one computational qubit for each variable (**A**-**E**).  We also need one ancilla qubit for each logical statement to record if that statement has been satisfied.  We then need one more ancilla bit to record if **ALL** logical statements have been sastified.  For this lock problem that means we need **14!** qubits.  
+We need to first determine how many qubits we need for the problem.  We need one computational qubit for each variable (**A**-**E**).  We also need one ancilla qubit for each logical statement to record if that statement has been satisfied.  We then need one more ancilla bit to record if **ALL** logical statements have been sastified.  For this lock problem that means we need **14!** qubits.  
 
-Lets look at the first logical statement $(**A** \lor **B**).  
+We also need an encoding for each qubit.  If computational qubit $|q_i\rangle = |0\rangle$ then lest assign that to mean the switch is in the **down** position.  If $|q_i\rangle = |1\rangle$, that switch is in the **up** position.  
+
+Now lets look at the first logical statement $(**A** \lor **B**)$.  We need to check if **A** = {down, up}, i.e. $|q_A\rangle = |0\rangle$ or $|q_A\rangle = |1\rangle$, and specifically statement 1 is looking for when **A** is up. If $|q_A\rangle = |1\rangle$, then we need to record the first statement as satisfied.  That is exactly what a `CX` does.  We can make a similar argument for switch **B**.  Because we need to consider both of these conditions **at the same time**, we need to use a `CCX`.  We then need to record the outcome of this logical check in the first ancilla bit.  That starts our Grover Oracle as:
+<img width="529" height="2838" alt="grover_circuit" src="https://github.com/user-attachments/assets/7fb3a12f-456a-42cc-96be-9f2912ab60b2" />
