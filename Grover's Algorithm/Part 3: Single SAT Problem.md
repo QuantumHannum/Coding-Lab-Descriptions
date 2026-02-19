@@ -86,7 +86,7 @@ We can finish out the rest of the logical clauses to produce the circuit below. 
 
 The Oracle needs to flip the phase of all states that fit the conditions.  We now have to check that **ALL** conditions have been met with another mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase.  You can see these last two steps in the above circuit.
 
-We could stop now - but we won't.  We have discussed that Quantum gates must be unitary - i.e., they must be reversible.  In order to guarentee that the Oracle is unitary, we must **UNCOMEPUTE** the ancilla. This requires us to use all the same logical steps, but in reverse.  This makes the full Oracle very long, but shown in full below.
+We could stop now - but we won't.  As it stands, we just stored a values $\{0,1\}$ in all the ancilla.  We should clean these values up and make sure they all get reset back to their initial values.  This process is called **UNCOMPUTING** the ancilla.  To reset all these values we just have to reverse the process we used to set the ancilla, i.e. we do all the same gates we did, but in reverse order.  This makes the full Oracle very long but it is essential.  The final Grover Oracle, including all the uncompute steps is shown below.
 
 <img width="2369" height="3815.72" alt="Screenshot 2026-02-18 at 9 23 08 PM" src="https://github.com/user-attachments/assets/67124bba-7230-4dc2-8689-cc215fd980c5" />
 
