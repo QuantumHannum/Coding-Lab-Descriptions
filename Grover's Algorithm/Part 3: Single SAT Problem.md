@@ -80,8 +80,15 @@ Moving on to the second logical clause the only difference is that **B** is $\ln
 
 <img width="122.54" height="300" alt="Screenshot 2026-02-18 at 8 45 49 PM" src="https://github.com/user-attachments/assets/7bc88417-ab50-4a5e-9146-7514e198f25e" />
 
-We can finish out the rest of the logical clauses to produce the circuit below:
+We can finish out the rest of the logical clauses to produce the circuit below.  Barriers have been placed in the circuit to isolate each clause.
 
-<img width="2369" height="2628" alt="grover_circuit" src="https://github.com/user-attachments/assets/d93360ab-42a4-42f3-9583-b00cf2d23e85" />
+<img width="2369" height="2628" alt="grover_circuit" src="https://github.com/user-attachments/assets/f429bc0d-3f39-4dfe-a02c-99d059787e46" />
+
+The Oracle needs to flip the phase of all states that fit the conditions.  We now have to check that **ALL** conditions have been met with another mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase.  You can see these last two steps in the above circuit.
+
+We could stop now - but we won't.  We have discussed that Quantum gates must be unitary - i.e., they must be reversible.  In order to guarentee that the Oracle is unitary, we must **UNCOMEPUTE** the ancilla. This requires us to use all the same logical steps, but in reverse.  This makes the full Oracle very long, but shown in full below.
+
+<img width="524" height="844" alt="Screenshot 2026-02-18 at 9 23 08 PM" src="https://github.com/user-attachments/assets/67124bba-7230-4dc2-8689-cc215fd980c5" />
+
 
 
