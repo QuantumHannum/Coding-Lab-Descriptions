@@ -103,6 +103,5 @@ def Diffuser():
 
 ```
 
-Use 
-```
+Use `backend = Aer.get_backend("aer_simulator")` to produce a histogram of the results.
 
