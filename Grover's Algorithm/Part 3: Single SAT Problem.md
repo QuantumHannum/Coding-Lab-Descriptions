@@ -129,6 +129,9 @@ anc  = list(range(n_comp, n_total))
 O = oracle_gate(n_comp, n_anc)
 D = diffuser_gate(n_comp)
 
+backend = Aer.get_backend("aer_simulator")
+shots = 4000
+
 # Perform Hadamard Transform
 qc.h(comp)
 
@@ -136,6 +139,17 @@ qc.h(comp)
 qc.append(O, comp + anc)   # oracle needs all qubits it was built for
 qc.append(D, comp)         # diffuser only on computational register
 
+# measure computational qubits only
+qc.measure(comp, list(range(n_comp)))
+
+# transpile for Aer (unrolls Oracle/Diffuser gates)
+qc_run = transpile(qc, backend, optimization_level=0)
+
+result = backend.run(qc_run, shots=shots).result()
+counts = result.get_counts()
+
+fig = plot_histogram(counts)
+plt.show()
 ```
 
 
