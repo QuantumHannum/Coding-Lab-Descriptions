@@ -162,7 +162,7 @@ So one more code addition.  Wrap your circuit construction with a for loop that,
 
 For confirmation, you should discover that there are two correct switch positions that open the door 
 Histogram Result|Quantum State  | Lock Positions |
-|:-------- |:----------|:-----------------------|
+|:-------- |:----------:|:-----------------------|
 |00101| $|00101\rangle$ | E = down, D = down, C = up, B = down, A = up |
 |10101| $|10101\rangle$ | E = up,   D = down, C = up, B = down, A = up |
 
