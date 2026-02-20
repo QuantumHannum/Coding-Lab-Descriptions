@@ -82,7 +82,7 @@ Moving on to the second logical clause the only difference is that **B** is $\ln
 
 We can finish out the rest of the logical clauses to produce the circuit below.  Barriers have been placed in the circuit to isolate each clause.
 
-<img width="545.8" height="600" alt="grover_circuit" src="https://github.com/user-attachments/assets/2acabd42-bd4e-4d3d-b2ce-42d00a240e11" />
+<img width="545.8" height="600" alt="grover_circuit" src="https://github.com/user-attachments/assets/dab81f6a-887e-4217-9b8b-e507ea3b9fee" />
 
 The Oracle needs to flip the phase of all states that fit the logical conditions, but we have constructed our oracle off **FAILURES**.  We now have to check that **ALL** conditions have failed with another anti-mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase.  You can see these last two steps in the above circuit.
 
