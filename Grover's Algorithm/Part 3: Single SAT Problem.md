@@ -155,14 +155,14 @@ If you are successful, your histogram should look like this:
 
 <img width="1190" height="712" alt="1iteration" src="https://github.com/user-attachments/assets/421fde05-550f-48d2-8c54-aa1a9960b725" />
 
-This result doesn't seem have clealry extracted a solution to the problem.  As it turns out, when there are so many basis states ($2^5=32 in this case), the amplitude amplication done by the Diffuser doesn't have much effect because the narmilization probabilie has to be distributed over so many states.  This leads to the final part of Grover's.  You must do iterations of the oracle and diffuser until a maximum probability of selection is reached.
+This result doesn't seem to have extracted a solution to the problem! As it turns out, when there are so many basis states ($2^5=32 in this case), the amplitude amplification done by the Diffuser doesn't have much effect because the normilization probabilie has to be distributed over so many states.  This leads to the final part of Grover's.  You must do iterations of the oracle and diffuser until a maximum probability of selection is reached.
 
 So one more code addition.  Wrap your circuit construction with a for loop that on each loop adds one more oracle+diffuser pair to the circut.  At the conclusion of each for loop iteration, output a histogram.  Run 1, 2, 3,...,6 iterations, and based on your histogram, which iteration provides the best results?
 
-For confirmation, you should discover that there are two correct switch position that open the door $\{00101, 10101\}$, remember that the indexing for this problem is $|EDCBA\rangle$
+For confirmation, you should discover that there are two correct switch positions that open the door $\{00101, 10101\}$. Remember that the indexing for this problem is $|EDCBA\rangle$
 
-Theortically, the optimal number of oracle + diffuser iteration is given by:
+Theoretically, the optimal number of oracle + diffuser iterations is given by:
 ```math
 I_{optimal}=\frac{\pi}{4}\sqrt{\frac{N}{M}}
 ```
-Where N is the total number of basis states $(2^5=32)$ and M is the number of selected states.  For this problem $I_{optimal} \approx 3.14$ - which means somewhere between 3 or 4 iterations shold be optimal.
+Where N is the total number of basis states $(2^5=32)$ and M is the number of selected states.  For this problem, $I_{optimal} \approx 3.14$ - which means somewhere between 3 or 4 iterations shold be optimal.
