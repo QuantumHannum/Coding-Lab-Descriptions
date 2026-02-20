@@ -72,17 +72,21 @@ We need to first determine how many qubits we need for the problem.  We need one
 
 We also need an encoding for each qubit.  If computational qubit $|q_i\rangle = |0\rangle$ then lest assign that to mean the switch is in the **down** position.  If $|q_i\rangle = |1\rangle$, that switch is in the **up** position.  
 
-Now lets look at the first logical statement $(A \lor B)$.  We need to check if **A** = {down, up}, i.e. $|A\rangle = |0\rangle$ or $|A\rangle = |1\rangle$, and specifically statement 1 is looking for when **A** is up. If $|A\rangle = |1\rangle$, then we need to record the first statement as satisfied.  That is exactly what a `CX` does.  We can make a similar argument for switch **B**.  Because we need to consider both of these conditions **at the same time**, we need to use a `CCX`.  We then need to record the outcome of this logical check in the first ancilla bit.  That starts our Grover Oracle as:
+Now lets look at the first logical statement $\(A \lor B\)$.  We need to check if **A** = {down, up}, i.e. $|A\rangle = |0\rangle$ or $|A\rangle = |1\rangle$, and specifically statement 1 is looking for when **A** is up. If $|A\rangle = |1\rangle$, then we need to record the first statement as satisfied.  Alternatively, we can record when the first statement **FAILS**.  So that would be when $|A\rangle = |0\rangle$. That is exactly what an anticontrolled `CX` does. As mentioned before, Qiskit doesn't have a native anti-control, but to achieve the same goal, we just have to wrap a regular control with `X` gates.  We can make a similar argument for switch **B**.  Because we need to consider both of these conditions **at the same time**, we need to use an Anti- `CCX`.  We then need to record the outcome of this logical check in the first ancilla bit.  That starts our Grover Oracle as:
 
-<img width="68.48" height="300" alt="Screenshot 2026-02-18 at 8 36 08 PM" src="https://github.com/user-attachments/assets/7ead6081-0050-439d-a433-4aaf4faec04c" />
+<img width="97" height="300" alt="grover_circuit" src="https://github.com/user-attachments/assets/b83dd5c0-02d1-49d7-a427-c083db720309" />
 
-Moving on to the second logical clause the only difference is that **B** is $\lnotB$.  that means we are interested in the case where $|B\rangle=|0\rangle$.  That requires an `anti-control` on qubit B.  As mentioned before, Qiskit doesn't have a native anti-control, but to achieve the same goal, we just have to wrap a regular control with `X` gates.  After the second clause is added, the Grover Oracle is:
+Moving on to the second logical clause the only difference is that **B** is $\lnotB$.  that means the success criteria is $|B\rangle=|0\rangle$, and the failure is $|B\rangle=|1\rangle$.  That requires an `CNOT` on qubit B to recored the failure.   After the second clause is added, the Grover Oracle is:
 
-<img width="122.54" height="300" alt="Screenshot 2026-02-18 at 8 45 49 PM" src="https://github.com/user-attachments/assets/7bc88417-ab50-4a5e-9146-7514e198f25e" />
+<img width="162.4" height="300" alt="grover_circuit" src="https://github.com/user-attachments/assets/b21bac00-b63d-4812-a1ef-f4c4b5cb2666" />
 
 We can finish out the rest of the logical clauses to produce the circuit below.  Barriers have been placed in the circuit to isolate each clause.
 
-<img width="2369" height="2628" alt="grover_circuit" src="https://github.com/user-attachments/assets/f429bc0d-3f39-4dfe-a02c-99d059787e46" />
+<img width="1561" height="1716" alt="grover_circuit" src="https://github.com/user-attachments/assets/975d2616-b294-4d3c-9ea1-cc7f7d2f0919" />
+
+
+
+
 
 The Oracle needs to flip the phase of all states that fit the conditions.  We now have to check that **ALL** conditions have been met with another mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase.  You can see these last two steps in the above circuit.
 
