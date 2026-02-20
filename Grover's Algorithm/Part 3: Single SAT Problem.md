@@ -84,7 +84,7 @@ We can finish out the rest of the logical clauses to produce the circuit below. 
 
 <img width="545.8" height="600" alt="grover_circuit" src="https://github.com/user-attachments/assets/dab81f6a-887e-4217-9b8b-e507ea3b9fee" />
 
-The Oracle needs to flip the phase of all states that fit the logical conditions, but we have constructed our oracle off **FAILURES**.  We now have to check that **ALL** conditions have failed with another anti-mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase.  You can see these last two steps in the above circuit.
+The Oracle needs to flip the phase of all states that fit the logical conditions, but we have constructed our oracle off **FAILURES**.  We now have to check which conditions **haven't** failed (i.e. in the 0 state) with another anti-mult-control X gate on all of the ancilla, then add a `Z` gate to filp the phase of the states that haven't failed our logical tests.  You can see these last two steps in the above circuit.
 
 We could stop now - but we won't.  As it stands, we just stored a values $\{0,1\}$ in all the ancilla.  We should clean these values up and make sure they all get reset back to their initial values.  This process is called **UNCOMPUTING** the ancilla.  To reset all these values, we just have to reverse the process we used to set the ancilla, i.e., we do all the same gates we did, but in reverse order.  This makes the full Oracle very long, but it is essential.  The final Grover Oracle, including all the uncompute steps, is shown below.
 
@@ -138,5 +138,5 @@ qc.append(D, comp)         # diffuser only on computational register
 
 ```
 
-To make the outcomes more realistic, you should use a FakeBackend to produce a histogram of the results.  Make sure to choose a FakeBackend that has enough qubits (i.e., Manilla is too small). 
+
 
