@@ -72,7 +72,8 @@ We need to first determine how many qubits we need for the problem.  We need one
 
 We also need an encoding for each qubit.  If computational qubit $|q_i\rangle = |0\rangle$ then lest assign that to mean the switch is in the **down** position.  If $|q_i\rangle = |1\rangle$, that switch is in the **up** position.  
 
-Now lets look at the first logical statement $\(A \lor B\)$.  We need to check if **A** = {down, up}, i.e. $|A\rangle = |0\rangle$ or $|A\rangle = |1\rangle$, and specifically statement 1 is looking for when **A** is up. If $|A\rangle = |1\rangle$, then we need to record the first statement as satisfied.  Alternatively, we can record when the first statement **FAILS**.  So that would be when $|A\rangle = |0\rangle$. That is exactly what an anticontrolled `CX` does. As mentioned before, Qiskit doesn't have a native anti-control, but to achieve the same goal, we just have to wrap a regular control with `X` gates.  We can make a similar argument for switch **B**.  Because we need to consider both of these conditions **at the same time**, we need to use an Anti- `CCX`.  We then need to record the outcome of this logical check in the first ancilla bit.  That starts our Grover Oracle as:
+Now let's look at the first logical statement $\(A \lor B\)$.  We need to check if 
+**A** = {down, up}, i.e. $|A\rangle = |0\rangle$ or $|A\rangle = |1\rangle$, and specifically statement 1 is looking for when **A** is up. If $|A\rangle = |1\rangle$, then we need to record the first statement as satisfied.  Alternatively, we can record when the first statement **FAILS**.  So that would be when $|A\rangle = |0\rangle$. That is exactly what an anti-controlled `CX` does. As mentioned before, Qiskit doesn't have a native anti-control, but to achieve the same goal, we just have to wrap a regular control with `X` gates.  We can make a similar argument for switch **B**.  Because we need to consider both of these conditions **at the same time**, we need to use an Anti- `CCX`.  We then need to record the outcome of this logical check in the first ancilla bit.  That starts our Grover Oracle as:
 
 <img width="97" height="300" alt="grover_circuit" src="https://github.com/user-attachments/assets/b83dd5c0-02d1-49d7-a427-c083db720309" />
 
@@ -155,9 +156,9 @@ If you are successful, your histogram should look like this:
 
 <img width="1190" height="712" alt="1iteration" src="https://github.com/user-attachments/assets/421fde05-550f-48d2-8c54-aa1a9960b725" />
 
-This result doesn't seem to have extracted a solution to the problem! As it turns out, when there are so many basis states ($2^5=32 in this case), the amplitude amplification done by the Diffuser doesn't have much effect because the normilization probabilie has to be distributed over so many states.  This leads to the final part of Grover's.  You must do iterations of the oracle and diffuser until a maximum probability of selection is reached.
+This result doesn't seem to have extracted a solution to the problem! As it turns out, when there are so many basis states ($ 2^5=32$ in this case), the amplitude amplification done by the Diffuser doesn't have much effect because the normalization probability has to be distributed over so many states.  This leads to the final part of Grover's.  You must do iterations of the oracle and diffuser until a maximum probability of selection is reached.
 
-So one more code addition.  Wrap your circuit construction with a for loop that on each loop adds one more oracle+diffuser pair to the circut.  At the conclusion of each for loop iteration, output a histogram.  Run 1, 2, 3,...,6 iterations, and based on your histogram, which iteration provides the best results?
+So one more code addition.  Wrap your circuit construction with a for loop that, on each loop, adds one more oracle+diffuser pair to the circuit.  At the conclusion of each for loop iteration, output a histogram.  Run 1, 2, 3,...,6 iterations, and based on your histogram, which iteration provides the best results?
 
 For confirmation, you should discover that there are two correct switch positions that open the door $\{00101, 10101\}$. Remember that the indexing for this problem is $|EDCBA\rangle$
 
@@ -165,4 +166,4 @@ Theoretically, the optimal number of oracle + diffuser iterations is given by:
 ```math
 I_{optimal}=\frac{\pi}{4}\sqrt{\frac{N}{M}}
 ```
-Where N is the total number of basis states $(2^5=32)$ and M is the number of selected states.  For this problem, $I_{optimal} \approx 3.14$ - which means somewhere between 3 or 4 iterations shold be optimal.
+Where N is the total number of basis states $(2^5=32)$ and M is the number of selected states.  For this problem, $I_{optimal} \approx 3.14$ - which means somewhere between 3 and 4 iterations should be optimal.
