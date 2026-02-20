@@ -160,7 +160,11 @@ This result doesn't seem to have extracted a solution to the problem! As it turn
 
 So one more code addition.  Wrap your circuit construction with a for loop that, on each loop, adds one more oracle+diffuser pair to the circuit.  At the conclusion of each for loop iteration, output a histogram.  Run 1, 2, 3,...,6 iterations, and based on your histogram, which iteration provides the best results?
 
-For confirmation, you should discover that there are two correct switch positions that open the door $\{00101, 10101\}$. Remember that the indexing for this problem is $|EDCBA\rangle$
+For confirmation, you should discover that there are two correct switch positions that open the door 
+Histogram Result|Quantum State  | Lock Positions |
+|:-------- |:----------|:-----------------------|
+|00101| $|00101\rangle$ | E = down, D = down, C = up, B = down, A = up |
+|10101| $|10101\rangle$ | E = up,   D = down, C = up, B = down, A = up |
 
 Theoretically, the optimal number of oracle + diffuser iterations is given by:
 ```math
