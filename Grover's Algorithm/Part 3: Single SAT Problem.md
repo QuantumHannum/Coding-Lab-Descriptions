@@ -142,7 +142,7 @@ qc.append(D, comp)         # diffuser only on computational register
 # measure computational qubits only
 qc.measure(comp, list(range(n_comp)))
 
-# transpile for Aer (unrolls Oracle/Diffuser gates)
+# because we made custom gates we need to transpile them for Aer
 qc_run = transpile(qc, backend, optimization_level=0)
 
 result = backend.run(qc_run, shots=shots).result()
@@ -151,6 +151,8 @@ counts = result.get_counts()
 fig = plot_histogram(counts)
 plt.show()
 ```
+If you are successful, your histogram should look like this:
 
+<img width="1190" height="712" alt="1iteration" src="https://github.com/user-attachments/assets/421fde05-550f-48d2-8c54-aa1a9960b725" />
 
 
