@@ -60,4 +60,34 @@ a b c 0
 d e f 0
 ...
 ```
-It must have the header shown "p cnf <num_vars> <num_clauses>"
+It must have the header shown "p cnf <num_vars> <num_clauses>" followed by a list of logical clauses with a trailing 0 at the end of each line.
+
+Complete the following code to generate DIMACS CNF files that make use of your previous `PreCalc` output as input **all_possible**.
+```python
+import random
+
+def generate_dimacs_cnf(m, all_possible, num_vars, file_path):
+    """
+    Generate a random 3-SAT instance with m clauses.
+    Write it to a DIMACS CNF file at file_path.
+    """
+
+    chosen = random.sample(all_possible, m)
+
+    with open(file_path, "w") as f:
+        f.write(f"p cnf {num_vars} {m}\n")
+
+        for clause in chosen:
+            line = " ".join(str(lit) for lit in clause)
+            f.write(line + " 0\n")
+```
+#### Checkpoint
+After you complete the two functions above, run:
+```python
+clauses = PreCalc(3, 6)
+generate_dimacs_cnf(10, clauses, 6, "test.cnf")
+```
+Open `test.cnf` and verify:
+  * Heder matches: **p cnf 6 10**
+  * Each line ahs exactly 3 integers + a zero
+  * No variable repeats within a clause
