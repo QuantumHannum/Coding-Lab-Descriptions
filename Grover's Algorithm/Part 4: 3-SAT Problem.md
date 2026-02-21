@@ -268,12 +268,12 @@ import matplotlib.pyplot as plt
 # ------------------------------------------------
 # USER PARAMETERS
 # ------------------------------------------------
-NUM_VARS = 9          # <-- change this (e.g., 11, 12)
+NUM_VARS = 9          # <-- for testing lower this number - NEVER go above 9
 TRIALS_PER_M = 20     # <-- change this
 MAX_RETRIES = 10      # Grover retry loop cap
 
 M_MIN = 1
-M_MAX = 80            # clauses swept (inclusive)
+M_MAX = 80            # clauses swept (inclusive) For testing lower this number
 
 WORKERS = None        # None => cpu_count() - 1;
 
@@ -327,13 +327,15 @@ def generate_dimacs_cnf(m: int, all_possible, num_vars: int, file_path: Path):
 
 
 
+
 # ================================================================
 #    Drop in your find_sat () code here
 # ================================================================
 def find_sat(cnf_path: Path, numSols: int, num_vars: int):
  
  
- 
+
+
  
 # ================================================================
 #    Drop in your find_success_prob () code here
@@ -351,8 +353,6 @@ def find_success_prob(m: int, full_set, num_vars: int, trials: int, max_retries:
 #    DON'T CHANGE ANYTHING ELSE PAST HERE
 # ================================================================
 # ================================================================
-
-
 
 def choose_worker_count(requested=None) -> int:
     total = cpu_count()
