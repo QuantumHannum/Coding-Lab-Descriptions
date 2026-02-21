@@ -173,3 +173,31 @@ Theoretically, the optimal number of oracle + diffuser iterations is given by:
 I_{optimal}=\frac{\pi}{4}\sqrt{\frac{N}{M}}
 ```
 Where N is the total number of basis states $(2^5=32)$ and M is the number of selected states.  For this problem, $I_{optimal} \approx 3.14$ - which means somewhere between 3 and 4 iterations should be optimal.
+
+---
+### Your Task for Activity 3
+
+Find all solutions to the Boolean Satisfiability Problem below using Grover's Algorithm.  Include all three of these in your final submission for this Lab.
+    1. Convert each plain text logical statement into a logical clause using `OR` statements.  Use the first letter of each person's name as the variable.
+    2. Produce a measurement histogram for the **optimal** number of Grover iterations.  The title of the histogram should include the number of iterations used.
+    3. Interpret the histogram and clearly state who can attend dinner together.
+
+#### A Prom Story
+It's the end of the school year, and everyone is trying to arrange dinner reservations before they go to Prom.  Alice, Bob, Clarice, Daniel, Elinor, and Finn all want to go to dinner together, but like any group of students, they have some personal conflicts.  
+
+|Num.|Logical Statement|
+|:--:|:----------------|
+|1|Alice insists that either she goes, or Finn goes with her.|
+|2|Alice also says: either Alice goes, or Finn does not go (Finn is not as fun as Alice, so Finn can't replace Alice)|
+|3|Elinor says: either Elinor goes, or Alice goes (Elinor doesn't want to go alone if Alice stays home)|
+|4|Elinor also says: either Elinor goes, or Alice does not go (she doesn't want Alice to go without her)
+|5|Clarice says: either Clarice goes, or Daniel goes|
+|6|Clarice also says: either Clarice goes or Daniel does not go|
+|7|Bob says: If Bob goes, then Clarice must go too|
+|8|Bob also says: If Bob goes, then Clarice must not go. (Bob and Clarice refuse to be at the same dinner)
+|9|Daniel says: if Daniel goes, Elinor must go|
+|10|Daniel also says: If Daniel goes, Elinor must not go. (Daniel and Elnor won't attend together)
+|11| Alice, being the leader of the group, also adds:If Alice goes, then at least one of Clarice or Elinor also goes too.|
+|12| Clarice also adds: If Daniel goes, then at least one of Alice or Elinor must go.
+
+Use the encoding 1 = "goes to dinner" and 0 = "does not go"
