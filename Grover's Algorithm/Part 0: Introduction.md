@@ -74,7 +74,7 @@ This lab can be performed in **Google Colab**, however the concluding activity h
 5. Install lab dependencies
    * In the command line type:
      ```bash
-     python -m pip install qiskit qiskit-aer qiskit-ibm-runtime matplotlib pylatexenc
+     pip install qiskit qiskit-algorithms qiskit-aer numpy matplotlib scikit-learn sympy pylatexenc psutil tqdm
      ```
    * Alternatively, you can download the `requirements.txt` file from this GitHub, place it in your VS Code project, then run in the command line:
      ```bash
