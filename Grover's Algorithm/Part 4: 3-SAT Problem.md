@@ -28,7 +28,7 @@ In this section, you will build the machinery that generates ensembles of random
 ``` 
 can be encoded more compactly as:
 ```math
-1 -2 \: 3
+1\quand  -2\quad 3
 ``` 
 where these numbers have a space between them.  To begin a 3-SAT simulation, we need to create all possible clauses composed of 3 literals, including negations, but excluding repeated variables and tautologies.  For example, a repeated variable error would look like $(1\or 1\lor \lnot 3)$ and a tautological error would be $(4 lor \lnot 4 \or 6)$.
 
