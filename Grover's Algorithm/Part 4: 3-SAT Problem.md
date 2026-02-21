@@ -94,7 +94,6 @@ Open `test.cnf` and verify:
   * all integers range between -6...6
   * No variable repeats within a clause
   * No clause contains a tautology.
-
 ---
 You generated random 3-SAT instances and saved them as DIMACS CNF files. In this part, we load the CNF file and let Qiskit build the Boolean expression and phase oracle automatically. The core function you’ll use is `find_sat(...)`: it (1) reads the CNF from disk, (2) converts it to a Boolean expression, (3) turns that into a PhaseOracleGate that marks satisfying assignments, (4) runs Grover with an “optimal” iteration count based on an assumed number of solutions, and (5) returns both the measured bitstring and the oracle depth (a useful diagnostic for “how complex” the oracle circuit is). This is the key bridge between “SAT instance as a text file” and “Grover running on a quantum circuit.”
 
@@ -136,4 +135,104 @@ def find_sat(cnf_path: Path, numSols: int, num_vars: int):
     result = grover.amplify(problem)
 
     return result.top_measurement, depth
+```
+---
+#### Checkpoint
+After you complete the two functions above, run:
+```python
+num_vars, clauses = read_dimacs("test.cnf")
+candidate, depth = find_sat("test.cnf", numSols=1, num_vars=num_vars)
+
+print("Candidate:", candidate)
+print("Depth:", depth)
+print("Satisfies?", assignment_satisfies(candidate, clauses))
+```
+  * If `Satisfied` is `True`, Govers found a satisfying assignment 
+  * If `False`, either the instance is UNSAT or teh assumed `numSol was wrong (we handle that next in Part).
+  * If `False` generate a new test.cnf and try again
+
+---
+#### Design an 3-SAT experiment
+
+In this part, we move from solving a single CNF instance to modeling a **statistical experiment**. For a fixed number of variables $n$ we generate a random 3-SAT formula with $m$ clauses, attempt to find a satisfying assignment using Grover’s algorithm, and record whether a solution was found. We then repeat this process many times for the same clause count $m$ to estimate the probability that a random instance of that size is satisfiable. After collecting statistics for that value of $m$, we increase the clause count slightly and repeat the entire procedure. By sweeping $m$ from small to large values, we experimentally observe how the likelihood of satisfiability changes — revealing the sharp SAT $\rightarrow$ UNSAT phase transition as the clause density $\alpha=m/n$ increases.
+
+##### Experimental Structure
+|Step|Process|
+|:--:|:----|
+|1|Fix the nummber of variables $n$|
+|2| Choose a claus count $m$|
+|3| Generate many independent random CNF instances of size $m$|
+|4| For each instance, attempt to find a satisfying assignment using Grover|
+|5| Record whether a solution was found and other interesting stats|
+|6| Estimate P(SAT) $\rightarrow$ Probablity of satisfyablity for variable $m$|
+|7| Repeaat for larger values of $m$|
+
+Step 4 above has a nuance to it.  Because we do not know in advance how many satisfying assignments a random formula may have (if any), we incorporate a retry strategy that incrementally increases the assumed number of solutions for Grover’s iteration count. This practical detail becomes especially important as we move toward and beyond the phase transition region.
+
+Alter your `find_sat()` function to perform the described experiment.  Look for the commented areas in the code to alter/add.
+
+```python
+def find_success_prob(m: int, full_set, num_vars: int, trials: int, max_retries: int):
+    # -------------------------------------------------------
+    # Initialize experiment statistics
+    # -------------------------------------------------------
+    successful = 0              # number of SAT instances detected
+    time_data = []              # optional: runtime diagnostics
+    oracle_depth = []           # optional: oracle complexity diagnostics
+
+    pid = os.getpid()
+
+    # -------------------------------------------------------
+    # Loop over independent random CNF trials
+    # -------------------------------------------------------
+    for trial in range(trials):
+
+        # ---------------------------------------------------
+        # YOUR TURN: Generate a fresh random CNF instance
+        # ---------------------------------------------------
+        cnf_path = CNF_DIR / f"tempCNF_m{m}_pid{pid}_t{trial}.cnf"
+        
+        generate_dimacs_cnf(....)
+   
+
+        # ---------------------------------------------------
+        # Attempt Grover solve with a retry strategy, looking for multiple solutions
+        # ---------------------------------------------------
+        state = False
+        retries = 1
+
+        while (state is False) and (retries <= max_retries):
+
+            state, t_ms, depth = find_sat(
+                cnf_path,
+                retries,              # assumed number of solutions
+                num_vars=num_vars
+            )
+
+            retries += 1
+
+        # ---------------------------------------------------
+        # YOUR TURN: Record whether this instance was SAT
+        # ---------------------------------------------------
+        if ............:
+            successful += 1
+        time_data.append(t_ms)
+        oracle_depth.append(depth)
+
+        # ---------------------------------------------------
+        # Clean up temporary CNF file
+        # ---------------------------------------------------
+        try:
+            cnf_path.unlink(missing_ok=True)
+        except Exception:
+            pass
+
+    # -------------------------------------------------------
+    # YOUR TURN: Compute the empirical SAT probability for this m
+    # -------------------------------------------------------
+    prob = ...........
+
+    print(f"m = {m}  |  SAT fraction = {prob:.3f}", flush=True)
+
+    return prob, m, successful, trials, time_data, oracle_depth
 ```
