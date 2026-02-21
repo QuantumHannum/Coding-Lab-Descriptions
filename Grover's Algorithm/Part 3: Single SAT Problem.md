@@ -179,9 +179,9 @@ Where N is the total number of basis states $(2^5=32)$ and M is the number of se
 
 Find all solutions to the Boolean Satisfiability Problem below using Grover's Algorithm.  Include all three of these in your final submission for this Lab.
 
-1. Convert each plain text logical statement into a logical clause using `OR` statements.  Use the first letter of each person's name as the variable.
-2. Produce a measurement histogram for the **optimal** number of Grover iterations.  The title of the histogram should include the number of iterations used.
-3. Interpret the histogram and clearly state who can attend dinner together.
+    1. Convert each plain text logical statement into a logical clause using `OR` statements.  Use the first letter of each person's name as the variable.
+    2. Produce a measurement histogram for the **optimal** number of Grover iterations.  The title of the histogram should include the number of iterations used.
+    3. Interpret the histogram and clearly state who can attend dinner together.
 
 #### A Prom Story
 It's the end of the school year, and everyone is trying to arrange dinner reservations before they go to Prom.  Alice, Bob, Clarice, Daniel, Elinor, and Finn all want to go to dinner together, but like any group of students, they have some personal conflicts.  
