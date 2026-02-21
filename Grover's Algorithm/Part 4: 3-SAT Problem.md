@@ -160,7 +160,7 @@ In this part, we move from solving a single CNF instance to modeling a **statist
 |Step|Process|
 |:--:|:----|
 |1|Fix the nummber of variables $n$|
-|2| Choose a claus count $m$|
+|2| Choose a clause count $m$|
 |3| Generate many independent random CNF instances of size $m$|
 |4| For each instance, attempt to find a satisfying assignment using Grover|
 |5| Record whether a solution was found and other interesting stats|
@@ -235,4 +235,355 @@ def find_success_prob(m: int, full_set, num_vars: int, trials: int, max_retries:
     print(f"m = {m}  |  SAT fraction = {prob:.3f}", flush=True)
 
     return prob, m, successful, trials, time_data, oracle_depth
+```
+#### Putting it altogether
+With all components in place, we now perform the full phase-transition experiment by sweeping the clause count $m$ (and therefore the clause density $\alpha = m/n$ across a range of values. For each 
+$m$, we estimate the empirical probability that a randomly generated 3-SAT instance is satisfiable using the statistical routine from the last section. Because each clause count can be evaluated independently — and each trial within a clause count is also independent — this experiment is naturally well-suited for multiprocessing: different values of 
+$m$ can be distributed across CPU cores, dramatically accelerating data collection. We can then output three plots of the data:
+
+1. A plot of $P(SAT)$ vs. $m$ with a sigmoid fit
+2. A plot of Oracle Computation Time vs. $m$
+3. A plot of Oracle Depth(num. of gates) vs. $m$
+
+The resulting plot of $P(SAT)$ vs. $m$ should exhibit a sharp drop from near 1 (mostly SAT) to near 0 (mostly UNSAT). However, finite-size fluctuations prevent this drop from appearing perfectly vertical, so we fit the data to a sigmoid (logistic) curve to estimate the transition point more precisely. The midpoint of this fitted curve provides an empirical estimate of the critical clause density where the SAT→UNSAT phase transition occurs.
+
+Here is the final code, including where you should drop in your work.
+
+```python
+# ================================================================
+# Grover 3-SAT Experiment with Multi-Processing
+# ================================================================
+
+import os
+import time
+import random
+import itertools
+from pathlib import Path
+from functools import partial
+from multiprocessing import Pool, cpu_count
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# ------------------------------------------------
+# USER PARAMETERS
+# ------------------------------------------------
+NUM_VARS = 9          # <-- change this (e.g., 11, 12)
+TRIALS_PER_M = 20     # <-- change this
+MAX_RETRIES = 10      # Grover retry loop cap
+
+M_MIN = 1
+M_MAX = 80            # clauses swept (inclusive)
+
+WORKERS = None        # None => cpu_count() - 1;
+
+# ------------------------------------------------
+# Thread-capping (helps across Mac/Windows/Linux laptops)
+# Prevents oversubscription when using multiprocessing.
+# ------------------------------------------------
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("VECLIB_MAXIMUM_THREADS", "1")
+os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
+
+# ------------------------------------------------
+# Qiskit imports
+# ------------------------------------------------
+from qiskit_algorithms import AmplificationProblem, Grover
+from qiskit.primitives import StatevectorSampler
+from qiskit.circuit.library.phase_oracle import PhaseOracleGate
+
+# BooleanExpression import path can vary across qiskit versions
+try:
+    from qiskit.synthesis.boolean.boolean_expression import BooleanExpression
+except Exception:
+    from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
+
+# ------------------------------------------------
+# Paths (robust to VS Code working directory)
+# ------------------------------------------------
+BASE_DIR = Path(__file__).resolve().parent
+CNF_DIR = BASE_DIR / "cnf"
+CNF_DIR.mkdir(exist_ok=True)
+PLOTS_DIR = BASE_DIR / "plots"
+PLOTS_DIR.mkdir(exist_ok=True)
+OUTPUT_PATH = BASE_DIR / "grovers_output.txt"
+
+# ================================================================
+#     Drop in your PreCalc () code here 
+# ================================================================
+def PreCalc(k: int, num_vars: int):
+   
+   
+   
+   
+   
+# ================================================================
+#    Drop in your generate_dimacs_cnf () code here
+# ================================================================
+def generate_dimacs_cnf(m: int, all_possible, num_vars: int, file_path: Path):
+
+
+
+
+# ================================================================
+#    Drop in your find_sat () code here
+# ================================================================
+def find_sat(cnf_path: Path, numSols: int, num_vars: int):
+ 
+ 
+ 
+ 
+# ================================================================
+#    Drop in your find_success_prob () code here
+# ================================================================
+
+def find_success_prob(m: int, full_set, num_vars: int, trials: int, max_retries: int):
+  
+  
+  
+  
+  
+
+# ================================================================
+# ================================================================
+#    DON'T CHANGE ANYTHING ELSE PAST HERE
+# ================================================================
+# ================================================================
+
+
+
+def choose_worker_count(requested=None) -> int:
+    total = cpu_count()
+    if requested is None:
+        return max(1, total - 1)   # safe default for student laptops
+    return max(1, min(int(requested), total))
+
+# ================================================================
+# Run experiment (parallel)
+# ================================================================
+def run_experiment_parallel(m_values, num_vars: int, trials: int, max_retries: int, processes=None):
+    prob = []
+    m_list = []
+    success_counts = []
+    trial_counts = []
+    run_times = []
+    oracle_depth = []
+
+    # Precompute clause pool ONCE in parent; pass into workers
+    clauses = PreCalc(3, num_vars=num_vars)
+
+    worker_fn = partial(
+        find_success_prob,
+        full_set=clauses,
+        num_vars=num_vars,
+        trials=trials,
+        max_retries=max_retries,
+    )
+
+    workers = choose_worker_count(processes)
+    print(f"{cpu_count()} cores detected; using {workers} worker processes")
+
+    with Pool(processes=workers) as p:
+        outs = p.imap(worker_fn, m_values)
+        for _p, _m, _k, _T, _times, _depths in outs:
+            prob.append(_p)
+            m_list.append(_m)
+            success_counts.append(_k)
+            trial_counts.append(_T)
+            run_times.append(_times)
+            oracle_depth.append(_depths)
+
+    return m_list, prob, success_counts, trial_counts, run_times, oracle_depth
+
+# ================================================================
+# Plot helpers 
+# ================================================================
+def _stderr(xs):
+    xs = np.array(xs, dtype=float)
+    if len(xs) <= 1:
+        return 0.0
+    return xs.std(ddof=1) / np.sqrt(len(xs))
+
+def make_prob_plot(m_vals, prob, trials: int, save_path: Path | None = None):
+    errs = np.sqrt(np.array(prob) * (1 - np.array(prob)) / trials)
+
+    plt.figure()
+    plt.errorbar(
+        m_vals, prob, yerr=errs,
+        fmt="o", capsize=2, elinewidth=1, markersize=5
+    )
+    plt.title("Clauses vs. Probability of Finding a Solution")
+    plt.xlabel("Number of Clauses (m)")
+    plt.ylabel("P(success)")
+    plt.ylim(-0.05, 1.05)
+    #plt.grid(alpha=0.3)
+    if save_path:
+        plt.savefig(save_path, dpi=200, bbox_inches="tight")
+    plt.show()
+
+def make_time_plot(m_vals, run_times, save_path: Path | None = None):
+    avgs = [float(np.mean(times)) for times in run_times]
+    errs = [_stderr(times) for times in run_times]
+
+    plt.figure()
+    plt.errorbar(
+        m_vals, avgs, yerr=errs,
+        fmt="o", capsize=2, elinewidth=1, markersize=5
+    )
+    plt.title("Clauses vs. Oracle Run Time")
+    plt.xlabel("Number of Clauses (m)")
+    plt.ylabel("Run Time (ms)")
+    #plt.grid(alpha=0.3)
+    if save_path:
+        plt.savefig(save_path, dpi=200, bbox_inches="tight")
+    plt.show()
+
+def make_gate_depth_plot(m_vals, oracle_depth, save_path: Path | None = None):
+    avgs = [float(np.mean(depths)) for depths in oracle_depth]
+    errs = [_stderr(depths) for depths in oracle_depth]
+
+    plt.figure()
+    plt.errorbar(
+        m_vals, avgs, yerr=errs,
+        fmt="o", capsize=2, elinewidth=1, markersize=5
+    )
+    plt.title("Clauses vs. Oracle Gate Depth")
+    plt.xlabel("Number of Clauses (m)")
+    plt.ylabel("Oracle Depth")
+    #plt.grid(alpha=0.3)
+    if save_path:
+        plt.savefig(save_path, dpi=200, bbox_inches="tight")
+    plt.show()
+
+# ================================================================
+# Logistic overlay helper (weighted binomial counts; exact successes)
+# ================================================================
+def overlay_logistic_sigmoid_on_prob_plot(
+    m_vals,
+    prob,
+    success_counts,
+    trials: int,
+    save_path: Path | None = None,
+    show: bool = True,
+):
+    """
+    Fit logistic regression to probability-vs-m data using WEIGHTED BINOMIAL COUNTS
+    using the EXACT success_counts (no rounding), compute the 0.5 cutoff, and overlay the fitted sigmoid.
+
+    Requires: scikit-learn installed (pip install scikit-learn)
+    Returns: (cutoff, model)
+    """
+    from sklearn.linear_model import LogisticRegression
+
+    m_vals = np.asarray(list(m_vals), dtype=float)
+    prob = np.asarray(list(prob), dtype=float)
+    k = np.asarray(list(success_counts), dtype=int)
+
+    # Safety clamp in case of any weirdness
+    k = np.clip(k, 0, trials)
+
+    # Weighted dataset: for each m create (m, y=1) weight=k and (m, y=0) weight=trials-k
+    X = np.repeat(m_vals, 2).reshape(-1, 1)
+    y = np.tile(np.array([1, 0], dtype=int), len(m_vals))
+    w = np.ravel(np.column_stack([k, trials - k])).astype(float)
+
+    keep = w > 0
+    X, y, w = X[keep], y[keep], w[keep]
+
+    model = LogisticRegression(solver="lbfgs", C=1e6, max_iter=10000)
+    model.fit(X, y, sample_weight=w)
+
+    a = float(model.coef_[0, 0])
+    b = float(model.intercept_[0])
+    cutoff = float("nan") if abs(a) < 1e-12 else (-b / a)
+
+    # Smooth curve
+    x_grid = np.linspace(float(np.min(m_vals)), float(np.max(m_vals)), 400).reshape(-1, 1)
+    p_fit = model.predict_proba(x_grid)[:, 1]
+
+    # Binomial SE for error bars (from measured prob)
+    prob_err = np.sqrt(prob * (1 - prob) / trials)
+
+    plt.figure()
+    plt.errorbar(
+        m_vals, prob, yerr=prob_err,
+        fmt="o", capsize=2, elinewidth=1, markersize=5,
+        label=f"Measured (Â± Standard Error, trials={trials})",
+    )
+    plt.plot(x_grid.ravel(), p_fit, linewidth=2, label="Logistic fit")
+
+    if np.isfinite(cutoff):
+        plt.axvline(cutoff, linestyle="--", linewidth=1.5, label=f"0.5 cutoff â?? {cutoff:.2f}")
+
+    plt.title("Clauses vs. P(success) with Logistic Sigmoid Fit")
+    plt.xlabel("Number of Clauses (m)")
+    plt.ylabel("P(success)")
+    plt.ylim(-0.05, 1.05)
+    #plt.grid(alpha=0.3)
+    plt.legend()
+
+    if save_path:
+        plt.savefig(save_path, dpi=200, bbox_inches="tight")
+    if show:
+        plt.show()
+    else:
+        plt.close()
+
+    return cutoff, model
+
+# ================================================================
+# Main
+# ================================================================
+if __name__ == "__main__":
+    import multiprocessing as mp
+    mp.set_start_method("spawn", force=True)
+
+    start = time.time()
+
+    m_values = range(M_MIN, M_MAX + 1)
+
+    m_list, prob, success_counts, trial_counts, run_times, oracle_depths = run_experiment_parallel(
+        m_values=m_values,
+        num_vars=NUM_VARS,
+        trials=TRIALS_PER_M,
+        max_retries=MAX_RETRIES,
+        processes=WORKERS,
+    )
+
+    end = time.time()
+    print("\nTotal Run Time:", (end - start) / 60, "Min")
+
+    # Save raw outputs
+    with open(OUTPUT_PATH, "w") as f:
+        f.write(f"NUM_VARS={NUM_VARS}\n")
+        f.write(f"TRIALS_PER_M={TRIALS_PER_M}\n")
+        f.write(f"MAX_RETRIES={MAX_RETRIES}\n")
+        f.write(str(m_list) + "\n")
+        f.write(str(prob) + "\n")
+        f.write(str(success_counts) + "\n")
+        f.write(str(run_times) + "\n")
+        f.write(str(oracle_depths) + "\n")
+
+    # Plots
+    make_prob_plot(m_list, prob, trials=TRIALS_PER_M, save_path=PLOTS_DIR / "prob_plot.png")
+
+    # Logistic overlay + cutoff
+    try:
+        cutoff, _model = overlay_logistic_sigmoid_on_prob_plot(
+            m_list,
+            prob,
+            success_counts,
+            trials=TRIALS_PER_M,
+            save_path=PLOTS_DIR / "prob_plot_sigmoid.png",
+            show=True,
+        )
+        print(f"Estimated phase transition (p=0.5) at clauses m â?? {cutoff:.2f}")
+    except ModuleNotFoundError:
+        print("scikit-learn not installed; skipping logistic sigmoid overlay. "
+              "Install with: python -m pip install scikit-learn")
+
+    make_time_plot(m_list, run_times, save_path=PLOTS_DIR / "time_plot.png")
+    make_gate_depth_plot(m_list, oracle_depths, save_path=PLOTS_DIR / "depth_plot.png")
 ```
