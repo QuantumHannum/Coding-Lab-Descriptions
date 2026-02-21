@@ -28,5 +28,6 @@ In this section, you will build the machinery that generates ensembles of random
 ``` 
 can be encoded more compactly as:
 ```math
-1 -2 3   #tab delineated
+1 -2 3
 ``` 
+where these numbers have a space between them.
