@@ -319,6 +319,8 @@ IBM offers many different Fake Backends. After you get your code working, try ot
 | FakeWashingtonV2    | 127    | ~0.05% – 0.15%     | ~1% – 3%        | ~3% – 7%      |
 
 ---
+###  Your Task for Activity 2
+
 Making use of what you have learned, here are some more specific challenges to do on your own.  You will turn these in as part of your final submission:
 
 For each of the following, produce **Full Circuit Diagram** and **Histogram**.  If you use a FakeBackend, make sure to note which one on your histograms.
