@@ -28,7 +28,7 @@ In this section, you will build the machinery that generates ensembles of random
 ``` 
 can be encoded more compactly as:
 ```math
-1\quad  -2\quad 3
+1\quad -2\quad 3
 ``` 
 where these numbers have a space between them.  To begin a 3-SAT simulation, we need to create all possible clauses composed of 3 literals, including negations, but excluding repeated variables and tautologies.  For example, a repeated variable error would look like $(1\or 1\lor \lnot 3)$ and a tautological error would be $(4 lor \lnot 4 \or 6)$.
 
@@ -81,6 +81,7 @@ def generate_dimacs_cnf(m, all_possible, num_vars, file_path):
             line = " ".join(str(lit) for lit in clause)
             f.write(line + " 0\n")
 ```
+---
 #### Checkpoint
 After you complete the two functions above, run:
 ```python
@@ -89,5 +90,50 @@ generate_dimacs_cnf(10, clauses, 6, "test.cnf")
 ```
 Open `test.cnf` and verify:
   * Heder matches: **p cnf 6 10**
-  * Each line ahs exactly 3 integers + a zero
+  * There are 10 lines of 3 integers each + zero
+  * all integers range between -6...6
   * No variable repeats within a clause
+  * No clause contains a tautology.
+
+---
+You generated random 3-SAT instances and saved them as DIMACS CNF files. In this part, we load the CNF file and let Qiskit build the Boolean expression and phase oracle automatically. The core function you’ll use is `find_sat(...)`: it (1) reads the CNF from disk, (2) converts it to a Boolean expression, (3) turns that into a PhaseOracleGate that marks satisfying assignments, (4) runs Grover with an “optimal” iteration count based on an assumed number of solutions, and (5) returns both the measured bitstring and the oracle depth (a useful diagnostic for “how complex” the oracle circuit is). This is the key bridge between “SAT instance as a text file” and “Grover running on a quantum circuit.”
+
+**You do not need to modify this code at all** but you will use it later in larger code.
+
+```python
+# ------------------------------------------------
+# Qiskit imports
+# ------------------------------------------------
+from qiskit_algorithms import AmplificationProblem, Grover
+from qiskit.primitives import StatevectorSampler
+from qiskit.circuit.library.phase_oracle import PhaseOracleGate
+
+# BooleanExpression import path can vary across Qiskit versions
+try:
+    from qiskit.synthesis.boolean.boolean_expression import BooleanExpression
+except Exception:
+    from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
+
+def find_sat(cnf_path: Path, numSols: int, num_vars: int):
+    bexpr = BooleanExpression.from_dimacs_file(str(cnf_path))
+    oracle_gate = PhaseOracleGate(bexpr.expression)
+
+    try:
+        depth = oracle_gate.definition.depth()
+    except Exception:
+        depth = oracle_gate.decompose().depth()
+
+    problem = AmplificationProblem(oracle_gate)
+
+    sampler = StatevectorSampler()
+
+    iterations = Grover.optimal_num_iterations(
+        num_solutions=numSols,
+        num_qubits=num_vars,   # <- key fix: Grover iterations depend on the search-space qubits (variables)
+    )
+
+    grover = Grover(sampler=sampler, iterations=iterations)
+    result = grover.amplify(problem)
+
+    return result.top_measurement, depth
+```
