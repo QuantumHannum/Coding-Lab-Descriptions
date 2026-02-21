@@ -591,7 +591,8 @@ if __name__ == "__main__":
 #### Your Task for Activity 4
 
 Complete the code above.  
-style='color: red;'>WARNING!!!</span> the run times for this code can be long.  On my MacBook Air M2 with eight cores, it takes 11 minutes.  If you use Google Colab, the runtime was over 2 hours!!  
+****** WARNING!!!******
+The run times for this code can be long.  On my MacBook Air M2 with eight cores, it takes 11 minutes.  If you use Google Colab, the runtime was over 2 hours!!  
 
 ---
 This code is going to run approximately 80,000 to 150,000 Grover Iterations
