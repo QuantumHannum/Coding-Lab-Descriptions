@@ -269,13 +269,14 @@ import matplotlib.pyplot as plt
 # USER PARAMETERS
 # ------------------------------------------------
 NUM_VARS = 9          # <-- for testing lower this number - NEVER go above 9
-TRIALS_PER_M = 20     # <-- change this
-MAX_RETRIES = 10      # Grover retry loop cap
+TRIALS_PER_M = 20     # <-- change this to speed code up, but lower statistical relevance
+MAX_RETRIES = 10      # <-- change this to speed code up, but increase change of false negatives
 
 M_MIN = 1
-M_MAX = 80            # clauses swept (inclusive) For testing lower this number
+M_MAX = 80            # clauses swept (inclusive)
+                      # For testing lower this number to speed code up
 
-WORKERS = None        # None => cpu_count() - 1;
+WORKERS = None        # None => cpu_count() - 1;  always leave one core to run your OS
 
 # ------------------------------------------------
 # Thread-capping (helps across Mac/Windows/Linux laptops)
@@ -587,3 +588,19 @@ if __name__ == "__main__":
     make_time_plot(m_list, run_times, save_path=PLOTS_DIR / "time_plot.png")
     make_gate_depth_plot(m_list, oracle_depths, save_path=PLOTS_DIR / "depth_plot.png")
 ```
+#### Your Task for Activity 4
+
+Complete the code above.  
+style='color: red;'>WARNING!!!</span> the run times for this code can be long.  On my MacBook Air M2 with eight cores, it takes 11 minutes.  If you use Google Colab, the runtime was over 2 hours!!  
+
+---
+This code is going to run approximately 80,000 to 150,000 Grover Iterations
+---
+
+Save the three output plots and turn in:
+1. `prob_plot_sigmoid.png`
+2. `time_plot.png`
+3. `depth_plot.png`
+
+Answer the following questions
+1. 
