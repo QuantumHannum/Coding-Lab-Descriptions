@@ -83,12 +83,12 @@ Making use of the above code, here are some questions to consider:
 3.  Reduced density matrix heatmaps for GHZ and W states from Activity 7
 
 ### Answer these Required Questions
-1.  Throughout this lab, you measured entanglement using numbers (entropy, purity), and made visualizations (entropy heatmaps and density-matrix heatmaps).  Explain the difference between:
+1.  Throughout this lab, you measured entanglement using numbers (entropy, purity) and made visualizations (entropy heatmaps and density-matrix heatmaps).  Explain the difference between:
    - The amount of entanglement in a system
    - The structure of entanglement in a system
 2.  Give a concrete example from your results where two states look "similar" according to one measure (purity vs. entropy), but look very different in a heatmap or bipartition plot?
 3. Both $GHZ_N$ and $W_N$ states are highly symmetric under permutations of the qubits.  How does this symmetry show up in the Entropy heatmaps and the Average Entropy vs. k curves?  Why is symmetry useful to consider in interpreting the Average Entropy vs. k curves?
 4. Using the density-matrix heatmaps:
-   - Explain the difference between **Global coherence** (coherence stored in the full N-quibt system) and **Local or Internal coherence** (coherence that survives inside subsystems).
+   - Explain the difference between **Global coherence** (coherence stored in the full N-qubit system) and **Local or Internal coherence** (coherence that survives inside subsystems).
    - Which type of coherence do $GHZ_N$ and $W_N$ states primarily rely on?
    - How does this explain the difference in robustness under particle loss?
