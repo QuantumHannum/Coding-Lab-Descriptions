@@ -13,7 +13,7 @@ Learn how to:
 2. Write a function that builds the N-qubit state $|00...0\rangle$
 3. Test your function for various values of N
 
-We first need to define our basic kets $|0\rangle$ (i.e. spin up) and $|1\rangle$ (i.e. spin down).  To me this always seems backwards, but this was decided long before me.
+We first need to define our basic kets $|0\rangle$ (i.e., spin up) and $|1\rangle$ (i.e., spin down).  To me, this always seems backwards, but this was decided long before me.
 
 We can do this easily in QuTip
 
@@ -51,7 +51,7 @@ Understand the difference between:
 
 ### Specific Tasks
 1.  Convert a pure N-qubit state into a density matrix.
-2.  Use `ptrace' to extract the partial trace of one qubit from a N-qubit product state.
+2.  Use `ptrace' to extract the partial trace of one qubit from an N-qubit product state.
 3.  Compute the `purity` and von Neumann `entropy` of a reduced state.
 4.  Explore purity and entropy for different values of N
 
@@ -61,14 +61,14 @@ Density matrices for pure states are defined mathematically as:
 \rho = |\psi\rangle\langle\psi|
 ```
 
-If $|\psi\rangle$ is a product state, then the dimension of $\rho$ can be large, and the calculation to determine it is tedious.  QuTip on the other hand, makes calculating density matrices very simple with the use of `ket2dm` function.  
+If $|\psi\rangle$ is a product state, then the dimension of $\rho$ can be large, and the calculation to determine it is tedious.  QuTip, on the other hand, makes calculating density matrices very simple with the use of `ket2dm` function.  
 
 ```python
 psi = zero_state(4)
 rho = ket2dm(psi)
 ```
 
-You can confirm the dimensions of $\rho$ with another simple print statement
+You can confirm the dimensions of $\rho$ with another simple print statement.
 
 ```python
 print(rho.shape)
@@ -97,7 +97,7 @@ Once we have the reduced density matrix for the subsystem, we can calculate the 
 ```math
 P = Tr(\rho_0^2)
 ```
-For two particle systems, the Purity of subsystem $i$ must be bounded
+For two particle systems, the Purity of subsystem $i$ must be bounded.
 
 ```math
 \frac{1}{2} \le Tr(\rho_i^2) \le 1
