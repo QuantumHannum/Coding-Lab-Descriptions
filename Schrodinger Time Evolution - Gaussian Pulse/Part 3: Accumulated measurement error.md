@@ -25,10 +25,10 @@ You are also going to have to make a helper function `draw_jittered_args()` that
 Update your `for` loop to include a call to your new draw_jittered_args() function. Then run your full code and produce both the plots of expectation values and the Bloch sphere.
 
 ***
-After you have made the above changes, and your code is working, here are some questions to consider:
+After you have made the above changes and your code is working, here are some questions to consider:
 - Increase `NumPulse = 50`, then look at the plots of expectation values. What do you notice about these plots compared to the non-jittered plots?
 - Try isolating each type of jitter individually (`Omega0`, `sigma`). Which one produces more drift in the expectation values?
-- Look at your Bloch Sphere plot - in particular, look at the vectors near each axis (x, y, z).  It should look like the vectors are clustering around the axis Why?
+- Look at your Bloch Sphere plot - in particular, look at the vectors near each axis (x, y, z).  It should look like the vectors are clustering around the axis. Why?
 ***
 
 ## Activity 7: Divergence of measurement error due to jitter
@@ -46,14 +46,14 @@ Because we have the expectation values as part of our model, we can calculate th
 \vec{B} = \left( <\sigma_x>, <\sigma_y>, <\sigma_z> \right)
 ```
 
-The final step in our code will be to track the evolution of an ideal pulse and a noisy pulse over all `NumPulse`.  Lets add to our empty arrays that we initialize before our main loop.
+The final step in our code will be to track the evolution of an ideal pulse and a noisy pulse over all `NumPulse`.  Let's add to our empty arrays that we initialized before our main loop.
 
 ```python
-#initialize arrays  *** BE CAREFULE WITH DATATYPES IN QuTip
+#initialize arrays  *** BE CAREFUL WITH DATATYPES IN QuTip
 pulseNum = []             # list to store the index of pulses
 times_all_ideal = None    # 1D numpy array; don't really need two here
 times_all_noisy = None
-states_all_ideal = []     # list of Qobj (specal QuTip datatype)
+states_all_ideal = []     # list of Qobj (special QuTip datatype)
 states_all_noisy = []
 expect_all_ideal = None   # list of many numpy arrays
 expect_all_noisy = None
@@ -68,7 +68,7 @@ psi_ideal = psi0      #split into two vectors to track
 psi_noisy = psi0
 ```
 
-You will also need to make two new helper functions.  The first is `getBlochVector()` that takes in the last state of `result.states[-1]` and outputs a numpy array. The second is `trace_distance()` that takes in two vectors give by `getBlochVector()` and outputs the Bloch distance.
+You will also need to make two new helper functions.  The first is `getBlochVector()` that takes in the last state of `result.states[-1]` and outputs a numpy array. The second is `trace_distance()` that takes in two vectors given by `getBlochVector()` and outputs the Bloch distance.
 
 Update your main `for` loop to keep track of both an ideal and noisy evolution. Only calculate the Bloch vector and trace distance for the last state after each pulse, not all states over the duration of the pulse.
 
@@ -78,7 +78,7 @@ Change your output plots:
 - plot the Trace Distance(Maximum Measrement Error) vs. Pulse Number
 
 ***
-After you have made the above changes, and your code is working, here are some questions to consider:
+After you have made the above changes and your code is working, here are some questions to consider:
 
 1. Compare the ideal and noisy plots of $<\sigma_z>$ over time.
    - Can you tell from the shape of the noisy curve whether the net rotation is slightly over- or under-rotated?
