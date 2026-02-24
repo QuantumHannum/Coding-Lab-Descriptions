@@ -11,7 +11,7 @@
    - We will plot this matrix as a color map
 
 
-To generate this matrix $M$ we can define a function
+To generate this matrix $M$, we can define a function.
 
 ```python
 def entropy_map_2body(rho,N):
@@ -80,9 +80,9 @@ Making use of the above code, here are some questions to consider:
    - A $GHZ_N$ state
    - A $W_N$ state
 
-   for each value of N, Plot heatmaps for the generated states.
+   For each value of N, Plot heatmaps for the generated states.
 
-2. Which state shows no entanglement structure? Which state shows global structure? Which state shows a distributed entanglement structure?
+2. Which state shows no entanglement structure? Which state shows the global structure? Which state shows a distributed entanglement structure?
 3. What do these heatmaps say about where the entanglement lives in these systems?
 
 ---
