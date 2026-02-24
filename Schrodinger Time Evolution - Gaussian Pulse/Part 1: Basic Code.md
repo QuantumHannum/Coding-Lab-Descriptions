@@ -1,6 +1,6 @@
 # Part 1: Basic Code
 
-We will be making use of a Python package that has been specifically designed to simulate quantum mechanics. [QuTiP](https://qutip.org) is a very powerful package that manages the complex (number) and matrix mathematics in a simple way. The first thing you need to do is to install it into your environment:
+We will be making use of a Python package that has been specifically designed to simulate quantum mechanics. [QuTiP](https://qutip.org) is a very powerful package that manages the complex (number) and matrix mathematics simply. The first thing you need to do is to install it into your environment:
 
 ```python
 pip install qutip
@@ -106,7 +106,7 @@ This is the line where QuTiP solves the time-dependent Schrödinger equation usi
 ```python
 H = [[Sz, Omega]]
 ```
-One **VERY** important feature of QuTip is that the Hamiltonian isn't actually calculated (using the definition above) until it is used inside the ``sesolve()`` line based on the values contained in ``args``.  So you can change the values in ``args`` and it doesn't require recalculating the Hamiltonian.
+One **VERY** important feature of QuTip is that the Hamiltonian isn't actually calculated (using the definition above) until it is used inside the ``sesolve()`` line based on the values contained in ``args``.  So you can change the values in ``args``, and it doesn't require recalculating the Hamiltonian.
 
 It is also worth noting that the output of the *sesolve()*, **result** has two parts:
 - ``result.state`` which is a list of Qobj containing the quantum state vectors after each time step given in *tlist*
@@ -117,10 +117,10 @@ As you complete the following activities, take time to look at the Bloch sphere 
 ***
 
 ## Activity 1: Change initial State
-Change the code so that the inital state of the system is in the following:
+Change the code so that the initial state of the system is as follows:
 - $|\psi_0\rangle = |+z\rangle$
 - $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle-|-z\rangle \right]$
-- $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle+i|-z\rangle \right]$ Note: In python imaginary number "i" is must be written as $1j$
+- $|\psi_0\rangle = \frac{1}{\sqrt{2}}\left[|+z\rangle+i|-z\rangle \right]$ Note: In python imaginary number "i" must be written as $1j$
 
 ## Activity 2: Change rotation axis
 Change the code so that the rotation axis isn't just about the $z$-axis.
