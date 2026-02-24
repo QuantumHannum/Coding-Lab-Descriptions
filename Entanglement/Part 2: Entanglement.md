@@ -15,7 +15,7 @@ So far, you have only worked with **product states**, where each qubit has its o
 
 Now we will study the opposite situation: **entangled states**.
 
-The Bell state: The simplest entangled system are the **Bell States**
+The Bell state: The simplest entangled system is the **Bell State**
 
 ```math
 |\Phi^+\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)
@@ -74,7 +74,7 @@ rho_A = ptrace(rho_bell, [0])
 print("Bell: purity(A) =", purity(rho_A))
 print("Bell: entropy(A) =", entropy_vn(rho_A, base=2))
 ```
-To construct a GHZ state we make use of the QuTip `tensor` function
+To construct a GHZ state, we make use of the QuTip `tensor` function
 
 ```python
 psi_ghz3 = (tensor(zero,zero,zero) + tensor(one,one,one)).unit()
@@ -110,7 +110,7 @@ In the previous activity, we introduced GHZ states, which are the cleanest examp
 
 However, GHZ states represent only one very special way that many particles can be entangled.  In this activity, you will study a completely different family of multipartite entangled states, called **W states**.
 
-Shown below is $W_3$ state, which is then generalized to the $W_N$ using N-qubits.  
+Shown below is the $W_3$ state, which is then generalized to the $W_N$ using N-qubits.  
 
 ```math
 |W_3\rangle =  \frac{1}{\sqrt{3}} \left(|100\rangle + |010\rangle + |001\rangle   \right) 
