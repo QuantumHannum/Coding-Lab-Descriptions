@@ -11,10 +11,10 @@ Begin by creating a few empty lists and variables that will store information fr
 #Number of pulses
 NumPulse = 3
 
-#initialize arrays  *** BE CAREFULE WITH DATATYPES IN QuTip
+#initialize arrays  *** BE CAREFUL WITH DATATYPES IN QuTip
 pulseNum = []           # list to store the index of pulses
 times_all = None        # 1D numpy array
-states_all = []         # list of Qobj (specal QuTip datatype)
+states_all = []         # list of Qobj (special QuTip datatype)
 expect_all = None       # list of many numpy arrays
 ```
 Next, write a `for` loop that runs `NumPulse` times. The general structure will look something like this:
@@ -36,7 +36,7 @@ You can then use the same plotting features from the original code with minimal 
 Because the data structures that QuTiP uses are a bit tricky, here is a helpful function to perform the concatenation:
 
 ```python
-# Concatinates time, state, and expectation value lists after each pulse
+# Concatenates time, state, and expectation value lists after each pulse
 def concat_data(result, times_all, states_all, expect_all):
     times_k = np.array(result.times)      # convert result.times to numpy array for t_offset
 
@@ -47,16 +47,16 @@ def concat_data(result, times_all, states_all, expect_all):
         states_all = list(result.states)
         expect_all = [np.array(e) for e in result.expect]
 
-    # for all pulses after first pulse
+    # for all pulses after the first pulse
     else:
-        # shift times of this pulse so it follows previous pulse
+        # shift times of this pulse so it follows the previous pulse
         t_offset  = times_all[-1]
         new_times = times_k[1:] + t_offset  # skip first to avoid duplicate
 
         # concatenate times
         times_all = np.concatenate([times_all, new_times])
 
-        # concatenate states (skip first to avoid duplicate)
+        # concatenate states (skip first to avoid duplicates)
         states_all.extend(result.states[1:])
 
         # concatenate expectation values (each expect[j] is already an array)
@@ -68,13 +68,13 @@ def concat_data(result, times_all, states_all, expect_all):
 ```
 
 ***
-After you have made the above changes, and your code is working, here are some questions to consider:
+After you have made the above changes and your code is working, here are some questions to consider:
 - Look at the plots of $\langle \sigma_x \rangle$, $\langle \sigma_y \rangle$, $\langle \sigma_z \rangle$ versus time. For an initial $|+x\rangle$ state and a $Z$-axis Hamiltonian, which components change and which stay (approximately) constant?
 - How do these expectation values behave across pulse boundaries? Can you see where one pulse ends and the next begins? You may want to increase `NumPulse` to see the full evolution of the expectation values.
 - Change the initial state to $|+z\rangle$ and rerun the pulse sequence. Do the resulting plots of the expectation values look like you would expect them to look?
 ***
 
-## Activity 5: Pick random directions for applied field
+## Activity 5: Pick random directions for the applied field
 Real quantum algorithms rely on sequences of rotations about different axes to build up useful quantum gates. Some gates require rotations around the x-axis, others around the y-axis, and many require combinations of both. We will now add to your code so that it will randomly select an axis from ${X, Y, Z}$ and then apply a pulse about that axis. By letting the computer choose the axis for each pulse, we can explore how the qubit state moves around the Bloch sphere under a variety of control sequences, and gain insight into how complex quantum operations are constructed from simple, axis-dependent rotations.
 
 Add to your code a simple list:
@@ -82,7 +82,7 @@ Add to your code a simple list:
 # list possible directions applied field
 basislist=["x","y","z"]
 ```
-You code should make random choices for axis - **BUT** it would be nice for everyone to be able to compare the output.  To do this lets fix the seed values you use.  Add this code snippit into your code.  You may want to play around with the code a bit to see all the different behavoirs, so feel free to comment it out while you explore.  Just make sure to put it back before moving on to Part 3.
+Your code should make random choices for the axis - **BUT** it would be nice for everyone to be able to compare the output.  To do this lets fix the seed values you use.  Add this code snippet to your code.  You may want to play around with the code a bit to see all the different behaviors, so feel free to comment it out while you explore.  Just make sure to put it back before moving on to Part 3.
 ```python
 import random
 seed = 31                                 #for reproducability
@@ -90,7 +90,7 @@ random.seed(seed)
 np.random.seed(seed)
 ```
 
-The alter your `For` loop so that it includes the use of a helper function (which you need to define) `getbasis()`
+Alter your `For` loop so that it includes the use of a helper function (which you need to define) `getbasis()`
 ```python
 H_axis = getbasis(basislist)              #get random Hamiltonian
 H = [[H_axis,Omega]]                      #build Hamiltonian
