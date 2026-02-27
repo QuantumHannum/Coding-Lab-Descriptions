@@ -122,7 +122,7 @@ n_comp = 5
 n_anc  = 9
 n_total = n_comp + n_anc
 
-qc = QuantumCircuit(n_total)
+qc = QuantumCircuit(n_total, n_comp)
 
 comp = list(range(n_comp))
 anc  = list(range(n_comp, n_total))
