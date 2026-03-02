@@ -1,5 +1,5 @@
 # Part 4: 3-SAT Problem
-The 3-SAT problem asks whether a Boolean formula written in 3-conjunctive normal form (3-CNF) has at least one satisfying assignment. Each clause contains exactly three literals (variables or their negations), and the full formula is an AND of many such clauses. While checking a single assignment is easy, determining whether any satisfying assignment exists is computationally hard (NP-complete). Remarkably, when we generate random 3-SAT instances with $n$ variables and $m$ clauses, their behavior changes sharply as we vary the clause density $\alpha = m/n$.  For small $\alpha$, instances are almost always satisfiable (SAT), but for large $\alpha$, they are almost always unsatisfiable UNSAT).  Near a critical threshold $T$, the probabilty of satisfiablity drops abruptly - a phenomenon known as **computational phase transition**.  In this final activity, you will experimentally explore this transition using Grover's algorithm as a quantum search subroutine applied to randomly generated 3-SAT instances.
+The 3-SAT problem asks whether a Boolean formula written in 3-conjunctive normal form (3-CNF) has at least one satisfying assignment. Each clause contains exactly three literals (variables or their negations), and the full formula is an AND of many such clauses. While checking a single assignment is easy, determining whether any satisfying assignment exists is computationally hard (NP-complete). Remarkably, when we generate random 3-SAT instances with $n$ variables and $m$ clauses, their behavior changes sharply as we vary the clause density $\alpha = m/n$.  For small $\alpha$, instances are almost always satisfiable (SAT), but for large $\alpha$, they are almost always unsatisfiable UNSAT).  Near a critical threshold $T$, the probability of satisfiability drops abruptly - a phenomenon known as **computational phase transition**.  In this final activity, you will experimentally explore this transition using Grover's algorithm as a quantum search subroutine applied to randomly generated 3-SAT instances.
 
 ## Activity 4: 3-SAT and UNSAT
 
@@ -30,7 +30,7 @@ can be encoded more compactly as:
 ```math
 1\quad -2\quad 3
 ``` 
-where these numbers have a space between them.  To begin a 3-SAT simulation, we need to create all possible clauses composed of 3 literals, including negations, but excluding repeated variables and tautologies.  For example, a repeated variable error would look like $(1\or 1\lor \lnot 3)$ and a tautological error would be $(4 lor \lnot 4 \or 6)$.
+where these numbers have a space between them. To begin a 3-SAT simulation, we need to create all possible clauses composed of 3 literals, including negations, but excluding repeated variables and tautologies.  For example, a repeated variable error would look like $(1\or 1\lor \lnot 3)$ and a tautological error would be $(4 lor \lnot 4 \or 6)$.
 
 Define a function `PreCalc(k, num_vars)` that makes k literal clauses using variables -num_vars - num_vars.
 
@@ -53,7 +53,7 @@ def PreCalc(k, num_vars):
 
     return clauses
 ```
-We now need to put all of these 3-literal clauses into a `.cnf` file, which is a **Conjuctivie Normal Form** which we can automatically convert into a Phase Oracle.  A CNF File has a very particular structure.
+We now need to put all of these 3-literal clauses into a `.cnf` file, which is a **Conjunctive Normal Form**, which we can automatically convert into a Phase Oracle.  A CNF File has a very particular structure.
 ```python
 p cnf <num_vars> <num_clauses>
 a b c 0
@@ -89,7 +89,7 @@ clauses = PreCalc(3, 6)
 generate_dimacs_cnf(10, clauses, 6, "test.cnf")
 ```
 Open `test.cnf` and verify:
-  * Heder matches: **p cnf 6 10**
+  * Header matches: **p cnf 6 10**
   * There are 10 lines of 3 integers each + zero
   * all integers range between -6...6
   * No variable repeats within a clause
@@ -97,7 +97,7 @@ Open `test.cnf` and verify:
 ---
 You generated random 3-SAT instances and saved them as DIMACS CNF files. In this part, we load the CNF file and let Qiskit build the Boolean expression and phase oracle automatically. The core function you’ll use is `find_sat(...)`: it (1) reads the CNF from disk, (2) converts it to a Boolean expression, (3) turns that into a PhaseOracleGate that marks satisfying assignments, (4) runs Grover with an “optimal” iteration count based on an assumed number of solutions, and (5) returns both the measured bitstring and the oracle depth (a useful diagnostic for “how complex” the oracle circuit is). This is the key bridge between “SAT instance as a text file” and “Grover running on a quantum circuit.”
 
-**You do not need to modify this code at all** but you will use it later in larger code.
+**You do not need to modify this code at all**, but you will use it later in larger code.
 
 ```python
 # ------------------------------------------------
@@ -180,12 +180,12 @@ print("Satisfies?", assignment_satisfies(candidate, clauses))
 ```
   * If `Satisfied` is `True`, Govers found a satisfying assignment 
   * If `False`, either the instance is UNSAT or the assumed `numSol was wrong (we handle that next in Part).
-  * If `False` generate a new test.cnf and try again
+  * If `False`, generate a new test.cnf and try again
 
 ---
-#### Design an 3-SAT experiment
+#### Design a 3-SAT experiment
 
-In this part, we move from solving a single CNF instance to modeling a **statistical experiment**. For a fixed number of variables $n$ we generate a random 3-SAT formula with $m$ clauses, attempt to find a satisfying assignment using Grover’s algorithm, and record whether a solution was found. We then repeat this process many times for the same clause count $m$ to estimate the probability that a random instance of that size is satisfiable. After collecting statistics for that value of $m$, we increase the clause count slightly and repeat the entire procedure. By sweeping $m$ from small to large values, we experimentally observe how the likelihood of satisfiability changes — revealing the sharp SAT $\rightarrow$ UNSAT phase transition as the clause density $\alpha=m/n$ increases.
+In this part, we move from solving a single CNF instance to modeling a **statistical experiment**. For a fixed number of variables $n$, we generate a random 3-SAT formula with $m$ clauses, attempt to find a satisfying assignment using Grover’s algorithm, and record whether a solution was found. We then repeat this process many times for the same clause count $m$ to estimate the probability that a random instance of that size is satisfiable. After collecting statistics for that value of $m$, we increase the clause count slightly and repeat the entire procedure. By sweeping $m$ from small to large values, we experimentally observe how the likelihood of satisfiability changes — revealing the sharp SAT $\rightarrow$ UNSAT phase transition as the clause density $\alpha=m/n$ increases.
 
 ##### Experimental Structure
 |Step|Process|
@@ -198,7 +198,7 @@ In this part, we move from solving a single CNF instance to modeling a **statist
 |6| Estimate P(SAT) $\rightarrow$ Probablity of satisfyablity for variable $m$|
 |7| Repeaat for larger values of $m$|
 
-Step 4 above has a nuance to it.  Because we do not know in advance how many satisfying assignments a random formula may have (if any), we incorporate a retry strategy that incrementally increases the assumed number of solutions for Grover’s iteration count. This practical detail becomes especially important as we move toward and beyond the phase transition region.
+Step 4 above has a nuance.  Because we do not know in advance how many satisfying assignments a random formula may have (if any), we incorporate a retry strategy that incrementally increases the assumed number of solutions for Grover’s iteration count. This practical detail becomes especially important as we move toward and beyond the phase transition region.
 
 Alter your `find_sat()` function to perform the described experiment.  Look for the commented areas in the code to alter/add.
 
