@@ -140,6 +140,52 @@ def find_sat(cnf_path: Path, numSols: int, num_vars: int):
 #### Checkpoint
 After you complete the two functions above, run:
 ```python
+def read_dimacs(file_path: str):
+    """
+    Read a DIMACS CNF file and return (num_vars, clauses).
+
+    Returns:
+      num_vars (int): number of variables from the header 'p cnf n m'
+      clauses (list[list[int]]): each clause is a list of literals (ints), e.g. [1, -3, 7]
+                                 The trailing 0 at the end of each clause line is removed.
+    """
+    num_vars = None
+    clauses = []
+    current = []
+
+    with open(file_path, "r") as f:
+        for raw in f:
+            line = raw.strip()
+            if not line or line.startswith("c"):
+                continue
+
+            if line.startswith("p"):
+                parts = line.split()
+                # Expected: p cnf <num_vars> <num_clauses>
+                if len(parts) < 4 or parts[1] != "cnf":
+                    raise ValueError(f"Invalid DIMACS header: {line}")
+                num_vars = int(parts[2])
+                continue
+
+            # Clause data: integers ending with 0
+            for tok in line.split():
+                lit = int(tok)
+                if lit == 0:
+                    if current:
+                        clauses.append(current)
+                        current = []
+                else:
+                    current.append(lit)
+
+    # If file ended without a terminating 0 (nonstandard), handle gracefully
+    if current:
+        clauses.append(current)
+
+    if num_vars is None:
+        raise ValueError("DIMACS file missing 'p cnf' header")
+
+    return num_vars, clauses
+
 def assignment_satisfies(candidate: str, clauses) -> bool:
     """
     Return True iff the bitstring `candidate` satisfies every clause.
