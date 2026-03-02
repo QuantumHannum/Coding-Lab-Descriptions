@@ -140,6 +140,37 @@ def find_sat(cnf_path: Path, numSols: int, num_vars: int):
 #### Checkpoint
 After you complete the two functions above, run:
 ```python
+def assignment_satisfies(candidate: str, clauses) -> bool:
+    """
+    Return True iff the bitstring `candidate` satisfies every clause.
+
+    candidate: e.g. "010110001" where candidate[i] is x_{i+1}
+              '1' means variable is True, '0' means False.
+    clauses: list of clauses like [[1, -3, 7], [-2, 4, -6], ...]
+             literals use DIMACS convention: +i means x_i, -i means ¬x_i
+    """
+    # Map variable index -> boolean value
+    vals = {i + 1: (bit == "1") for i, bit in enumerate(candidate)}
+
+    for clause in clauses:
+        clause_satisfied = False
+        for lit in clause:
+            var = abs(lit)
+            if var not in vals:
+                raise ValueError(f"Candidate has no value for variable x{var}")
+
+            v = vals[var]
+            lit_true = (not v) if (lit < 0) else v
+
+            if lit_true:
+                clause_satisfied = True
+                break
+
+        if not clause_satisfied:
+            return False
+
+    return True
+
 num_vars, clauses = read_dimacs("test.cnf")
 candidate, depth = find_sat("test.cnf", numSols=1, num_vars=num_vars)
 
@@ -148,7 +179,7 @@ print("Depth:", depth)
 print("Satisfies?", assignment_satisfies(candidate, clauses))
 ```
   * If `Satisfied` is `True`, Govers found a satisfying assignment 
-  * If `False`, either the instance is UNSAT or teh assumed `numSol was wrong (we handle that next in Part).
+  * If `False`, either the instance is UNSAT or the assumed `numSol was wrong (we handle that next in Part).
   * If `False` generate a new test.cnf and try again
 
 ---
