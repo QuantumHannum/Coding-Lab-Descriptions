@@ -128,13 +128,15 @@ def find_sat(cnf_path: Path, numSols: int, num_vars: int):
 
     iterations = Grover.optimal_num_iterations(
         num_solutions=numSols,
-        num_qubits=num_vars,   # <- key fix: Grover iterations depend on the search-space qubits (variables)
+        num_qubits=num_vars,   # <-- key fix (NOT oracle_gate.num_qubits)
     )
+    grover = Grover(iterations=iterations, sampler=sampler)
 
-    grover = Grover(sampler=sampler, iterations=iterations)
+    t0 = time.time()
     result = grover.amplify(problem)
+    t1 = time.time()
 
-    return result.top_measurement, depth
+    return result.oracle_evaluation, (t1 - t0) * 1e3, depth
 ```
 ---
 #### Checkpoint
