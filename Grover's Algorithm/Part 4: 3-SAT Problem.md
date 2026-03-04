@@ -281,15 +281,8 @@ def find_success_prob(m: int, full_set, num_vars: int, trials: int, max_retries:
         retries = 1
 
         while (state is False) and (retries <= max_retries):
-
-            state, t_ms, depth = find_sat(
-                cnf_path,
-                retries,              # assumed number of solutions
-                num_vars=num_vars
-            )
-
+            state, t_ms, depth = find_sat(cnf_path,retries,num_vars=num_vars)
             retries += 1
-
         # ---------------------------------------------------
         # YOUR TURN: Record whether this instance was SAT
         # ---------------------------------------------------
@@ -312,7 +305,6 @@ def find_success_prob(m: int, full_set, num_vars: int, trials: int, max_retries:
     prob = ...........
 
     print(f"m = {m}  |  SAT fraction = {prob:.3f}", flush=True)
-
     return prob, m, successful, trials, time_data, oracle_depth
 ```
 #### Putting it altogether
