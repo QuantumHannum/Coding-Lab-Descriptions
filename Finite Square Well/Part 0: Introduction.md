@@ -1,4 +1,6 @@
-# Part 0: Introduction to Grovers Algorithm and Unstructured Search
+# Part 0: Introduction Finite Square Well
+(Particle in a Box)
+
 
 Grover’s algorithm is a quantum search algorithm that provides a quadratic speedup for searching an unstructured database. Classically, searching among $N$ possible items requires $O(N)$ queries in the worst case because there is no structure to exploit. Grover’s algorithm reduces this to $O(\sqrt{N})$ queries by using quantum superposition, interference, and amplitude amplification through an oracle.
 
