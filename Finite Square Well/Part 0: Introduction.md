@@ -65,8 +65,27 @@ Putting these solutions together into one piecewise wavefunction
         Fe^{qx}+Ge^{-qx} & x > a\\
     \end{cases}
 ```
-We now need to solve for all of the normalization constants and the eigenenergies (inside the $k$ and $q$ terms).  Using wavefunction continuity and differentiability, we can algebraically eliminate the normalization constants and derive an equation for the eigenenergies:
+We now need to solve for all of the normalization constants and the eigenenergies (inside the $k$ and $q$ terms).  If we consider just the even (symmetric) wavefunction, we can reduce the above piecewise function to:
+```math
+\phi(x)=
+    \begin{cases}
+        Ae^{qx} & x < -a\\
+        C\sin(kx)& -a \le x \le a\\
+        Ge^{-qx} & x > a\\
+    \end{cases}
+```
+Using wavefunction continuity, differentiability, and the boundary condition at $x=a$,
+
+```math
+D\cos(ka)=Ae^{-qa}
+```
+```math
+-kD\sin(ka) = -qAe^{-qa}
+```
+Dividing these two equations eliminates the normalization coefficients and leaves us with an expression involving only $k$ and $k$, both of which depend only on physical parameters and the eigenenergies.  
 
 ```math
 \sqrt{\frac{2mE}{\hbar^2}}\cdot\tan\left[ \sqrt{\frac{2mE}{\hbar^2}}a\right]=\sqrt{\frac{2m(V_0-E)}{\hbar^2}}
 ```
+
+However, a quick inspection of this equation shows it is transcendental and thus impossible to solve analytically for the eigenenergies.
