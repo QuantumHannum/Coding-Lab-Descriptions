@@ -29,8 +29,11 @@ We can then separate the problem into two physical locations (1) Outside the box
 
 ### Outside
 ```math
--\frac{\hbar}{2m}\frac{d^2}{dx^2}\phi(x) + V(x)\phi(x) = E\phi(x)\\
-34234
+\begin{align}
+-\frac{\hbar}{2m}\frac{d^2}{dx^2}\phi(x) + V_0\phi(x) &= E\phi(x)\\
+-\frac{\hbar}{2m}\frac{d^2}{dx^2}\phi(x)  &= (E-V_0)\phi(x)\\
+
+\end{align}
 ```
 
 ### Inside
