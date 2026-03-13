@@ -20,4 +20,8 @@ This defines the eigenfunction (wavefunctions) $\phi_n(x)$ and corresponding eig
 ```math
 H(x) = -\frac{\hbar}{2m}\frac{d^2}{dx^2} + V(x)
 ```
-and then combining 
+and then combining all of the above equations gives us the governing second order differential equation
+
+```math
+\frac{\hbar}{2m}\frac{d^2}{dx^2}\phi(x) + V(x)\phi(x) = E\phi(x)
+```
