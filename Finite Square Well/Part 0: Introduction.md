@@ -54,7 +54,7 @@ Which gives solutions of the form
 ```math
 \phi(x) = C\sin(kx)+D\cos(kx)
 ```
-where $k^2=\frac{2mE)}{\hbar^2}$, and $C$ and $D$ are normalization constants.
+where $k^2=\frac{2mE}{\hbar^2}$, and $C$ and $D$ are normalization constants.
 
 Putting these solutions together into one piecewise wavefunction
 ```math
