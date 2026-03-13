@@ -92,9 +92,24 @@ However, a quick inspection of this equation shows it is transcendental and thus
 
 ---
 ## Conceptual Goals
-1. Understand and use the property that stationary quantum states arise from an eigenvalue problem:
-   ```math
+By completing this tutorial, students should understand that:
+1. Stationary quantum states arise from an eigenvalue problem:
+    ```math
     \hat{H}\phi_n(x)=E_n\phi_n(x)
    ```
    which produced discrete energy eigenvalues $E_n$ and associated eigenfunctions $\phi_n(x)$.
-2. Determine that bound states occur only for energies below the potential outside the well, and the number of bound states 
+2. Bound states occur only for energies below the potential outside the well. The number of bound states depends on the depth and width of the well.
+3. Eigenfunctions form a complete basis for quantum states. Any physically allowed wavefunction in the well can be written as a linear combination of stationary states.
+4. Quantum states can be decomposed into energy eigenstates. The expansion coefficients determine the probability of measuring each energy.
+5. Wavefunctions represent probability amplitudes. The probability density of finding a particle at position $x$ is:
+    ```math
+    P=|\psi(x)|^2
+    ```
+6.  Finite potential wells allow quantum tunneling. The wavefunction extends outside the well into the classically forbidden region.
+7. Higher-energy states penetrate further into the barriers. As energy approaches the top of the well, the probability outside the well increases.
+8. The finite well approaches the infinite well in the deep-well limit. The energy spectrum becomes approximately quadratic in the quantum number.
+9. Quantum systems can be solved numerically when analytic solutions are difficult or impossible.
+
+## Mathematical Goals
+By completing this tutorial, students will practice:
+1. 
