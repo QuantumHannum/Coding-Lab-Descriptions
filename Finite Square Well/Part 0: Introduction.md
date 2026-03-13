@@ -110,6 +110,19 @@ By completing this tutorial, students should understand that:
 8. The finite well approaches the infinite well in the deep-well limit. The energy spectrum becomes approximately quadratic in the quantum number.
 9. Quantum systems can be solved numerically when analytic solutions are difficult or impossible.
 
+## Computational/Coding Goals
+Students will learn how to:
+1. Discretize a continuous spatial domain into a numerical grid.
+2. Approximate differential operators using finite differences.
+3. Construct a tridiagonal Hamiltonian matrix representing the Schrödinger equation.
+4. Use sparse matrix representations for computational efficiency.
+5. Use a numerical eigensolver ``scipy.linalg.eigh_tridiagonal`` to compute eigenvalues and eigenvectors.
+6. Normalize eigenvectors numerically.
+7. Interpret eigenvectors as physical wavefunctions.
+8. Compute inner products between numerical wavefunctions.
+9. Project arbitrary quantum states onto the eigenbasis.
+
+
 ## Mathematical Goals
 By completing this tutorial, students will practice:
 1. 
