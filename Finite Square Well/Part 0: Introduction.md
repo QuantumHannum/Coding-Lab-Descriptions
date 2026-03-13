@@ -89,3 +89,7 @@ Dividing these two equations eliminates the normalization coefficients and leave
 ```
 
 However, a quick inspection of this equation shows it is transcendental and thus impossible to solve analytically for the eigenenergies.  This necessitates a numeric appraoch to finding the eigenenergies and eigenstates for the finite well.
+
+---
+## Conceptual Goals
+
