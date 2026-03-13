@@ -29,12 +29,12 @@ We can then separate the problem into two physical locations (1) Outside the box
 
 ### Outside
 ```math
-\begin{align}
+\begin{aligned}
 -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x) + V_0\phi(x) &= E\phi(x)\\\\
 -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x)  &= (E-V_0)\phi(x)\\\\
 \frac{d^2}{dx^2}\phi(x) &= \frac{2m(V_0-E)}{\hbar^2}\phi(x)\\\\
 \frac{d^2}{dx^2}\phi(x) &= q^2\phi(x)\\\\
-\end{align}
+\end{aligned}
 ```
 where $q^2=\frac{2m(V_0-E)}{\hbar^2}$
 ### Inside
