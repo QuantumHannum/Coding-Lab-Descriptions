@@ -36,8 +36,37 @@ We can then separate the problem into two physical locations (1) Outside the box
 \frac{d^2}{dx^2}\phi(x) &= q^2\phi(x)\\\\
 \end{aligned}
 ```
-where $q^2=\frac{2m(V_0-E)}{\hbar^2}$
+Which gives solutions of the form 
+```math
+\phi(x) = Ae^{qx}+Be^{-qx}
+```
+where $q^2=\frac{2m(V_0-E)}{\hbar^2}$, and $A$ and $B$ are normalization constants.
+
 ### Inside
 ```math
--\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x) = E\phi(x)
+\begin{aligned}
+-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x) &= E\phi(x)\\
+\frac{d^2}{dx^2}\phi(x) &= -\frac{2mE)}{\hbar^2}\phi(x)\\
+\frac{d^2}{dx^2}\phi(x) &= -k^2\phi(x)\\
+\end{aligned}
+```
+Which gives solutions of the form 
+```math
+\phi(x) = C\sin(kx)+D\cos(kx)
+```
+where $k^2=\frac{2mE)}{\hbar^2}$, and $C$ and $D$ are normalization constants.
+
+Putting these solutions together into one piecewise wavefunction
+```math
+\phi(x)=
+    \begin{cases}
+        Ae^{qx}+Be^{-qx} & x < -a\\
+        C\sin(kx)+D\cos(kx) & -a \le x \le a\\
+        Fe^{qx}+Ge^{-qx} & x > a\\
+    \end{cases}
+```
+We now need to solve for all of the normalization constants and the eigenenergies (inside the $k$ and $q$ terms).  Using wavefunction continuity and differentiability, we can algebraically eliminate the normalization constants and derive an equation for the eigenenergies:
+
+```math
+\sqrt{\frac{2mE}{\hbar^2}}\tan\left[ \sqrt{\frac{2mE}{\hbar^2}}a\right]=\sqrt{\frac{2m(V_0-E}{\hbar^2}}
 ```
