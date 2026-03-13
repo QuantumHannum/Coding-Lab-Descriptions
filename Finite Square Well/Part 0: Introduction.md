@@ -92,4 +92,9 @@ However, a quick inspection of this equation shows it is transcendental and thus
 
 ---
 ## Conceptual Goals
-
+1. Understand and use the property that stationary quantum states arise from an eigenvalue problem:
+   ```math
+    \hat{H}\phi_n(x)=E_n\phi_n(x)
+   ```
+   which produced discrete energy eigenvalues $E_n$ and associated eigenfunctions $\phi_n(x)$.
+2. Determine that bound states occur only for energies below the potential outside the well, and the number of bound states 
