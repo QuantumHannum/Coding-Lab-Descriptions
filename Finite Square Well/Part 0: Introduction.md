@@ -15,7 +15,7 @@ and then apply the time-independent Schrodinger Equation
 ```math
 H(x)\phi_n(x)=E_n\phi_n(x)
 ```
-This defines the eigenfunction (wavefunctions) $\phi_n(x)$ and corresponding eigenenergies $E_n$.  Further defining the one-dimensional Hamiltonian
+This defines the eigenfunction (wavefunctions) $\phi_n(x)$ and corresponding eigenenergies $E_n$.  Further defining the one-dimensional Hamiltonian.
 
 ```math
 H(x) = -\frac{\hbar}{2m}\frac{d^2}{dx^2} + V(x)
@@ -25,7 +25,7 @@ and then combining all of the above equations gives us the governing second-orde
 ```math
 -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x) + V(x)\phi(x) = E\phi(x)
 ```
-We can then separate the problem into two physical locations (1) Outside the box, i.e. when $|x|>a$ and (2) Inside the box when $|x|<a$.
+We can then separate the problem into two physical locations: (1) Outside the box, i.e., when $|x|>a$, and (2) Inside the box, when $|x|<a$.
 
 ### Outside
 ```math
@@ -88,4 +88,4 @@ Dividing these two equations eliminates the normalization coefficients and leave
 \sqrt{\frac{2mE}{\hbar^2}}\cdot\tan\left[ \sqrt{\frac{2mE}{\hbar^2}}a\right]=\sqrt{\frac{2m(V_0-E)}{\hbar^2}}
 ```
 
-However, a quick inspection of this equation shows it is transcendental and thus impossible to solve analytically for the eigenenergies.
+However, a quick inspection of this equation shows it is transcendental and thus impossible to solve analytically for the eigenenergies.  This necessitates a numeric appraoch to finding the eigenenergies and eigenstates for the finite well.
