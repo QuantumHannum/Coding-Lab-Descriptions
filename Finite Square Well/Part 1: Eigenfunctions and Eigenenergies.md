@@ -29,12 +29,13 @@ With the following physical parameters and constants.  Notice that all units hav
 
 ---
 What you need to turn in for this activity:
-1. Plots of all probability functions given by $P=|\phi_n(x)|^2 for all bound states for this particular finite well.  Remember two things:
-   * It is important to discretize the position space of the problem $x\in{x_1,x_2,...x_N} $ much wider than the width of the well to account for the exponential wings of the wavefunctions.
+1. Plots of all probability functions given by $P=|\phi_n(x)|^2$ for **ALL** bound states for this particular finite well.  Remember two things:
+   * It is important to discretize the position space of the problem $x\in{x_1,x_2,...x_N} $ much wider than the width of the well to account for the exponential wings of the wavefunctions. Make sure to fix $\phi(x_1)=\phi(x_N)=0.
    * Use ``scipy.linalg.eigh_tridiagonal()`` but remember the eigenvectors output by this function are not normalized, and we only want the bound states!
-2. A table showing:
+2. A table showing the following information for **ALL** bound energy states:
     | Quantum Number  (n) | Eigenenergie (eV) | Probability of Electron inside Well|
     | :---: | :---: | ---- |
     | 1  | | |
     | 2  | | |
     | 3  | | |
+   * Increase the number of grid points until the first few (n=1,2,3) bound-state energies change by less than 0.001eV between successive simulations. Once again, make sure to use a spatial domain large enough that the wavefunction is essentially zero at the boundaries.
