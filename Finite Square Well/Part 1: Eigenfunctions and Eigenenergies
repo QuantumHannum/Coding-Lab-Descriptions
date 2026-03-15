@@ -1,7 +1,7 @@
 # Part 1: Find Eigenfunctions and Eigenenergies
 
 ## Activity 1
-For this activity, use the finite difference approximation for the Hamiltonian:
+For this activity, use the finite difference approximation for the kinetic energy component of the Hamiltonian:
 ```math
-\frac{d^2}{dx^2}\phi(x_i) \approx \frac{-\hbar^2}{2m\delta x^2}\phi_{i-1} + \frac{2\hbar^2}{2m\delta x^2}\phi_i-\frac{-\hbar^2}{2m\delta x^2}\phi_{i+1}
+\frac{-\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x_i)
 ```
