@@ -1,7 +1,6 @@
 # Part 1: Spatial Dependencies
 
 ## Activity 2
-
 The infinite square well produced an exact equation for the eigenenergies:
 
 ```math
