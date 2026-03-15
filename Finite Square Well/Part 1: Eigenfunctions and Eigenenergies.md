@@ -21,6 +21,8 @@ V(x)=
 With the following physical parameters and constants.  Notice that all units have been converted to values that will not cause numeric instability from being too small or too large.
 
 | Parameter | Value| Units |
-| --- | --- | ---- |
+| :---: | :---: | ---- |
 | $m_e$   | 511               | KeV|
 |$\hbar$  | $\frac{1240}{2\pi}$| eV nm|
+|$2a$     |1.5                |nm|
+|$V_0$    |5                  |eV|
