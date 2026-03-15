@@ -3,5 +3,5 @@
 ## Activity 1
 For this activity, use the finite difference approximation for the kinetic energy component of the Hamiltonian:
 ```math
-\frac{-\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x_i)
+\frac{-\hbar^2}{2m}\frac{d^2}{dx^2}\phi(x_i) \approx
 ```
