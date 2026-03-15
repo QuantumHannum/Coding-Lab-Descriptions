@@ -99,16 +99,20 @@ By completing this tutorial, students should understand that:
    ```
    which produced discrete energy eigenvalues $E_n$ and associated eigenfunctions $\phi_n(x)$.
 2. Bound states occur only for energies below the potential outside the well. The number of bound states depends on the depth and width of the well.
-3. Eigenfunctions form a complete basis for quantum states. Any physically allowed wavefunction in the well can be written as a linear combination of stationary states.
-4. Quantum states can be decomposed into energy eigenstates. The expansion coefficients determine the probability of measuring each energy.
+3. Quantum confinement produces discrete energy spectra. When a particle is confined to a small region of space, only certain energies are allowed.
+4. Energy gaps between quantum states determine photon emission energies.
+When a particle transitions between states, a photon with energy
+```math
+E_{photon}=E_i-E_f
+```
 5. Wavefunctions represent probability amplitudes. The probability density of finding a particle at position $x$ is:
     ```math
     P=|\psi(x)|^2
     ```
-6.  Finite potential wells allow quantum tunneling. The wavefunction extends outside the well into the classically forbidden region.
+6. Finite potential wells allow tunneling. Bound-state wavefunctions extend beyond the well into the classically forbidden region.
 7. Higher-energy states penetrate further into the barriers. As energy approaches the top of the well, the probability outside the well increases.
-8. The finite well approaches the infinite well in the deep-well limit. The energy spectrum becomes approximately quadratic in the quantum number.
-9. Quantum systems can be solved numerically when analytic solutions are difficult or impossible.
+11. The finite well approaches the infinite well in the deep-well limit. The energy spectrum becomes approximately quadratic in the quantum number.
+12. Quantum systems can be solved numerically when analytic solutions are difficult or impossible.
 
 ## Computational/Coding Goals
 Students will learn how to:
@@ -119,10 +123,17 @@ Students will learn how to:
 5. Use a numerical eigensolver ``scipy.linalg.eigh_tridiagonal`` to compute eigenvalues and eigenvectors.
 6. Normalize eigenvectors numerically.
 7. Interpret eigenvectors as physical wavefunctions.
-8. Compute inner products between numerical wavefunctions.
-9. Project arbitrary quantum states onto the eigenbasis.
+8. Plot eigenfunctions and energy levels.
+9. Plot the energy spectrum as a function of quantum number.
+10. Investigate how well width and well depth affect the energy spectrum.
+11. Compute the photon wavelength emitted by a quantum transition.
+12. Determine what well widths produce visible-light emission.
 
 
 ## Mathematical Goals
 By completing this tutorial, students will practice:
-1. 
+1. Finite difference approximations to derivatives
+2. Matrix representations of differential operators, producing a tridiagonal Hamiltonian.
+3. Normalization of wavefunctions via numeric integration
+4. Numerical integration of probability densities
+5. Converting energy differences into photon wavelengths
