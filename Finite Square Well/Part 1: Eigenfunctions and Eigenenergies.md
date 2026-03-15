@@ -23,6 +23,18 @@ With the following physical parameters and constants.  Notice that all units hav
 | Parameter | Value| Units |
 | :---: | :---: | ---- |
 | $m_e$   | 511               | KeV|
-|$\hbar$  | $\frac{1240}{2\pi}$| eV nm|
-|$2a$     |1.5                |nm|
-|$V_0$    |5                  |eV|
+| $\hbar$ | $\frac{1240}{2\pi}$| eV nm|
+| $2a$    |1.5                |nm|
+| $V_0$   |5                  |eV|
+
+---
+What you need to turn in for this activity:
+1. Plots of all probability functions given by $P=|\phi_n(x)|^2 for all bound states for this particular finite well.  Remember two things:
+   * It is important to discretize the position space of the problem $x\in{x_1,x_2,...x_N} $ much wider than the width of the well to account for the exponential wings of the wavefunctions.
+   * Use ``scipy.linalg.eigh_tridiagonal()`` but remember the eigenvectors output by this function are not normalized, and we only want the bound states!
+2. A table showing:
+    | Quantum Number  (n) | Eigenenergie (eV) | Probability of Electron inside Well|
+    | :---: | :---: | ---- |
+    | 1  | | |
+    | 2  | | |
+    | 3  | | |
