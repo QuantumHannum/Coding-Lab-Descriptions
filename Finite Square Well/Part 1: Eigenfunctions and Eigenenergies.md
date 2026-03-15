@@ -23,4 +23,4 @@ With the following physical parameters and constants.  Notice that all units hav
 | Parameter | Value| Units |
 | --- | --- | ---- |
 | $m_e$   | 511               | KeV|
-|$\hbar$  | $\frac{1240}{2\pi}| eV nm|
+|$\hbar$  | $\frac{1240}{2\pi}$| eV nm|
