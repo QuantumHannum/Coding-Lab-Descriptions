@@ -70,7 +70,7 @@ We now need to solve for all of the normalization constants and the eigenenergie
 \phi(x)=
     \begin{cases}
         Ae^{qx} & x < -a\\
-        C\sin(kx)& -a \le x \le a\\
+        D\cos(kx)& -a \le x \le a\\
         Ge^{-qx} & x > a\\
     \end{cases}
 ```
