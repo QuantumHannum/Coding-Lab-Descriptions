@@ -38,7 +38,7 @@ To solve this equation we consider two spatial regions:
 
 ---
 
-## Outside the Well
+### Outside the Well
 
 ```math
 \begin{aligned}
@@ -65,7 +65,7 @@ and $A$ and $B$ are normalization constants.
 
 ---
 
-## Inside the Well
+### Inside the Well
 
 ```math
 \begin{aligned}
@@ -91,7 +91,7 @@ and $C$ and $D$ are normalization constants.
 
 ---
 
-## Piecewise Wavefunction
+### Piecewise Wavefunction
 
 Combining the solutions gives
 
@@ -137,7 +137,7 @@ This equation is **transcendental**, meaning it cannot be solved analytically fo
 
 ---
 
-# Conceptual Goals
+## Conceptual Goals
 
 By completing this tutorial, students should understand that:
 
@@ -175,7 +175,7 @@ P=|\psi(x)|^2
 
 ---
 
-# Computational / Coding Goals
+## Computational / Coding Goals
 
 Students will learn how to:
 
@@ -194,7 +194,7 @@ Students will learn how to:
 
 ---
 
-# Mathematical Goals
+## Mathematical Goals
 
 Students will practice:
 
