@@ -1,4 +1,4 @@
-# Part 1: Spatial Dependencies
+# Part 2: Spatial Dependencies
 
 ## Activity 2
 The infinite square well produced an exact equation for the eigenenergies:
@@ -22,9 +22,13 @@ Quantum dots can absorb photons over a wide range of wavelengths, which promotes
 
 Through phonon interactions, the electron and hole quickly relax to their lowest confined energy states before emitting light. When the electron recombines with the hole, a photon is emitted. In a simple model, the emitted photon energy is approximated as the sum of the semiconductor band-gap energy and the confinement energies of the electron and hole:
 ```math
-E_{photon} \approx E_g + E_{e,1} + E_{h,a}
+E_{photon} \approx E_g + E_{e,1} + E_{h,1}
 ```
-Here $E_y$ is the bulk band-gap energy of the semiconductor, while $E_{e,1}$ and $E_{h,1}$ are the ground-state confinement energies of the electron and hole. Because these confinement energies depend on the size of the quantum dot, the emitted photon wavelength also depends on the dot size. Smaller dots produce larger confinement energies and emit higher-energy (bluer) light, while larger dots emit lower-energy (redder) light.
+Here $E_g$ is the bulk band-gap energy of the semiconductor, while $E_{e,1}$ and $E_{h,1}$ are the ground-state confinement energies of the electron and hole. Because these confinement energies depend on the size of the quantum dot, the emitted photon wavelength also depends on the dot size. Smaller dots produce larger confinement energies and emit higher-energy (bluer) light, while larger dots emit lower-energy (redder) light.  The wavelength of the emitted photon is directly calculated by:
+```math
+\lambda = \frac{hc}{E_{photon}}
+```
+To learn more about this process and some uses for Quantum Dots, watch this short video [Color by Size](https://www.youtube.com/watch?v=dhRIHF1DENI)
 
 Here are some realistic parameters for CdSe quantum dots
 | Parameter | Symbol| Approx. Value | Units|
@@ -36,7 +40,7 @@ Here are some realistic parameters for CdSe quantum dots
 |Electron well depth| $V_{0,e}$|4.0|eV|
 |Hole well depth|$V_{0,h}$|4.0|eV|
 
-If we then set the potential wells to be:
+If we then set the potential well for the electron to be:
 ```math
 V_e(x) =
   \begin{cases}
@@ -44,3 +48,19 @@ V_e(x) =
     V_{0,e} &|x| \ge L/2
   \end{cases}
 ```
+and the potential well for the hole to be:
+```math
+V_h(x) =
+  \begin{cases}
+    0 & |x| \le L/2\\
+    V_{0,h} &|x| \ge L/2
+  \end{cases}
+```
+
+---
+Here is what you should turn in
+1. Make a scatter plot of emitted photon wavelength $\lambda$ vs. quantum dot width $L$ for $L \in \[1nm, 10nm\]$ with $\Delta L = 1mn$.  All of your wavelengths should be in the visible range of 400nm - 700nm.
+2. Answer these questions
+   * Between which quantum dot sizes does the emitted wavelength change the most rapidly? What does this suggest about how sensitive quantum dot color is to small changes in size?
+   * In this model, both the electron and the hole contribute to the photon energy through their confinement energies. Which particle contributes more strongly to the energy shift: the electron or the hole? Explain why using their effective masses.
+   * Suppose you want to design a quantum dot that emits green light $\(\lambda=550nm\)$. Use your model to estimate the quantum dot width required to produce this wavelength.
