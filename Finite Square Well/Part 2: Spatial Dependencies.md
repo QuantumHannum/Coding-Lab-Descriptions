@@ -39,6 +39,7 @@ Here are some realistic parameters for CdSe quantum dots
 |Hole effective mass|$m_h^*$|$0.45m_e$||
 |Electron well depth| $V_{0,e}$|4.0|eV|
 |Hole well depth|$V_{0,h}$|4.0|eV|
+|Reduced Plank constant|$\hbar$|$\frac{1250}{2\pi}$| eV nm|
 |Plank constant $\times$ speed of light|$hc$| 1240|eV nm|
 
 If we then set the potential well for the electron to be:
