@@ -16,12 +16,18 @@ What you need to turn in for this activity
 ## Activity 3
 Application of Finite Potential Wells to Quantum Dots.
 
-We can apply the basic concepts of finite potential wells to understand the behavior of quantum dots - which are nanoscale semiconductor particles that confine electrons in a very small region of space. Quantum dots can absorb photons over a wide range of wavelengths, exciting electrons to higher energy states. However, the excited electrons rapidly lose most of that excess energy through interactions with the crystal lattice of the material. These lattice vibrations are called phonons, which are quantized units of vibrational energy in a solid, similar to how photons are quantized units of electromagnetic radiation. Through phonon interactions, electrons quickly relax to the lowest excited state of the system. From there, the electron can transition back to the ground state and emit a photon with energy equal to the difference between the two levels,
-```math
-E_{photon}=E_2-E_1
-```
-In activity 2, you should have discovered that the energy gap is determiend by the size of the quantum dot (width of potential well), the emitted photon has a very specific wavelength, giving quantum dots their characteristic color. Smaller dots produce larger energy gaps and emit higher-energy (bluer) light, while larger dots emit lower-energy (redder) light. In this activity, we will use the finite potential well as a simple computational model to explore how quantum confinement determines the emission spectrum of quantum dots.
+The concepts of finite potential wells help us understand the behavior of quantum dots, which are nanoscale semiconductor particles that confine charge carriers in a very small region of space. Because of this confinement, the allowed energies of particles in a quantum dot become discrete, similar to the energy levels of a particle in a potential well.
 
-If you want to learn more about quantum dots, please read these two articles
-* \url{What is a Quantum Dot}[https://www.britishcouncil.org/voices-magazine/what-quantum-dot?utm_source=chatgpt.com]
-* \url{Quantum Dot Wiki}[https://en.wikipedia.org/wiki/Quantum_dot?utm_source=chatgpt.com]
+Quantum dots can absorb photons over a wide range of wavelengths, which promotes an electron from the valence band to the conduction band, leaving behind a positively charged hole. The excited electron and hole initially may occupy higher energy states, but they rapidly lose excess energy through interactions with vibrations of the crystal lattice. These vibrations are called phonons, which are quantized units of vibrational energy in a solid, analogous to photons being quantized units of electromagnetic radiation.
+
+Through phonon interactions, the electron and hole quickly relax to their lowest confined energy states before emitting light. When the electron recombines with the hole, a photon is emitted. In a simple model, the emitted photon energy is approximated as the sum of the semiconductor band-gap energy and the confinement energies of the electron and hole:
+```math
+E_{photon} \approx E_g + E_{e,1} + E_{h,a}
+```
+Here $E_y$ is the bulk band-gap energy of the semiconductor, while $E_{e,1}$ and $E_{h,1}$ are the ground-state confinement energies of the electron and hole. Because these confinement energies depend on the size of the quantum dot, the emitted photon wavelength also depends on the dot size. Smaller dots produce larger confinement energies and emit higher-energy (bluer) light, while larger dots emit lower-energy (redder) light.
+
+Here are some realistic parameters for CdSe quantum dots
+| Parameter | Symbol| Approx. Value | Units|
+|-----------|:-----:| :-----------:|:-----|
+| Bulk band gap| $E_y$| 1.74| eV|
+|Free-electron mass| $m_e$ | 511 | keV/c^2|
