@@ -39,4 +39,5 @@ What you need to turn in for this activity:
     | 2  | | |
     | 3  | | |
    * Increase the number of grid points until the first few (n=1,2,3) bound-state energies change by less than 0.001eV between successive simulations. Once again, make sure to use a spatial domain large enough that the wavefunction is essentially zero at the boundaries.
+   * Why does the probability of the electron being measured to be inside the well decrease with increasing eigenenergy?
 3. Your code in executable form (.py or .ipynb)
