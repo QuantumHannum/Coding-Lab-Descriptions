@@ -11,7 +11,7 @@ As we discovered in the introduction, there is no closed-form equation for the e
 ---
 What you need to turn in for this activity
 1. Using the parameters provided in activity 1, produce a plot of the bound state eigenenergies vs. quantum number n.  Fit a curve of the form $E = Ax^B$ using ``scipy.optimize.curve_fit()``.  How close is this fit to the infinite square well prediction?  Produce a second and third similar plots where you double, then triple the value of $V_0$.  What do these other plots indicate about the functional dependence of the eigenenergies, quantum number, and potential height?
-2. Using the parameters provided in activity 1, produce a plot of the ground state energy and first excited state energy as you vary the size of the well $2a \in \[1 nm, 10 nm\]$.  Comment on any observations you make from this plot?
+2. Using the parameters provided in activity 1, produce a plot of the ground state energy and first excited state energy as you vary the size of the well $2a \in \[1 nm, 10 nm\]$.  Once again, add a curve of the form $E = Ax^B$ for these two curves. Comment on any observations you make from this plot?
 
 ## Activity 3
 Application of Finite Potential Wells to Quantum Dots.
@@ -35,3 +35,12 @@ Here are some realistic parameters for CdSe quantum dots
 |Hole effective mass|$m_h^*$|$0.45m_e$||
 |Electron well depth| $V_{0,e}$|4.0|eV|
 |Hole well depth|$V_{0,h}$|4.0|eV|
+
+If we then set the potential wells to be:
+```math
+V_e(x) =
+  \begin{cases}
+    0 & |x|\le L/2\\
+    V_{0,e} &\ge L/2
+  \end{cases}
+```
