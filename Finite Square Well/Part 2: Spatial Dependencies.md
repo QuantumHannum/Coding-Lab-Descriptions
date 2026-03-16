@@ -40,7 +40,7 @@ If we then set the potential wells to be:
 ```math
 V_e(x) =
   \begin{cases}
-    0 & |x|\le L/2\\
-    V_{0,e} &\ge L/2
+    0 & |x| \le L/2\\
+    V_{0,e} &|x| \ge L/2
   \end{cases}
 ```
