@@ -1,6 +1,6 @@
 # Part 0: Introduction Finite Square Well
 
-## A Particle in a box
+## A Particle in a box 
 
 If we place a particle of mass $m$ into a potential well defined by:
 ```math
