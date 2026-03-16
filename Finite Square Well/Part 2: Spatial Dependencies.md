@@ -35,8 +35,8 @@ Here are some realistic parameters for CdSe quantum dots
 |-----------|:-----:| :-----------:|:-----|
 | Bulk band gap| $E_y$| 1.74| eV|
 |Free-electron mass| $m_e$ | 511 | $keV/c^2$|
-|Electron effective mass| $m_e^*$|0.13$m_e$||
-|Hole effective mass|$m_h^*$|0.45$m_e$||
+|Electron effective mass| $m_e^*$|0.13 $m_e$||
+|Hole effective mass|$m_h^*$|0.45 $m_e$||
 |Electron well depth| $V_{0,e}$|4.0|eV|
 |Hole well depth|$V_{0,h}$|4.0|eV|
 |Reduced Plank constant|$\hbar$|197.326| eV nm|
