@@ -18,7 +18,7 @@ Application of Finite Potential Wells to Quantum Dots.
 
 The concepts of finite potential wells help us understand the behavior of quantum dots, which are nanoscale semiconductor particles that confine charge carriers in a very small region of space. Because of this confinement, the allowed energies of particles in a quantum dot become discrete, similar to the energy levels of a particle in a potential well.
 
-Quantum dots can absorb photons over a wide range of wavelengths, which promotes an electron from the valence band to the conduction band, leaving behind a positively charged hole. The excited electron and hole initially may occupy higher energy states, but they rapidly lose excess energy through interactions with vibrations of the crystal lattice. These vibrations are called phonons, which are quantized units of vibrational energy in a solid, analogous to photons being quantized units of electromagnetic radiation.
+Quantum dots can absorb photons across a wide range of wavelengths, promoting an electron from the valence band to the conduction band, leaving a positively charged hole. The excited electron and hole may initially occupy higher-energy states, but they rapidly lose excess energy through interactions with crystal lattice vibrations. These vibrations are called phonons, quantized units of vibrational energy in a solid, analogous to photons, which are quantized units of electromagnetic radiation.
 
 Through phonon interactions, the electron and hole quickly relax to their lowest confined energy states before emitting light. When the electron recombines with the hole, a photon is emitted. In a simple model, the emitted photon energy is approximated as the sum of the semiconductor band-gap energy and the confinement energies of the electron and hole:
 ```math
@@ -28,7 +28,7 @@ Here $E_g$ is the bulk band-gap energy of the semiconductor, while $E_{e,1}$ and
 ```math
 \lambda = \frac{hc}{E_{photon}}
 ```
-To learn more about this process and some uses for Quantum Dots, watch this short video [Color by Size](https://www.youtube.com/watch?v=dhRIHF1DENI)
+This model is a simplification of the standard [Brus equation](https://en.wikipedia.org/wiki/Brus_equation). To learn more about Quantum Dots and some uses for Quantum Dots, watch this short video [Color by Size](https://www.youtube.com/watch?v=dhRIHF1DENI)
 
 Here are some realistic parameters for CdSe quantum dots
 | Parameter | Symbol| Approx. Value | Units|
