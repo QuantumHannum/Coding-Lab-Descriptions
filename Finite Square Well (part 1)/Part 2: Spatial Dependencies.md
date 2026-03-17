@@ -40,7 +40,7 @@ Here are some realistic parameters for CdSe quantum dots
 |Electron well depth| $V_{0,e}$|4.0|eV|
 |Hole well depth|$V_{0,h}$|4.0|eV|
 |Reduced Plank constant|$\hbar$|197.326| eV nm|
-|Plank constant $\times$ speed of light|$hc$| 1239.84|eV nm|
+|Plank constant $\cdot$ speed of light|$hc$| 1239.84|eV nm|
 
 If we then set the potential well for the electron to be:
 ```math
