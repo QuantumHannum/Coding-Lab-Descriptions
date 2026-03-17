@@ -22,7 +22,7 @@ With the following physical parameters and constants.  Notice that all units hav
 
 | Parameter | Value| Units |
 | :---: | :---: | ---- |
-| $m_e$   | 511               | KeV|
+| $m_e$   | 511000             | eV|
 | $\hbar$ | $\frac{1240}{2\pi}$| eV nm|
 | $2a$    |1.5                |nm|
 | $V_0$   |5                  |eV|
