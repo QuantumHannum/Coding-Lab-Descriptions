@@ -62,7 +62,10 @@ V_h(x) =
 ---
 Here is what you should turn in
 1. Make a scatter plot of emitted photon wavelength $\lambda$ vs. quantum dot width $L$ for $L \in \[1nm, 10nm\]$ with $\Delta L = 1mn$.  All of your wavelengths should be in the visible range, 400nm to 700nm and should generally follow the chart below:
-   <img width="372" height="352" alt="JNMR-05-00117-g002" src="https://github.com/user-attachments/assets/d81b6042-33d6-4534-bbea-2ae64c1d777c" />
+  <p align="center">
+  <img width="372" height="352" alt="JNMR-05-00117-g002"
+  src="https://github.com/user-attachments/assets/d81b6042-33d6-4534-bbea-2ae64c1d777c" />
+  </p>
 3. Answer these questions
    * Between which quantum dot sizes does the emitted wavelength change the most rapidly? What does this suggest about how sensitive quantum dot color is to small changes in size?
    * In this model, both the electron and the hole contribute to the photon energy through their confinement energies. Which particle contributes more strongly to the energy shift: the electron or the hole? Explain why using their effective masses.
