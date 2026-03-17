@@ -61,7 +61,7 @@ V_h(x) =
 
 ---
 Here is what you should turn in
-1. Make a scatter plot of emitted photon wavelength $\lambda$ vs. quantum dot width $L$ for $L \in \[1nm, 10nm\]$ with $\Delta L = 1mn$.  All of your wavelengths should be in the visible range, 400nm to 700nm and should generally follow the chart below:
+1. Make a scatter plot of emitted photon wavelength $\lambda$ vs. quantum dot width $L$ for $L \in \[1nm, 10nm\]$ with $\Delta L = 0.5 nm$.  All of your wavelengths should be in the visible range, 400nm to 700nm, and should generally follow the chart below:
   <p align="center">
   <img width="372" height="352" alt="JNMR-05-00117-g002"
   src="https://github.com/user-attachments/assets/d81b6042-33d6-4534-bbea-2ae64c1d777c" />
