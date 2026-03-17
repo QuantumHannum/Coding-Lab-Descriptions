@@ -66,7 +66,8 @@ Here is what you should turn in
   <img width="372" height="352" alt="JNMR-05-00117-g002"
   src="https://github.com/user-attachments/assets/d81b6042-33d6-4534-bbea-2ae64c1d777c" />
   </p>
-3. Answer these questions
+  
+2. Answer these questions:
    * Between which quantum dot sizes does the emitted wavelength change the most rapidly? What does this suggest about how sensitive quantum dot color is to small changes in size?
    * In this model, both the electron and the hole contribute to the photon energy through their confinement energies. Which particle contributes more strongly to the energy shift: the electron or the hole? Explain why using their effective masses.
    * Suppose you want to design a quantum dot that emits green light $\(\lambda=550nm\)$. Use your model to estimate the quantum dot width required to produce this wavelength.
