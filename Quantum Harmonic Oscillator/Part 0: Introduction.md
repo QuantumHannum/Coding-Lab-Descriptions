@@ -13,12 +13,14 @@ This gives the larger Hamiltonian for a particle of mass $m$ as:
 \hat(H) = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac{1}{2}m\omega x^2
 ```
 
-It can be shown by employing raising and lowering operators (factorization method) that this Hamiltonian has exact energy eigenvalues of:
+It can be shown by employing raising and lowering operators (factorization method) that this Hamiltonian has exact energy eigenvalues and eigenfunctions of:
 
 ```math
-E_n= \left( n+\frac{1}{2} \right) \hbar \omega \quad n = 0, 1, 2, ...
+E_n= \left( n+\frac{1}{2} \right) \hbar \omega \quad \quad n = 0, 1, 2, ...
 ```
-
+```math
+\phi_n(x)=\frac{1}{\sqrt{2^nn!}}\left(\frac{m\omega}{\pi \hbar} \right)^{1/4}H_n(\zeta)e^{-\zeta^2/2}
+```
 ---
 ## Conceptual Goals
 
