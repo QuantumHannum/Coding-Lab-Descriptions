@@ -18,7 +18,7 @@ Application of Finite Potential Wells to Quantum Dots.
 
 The concepts of finite potential wells help us understand the behavior of quantum dots, which are nanoscale semiconductor particles that confine charge carriers in a very small region of space. Because of this confinement, the allowed energies of particles in a quantum dot become discrete, similar to the energy levels of a particle in a potential well.
 
-Quantum dots can absorb photons over a wide range of wavelengths, which promotes an electron from the valence band to the conduction band, leaving behind a positively charged hole. The excited electron and hole initially may occupy higher energy states, but they rapidly lose excess energy through interactions with vibrations of the crystal lattice. These vibrations are called phonons, which are quantized units of vibrational energy in a solid, analogous to photons being quantized units of electromagnetic radiation.
+Quantum dots can absorb photons across a wide range of wavelengths, promoting an electron from the valence band to the conduction band, leaving a positively charged hole. The excited electron and hole may initially occupy higher-energy states, but they rapidly lose excess energy through interactions with crystal lattice vibrations. These vibrations are called phonons, quantized units of vibrational energy in a solid, analogous to photons, which are quantized units of electromagnetic radiation.
 
 Through phonon interactions, the electron and hole quickly relax to their lowest confined energy states before emitting light. When the electron recombines with the hole, a photon is emitted. In a simple model, the emitted photon energy is approximated as the sum of the semiconductor band-gap energy and the confinement energies of the electron and hole:
 ```math
@@ -28,7 +28,7 @@ Here $E_g$ is the bulk band-gap energy of the semiconductor, while $E_{e,1}$ and
 ```math
 \lambda = \frac{hc}{E_{photon}}
 ```
-To learn more about this process and some uses for Quantum Dots, watch this short video [Color by Size](https://www.youtube.com/watch?v=dhRIHF1DENI)
+This model is a simplification of the standard [Brus equation](https://en.wikipedia.org/wiki/Brus_equation). To learn more about Quantum Dots and some uses for Quantum Dots, watch this short video [Color by Size](https://www.youtube.com/watch?v=dhRIHF1DENI)
 
 Here are some realistic parameters for CdSe quantum dots
 | Parameter | Symbol| Approx. Value | Units|
@@ -40,7 +40,7 @@ Here are some realistic parameters for CdSe quantum dots
 |Electron well depth| $V_{0,e}$|4.0|eV|
 |Hole well depth|$V_{0,h}$|4.0|eV|
 |Reduced Plank constant|$\hbar$|197.326| eV nm|
-|Plank constant $\times$ speed of light|$hc$| 1239.84|eV nm|
+|Plank constant $\cdot$ speed of light|$hc$| 1239.84|eV nm|
 
 If we then set the potential well for the electron to be:
 ```math
@@ -61,8 +61,13 @@ V_h(x) =
 
 ---
 Here is what you should turn in
-1. Make a scatter plot of emitted photon wavelength $\lambda$ vs. quantum dot width $L$ for $L \in \[1nm, 10nm\]$ with $\Delta L = 1mn$.  All of your wavelengths should be in the visible range of 400nm - 700nm.
-2. Answer these questions
+1. Make a scatter plot of emitted photon wavelength $\lambda$ vs. quantum dot width $L$ for $L \in \[1nm, 10nm\]$ with $\Delta L = 0.5 nm$.  All of your wavelengths should be in the visible range, 400nm to 700nm, and should generally follow the chart below:
+  <p align="center">
+  <img width="372" height="352" alt="JNMR-05-00117-g002"
+  src="https://github.com/user-attachments/assets/d81b6042-33d6-4534-bbea-2ae64c1d777c" />
+  </p>
+  
+2. Answer these questions:
    * Between which quantum dot sizes does the emitted wavelength change the most rapidly? What does this suggest about how sensitive quantum dot color is to small changes in size?
    * In this model, both the electron and the hole contribute to the photon energy through their confinement energies. Which particle contributes more strongly to the energy shift: the electron or the hole? Explain why using their effective masses.
    * Suppose you want to design a quantum dot that emits green light $\(\lambda=550nm\)$. Use your model to estimate the quantum dot width required to produce this wavelength.
