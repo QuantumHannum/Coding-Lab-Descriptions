@@ -25,9 +25,9 @@ Things to turn in:
    
 |Quantum Number | Calculated Eigenenergies | Exact Eigenenergies | Percent Error |
 |:-------------:|--------------------------|---------------------|---------------|
+| 0             |                          |                     |               |
 | 1             |                          |                     |               |
 | 2             |                          |                     |               |
-| 3             |                          |                     |               |
 
 Classical Harmonic Oscillator Probability Density (normalized)
 ```math
