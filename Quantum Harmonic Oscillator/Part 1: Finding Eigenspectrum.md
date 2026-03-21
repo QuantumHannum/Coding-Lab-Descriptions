@@ -22,6 +22,7 @@ Things to turn in:
 2. Plots (one per axis) of the first 5 probability distributions $|\phi_n(x)|^2$
 3. A Plot showing the 20th eigenfunction probability and a plot of the **classical** harmonic oscillator probability given in the equation below.
 5. A table for the first 15 quantum states showing the following values:
+   
 |Quantum Number | Calculated Eigenenergies | Exact Eigenenergies | Percent Error |
 |---------------|--------------------------|---------------------|---------------|
 | 1             |                          |                     |               |
