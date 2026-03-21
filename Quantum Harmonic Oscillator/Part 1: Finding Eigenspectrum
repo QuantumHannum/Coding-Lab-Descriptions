@@ -4,7 +4,7 @@
 
 Using the following constants, follow the same process you used for the Finite Square Well coding lab and approximate the values of the eigenenergies and eigenfunctions.
 
-We use an electron-scale harmonic trap with energies measured in eV, position in $nm$, and time in $fs$. The chosen values will give realistic nanoscale confinement, produce wavefunctions spread over about 1 nm, and yield oscillation periods on the order of 
+We use an electron-scale harmonic trap, with energies measured in eV, positions in nm, and time in fs. The chosen values will give realistic nanoscale confinement, produce wavefunctions spread over about 1 nm, and yield oscillation periods on the order of 
 $10^2$ $fs$, which is ideal for numerical plots and animations.
 
 |       Constant       | Value             | Units           |
