@@ -1,0 +1,16 @@
+# Part 1: Finding the Eigenspectrum of Quantum Harmonic Oscillator
+
+## Activity 1: Use finite difference methods (again)
+
+Using the following constants, follow the same process you used for the Finite Square Well coding lab and approximate the values of the eigenenergies and eigenfunctions.
+
+We use an electron-scale harmonic trap with energies measured in eV, position in $nm$, and time in $fs$. The chosen values will give realistic nanoscale confinement, produce wavefunctions spread over about 1 nm, and yield oscillation periods on the order of 
+$10^2$ $fs$, which is ideal for numerical plots and animations.
+
+|       Constant       | Value             | Units           |
+|:--------------------:|-------------------|-----------------|
+| $\hbar$              | $0.6582$          | $eV \cdot fs$   |
+| $\frac{\hbar^2}{2m}$ | $0.0381$          | $eV \cdot nm^2$ |
+| $\hbar \omega$       | $0.050$           | $eV$            |
+| $m\omega^2$          | $0.0328$          | $eV/nm^2$       |
+| $x$                  | $-10\le x \le 10$ | $nm$            |
