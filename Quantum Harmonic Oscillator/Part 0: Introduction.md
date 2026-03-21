@@ -28,10 +28,10 @@ with
 and $H_n(\xi) the nth Hermite Polynomial given by:
 ```math
 \begin{align}
-H_0(\xi) $=1\\
-H_1(\xi) $= 2\xi\\
-H_2(\xi) $= 4\xi^2-2\\
-H_3(\xi) $= 8\xi^3-12\xi
+H_0(\xi) &=1\\
+H_1(\xi) &= 2\xi\\
+H_2(\xi) &= 4\xi^2-2\\
+H_3(\xi) &= 8\xi^3-12\xi
 \end{align}
 ```
 all of which can be generated using the Rodrigues formula
