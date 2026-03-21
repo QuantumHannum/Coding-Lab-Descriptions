@@ -24,7 +24,7 @@ Things to turn in:
 5. A table for the first 15 quantum states showing the following values:
    
 |Quantum Number | Calculated Eigenenergies | Exact Eigenenergies | Percent Error |
-|---------------|--------------------------|---------------------|---------------|
+|:-------------:|--------------------------|---------------------|---------------|
 | 1             |                          |                     |               |
 | 2             |                          |                     |               |
 | 3             |                          |                     |               |
