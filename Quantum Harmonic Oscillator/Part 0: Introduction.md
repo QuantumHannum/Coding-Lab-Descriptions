@@ -16,7 +16,7 @@ This gives the larger Hamiltonian for a particle of mass $m$ as:
 It can be shown by employing raising and lowering operators (factorization method) that this Hamiltonian has exact energy eigenvalues of:
 
 ```math
-\left( n+\frac{1}{2} \right) \hbar \omega /;/;/;/; n = 0, 1, 2, ...
+E_n= \left( n+\frac{1}{2} \right) \hbar \omega \quad n = 0, 1, 2, ...
 ```
 
 ---
