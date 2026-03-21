@@ -19,7 +19,25 @@ It can be shown by employing raising and lowering operators (factorization metho
 E_n= \left( n+\frac{1}{2} \right) \hbar \omega \quad \quad n = 0, 1, 2, ...
 ```
 ```math
-\phi_n(x)=\frac{1}{\sqrt{2^nn!}}\left(\frac{m\omega}{\pi \hbar} \right)^{1/4}H_n(\zeta)e^{-\zeta^2/2}
+\phi_n(x)=\frac{1}{\sqrt{2^nn!}}\left(\frac{m\xi}{\pi \hbar} \right)^{1/4}H_n(\xi)e^{-\xi^2/2}
+```
+with
+```math
+\xi = \sqrt{\frac{m\omega}{\hbar}}x
+```
+and $H_n(\xi) the nth Hermite Polynomial given by:
+```math
+\begin{align}
+H_0(\xi) $=1\\
+H_1(\xi) $= 2\xi\\
+H_2(\xi) $= 4\xi^2-2\\
+H_3(\xi) $= 8\xi^3-12\xi
+\end{align}
+```
+all of which can be generated using the Rodrigues formula
+
+```math
+H_n(x) = (-1)^ne^{x^2}\frac{d^n}{dx^n}\left(e^{-x^2}   \right)
 ```
 ---
 ## Conceptual Goals
