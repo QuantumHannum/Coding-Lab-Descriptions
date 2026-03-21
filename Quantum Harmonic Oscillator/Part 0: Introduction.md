@@ -40,7 +40,8 @@ all of which can be generated using the Rodrigues formula
 H_n(x) = (-1)^ne^{x^2}\frac{d^n}{dx^n}\left(e^{-x^2}   \right)
 ```
 
-Despite the exact solutions of the quantum harmonic oscillator, there is still value in exploring its behavior computationally using the finite-difference tri-diagonal Hamiltonian matrix we have previously developed.  
+Despite the exact solutions of the quantum harmonic oscillator, there is still value in exploring its behavior computationally using the finite-difference tri-diagonal Hamiltonian matrix we have previously developed. 
+
 ---
 ## Conceptual Goals
 1. Explain why the quantum harmonic oscillator has linearly spaced energy levels and how this differs from other systems (e.g., infinite square well).
