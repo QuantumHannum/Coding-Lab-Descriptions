@@ -14,7 +14,7 @@ $10^2$ $fs$, which is ideal for numerical plots and animations.
 | $\hbar \omega$       | $0.050$           | $eV$            |
 | $m\omega^2$          | $0.0328$          | $eV/nm^2$       |
 | $x$                  | $-10\le x \le 10$ | $nm$            |
-| $N$(Num. Grid Points)| $1500$            |                 |
+| $N$(Grid Points)     | $1500$            |                 |
 
 ___
 Things to turn in:
