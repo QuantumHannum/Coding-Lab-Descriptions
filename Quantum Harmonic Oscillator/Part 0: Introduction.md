@@ -4,7 +4,7 @@
 
 What defines the 1-D quantum harmonic oscillator is the potential function
 ```math
-v(x) = \frac{1}{2}m\omega x^2
+V(x) = \frac{1}{2}m\omega x^2
 ```
 
 This gives the larger Hamiltonian for a particle of mass $m$ as:
