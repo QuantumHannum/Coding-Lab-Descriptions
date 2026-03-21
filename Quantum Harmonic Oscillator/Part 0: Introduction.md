@@ -19,7 +19,7 @@ It can be shown by employing raising and lowering operators (factorization metho
 E_n= \left( n+\frac{1}{2} \right) \hbar \omega \quad \quad n = 0, 1, 2, ...
 ```
 ```math
-\phi_n(x)=\frac{1}{\sqrt{2^nn!}}\left(\frac{m\xi}{\pi \hbar} \right)^{1/4}H_n(\xi)e^{-\xi^2/2}
+\phi_n(x)=\frac{1}{\sqrt{2^nn!}}\left(\frac{m\omega}{\pi \hbar} \right)^{1/4}H_n(\xi)e^{-\xi^2/2}
 ```
 with
 ```math
