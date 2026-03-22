@@ -30,8 +30,34 @@ Using the following values for constants
 
 --- 
 What you need to turn in:
-1. Decompose $\psi(x,0)$ into its eigenspectrum, then make a plot with both $|\psi(x,0)|^2$ and $|\sum c_n\phi_n(x)|^2$.  You are going to have to determine a reasonable number of eigenfunctions to use - my suggestion is to keep track of the sum of all $c_n$ and use $|c_n|^2\approx 1$ as your convergence criteria.  In the title of your plot, include the number of eigenfunctions you used to approximate the eigenspectrum.
+1. Decompose $\psi(x,0)$ i(initial wavefunction) into the harmonic oscillator eigenbasis
+
+```math
+   c_n=\int\phi^*_n(x)\psi(x,0)dx
+```
+Then reconstruct the wavefunction:
+
+```math
+\psi_{reconstructed}(x,0)=\sum_n c_n \phi_n(x)
+```
+and make a plot comparing
+
+```math
+|\psi(x,0)|^2 \quad \quad |\psi_{reconstructed}(x,0)|^2
+```
+
+You will need to determine a reasonable number of eigenfunctions to include in this expansion.  I suggest using the normalization condition as a convergence check:
+
+```math
+\sum_n|c_n|^2 \approx 1
+```
+Increase the number of eigenfunctions until this condition is satisfied.  **In the title of your probability plot, include the number of eigenfunctions you used.**
+
+### Tips/Pitfalls
+
+
+Then make a plot with both $|\psi(x,0)|^2$ and $|\sum c_n\phi_n(x)|^2$.  You are going to have to determine a reasonable number of eigenfunctions to use - my suggestion is to keep track of the sum of all $c_n$ and use $|c_n|^2\approx 1$ as your convergence criteria.  In the title of your plot, include the number of eigenfunctions you used to approximate the eigenspectrum.
    * Make sure to evaluate both $\psi(x,0)$ and $\phi_n(x)$ at the same gridpoints
    * I would use something like ``scipy.integrate.simpson()`` for your integrator
-   * If you store the values of the functions in ``np.array()`` you will not have any issues with the complex numbers involved with this calculation.  Remember python uses ``j`` as the imaginary number, and you have to give it a coefficient.  So $i=1*j$ in your code.
+   * If you store the values of the functions in ``np.array()`` you will not have any issues with the complex numbers involved with this calculation.  Remember python uses ``j`` as the imaginary number, and you have to give it a coefficient.  So $i=1*j$ in your code.  The good news is the output of ``scipy.linalg.eigh_tridiagonal()`` is a ``np.arrary()``
    * You also may want to use ``np.exp()``, ``np.conjugate()``, and ``np.abs()`` in your code.  They all handle complex numbers just fine.
