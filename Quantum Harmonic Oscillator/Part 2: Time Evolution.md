@@ -6,8 +6,8 @@ Any, general wavefunction can be decomposed into its eigenspectrum - a linear co
 ```math
 \psi(x) = \sum_{n=0}^{\infty} c_n\phi_n(x)
 ```
-where the coefficients $c_n$ are calculated by the overlap integral:
+where the overlap integral calculates the coefficients $c_n$:
 
 ```math
-c_n=\int_{-\infty}^{\infty}
+c_n=\int_{-\infty}^{\infty} \phi^{*}_n(x) \psi(x) dx
 ```
