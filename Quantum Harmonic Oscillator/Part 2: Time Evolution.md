@@ -30,4 +30,4 @@ Using the following values for constants
 
 --- 
 What you need to turn in:
-1. Decompose $\psi(x,0)$ into its eigenspectrum, then make a plot with both $|\psi(x,0)|^2$ and $|\sum c_n\phi_n(x)|^2$
+1. Decompose $\psi(x,0)$ into its eigenspectrum, then make a plot with both $|\psi(x,0)|^2$ and $|\sum c_n\phi_n(x)|^2$.  You are going to have to determine a reasonable number of eigenfunctions to use - my suggestion is to keep track of the sum of all $c_n$ and use $|c_n|^2\approx 1$ as your convergence criteria.
