@@ -29,8 +29,8 @@ Using the following values for constants
 |$k_0$     |$1.8$|$nm^{-1}$|
 
 --- 
-What you need to turn in:
-1. Decompose $\psi(x,0)$ i(initial wavefunction) into the harmonic oscillator eigenbasis
+### What you need to turn in:
+Decompose $\psi(x,0)$ i(initial wavefunction) into the harmonic oscillator eigenbasis
 
 ```math
    c_n=\int\phi^*_n(x)\psi(x,0)dx
@@ -54,10 +54,13 @@ You will need to determine a reasonable number of eigenfunctions to include in t
 Increase the number of eigenfunctions until this condition is satisfied.  **In the title of your probability plot, include the number of eigenfunctions you used.**
 
 ### Tips/Pitfalls
-
-
-Then make a plot with both $|\psi(x,0)|^2$ and $|\sum c_n\phi_n(x)|^2$.  You are going to have to determine a reasonable number of eigenfunctions to use - my suggestion is to keep track of the sum of all $c_n$ and use $|c_n|^2\approx 1$ as your convergence criteria.  In the title of your plot, include the number of eigenfunctions you used to approximate the eigenspectrum.
-   * Make sure to evaluate both $\psi(x,0)$ and $\phi_n(x)$ at the same gridpoints
-   * I would use something like ``scipy.integrate.simpson()`` for your integrator
-   * If you store the values of the functions in ``np.array()`` you will not have any issues with the complex numbers involved with this calculation.  Remember python uses ``j`` as the imaginary number, and you have to give it a coefficient.  So $i=1*j$ in your code.  The good news is the output of ``scipy.linalg.eigh_tridiagonal()`` is a ``np.arrary()``
-   * You also may want to use ``np.exp()``, ``np.conjugate()``, and ``np.abs()`` in your code.  They all handle complex numbers just fine.
+* Make sure to evaluate both $\psi(x,0)$ and $\phi_n(x)$ on the same grid points.
+* I recommend using ``scipy.integrate.simpson()`` to compute overlap integrals.
+* Store all functions as ``np.array`` objects.  NumPy handles complex numbers automatically, so you should never need any special conversions.
+* Python uses ``j`` for the imaginary unit, not ``i``.  You also need to give it a coefficient!! so $i = 1j$ in python.
+* The eigenvectors returned by ``sicpy.linalg.eigh_tridiagonal()`` are real-valued ``np.array``.  When you multiply them by a complex wavefunction, NumPy will automatically handle the complex arithmetic.
+* You will likely find the following NumPy functions useful; all of them can handle complex numbers:
+   * ``np.exp()``
+   * ``np.conjugate()``
+   * ``np.abs()``
+* As an additional check for your plot, you may want to compare the original and reconstructed wavefunctions by plotting the real and imaginary parts separately, or by computing their overlap.
