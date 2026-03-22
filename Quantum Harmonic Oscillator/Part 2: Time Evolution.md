@@ -18,7 +18,7 @@ At $t=0$, an electron in the same quadratic potential from part 1 is known to be
 
 ```math
 \Large
-\psi(x,0) = \frac{1}{(2\pi\sigma^2)^{1/4}}e^{\left[-\frac{(x-x_0)^2}{4\sigma^2} \right]}e^{ik_0x}
+\psi(x,0) = \frac{1}{(2\pi\sigma^2)^{1/4}} \cdot e^{\left[-\frac{(x-x_0)^2}{4\sigma^2} \right]} \cdot e^{ik_0x}
 ```
 Using the following values for constants
 
