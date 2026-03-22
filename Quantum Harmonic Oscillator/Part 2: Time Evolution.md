@@ -68,5 +68,6 @@ Increase the number of eigenfunctions until this condition is satisfied.  **In t
 ## Activity 3
 To evolve a wavefunction forward in time, we just need to add a phase to each term in the expansion:
 ```math
-\psi(x,t)=\sum_n c_n \cdot phi_n(x) \cdot e^{-iE_n/\hbart}
+\psi_{reconstructed}(x,t)=\sum_n c_n \cdot phi_n(x) \cdot e^{-iE_n/\hbar t}
 ```
+Where $E_n$ are the eigenenergies (found using ``scipy.linalg.eigh_tridiagonal()``).
