@@ -89,8 +89,16 @@ A good strategy is:
 ```python
 t_vals = np.linspace(0,t_max,num_frames)
 ```
+where the number of frames should be a few hundred.
+
 For each value of ``t`` in ``t_vals``:
 - build the time-dependent wavefunction
   ```math
    \psi(x,t)=\sum_n c_n \cdot \phi_n(x) \cdot e^{-iE_n t/\hbar}
   ```
+- compute the probability density
+  ```math
+   P(t)=|\psi(x,t)|^2
+  ```
+
+- store that probability density so it can be plotted frame-by-frame in an animation
