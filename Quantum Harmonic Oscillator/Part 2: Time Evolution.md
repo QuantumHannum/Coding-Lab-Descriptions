@@ -27,3 +27,7 @@ Using the following values for constants
 |$x_0$     |$2.0$|$nm$|
 |$\sigma$  |$0.45$|$nm$|
 |$k_0$     |$1.8$|$nm^{-1}$|
+
+--- 
+What you need to turn in:
+1. Decompose $\psi(x,0)$ into its eigenspectrum, then make a plot with both $|\psi(x,0)|^2$ and $|\sum c_n\phi_n(x)|^2$
