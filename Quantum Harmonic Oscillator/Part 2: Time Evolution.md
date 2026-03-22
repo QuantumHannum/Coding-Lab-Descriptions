@@ -121,7 +121,7 @@ from matplotlib.animation import FuncAnimation, FFMpegWriter
 # Choose time range
 # ----------------------------------------
 T = 2 * np.pi / omega        # one oscillation period
-t_max = 3 * T                # evolve for 3 periods
+t_max = 4 * T                # evolve for 3 periods
 num_frames = 300
 t_vals = np.linspace(0, t_max, num_frames)
 
@@ -191,4 +191,11 @@ writer = FFMpegWriter(fps=20)
 anim.save("sho_time_evolution.mov", writer=writer)
 
 plt.show()
+```
+
+If saving ``.mov`` files doesn't work on your computer, it ususally means FFmpeg is not installed.  In that case, you can save your annimation as a ``.GIF`` instead using ``PillowWriter``.
+
+```python
+from matplotlib.animation import PillowWriter
+anim.save("sho_time_evolution.gif", writer=PillowWriter(fps=20))
 ```
