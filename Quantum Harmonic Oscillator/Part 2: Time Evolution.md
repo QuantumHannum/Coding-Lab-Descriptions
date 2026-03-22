@@ -83,7 +83,7 @@ T=\frac{2\pi}{\omega}
 where $\omega$ is the angular frequency from your potential (part 1).
 
 A good strategy is:
-* evolve for several full oscillation periods so the motion is easy to see, for example, let $t_{max}=4T
+* evolve for several full oscillation periods so the motion is easy to see, for example, let $t_{max}=4T$
 * divide that total time into many small time steps so the animation looks smooth
 
 ```python
@@ -100,5 +100,95 @@ For each value of ``t`` in ``t_vals``:
   ```math
    P(t)=|\psi(x,t)|^2
   ```
+- store that probability density so it can be plotted frame-by-frame in an animation.
 
-- store that probability density so it can be plotted frame-by-frame in an animation
+
+### Code snippet to make .mov file
+This example assumes you already have:
+* ``x`` = spatial grid
+* ``energies`` = array of eigenenergies
+* ``eigenvectors`` array of eigenfunctions evaluated on the grid ``x``
+* ``c_vals`` = overlap coeficients
+* ``hbar`` = reduced Planck constant (from part 1)
+* ``omega`` = oscillator angular frequency (from part 1)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, FFMpegWriter
+
+# ----------------------------------------
+# Choose time range
+# ----------------------------------------
+T = 2 * np.pi / omega        # one oscillation period
+t_max = 3 * T                # evolve for 3 periods
+num_frames = 300
+t_vals = np.linspace(0, t_max, num_frames)
+
+# ----------------------------------------
+# Precompute probability density at each time
+# ----------------------------------------
+probability_frames = []
+
+num_states_used = len(c_vals)
+
+for t in t_vals:
+    psi_t = np.zeros_like(x, dtype=complex)
+
+    for n in range(num_states_used):
+        # *********** PUT YOUR CODE HERE ************ 
+
+
+
+    prob_density = np.abs(psi_t)**2
+    probability_frames.append(prob_density)
+
+probability_frames = np.array(probability_frames)
+
+# ----------------------------------------
+# Set up figure
+# ----------------------------------------
+fig, ax = plt.subplots(figsize=(8, 5))
+line, = ax.plot(x, probability_frames[0], lw=2)
+
+ax.set_xlabel("x (nm)")
+ax.set_ylabel(r"$|\psi(x,t)|^2$")
+ax.set_title("Time Evolution of Probability Density")
+
+ax.set_xlim(x.min(), x.max())
+ax.set_ylim(0, 1.1 * np.max(probability_frames))
+
+time_text = ax.text(
+    0.02, 0.95, "", transform=ax.transAxes,
+    verticalalignment="top"
+)
+
+# Optional: show the potential in the background, rescaled
+# V_plot = V / np.max(V) * np.max(probability_frames) * 0.8
+# ax.plot(x, V_plot, "--", alpha=0.6, label="Scaled potential")
+# ax.legend()
+
+# ----------------------------------------
+# Animation update function
+# ----------------------------------------
+def update(frame):
+    line.set_ydata(probability_frames[frame])
+    time_text.set_text(f"t = {t_vals[frame]:.2f} fs")
+    return line, time_text
+
+anim = FuncAnimation(
+    fig,
+    update,
+    frames=num_frames,
+    interval=40,
+    blit=True
+)
+
+# ----------------------------------------
+# Save as .mov
+# ----------------------------------------
+writer = FFMpegWriter(fps=20)
+anim.save("sho_time_evolution.mov", writer=writer)
+
+plt.show()
+```
