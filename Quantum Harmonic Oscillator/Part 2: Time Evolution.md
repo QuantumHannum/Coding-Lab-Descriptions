@@ -215,3 +215,23 @@ and because x commutes with $\psi(x,t)$
 For a wave packet in the harmonic oscillator, you should find that $\langle \hat{x} \rangle (t)$ oscillates approximately sinusodially, similar to the position of a classical mass on a spring.  This correspondence is referred to as 
 
 > **Ehrenfest's Theorem**, which states that expectation values of quantum operators follow classical equations of motion.
+
+### Calculating Expectation Value of Position as a function of time
+Go back to your last code and add another list to track the expectation value near the other lists:
+```python
+psi_frames = []
+probability_frames = []
+x_expectation_vals = []
+```
+Then, inside the main for loop, after you have found the ``probability_density``, calculate the expectation value of position:
+```python
+psi_frames.append(psi_t)
+prob_density = np.abs(psi_t)**2
+probability_frames.append(prob_density)
+
+#******** PUT YOUR CODE HERE ************
+# calculate x_exp
+# append x_exp into x_expectation_vals
+#****************************************
+```
+Finally, convert ``x_expectation_vals`` into a ``np.array``, and make a plot of $\langle \hat{x} \rangle (t)$ vs. $t$.
