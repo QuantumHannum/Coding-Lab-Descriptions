@@ -214,12 +214,12 @@ anim.save("sho_time_evolution.gif", writer=PillowWriter(fps=20))
 In addition to animating the time evolution of the system, it's useful to calculate the expectation value of position $\langle \hat{x} \rangle (t)$.  This can be done in two ways:
 
 ```math
-\langle \hat{x} \rangle (t) = int \psi^*(x,t) \cdot x \cdot \psi(x,t) dt
+\langle \hat{x} \rangle (t) = \int \psi^*(x,t) \cdot x \cdot \psi(x,t) dt
 ```
 and because x commutes with $\psi(x,t)$
 
 ```math
-\langle \hat{x} \rangle (t) = int  x \cdot |\psi(x,t)|^2 dt
+\langle \hat{x} \rangle (t) = \int  x \cdot |\psi(x,t)|^2 dt
 ```
 
 For a wave packet in the harmonic oscillator, you should find that $\langle \hat{x} \rangle (t)$ oscillates approximately sinusodially, similar to the position of a classical mass on a spring.  This correspondence is referred to as 
@@ -244,4 +244,82 @@ probability_frames.append(prob_density)
 # append x_exp into x_expectation_vals
 #****************************************
 ```
-Finally, convert ``x_expectation_vals`` into a ``np.array``, and make a plot of $\langle \hat{x} \rangle (t)$ vs. $t$.
+Finally, convert ``x_expectation_vals`` into a ``np.array``.
+
+---
+What to turn in
+1.  Using the code below, make a plot of $\langle \hat{x} \rangle (t)$ and then fit a cosine curve of the form:
+
+```math
+\langle \hat{x} \rangle (t) = A \cos(\omega t + \phi) + C
+```
+
+```python
+from scipy.optimize import curve_fit
+
+# ----------------------------------------
+# Define fitting function
+# ----------------------------------------
+def sinusoid(t, A, omega, phi, C):
+    return A * np.cos(omega * t + phi) + C
+
+# ----------------------------------------
+# Initial guesses
+# ----------------------------------------
+A_guess = (np.max(x_expectation_vals) - np.min(x_expectation_vals)) / 2
+C_guess = np.mean(x_expectation_vals)
+omega_guess = omega   # use known oscillator frequency as a starting guess
+phi_guess = 0
+
+initial_guess = [A_guess, omega_guess, phi_guess, C_guess]
+
+# ----------------------------------------
+# Perform fit
+# ----------------------------------------
+params, covariance = curve_fit(
+    sinusoid,
+    t_vals,
+    x_expectation_vals,
+    p0=initial_guess
+)
+
+A_fit, omega_fit, phi_fit, C_fit = params
+
+# ----------------------------------------
+# Print results
+# ----------------------------------------
+print(f"Fitted amplitude A = {A_fit:.4f} nm")
+print(f"Fitted angular frequency omega = {omega_fit:.4f} fs^-1")
+print(f"Fitted phase phi = {phi_fit:.4f} rad")
+print(f"Fitted offset C = {C_fit:.4f} nm")
+
+print("\nExpected omega =", omega)
+print("Percent error =", abs((omega_fit - omega)/omega) * 100, "%")
+
+# ----------------------------------------
+# Plot data and fit
+# ----------------------------------------
+t_fine = np.linspace(t_vals.min(), t_vals.max(), 1000)
+fit_curve = sinusoid(t_fine, A_fit, omega_fit, phi_fit, C_fit)
+
+plt.figure(figsize=(8,5))
+plt.plot(t_vals, x_expectation_vals, 'o', label="Data")
+plt.plot(t_fine, fit_curve, '-', label="Fit")
+plt.xlabel("time (fs)")
+plt.ylabel(r"$\langle x \rangle (t)$ (nm)")
+plt.title("Sinusoidal Fit to Expectation Value")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+Then answer the following questions
+1.  Why does a single eigenstate not change its probability density in time, while a superposition does?
+
+2. In your animation, what role do the relative phases between different eigenstates play in producing motion?
+
+3. You fit your data to a sinusoidal function and extracted a frequency.  How did your fitted frequency compare to the expected $\omega$?
+
+4. In this lab, the expectation value $\langle \hat{x} \rangle (t)$ behaved like a classical oscillator.
+   * Does this mean the particle itself is moving like a classical particle?
+   * What is actually oscillating in the quantum system?
