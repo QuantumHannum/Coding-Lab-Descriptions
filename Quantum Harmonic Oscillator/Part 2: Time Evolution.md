@@ -144,7 +144,7 @@ for t in t_vals:
 
     for n in range(num_states_used):
        #************ ADD YOUR CODE HERE ***************
-       # This section should find psi(x,n) by adding up the
+       # This section should find psi(x,t) by adding up the
        # contributions from each c_n * phi_n(x) and store it
        # as a np.array named psi_t
        #***********************************************
