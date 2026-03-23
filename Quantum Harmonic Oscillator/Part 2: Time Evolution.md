@@ -51,7 +51,9 @@ You will need to determine a reasonable number of eigenfunctions to include in t
 ```math
 \sum_n|c_n|^2 \approx 1
 ```
-Increase the number of eigenfunctions until this condition is satisfied.  **In the title of your probability plot, include the number of eigenfunctions you used.**
+Increase the number of eigenfunctions until this condition is satisfied.  You should decide for yourself how close to ``1`` you want this sum to be.  
+
+>In the title of your probability plot, include the number of eigenfunctions you used.
 
 ### Tips/Pitfalls
 * Make sure to evaluate both $\psi(x,0)$ and $\phi_n(x)$ on the same grid points.
