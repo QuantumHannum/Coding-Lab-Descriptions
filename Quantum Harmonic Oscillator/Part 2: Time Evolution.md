@@ -65,6 +65,11 @@ Increase the number of eigenfunctions until this condition is satisfied.  **In t
    * ``np.abs()``
 * As an additional check for your plot, you may want to compare the original and reconstructed wavefunctions by plotting the real and imaginary parts separately, or by computing their overlap.
 
+---
+### Things to turn in:
+1. A plot showing $|\psi(x,0)|^2$ and $|\psi_{reconstructed}|^2 that indicated how many expanstion terms you used.
+---
+
 ## Activity 3
 To evolve a wavefunction forward in time, we just need to add a phase to each term in the expansion:
 ```math
@@ -198,6 +203,11 @@ If saving ``.mov`` files doesn't work on your computer, it usually means FFmpeg 
 from matplotlib.animation import PillowWriter
 anim.save("sho_time_evolution.gif", writer=PillowWriter(fps=20))
 ```
+
+---
+### Things to turn in
+1. Your .mov (or .gif) file showing the time evolution of the initial state $|\psi(x,t)|^2$
+----
 
 ## Activity 4
 
