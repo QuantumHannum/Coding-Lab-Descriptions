@@ -115,38 +115,48 @@ This example assumes you already have:
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.integrate import simpson
 from matplotlib.animation import FuncAnimation, FFMpegWriter
 
 # ----------------------------------------
 # Choose time range
 # ----------------------------------------
-T = 2 * np.pi / omega        # one oscillation period
-t_max = 4 * T                # evolve for 3 periods
+T = 2 * np.pi / omega
+t_max = 4 * T
 num_frames = 300
 t_vals = np.linspace(0, t_max, num_frames)
 
-# ----------------------------------------
-# Precompute probability density at each time
-# ----------------------------------------
-probability_frames = []
-
 num_states_used = len(c_vals)
+
+# ----------------------------------------
+# Store wavefunction and probability density
+# ----------------------------------------
+psi_frames = []
+probability_frames = []
 
 for t in t_vals:
     psi_t = np.zeros_like(x, dtype=complex)
 
     for n in range(num_states_used):
-        # *********** PUT YOUR CODE HERE ************ 
+       #************ ADD YOUR CODE HERE ***************
+       # This section should find psi(x,n) by adding up the
+       # contributions from each c_n * phi_n(x) and store it
+       # as a np.array named psi_t
+       #***********************************************
 
 
+
+
+    psi_frames.append(psi_t)
 
     prob_density = np.abs(psi_t)**2
     probability_frames.append(prob_density)
 
+psi_frames = np.array(psi_frames)
 probability_frames = np.array(probability_frames)
 
 # ----------------------------------------
-# Set up figure
+# Animation of probability density
 # ----------------------------------------
 fig, ax = plt.subplots(figsize=(8, 5))
 line, = ax.plot(x, probability_frames[0], lw=2)
@@ -163,14 +173,6 @@ time_text = ax.text(
     verticalalignment="top"
 )
 
-# Optional: show the potential in the background, rescaled
-# V_plot = V / np.max(V) * np.max(probability_frames) * 0.8
-# ax.plot(x, V_plot, "--", alpha=0.6, label="Scaled potential")
-# ax.legend()
-
-# ----------------------------------------
-# Animation update function
-# ----------------------------------------
 def update(frame):
     line.set_ydata(probability_frames[frame])
     time_text.set_text(f"t = {t_vals[frame]:.2f} fs")
@@ -184,9 +186,6 @@ anim = FuncAnimation(
     blit=True
 )
 
-# ----------------------------------------
-# Save as .mov
-# ----------------------------------------
 writer = FFMpegWriter(fps=20)
 anim.save("sho_time_evolution.mov", writer=writer)
 
@@ -199,3 +198,20 @@ If saving ``.mov`` files doesn't work on your computer, it ususally means FFmpeg
 from matplotlib.animation import PillowWriter
 anim.save("sho_time_evolution.gif", writer=PillowWriter(fps=20))
 ```
+
+## Activity 4
+
+In addition to animating the time evolution of the system, its useful to calculate the expectation value of position $\langle \hat{x} \rangle (t)$  This can be done two ways:
+
+```math
+\langle \hat{x} \rangle (t) = int \psi^*(x,t) \cdot x \cdot \psi(x,t) dt
+```
+and because x commutes with $\psi(x,t)$
+
+```math
+\langle \hat{x} \rangle (t) = int  x \cdot |\psi(x,t)|^2 dt
+```
+
+For a wave packet in the harmonic oscillator, you should find that $\langle \hat{x} \rangle (t)$ oscillates approximately sinusodially, similar to the postion of a clasical mass on a spring.  This corrispondence is reffered to as 
+
+>> **Ehrenfest's Theorem**, which states that expecation values of quantum operators follow classical equations of motion.
