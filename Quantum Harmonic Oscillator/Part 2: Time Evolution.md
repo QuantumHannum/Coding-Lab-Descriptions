@@ -192,7 +192,7 @@ anim.save("sho_time_evolution.mov", writer=writer)
 plt.show()
 ```
 
-If saving ``.mov`` files doesn't work on your computer, it ususally means FFmpeg is not installed.  In that case, you can save your annimation as a ``.GIF`` instead using ``PillowWriter``.
+If saving ``.mov`` files doesn't work on your computer, it usually means FFmpeg isn't installed.  In that case, you can save your animation as a ``.GIF`` file using ``PillowWriter``.
 
 ```python
 from matplotlib.animation import PillowWriter
@@ -201,7 +201,7 @@ anim.save("sho_time_evolution.gif", writer=PillowWriter(fps=20))
 
 ## Activity 4
 
-In addition to animating the time evolution of the system, its useful to calculate the expectation value of position $\langle \hat{x} \rangle (t)$  This can be done two ways:
+In addition to animating the time evolution of the system, it's useful to calculate the expectation value of position $\langle \hat{x} \rangle (t)$.  This can be done in two ways:
 
 ```math
 \langle \hat{x} \rangle (t) = int \psi^*(x,t) \cdot x \cdot \psi(x,t) dt
@@ -212,6 +212,6 @@ and because x commutes with $\psi(x,t)$
 \langle \hat{x} \rangle (t) = int  x \cdot |\psi(x,t)|^2 dt
 ```
 
-For a wave packet in the harmonic oscillator, you should find that $\langle \hat{x} \rangle (t)$ oscillates approximately sinusodially, similar to the postion of a clasical mass on a spring.  This corrispondence is reffered to as 
+For a wave packet in the harmonic oscillator, you should find that $\langle \hat{x} \rangle (t)$ oscillates approximately sinusodially, similar to the position of a classical mass on a spring.  This correspondence is referred to as 
 
->> **Ehrenfest's Theorem**, which states that expecation values of quantum operators follow classical equations of motion.
+> **Ehrenfest's Theorem**, which states that expectation values of quantum operators follow classical equations of motion.
