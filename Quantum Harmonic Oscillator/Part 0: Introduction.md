@@ -26,7 +26,7 @@ with
 ```math
 \xi = \sqrt{\frac{m\omega}{\hbar}}x
 ```
-and $H_n(\xi) the nth Hermite Polynomial given by:
+and $H_n(\xi)$ the nth Hermite Polynomial given by:
 ```math
 \begin{align}
 H_0(\xi) &=1\\
