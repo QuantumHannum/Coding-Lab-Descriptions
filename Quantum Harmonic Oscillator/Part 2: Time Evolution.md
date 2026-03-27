@@ -216,12 +216,12 @@ anim.save("sho_time_evolution.gif", writer=PillowWriter(fps=20))
 In addition to animating the time evolution of the system, it's useful to calculate the expectation value of position $\langle \hat{x} \rangle (t)$.  This can be done in two ways:
 
 ```math
-\langle \hat{x} \rangle (t) = \int \psi^*(x,t) \cdot x \cdot \psi(x,t) dt
+\langle \hat{x} \rangle (t) = \int \psi^*(x,t) \cdot x \cdot \psi(x,t) dx
 ```
 and because x commutes with $\psi(x,t)$
 
 ```math
-\langle \hat{x} \rangle (t) = \int  x \cdot |\psi(x,t)|^2 dt
+\langle \hat{x} \rangle (t) = \int  x \cdot |\psi(x,t)|^2 dx
 ```
 
 For a wave packet in the harmonic oscillator, you should find that $\langle \hat{x} \rangle (t)$ oscillates approximately sinusodially, similar to the position of a classical mass on a spring.  This correspondence is referred to as 
