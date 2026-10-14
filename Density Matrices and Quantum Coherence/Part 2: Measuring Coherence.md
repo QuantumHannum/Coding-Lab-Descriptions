@@ -20,14 +20,16 @@
 
 A pure state satisfies $\rho^2=\rho$ and has
 
-```math
-\mathcal P=\operatorname{Tr}(\rho^2)=1.
-```
+
+$$
+\mathcal{P} = \mathrm{Tr}(\rho^2)
+$$
+
 
 For a mixed qubit, $1/2\le\mathcal P<1$. The density-matrix Born rule for a projection $P_{+j}$ is
 
 ```math
-P(+j)=\operatorname{Tr}(\rho P_{+j}).
+P(+j)=\mathrm{Tr}(\rho P_{+j}).
 ```
 
 For our phase ensemble centered at zero,
