@@ -11,7 +11,7 @@
 ### Specific Tasks
 
 1. **Reuse** the ensemble density matrices constructed in Part 1.
-2. For each phase spread $\Delta$, calculate $\operatorname{Tr}(\rho^2)$.
+2. For each phase spread $\Delta$, calculate $\mathrm{Tr}(\rho^2)$.
 3. Use projection operators to calculate $P(+x)$, $P(+y)$, and $P(+z)$.
 4. Create **Figure 3**, with purity on the upper plot and measurement probabilities on the lower plot, both versus $\Delta$.
 5. Check the limiting cases analytically.
