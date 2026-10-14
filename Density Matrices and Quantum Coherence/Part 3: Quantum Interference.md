@@ -1,3 +1,4 @@
+
 # Part 3: Quantum Interference
 
 ## Activity 3: Phase uncertainty in a Stern–Gerlach interferometer
@@ -20,33 +21,54 @@
 
 The first $x$-oriented Stern–Gerlach magnet resolves two components:
 
-```math
-|+z\rangle=\frac1{\sqrt2}\big(|+x\rangle+|-x\rangle\big).
-```
+$$
+|+z\rangle=\frac{1}{\sqrt{2}}\big(|+x\rangle+|-x\rangle\big).
+$$
+
+### Ideal coherent recombination
 
 Assume the two paths are separated and then coherently recombined into the **same spatial mode** (with no residual path information). A controlled relative phase $\delta$ produces
 
-```math
-|\psi(\delta)\rangle=\frac1{\sqrt2}\big(|+x\rangle+e^{i\delta}|-x\rangle\big).
-```
+$$
+|\psi(\delta)\rangle=\frac{1}{\sqrt{2}}\big(|+x\rangle+e^{i\delta}|-x\rangle\big).
+$$
+
+The following diagram illustrates the idealized Stern–Gerlach interferometer. The two paths are recombined coherently, without recording which-path information.
+
+![Coherent Stern–Gerlach recombination](images/coherent_stern_gerlach_recombination.png)
+
+*Figure A: Coherent Stern–Gerlach recombination. When the relative phase is zero, the initial $|+z\rangle$ state is recovered, and all particles exit through the $+z$ output of the final analyzer.*
 
 The probability of a final $+z$ outcome is
 
-```math
-P(+z)=\frac12(1+\cos\delta).
-```
+$$
+P(+z)=\frac{1}{2}(1+\cos\delta).
+$$
 
-Now let the actual phase be $\delta+\epsilon$, where the uncontrolled phase $\epsilon$ varies uniformly across preparations in $[-\Delta,\Delta]$. On averaging,
+Notice that the output probabilities depend on the **relative phase** between the two paths. When $\delta=0$, all particles emerge from the $+z$ output. When $\delta=\pi$, all particles emerge from the $-z$ output.
 
-```math
-P(+z)=\frac12\left[1+\frac{\sin\Delta}{\Delta}\cos\delta\right].
-```
+### Random phase and reduced visibility
+
+Now let the actual phase be $\delta+\epsilon$, where the uncontrolled phase $\epsilon$ varies uniformly across preparations in $[-\Delta,\Delta]$.
+
+On averaging,
+
+$$
+P(+z)=\frac{1}{2}\left[1+\frac{\sin\Delta}{\Delta}\cos\delta\right].
+$$
 
 For this **balanced, ideal** interferometer, the fringe visibility is
 
-```math
-V=\frac{P_{\max}-P_{\min}}{P_{\max}+P_{\min}}=\left|\frac{\sin\Delta}{\Delta}\right|.
-```
+$$
+V=\frac{P_{\max}-P_{\min}}{P_{\max}+P_{\min}}
+=\left|\frac{\sin\Delta}{\Delta}\right|.
+$$
+
+The diagram below shows an interferometer in which one path acquires an uncontrolled relative phase. Unlike the ideal coherent case, the observed interference pattern has reduced visibility.
+
+![Partial coherence and random phase](images/partial_coherence_stern_gerlach_interferometer.png)
+
+*Figure B: Partial coherence caused by random phase shifts. A fluctuating relative phase reduces the visibility of the interference fringes. Complete phase randomization removes the interference pattern.*
 
 Equivalently, $V=2|\rho_{12}|$, **provided** $\rho$ is expressed in the intermediate $x$-path basis. A $z$-basis coherence element is not automatically the relevant one for a path interferometer.
 
@@ -83,26 +105,47 @@ print('Fully coherent:', output_probability(0, 0))
 
 ### Figure 4: Interference fringe visibility
 
-Plot the simulated $P(+z)$ versus controlled phase $\delta$, for all three phase-spread values, together with the analytical predictions. Report the measured visibility for each curve; use a sufficiently fine phase grid to estimate extrema.
+Plot the simulated $P(+z)$ versus controlled phase $\delta$, for all three phase-spread values, together with the analytical predictions.
+
+Report the measured visibility for each curve; use a sufficiently fine phase grid to estimate extrema.
+
+Compare your simulated interference patterns with the behavior illustrated in Figures A and B.
 
 ### Connecting to welcher Weg (conceptual extension, no new code required)
 
+In the preceding simulation, coherence was reduced by introducing random relative phases. However, interference can also disappear when information about the particle's path becomes physically available.
+
+Consider placing a detector in each arm of the Stern–Gerlach interferometer, as shown below.
+
+![Which-path information recorded](images/which_path_information_diagram.png)
+
+*Figure C: Which-path measurement. Detectors record which intermediate path the particle followed. Even if the paths are subsequently recombined, the retained detector record makes the alternatives distinguishable and eliminates interference in the reduced spin state.*
+
 A path detector may become entangled with the particle:
 
-```math
-|\Psi\rangle=\frac1{\sqrt2}\left(|+x\rangle|D_+\rangle+|-x\rangle|D_-\rangle\right).
-```
+$$
+|\Psi\rangle=\frac{1}{\sqrt{2}}\left(
+|+x\rangle|D_+\rangle+
+|-x\rangle|D_-\rangle
+\right).
+$$
 
 If the detector is ignored, the reduced spin matrix in the $x$ basis is
 
-```math
-\rho_{\mathrm{spin}}=\frac12\begin{pmatrix}
-1&\langle D_-|D_+\rangle\\
-\langle D_+|D_-\rangle&1
+$$
+\rho_{\mathrm{spin}}=
+\frac{1}{2}
+\begin{pmatrix}
+1 & \langle D_-|D_+\rangle\\
+\langle D_+|D_-\rangle & 1
 \end{pmatrix}.
-```
+$$
 
-Orthogonal detector states ($\langle D_-|D_+\rangle=0$) give complete which-path distinguishability and remove the reduced spin coherence. This mechanism differs from averaging classical random phases, even though the resulting spin density matrix can be identical. A path detector does **not** need to be read by a person to establish physical distinguishability.
+Orthogonal detector states ($\langle D_-|D_+\rangle=0$) give complete which-path distinguishability and remove the reduced spin coherence.
+
+This mechanism differs from averaging classical random phases, even though the resulting spin density matrix can be identical.
+
+A path detector does **not** need to be read by a person to establish physical distinguishability.
 
 **Experimental qualification:** Merely letting the split paths converge on a detector is not enough to restore interference. The apparatus must erase residual spatial/path distinguishability and coherently recombine the modes. This exercise models that ideal limit.
 
@@ -136,3 +179,4 @@ Submit **one executable Jupyter notebook (`.ipynb`)**, completed using Colab, On
 **Evaluation emphasis:** physics predictions and interpretation (40%); accurate, labeled visualizations (30%); correct, validated calculations (20%); clarity and reproducibility (10%). Code elegance and the amount written without assistance are **not** grading objectives.
 
 Before submitting, check that every numerical density matrix has trace approximately 1, is Hermitian, has nonnegative eigenvalues within numerical tolerance, and returns probabilities between 0 and 1.
+
