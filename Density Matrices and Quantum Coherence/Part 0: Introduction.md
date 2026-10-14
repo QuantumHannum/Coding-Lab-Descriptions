@@ -167,7 +167,7 @@ A successful test prints trace approximately 1 and purity approximately 1.
 
 ### Using a Generative AI (LLM) as a coding assistant
 
-You may ask a Generative AI (LLM) to write, revise, or debug code. However, **you must decide what physical quantity to calculate, verify the results, and explain every submitted figure**. <ins>Using a GAI to answer the analysis questions is not allowed</ins> - but more importantly, it will undercut your learning process.  In the new learning pipeline, deciding how much to turn over to an LLM is the new skill we all have to add to our toolbox.  When asking for help, provide the equations, the QuTiP version, and the intended variables; ask for code that builds on the existing notebook rather than replacing earlier cells. Always check trace, Hermiticity, and measurement probabilities before trusting a graph.
+You may ask a Generative AI (LLM) to write, revise, or debug code. However, **you must decide what physical quantity to calculate, verify the results, and explain every submitted figure**. <ins>Using a GAI to answer the analysis questions is not allowed</ins> - but more importantly, it will undercut your learning process.  In the new learning pipeline, deciding how much to turn over to an LLM is the new skill we all have to add to our toolbox.  When asking a GAI for help, provide the equations, the QuTiP version, and the intended variables; ask for code that builds on the existing notebook rather than replacing earlier cells. Always check trace, Hermiticity, and measurement probabilities before trusting a graph.
 
 ---
 
