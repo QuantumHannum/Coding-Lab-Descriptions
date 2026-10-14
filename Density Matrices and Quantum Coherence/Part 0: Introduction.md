@@ -68,9 +68,9 @@ Here the phase distribution is centered at zero, so $\gamma$ is real. For a fini
 
 A valid density matrix is Hermitian, positive semidefinite, and has trace 1. Its **purity** is
 
-```math
-\mathcal P=\operatorname{Tr}(\rho^2).
-```
+$$
+\mathcal{P} = \operatorname{Tr}(\rho^2)
+$$
 
 For one qubit, $1/2\le\mathcal P\le1$. A pure state has purity 1. For a projective spin measurement,
 
