@@ -173,13 +173,24 @@ You may ask an LLM to write, revise, or debug code. However, **you must decide w
 
 ## Analytical Warm-up (before coding)
 
-Suppose an ensemble contains 50% $|+x\rangle$ and 50% $|+y\rangle$. Calculate, by hand,
 
-```math
-\rho=\frac12|+x\rangle\langle+x|+\frac12|+y\rangle\langle+y|.
-```
+Suppose an ensemble contains 50% $|+x\rangle$ and 50% $|+y\rangle$.
 
-Then calculate $P(+x)=\operatorname{Tr}(\rho P_{+x})$. **Check your result with QuTiP.** Does a mixed state necessarily have zero off-diagonal elements?
+Calculate, by hand,
+
+$$
+\rho = \frac{1}{2}|+x\rangle\langle+x|
+     + \frac{1}{2}|+y\rangle\langle+y|
+$$
+
+Then calculate
+
+$$
+P(+x) = \mathrm{Tr}(\rho P_{+x})
+$$
+
+**Check your result with QuTiP.** Does a mixed state necessarily have zero off-diagonal elements?
+
 
 ---
 
