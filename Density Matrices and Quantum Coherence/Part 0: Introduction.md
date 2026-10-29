@@ -166,9 +166,56 @@ assert np.isclose((rho_test * rho_test).tr().real, 1)
 A successful test prints trace approximately 1 and purity approximately 1.
 
 
-### Using a Generative AI (LLM) as a coding assistant
 
-You may ask a Generative AI (LLM) to write, revise, or debug code. However, **you must decide what physical quantity to calculate, verify the results, and explain every submitted figure**. <ins>Using a GAI to answer the analysis questions is not allowed</ins> - but more importantly, it will undercut your learning process.  In the new learning pipeline, deciding how much to turn over to an LLM is the new skill we all have to add to our toolbox.  When asking a GAI for help, provide the equations, the QuTiP version, and the intended variables; ask for code that builds on the existing notebook rather than replacing earlier cells. Always check trace, Hermiticity, and measurement probabilities before trusting a graph.
+### Using a Generative AI (LLM) as a Coding Assistant
+
+You may use a Generative AI (GAI/LLM) to write, revise, explain, or debug code. However, **you must decide what physical quantities to calculate, verify the numerical results, and understand every figure you submit.** <ins>Using a GAI to write your answers to the physics analysis questions is not allowed.</ins> More importantly, doing so would undermine the purpose of this investigation.
+
+As LLMs become increasingly capable of producing code, an important scientific skill is learning **which parts of a computational problem to delegate to an AI and which decisions must remain your own**. Your responsibility is to direct the investigation, evaluate the results, and draw conclusions from the physics—not simply obtain working code.
+
+When asking an LLM for programming assistance, provide the relevant equations, QuTiP version, and intended variables. Ask it to build on your existing notebook rather than replacing earlier work. Before trusting a simulation, verify that the density matrices are Hermitian, have trace 1, and produce physically valid measurement probabilities. Compare numerical results with analytical predictions whenever possible.
+
+#### AI Development Record
+
+To document how you use AI as a scientific tool, you will maintain a short **AI Development Record** in your Jupyter notebook.
+
+For each of the three activities, document **one meaningful interaction with an LLM**. Choose an interaction that illustrates how you used AI to develop, improve, debug, or validate your computational investigation. You do not need to submit your entire conversation history.
+
+For each entry, include:
+
+1. **Objective:** What were you trying to accomplish scientifically or computationally?
+2. **Prompt:** Copy the actual prompt you submitted to the LLM.
+3. **AI Contribution:** Briefly describe what the LLM produced or suggested.
+4. **Verification:** Explain how you checked, tested, corrected, or modified the LLM's response.
+
+If you complete an activity without using an LLM, briefly describe how you developed and verified your code instead.
+
+**Example AI Development Record — Activity 2**
+
+> **Objective:** Determine how the purity of a mixed state changes as the range of random relative phases increases.
+>
+> **Prompt:** "Using the density matrices already generated in my QuTiP notebook, write Python code to calculate the purity Tr(rho^2) for each phase distribution. Plot purity against the phase-spread parameter Delta. Include the theoretical prediction on the same graph so I can compare the simulation with the analytical result. Do not rewrite my existing state-generation functions."
+>
+> **AI Contribution:** The LLM generated a function for calculating purity and suggested plotting the numerical results alongside the theoretical curve.
+>
+> **Verification:** I checked that a fixed-phase ensemble produced purity 1 and that a uniformly random phase distribution approached purity 0.5. I also compared the simulated values with the analytical prediction and increased the number of samples to reduce numerical fluctuations.
+>
+> **Revision:** The original graph used too few phase-spread values to show a smooth trend. I increased the number of points and added axis labels indicating that the phase spread was measured in radians.
+
+Your entries do not need to be long. A few sentences explaining your objective, the AI's contribution, and your verification are sufficient. The example above illustrates the expected level of detail.
+
+Place your three AI Development Record entries in **Markdown cells at the end of your Jupyter notebook**, under the heading `AI Development Record`. Include the activity number with each entry.
+
+You must also include a short **Final AI Reflection** (approximately 100 words) addressing:
+
+- How did AI assistance improve or accelerate your computational investigation?
+- Describe one mistake, limitation, or unexpected result in the AI-generated code that you investigated or corrected.
+- What physics insight did you develop through interpreting the simulations rather than simply executing the code?
+
+**Assessment:** Your AI Development Record will contribute to the clarity and reproducibility portion of the assignment. You will not be graded on how many prompts you used, how elaborate your prompts were, or which LLM you selected. Instead, the emphasis is on demonstrating that you directed the computational work and independently verified its scientific validity.
+
+Do not submit complete AI conversation transcripts or share links. Do not include personal information or unrelated conversations in your record.
+
 
 ---
 
