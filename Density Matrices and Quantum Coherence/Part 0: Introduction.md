@@ -297,17 +297,17 @@ A successful test produces trace approximately 1 and purity approximately 1.
 
 ## Using a Generative AI (LLM) as a Coding Assistant
 
-You may use a Generative AI (GAI/LLM) to write, revise, explain, or debug code. However, **you must decide what physical quantities to calculate, verify the numerical results, and understand every figure you submit.**
+- You may use a Generative AI (GAI/LLM) to write, revise, explain, or debug code. However, **you must decide what physical quantities to calculate, verify the numerical results, and understand every figure you submit.**
 
-<ins>Using a GAI to write your answers to the physics analysis questions is not allowed.</ins> More importantly, doing so would undermine the purpose of this investigation.
+- <ins>Using a GAI to write your answers to the physics analysis questions is not allowed.</ins> More importantly, doing so would undermine the purpose of this investigation.
 
-As LLMs become increasingly capable of producing code, an important scientific skill is learning **which parts of a computational problem to delegate to an AI and which decisions must remain your own**.
+- As LLMs become increasingly capable of producing code, an important scientific skill is learning **which parts of a computational problem to delegate to an AI and which decisions must remain your own**.
 
-Your responsibility is to direct the investigation, evaluate the results, and draw conclusions from the physics—not simply obtain working code.
+- Your responsibility is to direct the investigation, evaluate the results, and draw conclusions from the physics—not simply obtain working code.
 
-When asking an LLM for programming assistance, provide the relevant equations, QuTiP version, and intended variables. Ask it to build on your existing notebook rather than replacing earlier work.
+- When asking an LLM for programming assistance, provide the relevant equations, QuTiP version, and intended variables. Ask it to build on your existing notebook rather than replacing earlier work.
 
-Before trusting a simulation, verify that the density matrices are Hermitian, have trace 1, and produce physically valid measurement probabilities. Compare numerical results with analytical predictions whenever possible.
+- Before trusting a simulation, verify that the density matrices are Hermitian, have trace 1, and produce physically valid measurement probabilities. Compare numerical results with analytical predictions whenever possible.
 
 ### AI Development Record
 
