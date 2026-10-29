@@ -218,30 +218,6 @@ Do not submit complete AI conversation transcripts or share links. Do not includ
 
 
 ---
-
-## Analytical Warm-up (before coding)
-
-
-Suppose an ensemble contains 50% $|+x\rangle$ and 50% $|+y\rangle$.
-
-Calculate, by hand,
-
-$$
-\rho = \frac{1}{2}|+x\rangle\langle+x|
-     + \frac{1}{2}|+y\rangle\langle+y|
-$$
-
-Then calculate
-
-$$
-P(+x) = \mathrm{Tr}(\rho P_{+x})
-$$
-
-**Check your result with QuTiP.** Does a mixed state necessarily have zero off-diagonal elements?
-
-
----
-
 ## Organization and Submission
 
 Complete these activity files in order:
@@ -250,4 +226,36 @@ Complete these activity files in order:
 2. [Part 2: Measuring Coherence](Part%202%3A%20Measuring%20Coherence.md)
 3. [Part 3: Quantum Interference](Part%203%3A%20Quantum%20Interference.md)
 
-**Submit one notebook** with all three activities, **four required figures**, the analytical warm-up, and **six numbered analysis answers** (two per activity). Use Markdown cells for your explanations. Clearly label axes, units, legends, and figure captions. The notebook must run from top to bottom in a fresh environment once its required packages are installed. If you use an LLM, include a brief statement describing how it assisted you.
+### Submission Requirements
+
+**Submit one executable Jupyter notebook (`.ipynb`)** containing all three activities. Organize your notebook with clearly labeled sections and use Markdown cells for predictions, explanations, and analysis.
+
+Your notebook must include:
+
+1. **Analytical Warm-Up:** Your handwritten or typed calculation from Part 0, along with verification using QuTiP.
+
+2. **Four Required Figures:**
+   - Bloch-sphere visualization of the quantum-state ensembles.
+   - Off-diagonal coherence versus phase spread.
+   - Purity and measurement probabilities versus phase spread.
+   - Stern–Gerlach interference fringes.
+
+3. **Predictions and Verification:** For each activity, record your predictions before running the relevant simulation. Afterward, compare your results with those predictions and verify at least one quantitative result against an analytical calculation or a known physical limit.
+
+4. **Physics Analysis:** Answer all six numbered analysis questions (two per activity). These explanations must be written independently, without using an LLM to generate the answers.
+
+5. **AI Development Record:** Include one documented AI interaction for each activity, following the format described above. Each entry must contain your objective, actual prompt, AI contribution, and verification or revision. If you did not use an LLM, describe your independent development and verification process instead.
+
+6. **Final AI Reflection:** Write approximately 100 words discussing how AI assisted your work, one limitation or mistake you investigated, and what you learned through independently interpreting the physics.
+
+7. **Reproducible Code:** Include all code necessary to regenerate your calculations and figures. Your notebook must execute from top to bottom in a fresh environment once the required packages are installed.
+
+### Presentation and Assessment
+
+Clearly label all figures with descriptive titles, axes, units where applicable, legends, and captions. Include numerical results and tables where requested.
+
+Your submission will be evaluated primarily on your **understanding and interpretation of the physics**, the accuracy of your calculations and visualizations, and your ability to verify computational results.
+
+The AI Development Record is part of the clarity and reproducibility assessment. You will not be graded on the sophistication of your prompts or the amount of code you wrote without assistance.
+
+**Submit only the completed Jupyter notebook.** Place the AI Development Record and Final AI Reflection in Markdown cells at the end of the notebook. No separate AI transcript or additional file is required.
