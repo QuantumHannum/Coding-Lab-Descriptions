@@ -42,7 +42,9 @@ $$
 
 The following diagram illustrates the idealized Stern–Gerlach interferometer. The two paths are recombined coherently, without recording which-path information.
 
+
 ![Coherent Stern–Gerlach recombination](images/coherent_stern_gerlach_recombination.png)
+
 
 *Figure A: Coherent Stern–Gerlach recombination. When the relative phase is zero, the initial $|+z\rangle$ state is recovered, and all particles exit through the $+z$ output of the final analyzer.*
 
