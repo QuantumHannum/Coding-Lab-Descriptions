@@ -26,7 +26,7 @@ $$
 $$
 
 
-For a mixed qubit, $1/2\le\mathcal P<1$. The density-matrix Born rule for a projection $P_{+j}$ is
+For a mixed spin state, $1/2\le\mathcal P<1$. The density-matrix Born rule for a projection $P_{+j}$ is
 
 ```math
 P(+j)=\mathrm{Tr}(\rho P_{+j}).
