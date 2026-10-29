@@ -10,7 +10,7 @@ You will construct ensembles in QuTiP, visualize them on the Bloch sphere, compu
 
 - Construct a pure-state density matrix as an outer product and a mixed-state density matrix as a weighted sum of projectors.
 - Explain how averaging different relative phases changes off-diagonal matrix elements while leaving some measurement populations unchanged.
-- Relate a qubit's density matrix to its Bloch vector and purity.
+- Relate a spin states density matrix to its Bloch vector and purity.
 - Apply the density-matrix Born rule to predict spin measurement outcomes.
 - Relate the magnitude of coherence to interference visibility and distinguish statistical phase averaging from which-path entanglement.
 
@@ -72,7 +72,7 @@ $$
 \mathcal{P} = \mathrm{Tr}(\rho^2)
 $$
 
-For one qubit, $1/2\le\mathcal P\le1$. A pure state has purity 1. For a projective spin measurement,
+For one spin state, $1/2\le\mathcal P\le1$. A pure state has purity 1. For a projective spin measurement,
 
 $$
 P(+j) = \mathrm{Tr}(\rho P_{+j}), \qquad j=x,y,z
