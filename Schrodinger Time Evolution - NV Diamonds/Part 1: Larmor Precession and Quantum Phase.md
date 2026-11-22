@@ -37,8 +37,6 @@ The magnetic field shifts the $m_s=+1$ and $m_s=-1$ levels in opposite direction
        width="450">
 </p>
 
-*Reference diagram: NV-center zero-field splitting and Zeeman shifts. The highlighted gap corresponds to the $m_s=0\leftrightarrow m_s=-1$ transition modeled in this lab. This is an instructor-provided reference image, not one of the required student-generated figures.*
-
 If the magnetic field changes, the transition frequency between these two states also changes.
 
 We will describe their relative phase evolution using the effective Hamiltonian
