@@ -128,8 +128,13 @@ $$
 where
 
 $$
-\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\sigma_z =
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
 $$
+
 
 **Calculate by hand:**
 
