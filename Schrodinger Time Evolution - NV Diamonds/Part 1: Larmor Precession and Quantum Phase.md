@@ -30,7 +30,12 @@ An NV center has an intrinsic energy splitting between its ground-state spin lev
 
 The magnetic field shifts the $m_s=+1$ and $m_s=-1$ levels in opposite directions. In this lab, we focus on the $m_s=0\leftrightarrow m_s=-1$ transition, treating it as an effective two-level system.
 
-![NV-center ground-state energy levels at zero magnetic field and with a field applied along the NV axis. The selected m_s = 0 to m_s = -1 energy gap is highlighted.](Images/nv_center_zeeman_splitting_diagram.png)
+
+<p align="center">
+  <img src="Images/nv_center_zeeman_splitting_diagram.png"
+       alt="NV-center Zeeman splitting energy diagram"
+       width="450">
+</p>
 
 *Reference diagram: NV-center zero-field splitting and Zeeman shifts. The highlighted gap corresponds to the $m_s=0\leftrightarrow m_s=-1$ transition modeled in this lab. This is an instructor-provided reference image, not one of the required student-generated figures.*
 
