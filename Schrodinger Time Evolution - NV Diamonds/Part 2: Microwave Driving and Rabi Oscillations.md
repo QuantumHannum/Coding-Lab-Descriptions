@@ -29,7 +29,7 @@ A static magnetic field applied along the NV axis changes the energy difference 
 |E_1-E_0|=\hbar\omega_{\mathrm{NV}}.
 ```
 
-A microwave field oscillating at angular frequency $\omega_d$ can drive transitions between the states. The microwave is **on resonance** when $\omega_d=\omega_{\mathrm{NV}}$; otherwise it is **off resonance**.
+A microwave field oscillating at angular frequency $\omega_d$ can drive transitions between the states. The microwave is **on resonance** when $\omega_d=\omega_{\mathrm{NV}}$; otherwise it is **off resonance**. In an experiment, we can approach resonance by sweeping the applied microwave frequency $\omega_d$ toward the NV transition frequency while keeping the microwave coupling strength fixed.
 
 Students in QLab are developing NV-diamond magnetometers using these transitions. A magnetic field shifts $\omega_{\mathrm{NV}}$, changing the response to microwaves held at a fixed frequency. We will connect the resulting population changes to red fluorescence in Part 3.
 
@@ -227,6 +227,14 @@ Keep this value constant while changing the microwave detuning, $\omega_0$. Inve
 
 For the specified coupling, these correspond to detunings of $8\pi$, $4\pi$, $2\pi$, and $0\ \mathrm{rad/\mu s}$, respectively.
 
+In the laboratory, detuning is controlled by adjusting the applied microwave frequency relative to the NV transition frequency:
+
+```math
+\omega_0=\omega_{\mathrm{NV}}-\omega_d.
+```
+
+As the applied microwave frequency approaches resonance, $\omega_0$ approaches zero. These four cases are discrete points along the frequency sweep you will perform in Part 3.
+
 **Before running the simulations, record your predictions:**
 
 1. Which trajectory should stay closest to the north pole, and which should reach the south pole?
@@ -253,7 +261,7 @@ Your code should:
 4. Determine the largest simulated value of $P_1$ for each detuning.
 5. Compare those numerical maxima with the analytical Rabi formula.
 
-**AI coding task:** Ask your LLM to extend the existing resonant simulation to generate **four consistently formatted Bloch spheres** and a common population comparison. Reuse the instructor-provided simulation and plotting utilities, keeping the physics and parameter choices under your control.
+**AI coding task:** Ask your LLM to extend the existing resonant simulation to generate **four consistently formatted Bloch spheres** and a common population comparison. Reuse the instructor-provided simulation and plotting utilities, keeping the physics and parameter choices under your control. The evolution helper should accept $\omega_0$, $\omega_1$, and a time array as inputs, so the same calculation can be reused for the frequency sweep in Part 3.
 
 ### Step 7: Generate Figure 3
 
@@ -409,4 +417,6 @@ Before moving to Part 3, confirm that you have:
 - [ ] Answered both physics-analysis questions independently.
 - [ ] Completed the Part 2 AI Development Record entry.
 
-**Next: Part 3 — Optical Readout and NV Magnetometry.** You will use the populations calculated here to predict the red fluorescence observed after microwave manipulation of an NV center.
+**Next: Part 3 — Optical Readout and NV Magnetometry.** You have examined spin evolution at four discrete microwave detunings. Next, you will sweep the microwave frequency through a continuous range around resonance while keeping the pulse duration fixed. Instead of displaying only spin populations, you will convert the simulated final populations into predicted red fluorescence. This will produce a simplified pulsed-ODMR spectrum and show how a magnetic-field-induced resonance shift can be measured.
+
+**Important distinction for Part 3:** The maximum spin-flip probability calculated above is not necessarily the probability at a particular fixed pulse duration. For the frequency sweep, you will use the full time-dependent population $P_1(\tau)$ evaluated at the *same* microwave pulse duration for every detuning.
