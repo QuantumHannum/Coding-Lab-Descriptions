@@ -119,15 +119,13 @@ P_{0\rightarrow1}^{\max}=\frac{\omega_1^2}{\omega_0^2+\omega_1^2}.
 
 Thus **increasing the magnitude of detuning increases the generalized oscillation frequency while decreasing the maximum probability of a complete spin flip**.
 
-**Diagram notation:** The reference image uses the common labels $\Delta$ and $\Omega_R$. These correspond to our textbook-style $\omega_0$ and $\omega_1$, respectively. Its $\Omega_{\mathrm{eff}}$ is the same as $\Omega$ here.
-
 <p align="center">
   <img src="Images/nv_rabi_resonant_vs_detuned_bloch.png"
        alt="Comparison of resonant and off-resonant effective rotation axes on the Bloch sphere"
        width="450">
 </p>
 
-*Reference diagram (with alternate notation): On resonance, the effective rotation axis lies along x. With nonzero detuning, it tilts toward z. Students will calculate the corresponding spin trajectories in Figure 3.*
+*Reference diagram: On resonance ($\omega_0=0$), the effective rotation axis lies along $x$. When $\omega_0\ne0$, it tilts toward $z$. The diagrams illustrate rotation axes; you will generate the actual spin-state trajectories for four detuning values in Figure 3.*
 
 ---
 
@@ -208,61 +206,104 @@ An additional comparison plot may help, but it is **not another required numbere
 
 ---
 
-## Computational Investigation B: Off-Resonant Microwave Driving
+## Computational Investigation B: Approaching Resonance
 
 ### Step 5: Predict the Effect of Detuning
 
-Return to the original microwave coupling
+Return to the original microwave coupling strength:
 
 ```math
-\omega_1=2\pi\ \mathrm{rad/\mu s}
+\omega_1=2\pi\ \mathrm{rad/\mu s}.
 ```
 
-and consider three driving conditions:
+Keep this value constant while changing the microwave detuning, $\omega_0$. Investigate **four conditions, beginning far from resonance and moving progressively closer**:
 
 | Case | Detuning $\omega_0$ | Interpretation |
 |---|---:|---|
-| A | $0$ | Resonant |
-| B | $\omega_1$ | Moderately detuned |
-| C | $2\omega_1$ | More strongly detuned |
+| A | $4\omega_1$ | Strong detuning |
+| B | $2\omega_1$ | Moderate detuning |
+| C | $\omega_1$ | Smaller detuning |
+| D | $0$ | On resonance |
 
-**Before running the simulations, predict:**
+For the specified coupling, these correspond to detunings of $8\pi$, $4\pi$, $2\pi$, and $0\ \mathrm{rad/\mu s}$, respectively.
 
-1. Which case should allow complete population transfer to $|1\rangle$?
-2. As detuning increases, will the maximum $P_1$ increase or decrease?
-3. How should the effective rotation axis change on the Bloch sphere?
+**Before running the simulations, record your predictions:**
 
-### Step 6: Simulate Detuned Driving
+1. Which trajectory should stay closest to the north pole, and which should reach the south pole?
+2. As detuning decreases toward zero, what should happen to the maximum population $P_1$?
+3. How should the effective rotation axis change as the system approaches resonance?
+4. Will the population oscillations become faster or slower as $|\omega_0|$ decreases while $\omega_1$ remains fixed?
 
-Use the full effective Hamiltonian:
+### Step 6: Simulate the Detuning Sequence
+
+Use the same time-independent effective Hamiltonian throughout:
 
 ```math
-\hat H=\frac{\hbar}{2}\left(\omega_1\sigma_x+\omega_0\sigma_z\right).
+\hat H_{\mathrm{eff}}=\frac{\hbar}{2}
+\left(\omega_0\sigma_z+\omega_1\sigma_x\right).
 ```
 
-For each of the three detunings, evolve the same initial state $|0\rangle$ over $0$ to $2\ \mathrm{\mu s}$.
+For **each of the four detuning values**, prepare the same initial state $|0\rangle$ and simulate the evolution from $0$ to $2\ \mathrm{\mu s}$. Use sufficiently fine time sampling to resolve the oscillations at the largest detuning.
 
-Use the supplied evolution and plotting functions to:
+Your code should:
 
-1. Generate Bloch-sphere trajectories for the resonant and detuned cases.
-2. Calculate $P_0(t)$ and $P_1(t)$.
-3. Determine the maximum of $P_1(t)$ for each detuning.
-4. Compare the numerical maxima with the analytical expression for $P_{1,\max}$.
+1. Hold $\omega_1$ fixed and vary only $\omega_0$.
+2. Calculate the Bloch-vector trajectory for all four cases.
+3. Calculate $P_0(t)$ and $P_1(t)$ for each case.
+4. Determine the largest simulated value of $P_1$ for each detuning.
+5. Compare those numerical maxima with the analytical Rabi formula.
 
-**AI coding task:** Ask an LLM to extend your existing resonant simulation so that only $\omega_0$ (detuning) changes. Retain the same definitions and plotting functions. Request a comparison rather than three unrelated programs.
+**AI coding task:** Ask your LLM to extend the existing resonant simulation to generate **four consistently formatted Bloch spheres** and a common population comparison. Reuse the instructor-provided simulation and plotting utilities, keeping the physics and parameter choices under your control.
 
 ### Step 7: Generate Figure 3
 
-**Figure 3 — Resonant and Off-Resonant Microwave Driving**
+**Figure 3 — Approaching Resonance: Bloch-Sphere Trajectories and Spin-Flip Probabilities**
 
-Create one numbered figure containing:
+Create one numbered, multi-panel figure with two sections:
 
-- **Panel A: Bloch-sphere comparison.** Show the resonant trajectory and at least one detuned trajectory, using consistent axis conventions and distinct labels. Separate spheres are acceptable if they make the trajectories easier to see.
-- **Panel B: Population comparison.** Plot $P_1(t)$ for all three detuning values on common axes. Include a legend and units.
+**Panel A — Four Bloch-sphere trajectories**
 
-Include a caption explaining the effect of detuning on the rotation axis, oscillation frequency, and maximum population transfer.
+Display **four separate Bloch spheres**, arranged in a clear sequence from strong detuning to resonance:
 
-In your notebook, report the maximum $P_1$ for all three detuning conditions, along with the analytical predictions.
+1. $\omega_0=4\omega_1$
+2. $\omega_0=2\omega_1$
+3. $\omega_0=\omega_1$
+4. $\omega_0=0$
+
+Each Bloch sphere must show the trajectory of the state starting at $|0\rangle$, its initial position, the direction of time evolution, and a label identifying its detuning. Use the same viewing angle, sphere size, and axis conventions so the trajectories can be compared directly. If supported by the plotting utility, show the effective rotation axis for each case.
+
+**Panel B — Four population curves**
+
+On a single set of axes, plot $P_1(t)$ for **all four detuning values**, with time in microseconds and a legend matching the labels in Panel A.
+
+Your figure should make it possible to observe both the decreasing maximum population transfer and the change in oscillation frequency as the system approaches resonance.
+
+Include a caption explaining the relationship between detuning, effective rotation-axis direction, and the extent of the spin flip. **Do not replace these calculated trajectories with the instructor-provided reference diagram.**
+
+### Step 8: Report and Interpret the Detuning Results
+
+Complete a numerical comparison table in your notebook with these columns:
+
+| Detuning $\omega_0/\omega_1$ | Maximum $P_1$ (simulation) | Maximum $P_1$ (theory) | Generalized angular frequency $\Omega$ |
+|---|---|---|---|
+| 4 | *Your result* | *Calculate* | *Calculate* |
+| 2 | *Your result* | *Calculate* | *Calculate* |
+| 1 | *Your result* | *Calculate* | *Calculate* |
+| 0 | *Your result* | *Calculate* | *Calculate* |
+
+Use the generalized Rabi frequency
+
+```math
+\Omega=\sqrt{\omega_0^2+\omega_1^2}
+```
+
+and the textbook's maximum-transfer expression
+
+```math
+P_{1,\max}=\frac{\omega_1^2}{\omega_0^2+\omega_1^2}.
+```
+
+Notice that the system undergoes **larger population oscillations but at a lower generalized oscillation frequency** as the detuning is reduced toward resonance, with $\omega_1$ fixed.
 
 ---
 
@@ -289,9 +330,9 @@ For $\omega_1=2\pi\ \mathrm{rad/\mu s}$, the predicted first spin flip occurs at
 t_\pi=0.5\ \mathrm{\mu s}.
 ```
 
-Verify that $P_1(t_\pi)$ is approximately 1. When the microwave coupling $\omega_1$ is doubled, verify that the first $\pi$-pulse duration is approximately halved.
+Verify that $P_1(t_\pi)$ is approximately 1. When $\omega_1$ is doubled, verify that the first $\pi$-pulse duration is approximately halved.
 
-### 3. Detuning and Maximum Population Transfer
+### 3. Four Detuning Values and Maximum Population Transfer
 
 Check the simulated maximum population against
 
@@ -299,17 +340,28 @@ Check the simulated maximum population against
 P_{1,\max}=\frac{\omega_1^2}{\omega_1^2+\omega_0^2}.
 ```
 
-For $\omega_0=0,\omega_1,2\omega_1$, the predicted maximum probabilities are 1, 0.5, and 0.2, respectively. Small numerical differences due to time sampling are acceptable.
+For $\omega_0=4\omega_1,\ 2\omega_1,\ \omega_1,\ 0$, the predicted maximum probabilities are, respectively,
+
+```math
+\frac{1}{17}\approx0.0588,\qquad
+\frac15=0.20,\qquad
+\frac12=0.50,\qquad
+1.
+```
+
+Small numerical differences due to time sampling are acceptable. The time interval must be long enough, and sampling sufficiently fine, to capture the peaks.
 
 ### 4. Generalized Rabi Frequency
 
-Verify that the oscillations change frequency as predicted by
+Compare the oscillation frequencies with
 
 ```math
 \Omega=\sqrt{\omega_1^2+\omega_0^2}.
 ```
 
-Record a concise table of your measured or calculated values and identify any discrepancies.
+Confirm that the oscillations become **slower** as the magnitude of detuning decreases toward zero while microwave coupling remains fixed, even as population transfer becomes more complete.
+
+Record your numerical results and briefly identify any discrepancies.
 
 ---
 
@@ -321,9 +373,9 @@ Answer these two questions **independently** in the designated Markdown cells of
 
 In Part 1, the spin accumulated relative phase without changing its $|0\rangle$ and $|1\rangle$ populations. In this activity, resonant microwave driving caused those populations to oscillate. Explain the difference in terms of the Hamiltonian and the axis of rotation on the Bloch sphere. Why can a resonant $\pi$-pulse completely flip the spin?
 
-**Question 4 — Detuning and Magnetometry**
+**Question 4 — Approaching Resonance and Magnetometry**
 
-Your off-resonant simulation shows a reduced maximum population transfer. Explain why the tilted rotation axis prevents the Bloch vector from reaching the south pole. Then consider an NV center exposed to a changing magnetic field while the microwave frequency is held fixed: explain how a shift in the spin transition frequency would change the microwave-driven response. How could that provide information about the magnetic field?
+Use your **four trajectories and population curves** to explain how decreasing detuning toward resonance changes the effective rotation axis, the maximum population transfer, and the oscillation frequency. Then consider an NV center exposed to a changing magnetic field while the microwave frequency is held fixed. Explain how the resulting change in detuning could provide information about the magnetic field.
 
 Your answers should use evidence from Figures 2 and 3, not simply repeat the formulas.
 
@@ -351,9 +403,9 @@ Before moving to Part 3, confirm that you have:
 - [ ] Completed the resonant and doubled-strength Rabi simulations.
 - [ ] Generated **Figure 2** with a Bloch-sphere trajectory and two population curves.
 - [ ] Identified and verified the first $\pi$-pulse duration.
-- [ ] Simulated all three detuning values.
-- [ ] Generated **Figure 3** with the required Bloch-sphere and population comparisons.
-- [ ] Checked normalization, population transfer, and detuning-dependent limits.
+- [ ] Simulated all four detuning values in order from strong detuning toward resonance.
+- [ ] Generated **Figure 3** with four separate Bloch-sphere trajectories and four population curves.
+- [ ] Checked normalization, the four predicted maximum transfer values, and the generalized oscillation frequencies.
 - [ ] Answered both physics-analysis questions independently.
 - [ ] Completed the Part 2 AI Development Record entry.
 
