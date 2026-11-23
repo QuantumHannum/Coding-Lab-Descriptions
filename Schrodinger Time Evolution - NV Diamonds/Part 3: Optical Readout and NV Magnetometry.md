@@ -354,6 +354,8 @@ Determine the difference between the two resonance frequencies.
 
 Compare the measured shift with the frequency change you introduced in Step 4.
 
+**Conceptual question — Interpreting the resonance shift:** Using the measured shift in the NV resonance frequency, what physical quantity could you calculate? Explain the relationship between this quantity and the NV spin's energy-level splitting. **No additional coding or numerical calculation is required.** Record your answer in the designated notebook response cell.
+
 This is the essential measurement performed by an NV-diamond magnetometer: **a change in magnetic field is inferred from a change in the spin resonance frequency.**
 
 ---
