@@ -182,7 +182,7 @@ The notebook includes:
 - **Part 0:** Coding environment setup and analytical warm-up.
 - **Part 1:** Larmor precession, including Figure 1.
 - **Part 2:** Resonant and off-resonant microwave driving, including Figures 2–3.
-- **Part 3:** Optical fluorescence readout, including Figure 4.
+- **Part 3:** Optical fluorescence versus microwave frequency and a magnetic-field-induced resonance shift, including Figure 4.
 - **AI Development Record:** Spaces to document your LLM interactions.
 - **Final AI Reflection:** A short reflection on AI use and the physics you learned.
 - **Submission Check:** An automated verification of required computational results.
@@ -378,7 +378,7 @@ Your PDF must include:
    - Figure 1: Bloch-sphere visualization of Larmor precession and corresponding populations.
    - Figure 2: Resonant Rabi oscillations, including a Bloch-sphere trajectory and population graph.
    - Figure 3: Comparison of resonant and off-resonant microwave driving.
-   - Figure 4: Expected red fluorescence versus microwave pulse duration.
+   - Figure 4: Pulsed-ODMR fluorescence versus microwave frequency, showing an original and magnetic-field-shifted resonance.
 3. **Predictions and Verification:** Complete prediction sections before running each activity's main simulations. Compare your results with analytical predictions or known physical limits.
 4. **Physics Analysis:** Answer all six numbered analysis questions (two per activity) independently, without using an LLM to generate your answers.
 5. **Numerical Results:** Include the calculated quantities and comparisons requested in Parts 1–3.
