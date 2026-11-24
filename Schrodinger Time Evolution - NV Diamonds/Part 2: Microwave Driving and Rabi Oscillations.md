@@ -159,29 +159,6 @@ Thus **increasing the magnitude of detuning increases the generalized oscillatio
        width="450">
 </p>
 
-**Reference diagram:** On resonance, the effective rotation axis lies along the
-$x$-axis. With nonzero detuning, it tilts toward the $z$-axis.
-
-**Notation note:** The diagram uses the earlier symbol for the effective
-$z$-component:
-
-```math
-\omega_0
-```
-
-In our revised notation, this component is
-
-```math
--\Delta\omega
-```
-
-while the natural NV transition frequency is denoted by
-
-```math
-\omega_0.
-```
-
-You will generate four actual Bloch-sphere trajectories in Figure 3.
 
 ---
 
