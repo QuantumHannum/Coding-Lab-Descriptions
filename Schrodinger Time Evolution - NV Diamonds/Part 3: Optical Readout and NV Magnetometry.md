@@ -114,74 +114,52 @@ Our simulation will describe coherent spin evolution followed by optical readout
 
 ## Microwave Frequency and Resonance
 
-In Part 2, you investigated the effective Hamiltonian
+In Part 2 you studied a **driven** spin. The NV transition has a natural angular frequency $\omega_0$, while the applied microwave has angular frequency $\omega$. Their difference is the **detuning**:
 
 ```math
-\hat H_{\mathrm{eff}}=\frac{\hbar}{2}\left(\omega_0\sigma_z+\omega_1\sigma_x\right).
+\boxed{\Delta\omega=\omega-\omega_0.}
 ```
 
-Recall that:
-
-- $\omega_0$ represents microwave detuning.
-- $\omega_1$ represents microwave coupling strength.
-
-The detuning is
+When $\omega=\omega_0$, the drive is resonant. We introduced the actual oscillating microwave field and then adopted the approximate **time-independent effective Hamiltonian** for the spin dynamics relative to the drive:
 
 ```math
-\omega_0=\omega_{\mathrm{NV}}-\omega_d,
+\hat H_{\mathrm{eff}}=
+\frac{\hbar}{2}\left(-\Delta\omega\,\sigma_z+\omega_1\sigma_x\right).
 ```
 
-where $\omega_{\mathrm{NV}}$ is the NV spin transition angular frequency and $\omega_d$ is the applied microwave angular frequency.
+The full driven system is time-dependent in the laboratory. The rotating frame and rotating-wave approximation explain the connection; you will derive these ideas in class soon. For this lab, the supplied effective Hamiltonian lets you apply the time-independent methods you already know.
 
-When the microwave is resonant,
-
-```math
-\omega_d=\omega_{\mathrm{NV}},\qquad \omega_0=0.
-```
-
-In Part 2, you simulated four detuning values and observed how the spin trajectories changed as the drive approached resonance.
-
-Now, instead of investigating only four detunings, you will **sweep the microwave frequency through resonance**, calculating the expected fluorescence at each frequency.
-
-This will produce a simplified *optically detected magnetic resonance* (ODMR) spectrum.
+In Part 2, you examined four discrete frequencies. Now you will sweep the microwave frequency **continuously across the resonance**, calculate the final spin population for a fixed pulse duration, and predict the corresponding red fluorescence. This is a simplified *pulsed optically detected magnetic resonance* (ODMR) spectrum.
 
 ### Choosing the Microwave Pulse Duration
 
-We will keep the microwave coupling strength fixed at
+Keep the microwave coupling fixed at
 
 ```math
 \omega_1=2\pi\ \mathrm{rad/\mu s}.
 ```
 
-Recall that the resonant $\pi$-pulse duration is
+The resonant $\pi$-pulse duration is
 
 ```math
-\tau_\pi=\frac{\pi}{\omega_1}.
+\tau_\pi=\frac{\pi}{\omega_1}=0.5\ \mu\mathrm{s}.
 ```
 
-For our chosen coupling strength,
-
-```math
-\tau_\pi=0.5\ \mathrm{\mu s}.
-```
-
-We will use this same pulse duration for every microwave frequency.
-
-At resonance, this pulse produces complete population transfer from $|0\rangle$ to $|1\rangle$.
-
-Away from resonance, the probability of a spin flip is reduced.
-
-The generalized Rabi formula from Part 2 gives the spin-flip probability after a pulse of duration $\tau$:
+Use this **same** duration at every microwave frequency. The driven Rabi formula is
 
 ```math
 P_{0\rightarrow1}(\tau)=
-\frac{\omega_1^2}{\omega_0^2+\omega_1^2}
-\sin^2\left(\frac{\sqrt{\omega_0^2+\omega_1^2}}{2}\tau\right).
+\frac{\omega_1^2}{(\omega-\omega_0)^2+\omega_1^2}
+\sin^2\!\left(
+\frac{\sqrt{(\omega-\omega_0)^2+\omega_1^2}}{2}\tau
+\right).
 ```
 
-**Important:** During the frequency sweep, we evaluate this probability at the same fixed pulse duration for every detuning. We do not use the maximum possible spin-flip probability for each detuning.
+For the frequency sweep, evaluate $P_1$ at the **fixed pulse duration**, not at the different maximum-transfer time for each detuning. The expected fluorescence is
 
-This distinction will become important when interpreting the fluorescence spectrum.
+```math
+F(\omega)=F_0-(F_0-F_1)P_1(\tau;\omega).
+```
 
 ---
 
@@ -193,7 +171,7 @@ Before running any simulations, consider the following situation:
 
 An NV center is initialized in $|0\rangle$. A microwave pulse of fixed duration $\tau_\pi$ is applied, and the resulting fluorescence is measured.
 
-The experiment is repeated while the microwave frequency is swept through resonance.
+The experiment is repeated while the microwave frequency $\omega$ is swept through the natural frequency $\omega_0$.
 
 **Record your predictions in the notebook:**
 
@@ -219,17 +197,17 @@ and
 \tau=0.5\ \mathrm{\mu s}.
 ```
 
-Sweep the detuning over the interval
+Sweep the drive frequency relative to the original natural transition over the interval
 
 ```math
--4\omega_1\leq\omega_0\leq4\omega_1.
+-4\omega_1\leq\Delta\omega\leq4\omega_1.
 ```
 
-Use approximately 200 evenly spaced detuning values.
+Use 201 evenly spaced drive-frequency offsets, including zero.
 
 This interval includes both positive and negative detunings, allowing you to investigate the response on either side of resonance.
 
-For each detuning:
+For each drive-frequency offset:
 
 1. Construct the effective Hamiltonian using the supplied QuTiP functions.
 2. Initialize the spin in $|0\rangle$.
@@ -237,7 +215,7 @@ For each detuning:
 4. Calculate the final populations $P_0$ and $P_1$.
 5. Convert the populations into expected red fluorescence.
 
-**AI coding task:** Ask your LLM to extend your existing Part 2 code to perform a frequency sweep. Reuse the instructor-provided Hamiltonian and evolution functions, changing only the detuning parameter for each simulation.
+**AI coding task:** Ask your LLM to extend your existing Part 2 code to perform a frequency sweep. Reuse the instructor-provided Hamiltonian and evolution functions, changing only the detuning parameter $\Delta\omega$ for each simulation.
 
 The code should return arrays containing the microwave frequency (or detuning), final spin populations, and expected fluorescence.
 
@@ -247,23 +225,23 @@ Do not introduce additional quantum states or optical decay processes.
 
 Plot the expected red fluorescence against the microwave frequency.
 
-You may initially plot detuning $\omega_0$ on the horizontal axis, but your final figure should use microwave frequency relative to a clearly identified reference frequency.
+For the final figure, use microwave angular frequency relative to the original natural transition frequency on the horizontal axis. Convert the angular-frequency offset to MHz by dividing by $2\pi$.
 
 Use
 
 ```math
-\omega_d=\omega_{\mathrm{NV}}-\omega_0
+\omega=\omega_0+\Delta\omega
 ```
 
 to convert between detuning and drive frequency.
 
-For convenience, you may plot
+For convenience, use
 
 ```math
-\omega_d-\omega_{\mathrm{NV}}
+\omega-\omega_0
 ```
 
-in units of $\omega_1$. The resonance should occur at zero on this relative-frequency axis.
+on a relative frequency axis. The original resonance occurs at zero; the shifted resonance occurs at a positive offset.
 
 Your graph should show a reduction in fluorescence near the resonance.
 
@@ -277,21 +255,21 @@ Your graph should show a reduction in fluorescence near the resonance.
 
 In Part 1, you learned that a magnetic field applied along the NV axis changes the energy separation between the spin states.
 
-This changes the NV transition frequency.
+This changes the NV natural transition frequency.
 
-If the applied magnetic field changes while the microwave frequency remains fixed, the detuning also changes.
+If the applied magnetic field changes while the microwave frequency remains fixed, the detuning $\Delta\omega=\omega-\omega_0$ also changes.
 
-For this investigation, we will simulate a magnetic-field change by shifting the NV transition angular frequency by
+For this investigation, we will simulate a magnetic-field change by shifting the NV natural transition angular frequency by
 
 ```math
-\delta\omega_{\mathrm{NV}}=\omega_1.
+\delta\omega_0=\omega_1.
 ```
 
 This is an illustrative shift selected to make the effect visible. You do not need to calculate the corresponding magnetic-field strength.
 
 Before running the simulation, predict:
 
-1. What happens to the resonance frequency when the NV transition frequency increases?
+1. What happens to the resonance frequency when the NV natural transition frequency increases?
 2. Will the fluorescence minimum move toward a higher or lower applied microwave frequency?
 3. Will the magnetic-field change necessarily alter the maximum achievable spin-flip probability at resonance?
 
@@ -300,22 +278,22 @@ Before running the simulation, predict:
 Repeat the frequency sweep with the shifted transition frequency
 
 ```math
-\omega_{\mathrm{NV}}'=\omega_{\mathrm{NV}}+\delta\omega_{\mathrm{NV}}.
+\omega_0'=\omega_0+\delta\omega_0.
 ```
 
-For the same applied microwave frequency $\omega_d$, the new detuning becomes
+For the same applied microwave frequency $\omega$, the new detuning becomes
 
 ```math
-\omega_0'=\omega_{\mathrm{NV}}'-\omega_d.
+\Delta\omega'=\omega-\omega_0'.
 ```
 
 Keep the microwave coupling strength and pulse duration unchanged.
 
 Calculate the expected fluorescence for the shifted transition and compare it with the original spectrum.
 
-**AI coding task:** Ask your LLM to reuse the original microwave-frequency array and calculate a second fluorescence spectrum for the shifted NV transition frequency.
+**AI coding task:** Ask your LLM to reuse the original microwave-frequency array and calculate a second fluorescence spectrum for the shifted natural NV natural transition frequency.
 
-The two simulations must use the same microwave-frequency axis so that the displacement of the resonance can be measured directly.
+The two simulations must use the same microwave-frequency axis so that the displacement of the resonance can be measured directly. For a fixed drive frequency, the shifted detuning is $\Delta\omega'=\omega-\omega_0'=\Delta\omega-\delta\omega_0$.
 
 ### Step 6: Generate Figure 4
 
@@ -323,8 +301,8 @@ The two simulations must use the same microwave-frequency axis so that the displ
 
 Create one numbered figure showing **two fluorescence spectra on the same axes**:
 
-- The original NV transition frequency.
-- The shifted NV transition frequency.
+- The original NV natural transition frequency.
+- The shifted natural NV natural transition frequency.
 
 Your figure must include:
 
@@ -346,7 +324,7 @@ Record your results in a table:
 
 | Quantity | Original field | Changed field |
 |---|---|---|
-| NV transition frequency relative to original resonance | 0 | Your result |
+| NV natural transition frequency relative to original resonance | 0 | Your result |
 | Microwave frequency at fluorescence minimum | Your result | Your result |
 | Minimum expected fluorescence | Your result | Your result |
 
@@ -368,7 +346,7 @@ These instruments exploit the same physical processes you have investigated:
 
 1. Green laser light initializes the NV electron spin.
 2. Microwave radiation drives transitions between the spin states.
-3. The NV transition frequency depends on the local magnetic field.
+3. The NV natural transition frequency depends on the local magnetic field.
 4. Spin-dependent red fluorescence provides a measurable optical signal.
 5. Changes in the observed resonance frequency reveal changes in the magnetic field.
 
@@ -420,12 +398,12 @@ F_{\min}=F_1=70.
 
 ### 4. Frequency-Sweep Symmetry
 
-For the original transition frequency, compare the predicted fluorescence for equal positive and negative detunings.
+For the original natural transition frequency, compare the fluorescence at equal positive and negative detunings.
 
 Verify that
 
 ```math
-F(+\omega_0)=F(-\omega_0)
+F(+\Delta\omega)=F(-\Delta\omega)
 ```
 
 within numerical precision.
@@ -437,7 +415,7 @@ Explain why this symmetry follows from the generalized Rabi formula.
 Verify that the difference between the two central resonance frequencies is approximately equal to the imposed shift:
 
 ```math
-\delta\omega_{\mathrm{NV}}=\omega_1.
+\delta\omega_0=\omega_1.
 ```
 
 Check that the central fluorescence minimum remains approximately $F_1$ after the resonance shifts, because the pulse duration and coupling strength have not changed.
@@ -495,7 +473,7 @@ Before finishing the lab, confirm that you have:
 - [ ] Recorded your fluorescence and resonance-shift predictions before running the simulations.
 - [ ] Performed a microwave-frequency sweep using a fixed pulse duration.
 - [ ] Calculated the final spin populations and expected fluorescence for each microwave frequency.
-- [ ] Repeated the sweep with a shifted NV transition frequency.
+- [ ] Repeated the sweep with a shifted natural NV natural transition frequency.
 - [ ] Generated Figure 4 showing both fluorescence spectra.
 - [ ] Identified the central resonance frequency of each spectrum and calculated the shift.
 - [ ] Verified population normalization, fluorescence limits, and resonance symmetry.

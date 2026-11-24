@@ -14,62 +14,96 @@ In this activity, you will simulate microwave-driven dynamics of an NV-center sp
 
 ## Physical Background
 
-### Driving an NV-Center Transition
+### Microwave Driving: Natural Frequency, Applied Frequency, and Resonance
 
-We continue to use the effective two-level system introduced in Part 0:
-
-```math
-|0\rangle\equiv|m_s=0\rangle,\qquad
-|1\rangle\equiv|m_s=-1\rangle.
-```
-
-A static magnetic field applied along the NV axis changes the energy difference between these states. Let $\omega_{\mathrm{NV}}$ denote the physical angular transition frequency, defined by the magnitude of the energy gap:
+We continue to model two ground-state spin levels of the NV center:
 
 ```math
-|E_1-E_0|=\hbar\omega_{\mathrm{NV}}.
+|0\rangle\equiv|m_s=0\rangle,\qquad |1\rangle\equiv|m_s=-1\rangle.
 ```
 
-A microwave field oscillating at angular frequency $\omega_d$ can drive transitions between the states. The microwave is **on resonance** when $\omega_d=\omega_{\mathrm{NV}}$; otherwise it is **off resonance**. In an experiment, we can approach resonance by sweeping the applied microwave frequency $\omega_d$ toward the NV transition frequency while keeping the microwave coupling strength fixed.
-
-Students in QLab are developing NV-diamond magnetometers using these transitions. A magnetic field shifts $\omega_{\mathrm{NV}}$, changing the response to microwaves held at a fixed frequency. We will connect the resulting population changes to red fluorescence in Part 3.
-
-### Connection to the Textbook: An Effective Time-Independent Hamiltonian
-
-In Section 3.2.2 of your textbook, you studied a spin in a *static* magnetic field with $x$- and $z$-components. Its Hamiltonian has the form
+The energy gap defines the NV center's **natural transition angular frequency**:
 
 ```math
-\hat H=\omega_0\hat S_z+\omega_1\hat S_x
-=\frac{\hbar}{2}\left(\omega_0\sigma_z+\omega_1\sigma_x\right).
+\omega_0=\frac{|E_1-E_0|}{\hbar}.
 ```
 
-**Our microwave-driven NV center uses an effective Hamiltonian with the same mathematical form:**
+A transverse microwave magnetic field oscillates at an **applied angular frequency** $\omega$ and can drive transitions between these states. The relevant frequency difference is called **detuning**:
 
 ```math
-\boxed{\hat H_{\mathrm{eff}}=\frac{\hbar}{2}\left(\omega_0\sigma_z+\omega_1\sigma_x\right).}
+\boxed{\Delta\omega=\omega-\omega_0.}
 ```
 
-Here the two parameters mean:
+- **On resonance:** $\omega=\omega_0$, so $\Delta\omega=0$. An appropriately timed microwave pulse can completely flip the spin.
+- **Near resonance:** The two frequencies are similar, but population transfer is incomplete.
+- **Far from resonance:** The mismatch is large relative to the coupling strength; only a small population transfer is possible.
 
-- $\omega_0=\omega_{\mathrm{NV}}-\omega_d$: **signed microwave detuning**, playing the role of the textbook's $z$-term coefficient.
-- $\omega_1$: **effective microwave coupling strength**, playing the role of the textbook's $x$-term coefficient. On resonance, it is the Rabi angular frequency.
+Here $\omega_1$ denotes the **microwave coupling strength** (in rad/$\mu$s), not another microwave frequency. All three quantities are angular frequencies, but they play different physical roles.
 
-**Important distinction:** The textbook's field is truly static, while the microwave field applied to an NV center oscillates rapidly in the laboratory. The Hamiltonian above is a **time-independent effective model**, valid during a constant-amplitude microwave pulse in a frame rotating with the drive and under the rotating-wave approximation. We will use it without deriving that transformation. In particular, $\omega_0$ in **this part** means *detuning*, **not** the NV transition frequency $\omega_{\mathrm{NV}}$ or the illustrative precession rate used in Part 1.
+### From an Oscillating Field to the Rabi Formula
 
-The Pauli operators here describe our two-state subspace, not the full spin-1 NV ground state. In matrix form, as in the textbook,
+The actual microwave field varies in time, for example as $B_x(t)=B_1\cos(\omega t)$. The corresponding *laboratory-frame* two-level Hamiltonian has the form
+
+```math
+\hat H_{\mathrm{lab}}(t)=\frac{\hbar\omega_0}{2}\sigma_z
++\hbar\omega_1\cos(\omega t)\sigma_x.
+```
+
+The constant $\omega_1$ is defined here so that the **resonant Rabi angular frequency** is $\omega_1$ under the rotating-wave approximation. The microwave field itself is genuinely time-dependent, even when its amplitude is constant during a pulse.
+
+For a drive close to resonance and weak compared with the microwave carrier frequency, the probability of a transition from $|0\rangle$ to $|1\rangle$ after a pulse of duration $t$ is approximately
+
+```math
+\boxed{P_{0\rightarrow1}(t)=
+\frac{\omega_1^2}{(\omega-\omega_0)^2+\omega_1^2}
+\sin^2\!\left(
+\frac{\sqrt{(\omega-\omega_0)^2+\omega_1^2}}{2}t
+\right).}
+```
+
+This is the **driven Rabi formula**. Notice that the mismatch between the natural frequency and the applied frequency appears in both the maximum population transfer and the oscillation rate:
+
+```math
+P_{0\rightarrow1}^{\max}=
+\frac{\omega_1^2}{(\Delta\omega)^2+\omega_1^2},
+\qquad
+\Omega=\sqrt{(\Delta\omega)^2+\omega_1^2}.
+```
+
+At resonance, $\Delta\omega=0$: the maximum probability is 1, and the spin oscillates at angular frequency $\omega_1$. When $|\Delta\omega|$ increases, the maximum transfer decreases while $\Omega$ increases.
+
+### Why We Can Use a Time-Independent Hamiltonian
+
+We have not yet derived the mathematics of the rotating frame. We will do that in a later lesson. For now, accept the following **effective model** of the *slow spin dynamics relative to the microwave drive*:
+
+```math
+\boxed{\hat H_{\mathrm{eff}}=
+-\Delta\omega\,\hat S_z+\omega_1\hat S_x
+=\frac{\hbar}{2}\bigl(-\Delta\omega\,\sigma_z+\omega_1\sigma_x\bigr).}
+```
+
+This is a **time-independent approximation during a constant-amplitude microwave pulse**, not the literal laboratory-frame Hamiltonian. A rotating-frame transformation, followed by the rotating-wave approximation, produces it when the drive is near resonance and not too strong. You will derive that connection later; in this lab, you will study the consequences using the time-independent techniques from class.
+
+In the textbook's static-field problem, the Hamiltonian also contains $S_z$ and $S_x$ terms. The mathematics of the rotation is identical, but the *meaning of the terms* is different here:
+
+- The effective $z$ coefficient is $-\Delta\omega=\omega_0-\omega$, representing **frequency mismatch**, not an extra applied static field.
+- The effective $x$ coefficient is $\omega_1$, representing microwave coupling.
+
+In matrix form,
 
 ```math
 \hat H_{\mathrm{eff}}=\frac{\hbar}{2}
 \begin{pmatrix}
-\omega_0 & \omega_1 \\
-\omega_1 & -\omega_0
+-\Delta\omega & \omega_1\\
+\omega_1 & \Delta\omega
 \end{pmatrix}.
 ```
 
-We will work in microseconds and radians per microsecond. In QuTiP, supply $H/\hbar$ in angular-frequency units, so the numerical Hamiltonian uses the same coefficients without an explicit factor of $\hbar$.
+We use time in $\mu$s and angular frequencies in rad/$\mu$s. In QuTiP, enter $\hat H/\hbar$ directly (without a separate numerical factor of $\hbar$). The effective Bloch trajectories produced in this lab are **rotating-frame trajectories**, not the full gigahertz-speed laboratory motion.
 
 ### Resonant Driving: A Spin Flip
 
-On resonance, $\omega_0=0$, so the Hamiltonian simplifies to
+When the applied frequency matches the natural frequency, $\omega=\omega_0$ and $\Delta\omega=0$, so the effective Hamiltonian simplifies to
 
 ```math
 \hat H_{\mathrm{res}}=\frac{\hbar\omega_1}{2}\sigma_x.
@@ -91,30 +125,30 @@ the spin has rotated through an angle $\pi$ and the population has transferred c
 
 ### Off-Resonant Driving
 
-When $\omega_0\ne0$, the Hamiltonian contains both $\sigma_x$ and $\sigma_z$ terms:
+When $\Delta\omega\ne0$, the Hamiltonian contains both $\sigma_x$ and $\sigma_z$ terms:
 
 ```math
-\hat H_{\mathrm{off}}=\frac{\hbar}{2}\left(\omega_0\sigma_z+\omega_1\sigma_x\right).
+\hat H_{\mathrm{off}}=\frac{\hbar}{2}\left(-\Delta\omega\,\sigma_z+\omega_1\sigma_x\right).
 ```
 
 The Bloch vector rotates around a tilted effective axis in the $x$–$z$ plane, just as in the textbook's general-direction field problem. The difference between the two energy eigenvalues defines the generalized oscillation angular frequency
 
 ```math
-\Omega=\sqrt{\omega_0^2+\omega_1^2}.
+\Omega=\sqrt{(\Delta\omega)^2+\omega_1^2}.
 ```
 
-The textbook's Rabi formula (Eq. 3.63) becomes, for our initial $|0\rangle$ state,
+The driven Rabi formula given earlier, evaluated for our initial $|0\rangle$ state, can be written in terms of detuning as
 
 ```math
 P_{0\rightarrow1}(t)=
-\frac{\omega_1^2}{\omega_0^2+\omega_1^2}
-\sin^2\!\left(\frac{\sqrt{\omega_0^2+\omega_1^2}}{2}t\right).
+\frac{\omega_1^2}{(\Delta\omega)^2+\omega_1^2}
+\sin^2\!\left(\frac{\sqrt{(\Delta\omega)^2+\omega_1^2}}{2}t\right).
 ```
 
 The maximum population transfer is
 
 ```math
-P_{0\rightarrow1}^{\max}=\frac{\omega_1^2}{\omega_0^2+\omega_1^2}.
+P_{0\rightarrow1}^{\max}=\frac{\omega_1^2}{(\Delta\omega)^2+\omega_1^2}.
 ```
 
 Thus **increasing the magnitude of detuning increases the generalized oscillation frequency while decreasing the maximum probability of a complete spin flip**.
@@ -125,7 +159,7 @@ Thus **increasing the magnitude of detuning increases the generalized oscillatio
        width="450">
 </p>
 
-*Reference diagram: On resonance ($\omega_0=0$), the effective rotation axis lies along $x$. When $\omega_0\ne0$, it tilts toward $z$. The diagrams illustrate rotation axes; you will generate the actual spin-state trajectories for four detuning values in Figure 3.*
+*Reference diagram: On resonance, the effective rotation axis lies along $x$; with nonzero detuning it tilts toward $z$. **Notation note:** The diagram uses the earlier symbol $\omega_0$ for the effective $z$ coefficient. In our revised notation that coefficient is $-\Delta\omega$, while $\omega_0$ is the natural NV transition frequency. You will generate four actual trajectories in Figure 3.*
 
 ---
 
@@ -157,7 +191,7 @@ Use the instructor-provided QuTiP functions and the parameters
 
 ```math
 \omega_1=2\pi\ \mathrm{rad/\mu s},\qquad
-\omega_0=0,
+\Delta\omega=0,
 ```
 
 with a simulation interval of
@@ -195,7 +229,7 @@ Include a caption describing how rotation on the Bloch sphere corresponds to pop
 Repeat the simulation with
 
 ```math
-\omega_1=4\pi\ \mathrm{rad/\mu s},\qquad \omega_0=0.
+\omega_1=4\pi\ \mathrm{rad/\mu s},\qquad \Delta\omega=0.
 ```
 
 Keep the initial state and total time interval unchanged.
@@ -210,108 +244,64 @@ An additional comparison plot may help, but it is **not another required numbere
 
 ### Step 5: Predict the Effect of Detuning
 
-Return to the original microwave coupling strength:
+Return to $\omega_1=2\pi\ \mathrm{rad/\mu s}$ and hold the coupling strength fixed. Approach resonance by decreasing the **magnitude** of the microwave detuning. For consistency with our earlier Bloch-axis diagrams, choose the following negative values of $\Delta\omega$ (the applied drive begins below the natural transition frequency):
 
-```math
-\omega_1=2\pi\ \mathrm{rad/\mu s}.
-```
+| Case | $\Delta\omega/\omega_1$ | Microwave frequency | Interpretation |
+|---|---:|---|---|
+| A | $-4$ | $\omega=\omega_0-4\omega_1$ | Strong detuning |
+| B | $-2$ | $\omega=\omega_0-2\omega_1$ | Moderate detuning |
+| C | $-1$ | $\omega=\omega_0-\omega_1$ | Smaller detuning |
+| D | $0$ | $\omega=\omega_0$ | On resonance |
 
-Keep this value constant while changing the microwave detuning, $\omega_0$. Investigate **four conditions, beginning far from resonance and moving progressively closer**:
+For these values, the effective $z$ coefficient $-\Delta\omega$ is positive and decreases in the ratio $4:2:1:0$. The effective $x$ coefficient stays fixed at $\omega_1$.
 
-| Case | Detuning $\omega_0$ | Interpretation |
-|---|---:|---|
-| A | $4\omega_1$ | Strong detuning |
-| B | $2\omega_1$ | Moderate detuning |
-| C | $\omega_1$ | Smaller detuning |
-| D | $0$ | On resonance |
-
-For the specified coupling, these correspond to detunings of $8\pi$, $4\pi$, $2\pi$, and $0\ \mathrm{rad/\mu s}$, respectively.
-
-In the laboratory, detuning is controlled by adjusting the applied microwave frequency relative to the NV transition frequency:
-
-```math
-\omega_0=\omega_{\mathrm{NV}}-\omega_d.
-```
-
-As the applied microwave frequency approaches resonance, $\omega_0$ approaches zero. These four cases are discrete points along the frequency sweep you will perform in Part 3.
-
-**Before running the simulations, record your predictions:**
-
-1. Which trajectory should stay closest to the north pole, and which should reach the south pole?
-2. As detuning decreases toward zero, what should happen to the maximum population $P_1$?
-3. How should the effective rotation axis change as the system approaches resonance?
-4. Will the population oscillations become faster or slower as $|\omega_0|$ decreases while $\omega_1$ remains fixed?
+**Before simulating, predict:** (1) which trajectory will remain closest to the north pole, (2) which will reach the south pole, (3) how the rotation axis tilts as the microwave frequency approaches $\omega_0$, and (4) whether the population oscillations speed up or slow down.
 
 ### Step 6: Simulate the Detuning Sequence
 
-Use the same time-independent effective Hamiltonian throughout:
+Use the same effective Hamiltonian throughout:
 
 ```math
 \hat H_{\mathrm{eff}}=\frac{\hbar}{2}
-\left(\omega_0\sigma_z+\omega_1\sigma_x\right).
+\left(-\Delta\omega\,\sigma_z+\omega_1\sigma_x\right).
 ```
 
-For **each of the four detuning values**, prepare the same initial state $|0\rangle$ and simulate the evolution from $0$ to $2\ \mathrm{\mu s}$. Use sufficiently fine time sampling to resolve the oscillations at the largest detuning.
+For each of the four detunings, initialize $|0\rangle$ and simulate $0\le t\le2\ \mu\mathrm s$. Use sufficiently dense sampling for the most strongly detuned case.
 
-Your code should:
+Use the **same** `nv_hamiltonian(detuning, omega1)` and `simulate_spin()` helpers for every simulation; do not define a new solver. The `detuning` argument is always $\Delta\omega=\omega-\omega_0$, and `nv_hamiltonian` internally supplies the minus sign on $\sigma_z$.
 
-1. Hold $\omega_1$ fixed and vary only $\omega_0$.
-2. Calculate the Bloch-vector trajectory for all four cases.
-3. Calculate $P_0(t)$ and $P_1(t)$ for each case.
-4. Determine the largest simulated value of $P_1$ for each detuning.
-5. Compare those numerical maxima with the analytical Rabi formula.
-
-**AI coding task:** Ask your LLM to extend the existing resonant simulation to generate **four consistently formatted Bloch spheres** and a common population comparison. Reuse the instructor-provided simulation and plotting utilities, keeping the physics and parameter choices under your control. The evolution helper should accept $\omega_0$, $\omega_1$, and a time array as inputs, so the same calculation can be reused for the frequency sweep in Part 3.
+**AI coding task:** Extend your resonant calculation into a loop over the four detuning values, collecting Bloch trajectories, populations, and maxima without duplicating the numerical code.
 
 ### Step 7: Generate Figure 3
 
 **Figure 3 — Approaching Resonance: Bloch-Sphere Trajectories and Spin-Flip Probabilities**
 
-Create one numbered, multi-panel figure with two sections:
+Create one numbered figure with:
 
-**Panel A — Four Bloch-sphere trajectories**
+- **Panel A:** Four separate Bloch spheres, in order $\Delta\omega/\omega_1=-4,-2,-1,0$. Label each with its detuning. Mark $|0\rangle$, show time direction, and keep viewing angles consistent. Show the two effective Hamiltonian components: $-\Delta\omega$ along $z$ and $\omega_1$ along $x$, using relative arrow lengths $4:2:1:0$ for $z$ and the same length for $x$.
+- **Panel B:** Four $P_1(t)$ curves on shared axes, with time in $\mu$s and a legend.
 
-Display **four separate Bloch spheres**, arranged in a clear sequence from strong detuning to resonance:
-
-1. $\omega_0=4\omega_1$
-2. $\omega_0=2\omega_1$
-3. $\omega_0=\omega_1$
-4. $\omega_0=0$
-
-Each Bloch sphere must show the trajectory of the state starting at $|0\rangle$, its initial position, the direction of time evolution, and a label identifying its detuning. Use the same viewing angle, sphere size, and axis conventions so the trajectories can be compared directly. If supported by the plotting utility, show the effective rotation axis for each case.
-
-**Panel B — Four population curves**
-
-On a single set of axes, plot $P_1(t)$ for **all four detuning values**, with time in microseconds and a legend matching the labels in Panel A.
-
-Your figure should make it possible to observe both the decreasing maximum population transfer and the change in oscillation frequency as the system approaches resonance.
-
-Include a caption explaining the relationship between detuning, effective rotation-axis direction, and the extent of the spin flip. **Do not replace these calculated trajectories with the instructor-provided reference diagram.**
+The vector arrows represent **effective rotation terms**, not literal applied laboratory magnetic fields. Include a caption relating detuning, rotation-axis direction, population-transfer amplitude, and oscillation frequency.
 
 ### Step 8: Report and Interpret the Detuning Results
 
-Complete a numerical comparison table in your notebook with these columns:
+Print a compact comparison table with columns:
 
-| Detuning $\omega_0/\omega_1$ | Maximum $P_1$ (simulation) | Maximum $P_1$ (theory) | Generalized angular frequency $\Omega$ |
+| $\Delta\omega/\omega_1$ | Maximum $P_1$ (simulation) | Maximum $P_1$ (theory) | Generalized $\Omega$ (rad/$\mu$s) |
 |---|---|---|---|
-| 4 | *Your result* | *Calculate* | *Calculate* |
-| 2 | *Your result* | *Calculate* | *Calculate* |
-| 1 | *Your result* | *Calculate* | *Calculate* |
-| 0 | *Your result* | *Calculate* | *Calculate* |
+| $-4$ | *Your result* | *Calculate* | *Calculate* |
+| $-2$ | *Your result* | *Calculate* | *Calculate* |
+| $-1$ | *Your result* | *Calculate* | *Calculate* |
+| $0$ | *Your result* | *Calculate* | *Calculate* |
 
-Use the generalized Rabi frequency
-
-```math
-\Omega=\sqrt{\omega_0^2+\omega_1^2}
-```
-
-and the textbook's maximum-transfer expression
+Use
 
 ```math
-P_{1,\max}=\frac{\omega_1^2}{\omega_0^2+\omega_1^2}.
+P_{1,\max}=\frac{\omega_1^2}{(\Delta\omega)^2+\omega_1^2},
+\qquad \Omega=\sqrt{(\Delta\omega)^2+\omega_1^2}.
 ```
 
-Notice that the system undergoes **larger population oscillations but at a lower generalized oscillation frequency** as the detuning is reduced toward resonance, with $\omega_1$ fixed.
+Explain why moving closer to resonance causes larger population oscillations but a smaller generalized oscillation frequency.
 
 ---
 
@@ -345,10 +335,10 @@ Verify that $P_1(t_\pi)$ is approximately 1. When $\omega_1$ is doubled, verify 
 Check the simulated maximum population against
 
 ```math
-P_{1,\max}=\frac{\omega_1^2}{\omega_1^2+\omega_0^2}.
+P_{1,\max}=\frac{\omega_1^2}{\omega_1^2+(\Delta\omega)^2}.
 ```
 
-For $\omega_0=4\omega_1,\ 2\omega_1,\ \omega_1,\ 0$, the predicted maximum probabilities are, respectively,
+For $\Delta\omega=-4\omega_1,\ -2\omega_1,\ -\omega_1,\ 0$, the predicted maximum probabilities are, respectively,
 
 ```math
 \frac{1}{17}\approx0.0588,\qquad
@@ -364,7 +354,7 @@ Small numerical differences due to time sampling are acceptable. The time interv
 Compare the oscillation frequencies with
 
 ```math
-\Omega=\sqrt{\omega_1^2+\omega_0^2}.
+\Omega=\sqrt{\omega_1^2+(\Delta\omega)^2}.
 ```
 
 Confirm that the oscillations become **slower** as the magnitude of detuning decreases toward zero while microwave coupling remains fixed, even as population transfer becomes more complete.
