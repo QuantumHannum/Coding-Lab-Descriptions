@@ -159,7 +159,6 @@ Thus **increasing the magnitude of detuning increases the generalized oscillatio
        width="450">
 </p>
 
-*Reference diagram: On resonance, the effective rotation axis lies along $x$; with nonzero detuning it tilts toward $z$. **Notation note:** The diagram uses the earlier symbol $\omega_0$ for the effective $z$ coefficient. In our revised notation that coefficient is $-\Delta\omega$, while $\omega_0$ is the natural NV transition frequency. You will generate four actual trajectories in Figure 3.*
 
 ---
 
