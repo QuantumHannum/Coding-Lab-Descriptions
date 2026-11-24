@@ -183,71 +183,36 @@ Do not run the simulation until you have recorded your predictions.
 
 ### Step 2: Simulate a Microwave-Frequency Sweep
 
-Use the same two-level Hamiltonian and population-calculation functions developed in Part 2.
+Keep `omega1 = 2*np.pi` rad/µs and pulse duration `tau = 0.5` µs, **fixed at every applied frequency**. Use 201 evenly spaced drive-frequency offsets from `-4*omega1` to `+4*omega1` relative to the **original** natural transition frequency, including zero.
 
-For this investigation, keep
+For each frequency offset: calculate detuning, build the effective `nv_hamiltonian()`, initialize `|0⟩`, use `simulate_spin()` over `[0, tau]`, extract final `P0` and `P1`, and convert these using `fluorescence()`.
 
-```math
-\omega_1=2\pi\ \mathrm{rad/\mu s}
-```
+#### Required Output — Original Frequency-Sweep Data
 
-and
+Produce a `part3_base` dictionary containing **four aligned 201-element arrays**:
 
-```math
-\tau=0.5\ \mathrm{\mu s}.
-```
+| Array | Contents |
+|---|---|
+| `drive_offsets` | Applied angular-frequency offsets relative to the original transition (rad/µs) |
+| `p0` | Final P0 after the fixed-duration pulse |
+| `p1` | Final P1 after the fixed-duration pulse |
+| `fluorescence` | Expected detected red photons per readout window |
 
-Sweep the drive frequency relative to the original natural transition over the interval
+The shared `sweep_fluorescence()` helper must also retain each `simulate_spin()` result in `simulations` for verification. **Do not generate a separate numbered figure yet.**
 
-```math
--4\omega_1\leq\Delta\omega\leq4\omega_1.
-```
+### Step 3: Inspect the Initial ODMR Spectrum
 
-Use 201 evenly spaced drive-frequency offsets, including zero.
-
-This interval includes both positive and negative detunings, allowing you to investigate the response on either side of resonance.
-
-For each drive-frequency offset:
-
-1. Construct the effective Hamiltonian using the supplied QuTiP functions.
-2. Initialize the spin in $|0\rangle$.
-3. Evolve the state for the fixed microwave pulse duration $\tau$.
-4. Calculate the final populations $P_0$ and $P_1$.
-5. Convert the populations into expected red fluorescence.
-
-**AI coding task:** Ask your LLM to extend your existing Part 2 code to perform a frequency sweep. Reuse the instructor-provided Hamiltonian and evolution functions, changing only the detuning parameter $\Delta\omega$ for each simulation.
-
-The code should return arrays containing the microwave frequency (or detuning), final spin populations, and expected fluorescence.
-
-Do not introduce additional quantum states or optical decay processes.
-
-### Step 3: Generate the First ODMR Spectrum
-
-Plot the expected red fluorescence against the microwave frequency.
-
-For the final figure, use microwave angular frequency relative to the original natural transition frequency on the horizontal axis. Convert the angular-frequency offset to MHz by dividing by $2\pi$.
-
-Use
+Convert angular-frequency offsets into ordinary frequency offsets in MHz using
 
 ```math
-\omega=\omega_0+\Delta\omega
+\Delta f=\frac{\Delta\omega}{2\pi}.
 ```
 
-to convert between detuning and drive frequency.
+With angular-frequency units of rad/µs, the plotted offsets range from **−4 to +4 MHz**. Identify and print the **original central resonance offset** (MHz) and the corresponding minimum fluorescence (expected photons per readout). A temporary plot is optional but not a required numbered figure.
 
-For convenience, use
+Because the pulse duration is fixed, the pulsed-ODMR spectrum may have oscillatory sidelobes away from resonance. Find the **central resonance**, rather than relying on an arbitrary off-center local minimum.
 
-```math
-\omega-\omega_0
-```
-
-on a relative frequency axis. The original resonance occurs at zero; the shifted resonance occurs at a positive offset.
-
-Your graph should show a reduction in fluorescence near the resonance.
-
-**Note:** Because we are using a fixed-duration coherent microwave pulse, the spectrum may contain oscillatory features away from the central resonance. This is expected. The resulting spectrum is a simplified *pulsed-ODMR* signal rather than the smooth lineshape often obtained in continuous-wave ODMR experiments.
-
----
+**AI guidance:** Formulate your own prompt identifying the existing notebook functions, input range and units, the data structure, and the printed result you require. Do not ask for an independent solver.
 
 ## Computational Investigation B: Detecting a Magnetic Field
 
@@ -275,68 +240,58 @@ Before running the simulation, predict:
 
 ### Step 5: Simulate the Resonance Shift
 
-Repeat the frequency sweep with the shifted transition frequency
+Use the imposed natural transition shift `nv_shift = omega1` with the **exact same original** `drive_offsets` array. At each drive frequency, the shifted detuning is
 
 ```math
-\omega_0'=\omega_0+\delta\omega_0.
+\Delta\omega'=\Delta\omega-\delta\omega_0.
 ```
 
-For the same applied microwave frequency $\omega$, the new detuning becomes
+Recalculate the final populations and fluorescence with the same coupling and 0.5 µs pulse. Keep the original spectrum unchanged; store the shifted result in `part3_shift`.
 
-```math
-\Delta\omega'=\omega-\omega_0'.
-```
-
-Keep the microwave coupling strength and pulse duration unchanged.
-
-Calculate the expected fluorescence for the shifted transition and compare it with the original spectrum.
-
-**AI coding task:** Ask your LLM to reuse the original microwave-frequency array and calculate a second fluorescence spectrum for the shifted natural NV natural transition frequency.
-
-The two simulations must use the same microwave-frequency axis so that the displacement of the resonance can be measured directly. For a fixed drive frequency, the shifted detuning is $\Delta\omega'=\omega-\omega_0'=\Delta\omega-\delta\omega_0$.
+**Required output:** A second 201-element fluorescence array and its associated results, aligned with the **same drive-frequency array**. Do not generate a separate figure for this sweep.
 
 ### Step 6: Generate Figure 4
 
 **Figure 4 — Simulated Pulsed ODMR and Magnetic-Field-Induced Resonance Shift**
 
-Create one numbered figure showing **two fluorescence spectra on the same axes**:
+Produce **one Matplotlib graph comparing the original and shifted fluorescence spectra.** Unlike Figures 1–3, no layout guide is provided. At this stage you are responsible for designing a clear scientific comparison.
 
-- The original NV natural transition frequency.
-- The shifted natural NV natural transition frequency.
+#### Required Output — Figure 4
 
-Your figure must include:
+| Component | Required output |
+|---|---|
+| Title | Figure 4 — Pulsed ODMR and Resonance Shift |
+| Graph | Two simulated fluorescence curves on **the same axes** |
+| Horizontal axis | Microwave frequency relative to **original** NV resonance (MHz), −4 to +4 |
+| Vertical axis | Expected detected red photons per readout window; choose a readable range |
+| Curves | Original and shifted fluorescence spectra with distinguishable styles |
+| Resonance markers | Mark and label the **central minimum frequency** of each curve, in MHz |
+| Legend | Identify both curves |
+| Caption | 2–3 sentences about fluorescence, the magnetic-field-induced shift and how it is measured |
 
-- Microwave frequency relative to the original NV resonance on the horizontal axis, in MHz or a clearly labeled normalized frequency scale.
-- Expected detected red photons per readout window on the vertical axis.
-- Two labeled curves corresponding to the original and shifted resonance frequencies.
-- Markers or vertical lines indicating the central resonance frequency of each curve.
-- A descriptive title, legend, and caption.
+Compute the frequency-offset axis from the original drive-frequency offsets using `drive_offsets / (2*np.pi)`. **Do not recenter either spectrum independently**; that would hide the shift being measured. Identify the minima using the simulated arrays, not guessed data. Register the complete Matplotlib figure as `figures["Figure 4"] = fig4`.
 
-Use the same horizontal and vertical scales for both spectra.
+### AI Coding Guidance — Figure 4
 
-Your caption should explain how a change in magnetic field shifts the fluorescence resonance.
+**Construct your own LLM prompt.** You now have experience producing multipanel scientific figures; use the physical requirements above to specify data sources, same-axis comparison, appropriate labels and units, minimum markers and figure registration. Do not ask the LLM to invent fluorescence data or change the shared numerical functions.
 
 ### Step 7: Measure the Resonance Shift
 
-Identify the microwave frequency corresponding to the central fluorescence minimum for each spectrum.
+Identify the central fluorescence minimum of both spectra.
 
-Record your results in a table:
+#### Required Output — Resonance Comparison
+
+Print a table:
 
 | Quantity | Original field | Changed field |
-|---|---|---|
-| NV natural transition frequency relative to original resonance | 0 | Your result |
-| Microwave frequency at fluorescence minimum | Your result | Your result |
-| Minimum expected fluorescence | Your result | Your result |
+|---|---:|---:|
+| Imposed natural-frequency shift (MHz) | Calculated | Calculated |
+| Measured resonance relative to original (MHz) | Calculated | Calculated |
+| Minimum fluorescence (photons/readout) | Calculated | Calculated |
 
-Determine the difference between the two resonance frequencies.
+Then print the **measured resonance shift**, in MHz, calculated as `shifted resonance − original resonance`. Display frequencies and fluorescence to at least two decimal places. Compare it with the imposed shift.
 
-Compare the measured shift with the frequency change you introduced in Step 4.
-
-**Conceptual question — Interpreting the resonance shift:** Using the measured shift in the NV resonance frequency, what physical quantity could you calculate? Explain the relationship between this quantity and the NV spin's energy-level splitting. **No additional coding or numerical calculation is required.** Record your answer in the designated notebook response cell.
-
-This is the essential measurement performed by an NV-diamond magnetometer: **a change in magnetic field is inferred from a change in the spin resonance frequency.**
-
----
+**Conceptual question — Interpreting the resonance shift:** Using the measured shift in the NV resonance frequency, what physical quantity could you calculate? Explain the relationship between this quantity and the NV spin's energy-level splitting. **No additional code or numerical field calculation is required.** Record your answer in the designated notebook response cell.
 
 ## Connection to QLab Research
 
@@ -360,69 +315,27 @@ Our model deliberately omits these complications so that we can concentrate on t
 
 ## Numerical Verification
 
-Before accepting Figure 4, verify the following results.
+Before accepting Figure 4, verify that the populations remain normalized, fluorescence lies between `F1=70` and `F0=100`, the resonant π pulse produces near-complete population transfer, the original spectrum is symmetric about zero, and the measured resonance displacement agrees with the imposed natural-transition shift.
 
-### 1. Population Normalization
+For the original data, compare fluorescence at matching positive and negative frequency offsets; for the shifted data, use offsets measured relative to the **shifted** resonance if comparing symmetry.
 
-For every simulated microwave frequency, verify that
+### Required Output — Numerical Verification Summary
 
-```math
-P_0+P_1\approx1.
-```
+Print this table with calculated values:
 
-Confirm that both probabilities remain between zero and one.
+| Verification quantity | Required result |
+|---|---|
+| Maximum population-normalization error across both sweeps | Calculated |
+| Minimum original fluorescence (photons/readout) | Calculated |
+| Minimum shifted fluorescence (photons/readout) | Calculated |
+| Maximum original fluorescence (photons/readout) | Calculated |
+| Maximum shifted fluorescence (photons/readout) | Calculated |
+| Maximum original-spectrum symmetry difference (photons/readout) | Calculated |
+| Measured resonance shift (MHz) | Calculated |
 
-### 2. Fluorescence Limits
+Report whether each result satisfies the prediction. For the imposed shift `δω0 = omega1 = 2π rad/µs`, the expected central resonance displacement is **+1 MHz**. This is a **post-simulation verification result**, not data to be inserted into the plot.
 
-Verify that
-
-```math
-F_1\leq F\leq F_0
-```
-
-for every simulated microwave frequency.
-
-### 3. Resonant Population Transfer
-
-At resonance, verify that
-
-```math
-P_1(\tau_\pi)\approx1.
-```
-
-The expected fluorescence should therefore approach
-
-```math
-F_{\min}=F_1=70.
-```
-
-### 4. Frequency-Sweep Symmetry
-
-For the original natural transition frequency, compare the fluorescence at equal positive and negative detunings.
-
-Verify that
-
-```math
-F(+\Delta\omega)=F(-\Delta\omega)
-```
-
-within numerical precision.
-
-Explain why this symmetry follows from the generalized Rabi formula.
-
-### 5. Magnetic-Field-Induced Resonance Shift
-
-Verify that the difference between the two central resonance frequencies is approximately equal to the imposed shift:
-
-```math
-\delta\omega_0=\omega_1.
-```
-
-Check that the central fluorescence minimum remains approximately $F_1$ after the resonance shifts, because the pulse duration and coupling strength have not changed.
-
-If your results disagree with these predictions, investigate the discrepancy before accepting the simulation.
-
----
+**No additional graph is required.**
 
 ## Physics Analysis
 
@@ -473,7 +386,7 @@ Before finishing the lab, confirm that you have:
 - [ ] Recorded your fluorescence and resonance-shift predictions before running the simulations.
 - [ ] Performed a microwave-frequency sweep using a fixed pulse duration.
 - [ ] Calculated the final spin populations and expected fluorescence for each microwave frequency.
-- [ ] Repeated the sweep with a shifted natural NV natural transition frequency.
+- [ ] Repeated the sweep with a shifted NV transition frequency.
 - [ ] Generated Figure 4 showing both fluorescence spectra.
 - [ ] Identified the central resonance frequency of each spectrum and calculated the shift.
 - [ ] Verified population normalization, fluorescence limits, and resonance symmetry.

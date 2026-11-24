@@ -38,19 +38,19 @@ A nitrogen-vacancy center is a defect in a diamond crystal consisting of a nitro
 
 The negatively charged NV center has an electronic ground state with spin $s=1$, corresponding to three possible spin projections:
 
-$$
+```math
 m_s=0,\quad m_s=+1,\quad m_s=-1.
-$$
+```math
 
 In this lab, we will simplify the system by considering only two of these states:
 
-$$
+```math
 |0\rangle\equiv|m_s=0\rangle,
-$$
+```math
 
-$$
+```math
 |1\rangle\equiv|m_s=-1\rangle.
-$$
+```math
 
 These states form a two-dimensional Hilbert space. We can therefore represent them mathematically using the same Pauli matrices and Bloch sphere that you have used for spin-½ systems.
 
@@ -60,15 +60,15 @@ These states form a two-dimensional Hilbert space. We can therefore represent th
 
 The time evolution of a quantum state is governed by the time-dependent Schrödinger equation:
 
-$$
+```math
 i\hbar\frac{d}{dt}|\psi(t)\rangle=\hat H|\psi(t)\rangle.
-$$
+```math
 
 For a time-independent Hamiltonian, the solution is
 
-$$
+```math
 |\psi(t)\rangle=e^{-i\hat Ht/\hbar}|\psi(0)\rangle.
-$$
+```math
 
 You have already used this equation to calculate how energy eigenstates acquire phase factors and how superpositions evolve in time.
 
@@ -81,27 +81,29 @@ We will investigate two important physical processes:
 
 We will examine the Hamiltonians describing these processes in the individual activities.
 
+The microwave field is physically time-dependent. In Part 2, you will use a supplied effective time-independent model of the slower near-resonant spin dynamics. The rotating-frame derivation will follow in class.
+
 ### Connecting Quantum States to Measurement
 
 In quantum mechanics, the state of a system determines the probabilities of possible measurement outcomes.
 
 For our two-level NV model,
 
-$$
+```math
 |\psi(t)\rangle=a(t)|0\rangle+b(t)|1\rangle,
-$$
+```math
 
 the probabilities of measuring the two states are
 
-$$
+```math
 P_0(t)=|a(t)|^2,\qquad P_1(t)=|b(t)|^2.
-$$
+```math
 
 Because the state is normalized,
 
-$$
+```math
 P_0(t)+P_1(t)=1.
-$$
+```math
 
 An NV center has an unusual and useful property: its electron spin state influences the intensity of red fluorescence emitted when it is illuminated with green light.
 
@@ -113,43 +115,45 @@ We will investigate this optical measurement technique in Part 3.
 
 ## Analytical Warm-Up
 
-Before beginning the computational investigations, consider a two-level quantum system initially prepared in the state
+Before beginning the computational investigations, consider a two-level system initially prepared in
 
-$$
-|\psi(0)\rangle=\frac{1}{\sqrt2}\left(|0\rangle+|1\rangle\right).
-$$
+```math
+|\psi(0)\rangle=\frac{1}{\sqrt2}(|0\rangle+|1\rangle).
+```
 
-The system evolves under the time-independent Hamiltonian
+The time-independent Hamiltonian is
 
-$$
-\hat H=\frac{\hbar\omega}{2}\sigma_z,
-$$
+```math
+\hat H=\frac{\hbar\omega}{2}\sigma_z,\qquad
+\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+```
 
-where
+### Step 1: Calculate by Hand
 
-$$
-\sigma_z =
-\begin{pmatrix}
-1 & 0 \\
-0 & -1
-\end{pmatrix}
-$$
+In the notebook's **Analytical Warm-Up** response cell, (1) determine the energy eigenvalues of `|0⟩` and `|1⟩`, (2) write `|ψ(t)⟩`, (3) calculate both probabilities, and (4) determine how the *relative phase* between the basis amplitudes changes. **Record your Bloch-trajectory and population predictions before running code.**
 
+### Step 2: Verify with QuTiP
 
-**Calculate by hand:**
+Use `omega_warm = 2*np.pi` rad/µs and 101 equally spaced time points from 0 to 1 µs (already provided). Construct the Hamiltonian as `H_warm` in units of `H/ħ`, and use the supplied `simulate_spin()` to store results as `warmup`.
 
-1. Determine the energy eigenvalues associated with $|0\rangle$ and $|1\rangle$.
-2. Write the time-dependent state $|\psi(t)\rangle$.
-3. Calculate $P_0(t)$ and $P_1(t)$.
-4. Explain what happens to the relative phase between the two basis states.
+#### Required Output — Warm-Up Verification
 
-**Prediction:** How will the Bloch vector move as time increases? Will the populations of the two states change?
+Print **one four-row table** using the numerical simulation:
 
-**Check your results with QuTiP.**
+| Time (µs) | P0(t) | P1(t) | Relative phase (rad) |
+|---:|---:|---:|---:|
+| 0.00 | Calculated | Calculated | Calculated |
+| 0.25 | Calculated | Calculated | Calculated |
+| 0.50 | Calculated | Calculated | Calculated |
+| 1.00 | Calculated | Calculated | Calculated |
 
-Complete this calculation in the **Analytical Warm-Up** section of your student notebook before beginning Part 1.
+Report probabilities to at least three decimal places and the relative phase in radians using a consistent wrapped or unwrapped convention. Verify `P0 + P1 ≈ 1` throughout. The complex amplitudes can differ from your analytical state by an overall global phase; compare the *relative phase*, not the individual amplitudes directly.
 
----
+**No warm-up Bloch-sphere plot or numbered figure is required.** Write 1–2 sentences comparing the table with your analytical prediction.
+
+### AI Coding Guidance — Warm-Up
+
+You may use an LLM to help implement the numerical verification, but you must complete the analytical calculation and prediction independently. **Construct your own prompt.** It should specify the Hamiltonian and initial state, the supplied functions and variables to reuse, the exact four sample times and table columns, and how to verify the physics. Ask for code for the existing notebook cell, not a replacement notebook or a new solver.
 
 ## Organization of the Lab
 
@@ -351,6 +355,8 @@ If you did not use AI, reflect instead on your independent coding process, the c
 
 The emphasis is on demonstrating that you directed the computational work and independently verified its scientific validity.
 
+In your Verification entry, also note whether your prompt communicated the intended output clearly and what you changed if the coding assistant misunderstood your requirements.
+
 Do not submit complete AI conversation transcripts or share links. Do not include personal information or unrelated conversations in your record.
 
 ---
@@ -364,6 +370,8 @@ Complete the three activities in order, using the provided student notebook:
 3. **Part 3: Optical Readout and NV Magnetometry**
 
 The activity descriptions provide the detailed physics background, computational instructions, and assessment requirements.
+
+Each numbered figure in Parts 1–3 has a **Required Output** specification. Figures 1–3 also include layout-only guides illustrating panel arrangements; Figure 4 is a standard comparison graph and has no layout guide. Figure 1 provides the **only complete sample LLM prompt** in the lab. For all other tasks, formulate your own prompts from the physical model and output requirements.
 
 The student notebook provides the workspace for completing those tasks.
 

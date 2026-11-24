@@ -54,7 +54,7 @@ where $\omega$ is the angular frequency of relative phase evolution. The Pauli-$
 \end{pmatrix}.
 ```
 
-For this activity, we use a **rotating reference frame** in which $\omega$ represents the signed precession rate relative to a chosen reference frequency. This allows us to simulate the relevant phase evolution without numerically resolving the NV center's approximately $2.87\,\mathrm{GHz}$ zero-field splitting.
+We use illustrative angular frequencies of a few rad/µs to make the phase evolution easy to simulate and visualize. These are smaller than the NV center's physical gigahertz-scale transition frequencies; the investigation focuses on the mathematics of relative phase and precession.
 
 ### Relative Phase and Larmor Precession
 
@@ -121,70 +121,83 @@ Record your predictions in the notebook:
 
 ### Step 2: Simulate Larmor Precession
 
-Use QuTiP to simulate the time evolution of the initial superposition. For the first simulation, use
+Use `omega = 2*np.pi` rad/µs and `times1 = np.linspace(0, 2, 501)` in µs. This interval contains two full precession periods.
 
-```math
-\omega=2\pi\ \mathrm{rad/\mu s}
-```
+**Simulation requirements:** Construct `H1 = omega*sz/2` (numerical `H/ħ`); prepare `psi_plus`; use the shared `simulate_spin(H1, psi_plus, times1)` and store the resulting dictionary in `part1`. The dictionary must contain `times`, `states`, `p0`, `p1`, and `bloch`.
 
-and simulate from $t=0$ to $t=2\,\mu\mathrm{s}$. This corresponds to two complete precession periods.
-
-Your code should:
-
-1. Construct the Hamiltonian using the supplied Pauli operators.
-2. Prepare the initial superposition.
-3. Use the provided time-evolution function to calculate the state over the specified interval.
-4. Calculate the Bloch-vector components as functions of time.
-5. Calculate $P_0(t)$ and $P_1(t)$.
-6. Generate the required Bloch-sphere trajectory and population plots.
-
-**AI coding task:** Ask your LLM to implement these calculations using the existing functions and variables in your student notebook. Do not ask it to rewrite the notebook or create a separate program. Use enough time points to produce a smooth trajectory.
+**Output:** A complete `part1` result dictionary; **no graph is required yet**. Use it to create Figure 1 in Step 3.
 
 ### Step 3: Generate Figure 1
 
 **Figure 1 — Larmor Precession and Spin-State Populations**
 
-Create **one numbered figure containing two panels**.
+Create **one figure containing two side-by-side panels**.
 
-**Panel A: Bloch-Sphere Trajectory**
+<p align="center">
+  <img src="Images/figure1_layout_guide.png" alt="Figure 1 arrangement: Bloch sphere left; both populations versus time right" width="500">
+</p>
 
-Show the evolution of the Bloch vector over two precession periods. Include:
+*Layout only—not simulated results. Produce both panels using your own calculated data.*
 
-- The Bloch sphere with labeled $x$, $y$, and $z$ axes.
-- The trajectory of the spin state.
-- A clearly marked initial state.
-- An indication of the direction of time evolution.
+#### Required Output — Figure 1
 
-**Panel B: Spin-State Populations**
+| Component | Required output |
+|---|---|
+| Overall title | Figure 1 — Larmor Precession and Spin-State Populations |
+| Left panel | Bloch-sphere trajectory for `part1`, with x/y/z axes and initial state |
+| Rotation indication | Time-direction arrow and labeled `omega` component along +z |
+| Right panel | `P0(t)` and `P1(t)` plotted against the same `part1["times"]` |
+| Axes | Time (µs), 0–2; Probability, 0–1 |
+| Identification | Distinguishable curves, legend and descriptive panel titles |
+| Caption | 1–2 sentences connecting precession to unchanged populations |
 
-Plot both $P_0(t)$ and $P_1(t)$ over the same time interval. Include:
+Use the instructor-provided `plot_bloch()` for the left panel, with `omega_z=omega, axis_unit=omega`. The helper draws the initial marker, trajectory, axes, and time arrow. Do not redefine it. Register the Matplotlib figure with `figures["Figure 1"] = fig1`.
 
-- Time in microseconds on the horizontal axis.
-- Probability on the vertical axis.
-- Distinguishable curves or labels for $P_0$ and $P_1$.
-- A legend and descriptive title.
+### One Complete Example LLM Prompt — Figure 1
 
-Include a short caption explaining the relationship between the Bloch-sphere trajectory and the population measurements.
+**This is the only fully written LLM prompt in the lab.** Study how it communicates existing notebook resources, physical data, plotting requirements, and constraints. You will construct your own prompts for all subsequent tasks.
+
+```text
+I am completing Part 1 of a QuTiP spin-dynamics lab.
+My notebook already contains a simulation dictionary named part1,
+the plot_bloch() helper, and a figures dictionary.
+The result dictionary has times, states, p0, p1, and bloch.
+
+Create Figure 1 as ONE Matplotlib figure with two side-by-side panels.
+LEFT: a 3D Bloch sphere, using plot_bloch(ax, part1, ...), the
+full 0–2 us trajectory, starting-state and time-direction markers,
+and the positive-z omega rotation term (omega_z=omega,
+axis_unit=omega).
+RIGHT: plot part1["p0"] and part1["p1"] versus part1["times"].
+Label Time (us), range 0–2, and Probability, range 0–1.
+Include legend, panel titles, and readable labels for PDF export.
+Store the figure in fig1 and register figures["Figure 1"] = fig1.
+Reuse supplied functions. Do not redefine simulate_spin() or
+plot_bloch(), or modify the physical model or simulation data.
+```
+
+Inspect the output against the figure specification and your predictions.
 
 ### Step 4: Investigate the Effect of Precession Frequency
 
-Repeat the simulation with
+Repeat with `omega_fast = 4*np.pi` rad/µs, the same initial state, and the same 501 samples over 0–2 µs. Store the results in `part1_fast`, using `simulate_spin()` rather than creating a new solver.
 
-```math
-\omega=4\pi\ \mathrm{rad/\mu s}.
-```
+#### Required Output — Frequency Comparison
 
-Keep the initial state and total simulation time unchanged.
+Print **one two-row numerical table**:
 
-Compare the two simulations. In your notebook, report:
+| ω (rad/µs) | Predicted period (µs) | Revolutions in 2 µs | Maximum population variation |
+|---|---:|---:|---:|
+| 2π | Calculated | Calculated | Calculated |
+| 4π | Calculated | Calculated | Calculated |
 
-- The precession period for each value of $\omega$.
-- The number of complete revolutions during the two-microsecond interval.
-- Whether the populations change when the precession frequency is doubled.
+The predicted period is `2*pi/abs(omega)`; revolutions equal the interval duration divided by the period. Population variation is the largest absolute change of either probability from its initial value. Additionally print the maximum probability-normalization error for each simulation. Write 1–2 sentences interpreting the table.
 
-You do not need to create another numbered figure. You may display an additional comparison plot if it helps you investigate the difference.
+**No additional numbered figure is required.**
 
----
+### AI Coding Guidance — Frequency Comparison
+
+Construct your own prompt using the Figure 1 example as a model. Identify the two existing dictionaries, calculations, required table columns and units, and checks. Do not request a new graph or redundant solver.
 
 ## Numerical Verification
 

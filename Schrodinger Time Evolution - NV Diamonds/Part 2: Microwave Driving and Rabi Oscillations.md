@@ -185,60 +185,61 @@ and the resonant Hamiltonian
 2. What should happen to $P_0(t)$ and $P_1(t)$?
 3. What duration should produce a complete spin flip? What happens to that duration if the microwave strength doubles?
 
-### Step 2: Simulate Rabi Oscillations
+### Step 2: Simulate Resonant Rabi Oscillations
 
-Use the instructor-provided QuTiP functions and the parameters
+Use `omega1 = 2*np.pi` rad/µs, `detuning = 0`, and **1,001** evenly spaced samples from 0 to 2 µs. Prepare `|0⟩`, build the resonant Hamiltonian with the supplied operators, and use `simulate_spin()` to calculate the populations and Bloch vector. Store the simulation in `part2_res`.
 
-```math
-\omega_1=2\pi\ \mathrm{rad/\mu s},\qquad
-\Delta\omega=0,
-```
+Determine the first π-pulse duration from the analytical formula and the simulated first population maximum.
 
-with a simulation interval of
-
-```math
-0\le t\le2\ \mathrm{\mu s}.
-```
-
-This interval contains two complete population-oscillation periods.
-
-Your code should:
-
-1. Prepare the initial state $|0\rangle$.
-2. Construct the resonant Hamiltonian using the supplied Pauli operator.
-3. Evolve the state with the supplied QuTiP evolution function.
-4. Calculate the Bloch-vector components and the two spin-state populations.
-5. Determine the first time at which $P_1$ reaches its maximum.
-6. Generate Figure 2.
-
-**AI coding task:** Ask an LLM to help you implement the physical model using the existing notebook functions and variable names. Specify the Hamiltonian, initial state, parameter values, and expected plots. Do not ask it to replace the notebook or rewrite the instructor-supplied utilities.
+**Required output from Step 2:** A complete simulation-result dictionary and the first π-pulse duration. Generate the figure in Step 3.
 
 ### Step 3: Generate Figure 2
 
 **Figure 2 — Resonant Rabi Oscillations**
 
-Create one numbered figure with two panels:
+Create **one figure with two side-by-side panels**.
 
-- **Panel A: Bloch-sphere trajectory.** Show the rotation of the spin beginning at $|0\rangle$, mark the initial state, and indicate the direction of evolution. Make the north and south poles identifiable.
-- **Panel B: State populations.** Plot $P_0(t)$ and $P_1(t)$ versus time, label the axes and units, and mark the first $\pi$-pulse time.
+<p align="center">
+  <img src="Images/figure2_layout_guide.png" alt="Figure 2 arrangement: resonant Bloch sphere on left and population oscillations with pi-pulse marker on right" width="500">
+</p>
 
-Include a caption describing how rotation on the Bloch sphere corresponds to population transfer.
+*Layout only—not the numerical result. Generate your own trajectories and curves.*
+
+#### Required Output — Figure 2
+
+| Component | Required content |
+|---|---|
+| Overall title | Figure 2 — Resonant Rabi Oscillations |
+| Left panel | 3D Bloch trajectory from `|0⟩` at the north pole, with initial marker and time direction |
+| Rotation-axis term | `omega1` along +x, using the supplied `plot_bloch()` helper |
+| Right panel | `P0(t)` and `P1(t)` against time |
+| Axes | Time (µs) 0–2; Probability 0–1 |
+| π-pulse marker | Labeled vertical dashed line at first π-pulse time |
+| Identification | Distinct curves, legend, titles, north/south poles identifiable |
+| Caption | 1–2 sentences connecting Bloch rotation to population transfer |
+
+Use `omega_x=omega1, axis_unit=omega1` for the left panel. Plot both populations over the full interval on the right panel. Register the final figure using `figures["Figure 2"] = fig2`.
+
+### AI Coding Guidance — Figure 2
+
+**Construct your own prompt.** The complete Figure 1 prompt was your worked example. Specify the existing result dictionary and helper, two-panel arrangement, x-axis term, π-pulse reference line, and figure registration. Confirm that the generated plot meets every requirement. Do not ask the LLM to redefine the shared solver or plotting utility.
 
 ### Step 4: Change the Microwave Strength
 
-Repeat the simulation with
+Repeat with `omega1_fast = 4*np.pi` rad/µs and zero detuning, keeping the initial state and time interval unchanged. Store results in `part2_fast`.
 
-```math
-\omega_1=4\pi\ \mathrm{rad/\mu s},\qquad \Delta\omega=0.
-```
+#### Required Output — Coupling-Strength Comparison
 
-Keep the initial state and total time interval unchanged.
+Print **one two-row numerical table**:
 
-Report the expected and observed first $\pi$-pulse durations for both coupling strengths. Explain the change in the population-oscillation period.
+| ω1 (rad/µs) | Predicted first tπ (µs) | Simulated first tπ (µs) | Maximum P1 |
+|---|---:|---:|---:|
+| 2π | Calculated | Calculated | Calculated |
+| 4π | Calculated | Calculated | Calculated |
 
-An additional comparison plot may help, but it is **not another required numbered figure**.
+Report times and probabilities to at least three decimal places. Interpret the relationship between coupling strength and pulse duration in 1–2 sentences.
 
----
+**No additional numbered figure is required.** When requesting coding assistance, construct your own prompt that identifies the result dictionaries, desired calculations, output table, and units.
 
 ## Computational Investigation B: Approaching Resonance
 
@@ -257,53 +258,62 @@ For these values, the effective $z$ coefficient $-\Delta\omega$ is positive and 
 
 **Before simulating, predict:** (1) which trajectory will remain closest to the north pole, (2) which will reach the south pole, (3) how the rotation axis tilts as the microwave frequency approaches $\omega_0$, and (4) whether the population oscillations speed up or slow down.
 
-### Step 6: Simulate the Detuning Sequence
+### Step 6: Simulate the Four Detuning Values
 
-Use the same effective Hamiltonian throughout:
+Use `omega1 = 2*np.pi` rad/µs and detuning ratios `-4, -2, -1, 0`. For each ratio, initialize `|0⟩` and simulate **1,001 points** over 0–2 µs. Use the same `nv_hamiltonian(detuning, omega1)` and `simulate_spin()` helpers. Store four standardized result dictionaries in `detuning_results`, keyed by the **signed dimensionless** ratios.
 
-```math
-\hat H_{\mathrm{eff}}=\frac{\hbar}{2}
-\left(-\Delta\omega\,\sigma_z+\omega_1\sigma_x\right).
-```
+The `detuning` argument is `Δω = ω - ω0`; `nv_hamiltonian()` supplies the negative sign on the effective σz term.
 
-For each of the four detunings, initialize $|0\rangle$ and simulate $0\le t\le2\ \mu\mathrm s$. Use sufficiently dense sampling for the most strongly detuned case.
-
-Use the **same** `nv_hamiltonian(detuning, omega1)` and `simulate_spin()` helpers for every simulation; do not define a new solver. The `detuning` argument is always $\Delta\omega=\omega-\omega_0$, and `nv_hamiltonian` internally supplies the minus sign on $\sigma_z$.
-
-**AI coding task:** Extend your resonant calculation into a loop over the four detuning values, collecting Bloch trajectories, populations, and maxima without duplicating the numerical code.
+**Output from Step 6:** Four result dictionaries, **not** four independent figures.
 
 ### Step 7: Generate Figure 3
 
 **Figure 3 — Approaching Resonance: Bloch-Sphere Trajectories and Spin-Flip Probabilities**
 
-Create one numbered figure with:
+Create **one combined figure** with a 2×2 grid of Bloch spheres above a single full-width population-comparison plot.
 
-- **Panel A:** Four separate Bloch spheres, in order $\Delta\omega/\omega_1=-4,-2,-1,0$. Label each with its detuning. Mark $|0\rangle$, show time direction, and keep viewing angles consistent. Show the two effective Hamiltonian components: $-\Delta\omega$ along $z$ and $\omega_1$ along $x$, using relative arrow lengths $4:2:1:0$ for $z$ and the same length for $x$.
-- **Panel B:** Four $P_1(t)$ curves on shared axes, with time in $\mu$s and a legend.
+<p align="center">
+  <img src="Images/figure3_layout_guide.png" alt="Figure 3 arrangement: four Bloch spheres in a two by two grid over one shared graph of four population curves" width="500">
+</p>
 
-The vector arrows represent **effective rotation terms**, not literal applied laboratory magnetic fields. Include a caption relating detuning, rotation-axis direction, population-transfer amplitude, and oscillation frequency.
+*This guide defines only the panel arrangement; trajectories and curves must come from your simulations.*
 
-### Step 8: Report and Interpret the Detuning Results
+#### Required Output — Figure 3
 
-Print a compact comparison table with columns:
+| Component | Required output |
+|---|---|
+| Title | Figure 3 — Approaching Resonance |
+| Four Bloch spheres | 2×2 grid in signed detuning-ratio order −4, −2, −1, 0 |
+| Each sphere | Initial `|0⟩`, time direction, x/y/z labels, same camera angle |
+| Effective z term | `-Δω` component along +z, relative lengths 4:2:1:0 |
+| Effective x term | `ω1` component along +x, equal lengths on every sphere |
+| Shared graph | Four `P1(t)` curves on the same axes |
+| Axes | Time (µs) 0–2; P1(t) 0–1 |
+| Legend | Distinguishes all four signed detunings |
+| Caption | 2–3 sentences on axis tilt, oscillation amplitude, and frequency |
 
-| $\Delta\omega/\omega_1$ | Maximum $P_1$ (simulation) | Maximum $P_1$ (theory) | Generalized $\Omega$ (rad/$\mu$s) |
-|---|---|---|---|
-| $-4$ | *Your result* | *Calculate* | *Calculate* |
-| $-2$ | *Your result* | *Calculate* | *Calculate* |
-| $-1$ | *Your result* | *Calculate* | *Calculate* |
-| $0$ | *Your result* | *Calculate* | *Calculate* |
+Use `plot_bloch()` for each sphere with `omega_z=-ratio*omega1`, `omega_x=omega1`, `axis_unit=omega1`, and `axis_scale=0.28`. Maintain consistent viewing angles. The component arrows represent effective **Hamiltonian coefficients**, not literal applied laboratory magnetic-field vectors; their lengths are **not normalized Bloch vectors**.
 
-Use
+Register the combined figure as `figures["Figure 3"] = fig3`.
 
-```math
-P_{1,\max}=\frac{\omega_1^2}{(\Delta\omega)^2+\omega_1^2},
-\qquad \Omega=\sqrt{(\Delta\omega)^2+\omega_1^2}.
-```
+### AI Coding Guidance — Figure 3
 
-Explain why moving closer to resonance causes larger population oscillations but a smaller generalized oscillation frequency.
+**Create your own prompt.** Make it precise enough for an LLM to identify the four data dictionaries, required 2×2+1 arrangement, reusable plotting helper, common arrow scaling, labels, shared graph, and registration. Evaluate the result against the layout guide and output specification. Do not request a replacement notebook or solver.
 
----
+### Step 8: Report and Interpret Detuning Results
+
+Print **one four-row table**:
+
+| Δω/ω1 | Maximum P1 (simulation) | Maximum P1 (theory) | Generalized Ω (rad/µs) |
+|---:|---:|---:|---:|
+| −4 | Calculated | Calculated | Calculated |
+| −2 | Calculated | Calculated | Calculated |
+| −1 | Calculated | Calculated | Calculated |
+| 0 | Calculated | Calculated | Calculated |
+
+Calculate the simulated maximum over **all sampled times**, not just the final time. Compute theoretical `P1,max = 1/(1+ratio**2)` and `Ω = omega1*sqrt(1+ratio**2)`, reporting probabilities to three decimal places and Ω in rad/µs. Explain in 2–3 sentences why oscillations become larger but slower as detuning approaches zero.
+
+**No additional graph is required.** Construct your own prompt if you need coding assistance.
 
 ## Numerical Verification
 
